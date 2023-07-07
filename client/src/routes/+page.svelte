@@ -1,5 +1,7 @@
 <script>
+	import Button, { Label } from '@smui/button';
 	export let events = [];
+	function populate() {}
 </script>
 
 <main>
@@ -11,6 +13,9 @@
 			<div id="fallback">No upcoming events found</div>
 		{/if}
 	</div>
+	<Button type="button" on:click={populate} variant="raised"
+		><Label>Populate Events (TESTING ONLY)</Label></Button
+	>
 </main>
 
 <style>
@@ -21,6 +26,7 @@
 	#calendar {
 		border: 1px solid black;
 		background: white;
+		margin: 0 5px 1em 5px;
 	}
 	#fallback {
 		font-size: 1.2em;
