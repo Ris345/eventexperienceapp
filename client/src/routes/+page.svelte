@@ -1,6 +1,7 @@
 <script>
 	import Button, { Label } from '@smui/button';
 	import Paper, { Title, Content } from '@smui/paper';
+	import Dialog, { Actions } from '@smui/dialog';
 	import { fly } from 'svelte/transition';
 	class Meetup {
 		constructor(date, duration = 3, attendees = []) {
@@ -10,7 +11,10 @@
 		}
 	}
 	export let events = [];
+	let open = false,
+		selectedEvent = null;
 	function populate() {
+		events = [];
 		for (let i = 0; i < 3; i++) {
 			const date = new Date(
 				2023,
@@ -25,21 +29,40 @@
 </script>
 
 <main>
+	<!-- Causes runtime error currently -->
+	<!-- <Dialog bind:open>
+		<Title>Confirm your RSVP</Title>
+		<Content>Will you be attending on {selectedEvent.date.toLocaleDateString()}?</Content>
+		<Actions>
+			<Button on:click={() => (open = false)}><Label>Yes</Label></Button>
+			<Button on:click={() => (open = false)}><Label>No</Label></Button>
+		</Actions>
+	</Dialog> -->
 	<h2>Upcoming Events</h2>
 	<div id="calendar">
-		{#if events.length > 0}
-			{#each events as event (event.date)}
-				<div in:fly={{ x: -100 }}>
-					<Paper color="primary">
-						<Title>{event.date.toLocaleDateString()}</Title>
-						<Content>
+		{#each events as event, i (event.date)}
+			<div in:fly={{ x: 100, delay: i * 150 }}>
+				<Paper color="primary">
+					<Title>{event.date.toLocaleDateString()}</Title>
+					<Content>
+						<div class="time">
 							{event.date.toLocaleTimeString().split(':')[0] +
 								event.date.toLocaleTimeString().split(' ')[1]}
-						</Content>
-					</Paper>
-				</div>
-			{/each}
-		{:else}
+						</div>
+						<Button
+							color="secondary"
+							variant="raised"
+							on:click={() => {
+								selectedEvent = event;
+								open = true;
+							}}><Label>RSVP</Label></Button
+						>
+						Attendees: {event.attendees}
+					</Content>
+				</Paper>
+			</div>
+		{/each}
+		{#if events.length === 0}
 			<div id="fallback">No upcoming events found</div>
 		{/if}
 	</div>
@@ -61,8 +84,11 @@
 		flex-flow: column;
 		gap: 0.5em;
 		padding: 0.5em;
+		overflow: hidden;
 	}
-
+	.time {
+		margin-bottom: 0.5em;
+	}
 	#fallback {
 		font-size: 1.2em;
 		display: flex;

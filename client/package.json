@@ -14,6 +14,7 @@
 	"devDependencies": {
 		"@material/typography": "^14.0.0",
 		"@smui/button": "^7.0.0-beta.14",
+		"@smui/dialog": "^7.0.0-beta.14",
 		"@smui/paper": "^7.0.0-beta.14",
 		"@smui/top-app-bar": "^7.0.0-beta.14",
 		"@sveltejs/adapter-auto": "^2.0.0",
