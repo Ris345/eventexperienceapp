@@ -1,7 +1,7 @@
 <script>
 	import Button, { Label } from '@smui/button';
 	import Paper, { Title, Content } from '@smui/paper';
-	import Dialog, { Actions } from '@smui/dialog';
+	import Dialog, { Title as DTitle, Content as DContent, Actions } from '@smui/dialog';
 	import { fly } from 'svelte/transition';
 	class Meetup {
 		constructor(date, duration = 3, attendees = []) {
@@ -30,14 +30,16 @@
 
 <main>
 	<!-- Causes runtime error currently -->
-	<!-- <Dialog bind:open>
-		<Title>Confirm your RSVP</Title>
-		<Content>Will you be attending on {selectedEvent.date.toLocaleDateString()}?</Content>
+	<Dialog bind:open>
+		<DTitle>Confirm your RSVP</DTitle>
+		<DContent>
+			Will you be attending on {selectedEvent && selectedEvent.date.toLocaleDateString()}?
+		</DContent>
 		<Actions>
 			<Button on:click={() => (open = false)}><Label>Yes</Label></Button>
 			<Button on:click={() => (open = false)}><Label>No</Label></Button>
 		</Actions>
-	</Dialog> -->
+	</Dialog>
 	<h2>Upcoming Events</h2>
 	<div id="calendar">
 		{#each events as event, i (event.date)}
