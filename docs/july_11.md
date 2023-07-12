@@ -44,9 +44,11 @@
                     - [UploadThing](https://docs.uploadthing.com/solid)
                     - Simpler alternative
 
-            - For auth, I am going to attempt Cerbos
-            - [Implementing Back_Populates](https://stackoverflow.com/questions/39869793/when-do-i-need-to-use-sqlalchemy-back-populates)
-                - ![Back P Pref](../docs/Images/Preference%20Towards%20Back%20Populates.png)
+            - For auth, I am going to attempt Cerbos (at some point in this demo)
+                - [Implementing Back_Populates](https://stackoverflow.com/questions/39869793/when-do-i-need-to-use-sqlalchemy-back-populates)
+                    - ![Back P Pref](../docs/Images/Preference%20Towards%20Back%20Populates.png)
+                - Based on Docs will attempt Oauth2
+
             - [Many To Many Relationship](https://stackoverflow.com/questions/5756559/how-to-build-many-to-many-relations-using-sqlalchemy-a-good-example)
 
             - Pydantic: BaseModel

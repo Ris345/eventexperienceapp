@@ -2,6 +2,10 @@ from datetime import date, datetime, time, timedelta
 from pydantic import BaseModel
 
 
+class Group(GroupBase):
+    pass
+
+
 class UserBase(BaseModel):
     username: str
     first_name: str
@@ -9,18 +13,15 @@ class UserBase(BaseModel):
     email: str
     about: str
     profile_photo: str
+    groups: list[Group]
 
 
 class GroupBase(BaseModel):
     pass
 
 
-class Group(GroupBase):
-    pass
-
-
 class UserCreate(UserBase):
-    pass
+    password: str
 
 
 class User(UserBase):

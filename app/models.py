@@ -14,6 +14,9 @@ user3 | secret3 | volunteer
 
 
 # Creating classes that inherit from Base
+# User Model that contains the attributes of id, username, ..., profile_photo to be a url coming from an s3 storage bucket, many to man relationship with groups meaning that there can be many users to one project, many projects to one user
+
+
 class User(Base):
     __tablename__ = "user"
     id = Column(Integer, primary_key=True, index=True)
