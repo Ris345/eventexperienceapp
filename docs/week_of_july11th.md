@@ -53,3 +53,11 @@
 
             - Pydantic: BaseModel
                 - Pydantic also uses the term "model" to refer to something different, the data validation, conversion, and documentation classes and instances.
+
+# 07/13/2023
+- Most likely am going to have use Docker for Cerbos, LocalStack
+    - [Cerbos](https://github.com/cerbos/python-sqlalchemy-cerbos/tree/main)
+    - [Local Stack](https://github.com/localstack/localstack#example)
+
+- Going to test relations for models.py for db
+    - __RESULTS__

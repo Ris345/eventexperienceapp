@@ -2,6 +2,7 @@ from datetime import datetime
 from sqlalchemy import Boolean, Column, ForeignKey, String, DateTime, Integer, Text
 from sqlalchemy.orm import relationship
 from .database import Base
+from .database import SessionLocal
 
 """
 for test db:
@@ -41,6 +42,7 @@ class Group(Base):
     # M2M
     users = relationship("User", secondary="group_users", back_populates="group")
     description = Column(Text)
+    owner = relationship("User", back_populates="group", lazy="joined")
 
 
 # Facilitates Many to Many relationship
@@ -74,3 +76,43 @@ class Favorites(Base):
 
 class RSVPS(Base):
     pass
+
+
+# For Testing Purposes - must fit it to current db models
+"""
+# Create the tables in the database
+Base.metadata.create_all(engine)
+
+# Test it
+with Session(bind=engine) as session:
+
+    # add users
+    usr1 = User(name="bob")
+    session.add(usr1)
+
+    usr2 = User(name="alice")
+    session.add(usr2)
+
+    session.commit()
+
+    # add projects
+    prj1 = Project(name="Project 1")
+    session.add(prj1)
+
+    prj2 = Project(name="Project 2")
+    session.add(prj2)
+
+    session.commit()
+
+    # map users to projects
+    prj1.users = [usr1, usr2]
+    prj2.users = [usr2]
+
+    session.commit()
+
+
+with Session(bind=engine) as session:
+
+    print(session.query(User).where(User.id == 1).one().projects)
+    print(session.query(Project).where(Project.id == 1).one().users)
+"""
