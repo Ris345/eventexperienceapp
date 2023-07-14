@@ -45,14 +45,16 @@
                     - Simpler alternative
 
             - For auth, I am going to attempt Cerbos (at some point in this demo)
+                - Docs recommended OAuth2
+
+            - Models Setup
                 - [Implementing Back_Populates](https://stackoverflow.com/questions/39869793/when-do-i-need-to-use-sqlalchemy-back-populates)
                     - ![Back P Pref](../docs/Images/Preference%20Towards%20Back%20Populates.png)
-                - Based on Docs will attempt Oauth2
-
-            - [Many To Many Relationship](https://stackoverflow.com/questions/5756559/how-to-build-many-to-many-relations-using-sqlalchemy-a-good-example)
+                - [Many To Many Relationship](https://stackoverflow.com/questions/5756559/how-to-build-many-to-many-relations-using-sqlalchemy-a-good-example)
 
             - Pydantic: BaseModel
                 - Pydantic also uses the term "model" to refer to something different, the data validation, conversion, and documentation classes and instances.
+                - Aka models need to be defined twice, for sql data entry then conversion of sql tables to api 'converted' data
 
 # 07/13/2023
 - Most likely am going to have use Docker for Cerbos, LocalStack
