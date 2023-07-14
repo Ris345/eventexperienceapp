@@ -64,15 +64,23 @@
 - Many to Many Pydantic Model, SQLite
     - [Many2Many](https://www.gormanalysis.com/blog/many-to-many-relationships-in-fastapi/)
 
-- Going to test relations for models.py for db
+- [X] Successful Table Test - with Dummy Data
+
+    - process to see testing live
+        - run `python schemas.py` (thats it for now, creates a db and pycache file)
+            - illustrates proper data entry for models, pydantic using sql alchemy
+        - after running `python schemas.py` to test differently, make sure to delete pycache folder as well as sql_app.db as u will get key constraints as data has to be unique :)
+
     - __RESULTS__
-        - ![Tables Being Formed](../docs/Images/Shows_Formation_Tables.png)
-        - ![Tables Created](../docs/Images/Tables_Created_SQLite.png)
-        - ![Output Table Info](../docs/Images/Outputting_Table_Info.png)
-        - ![Users Table](../docs/Images/Users_Table.png)
+    - ![Tables Being Formed](../docs/Images/Shows_Formation_Tables.png)
+    - ![Tables Created](../docs/Images/Tables_Created_SQLite.png)
+    - ![Output Table Info](../docs/Images/Outputting_Table_Info.png)
+        - if sqlite explorer is installed(?), then u can view tables
+            - ![Users Table](../docs/Images/Users_Table.png)
         - ![Groups Table](../docs/Images/GroupsTable.png)
         - ![Group Users Many2Many](../docs/Images/GroupUsers_Table.png)
-    - [X] Successful Table Test - with Dummy Data
+
+
 
 - Worked on Schemas
     - ![](../docs/Images/Schema_Work.png)
