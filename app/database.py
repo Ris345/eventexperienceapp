@@ -8,7 +8,10 @@ SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
 
 # using sync(def) functions, check_same_thread parameter allows >1 thread to interact with db for same request
 engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
+    SQLALCHEMY_DATABASE_URL,
+    connect_args={"check_same_thread": False},
+    echo=True,
+    future=True,
 )
 
 # each instance of sessionlocal class is a db session,

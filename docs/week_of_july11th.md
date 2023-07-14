@@ -59,5 +59,21 @@
     - [Cerbos](https://github.com/cerbos/python-sqlalchemy-cerbos/tree/main)
     - [Local Stack](https://github.com/localstack/localstack#example)
 
+- Many to Many Pydantic Model, SQLite
+    - [Many2Many](https://www.gormanalysis.com/blog/many-to-many-relationships-in-fastapi/)
+
 - Going to test relations for models.py for db
     - __RESULTS__
+        - ![Tables Being Formed](../docs/Images/Shows_Formation_Tables.png)
+        - ![Tables Created](../docs/Images/Tables_Created_SQLite.png)
+        - ![Output Table Info](../docs/Images/Outputting_Table_Info.png)
+        - ![Users Table](../docs/Images/Users_Table.png)
+        - ![Groups Table](../docs/Images/GroupsTable.png)
+        - ![Group Users Many2Many](../docs/Images/GroupUsers_Table.png)
+    - [X] Successful Table Test - with Dummy Data
+
+- Worked on Schemas
+    - ![](../docs/Images/Schema_Work.png)
+    - ![](../docs/Images/Return_JSON_via_Schemas.png)
+
+- Need to work on Crud, Main.py in order to get FastApi docs operational

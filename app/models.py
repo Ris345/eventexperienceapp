@@ -1,8 +1,8 @@
 from datetime import datetime
 from sqlalchemy import Boolean, Column, ForeignKey, String, DateTime, Integer, Text
-from sqlalchemy.orm import relationship
-from .database import Base
-from .database import SessionLocal
+from sqlalchemy.orm import relationship, joinedload
+from database import Base, engine, SessionLocal
+
 
 """
 for test db:
@@ -10,16 +10,14 @@ username | password | role
 user1   | secret1 | admin
 user2 | secret2 | organizer
 user3 | secret3 | volunteer
-
 """
-
 
 # Creating classes that inherit from Base
 # User Model that contains the attributes of id, username, ..., profile_photo to be a url coming from an s3 storage bucket, many to man relationship with groups meaning that there can be many users to one project, many projects to one user
 
 
 class User(Base):
-    __tablename__ = "user"
+    __tablename__ = "users"
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String, unique=True, index=True)
     first_name = Column(String)
@@ -28,91 +26,126 @@ class User(Base):
     about = Column(Text)
     hashed_password = Column(String)
     profile_photo = Column(String)
-    created_at = Column(DateTime, default=DateTime.utcnow())
+    created_at = Column(DateTime, default=datetime.utcnow())
     # M2M
-    groups = relationship("Group", secondary="group_users", back_populates="user")
+    groups = relationship("Group", secondary="group_users", back_populates="users")
     is_active = Column(Boolean, default=True)
 
 
 class Group(Base):
-    __tablename__ = "group"
+    __tablename__ = "groups"
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
-    owner_id = Column(Integer, ForeignKey("user.id"))
+    owner_id = Column(Integer, ForeignKey("users.id"))
     # M2M
-    users = relationship("User", secondary="group_users", back_populates="group")
+    users = relationship("User", secondary="group_users", back_populates="groups")
     description = Column(Text)
-    owner = relationship("User", back_populates="group", lazy="joined")
+    # establish bidirectional relation between objects
+    # user foreignkey relationship prior to indicate to sqlalchemy to load related obj at attribute access time
+    owner = relationship("User", back_populates="groups", lazy="joined")
 
 
-# Facilitates Many to Many relationship
+# GroupUser Table facilitates Many to Many relationship
+"""
+junction table, primary keys are declared as pair of columns
+"""
+
+
 class GroupUser(Base):
-    __table__name__ = "group_users"
+    __tablename__ = "group_users"
     id = Column(Integer, primary_key=True)
-    notes = Column(String, nullable=True)
-    user_id = Column(Integer, ForeignKey("user.id"))
-    group_id = Column(Integer, ForeignKey("group.id"))
+    user_id = Column(Integer, ForeignKey("users.id"))
+    group_id = Column(Integer, ForeignKey("groups.id"))
 
 
-class Event(Base):
-    pass
+# class Event(Base):
+#     pass
 
 
-class Task(Base):
-    pass
+# class Task(Base):
+#     pass
 
 
-class TaskList(Base):
-    pass
+# class TaskList(Base):
+#     pass
 
 
-class Location(Base):
-    pass
+# class Location(Base):
+#     pass
 
 
-class Favorites(Base):
-    pass
+# class Favorites(Base):
+#     pass
 
 
-class RSVPS(Base):
-    pass
+# class RSVPS(Base):
+#     pass
 
 
-# For Testing Purposes - must fit it to current db models
-"""
-# Create the tables in the database
+# Testing Data Insertion
 Base.metadata.create_all(engine)
-
-# Test it
-with Session(bind=engine) as session:
-
-    # add users
-    usr1 = User(name="bob")
-    session.add(usr1)
-
-    usr2 = User(name="alice")
-    session.add(usr2)
-
+with SessionLocal() as session:
+    Group1 = Group(name="group1", description="group1 description")
+    Group2 = Group(name="group2", description="group2 description")
+    User1 = User(
+        username="user1",
+        first_name="first1",
+        last_name="last1",
+        email="user1@user.com",
+        about="about user1",
+        hashed_password="user1 password",
+        profile_photo="aws3.privatebucket.com/user1_photo",
+        is_active=True,
+    )
+    User2 = User(
+        username="user2",
+        first_name="first2",
+        last_name="last2",
+        email="user2@user.com",
+        about="about user2",
+        hashed_password="user2 password",
+        profile_photo="aws3.privatebucket.com/user2_photo",
+        is_active=True,
+    )
+    User3 = User(
+        username="user3",
+        first_name="first3",
+        last_name="last3",
+        email="user3@user.com",
+        about="about user3",
+        hashed_password="user3 password",
+        profile_photo="aws3.privatebucket.com/user3_photo",
+        is_active=True,
+    )
+    Group1.owner_id = 1
+    Group2.owner_id = 2
+    Group1.users = [User1, User2]
+    Group2.users = [User2, User3]
+    session.add_all([Group1, Group2, User1, User2, User3])
     session.commit()
 
-    # add projects
-    prj1 = Project(name="Project 1")
-    session.add(prj1)
+    # Get group with id 1 and print name, description
+    with SessionLocal() as session:
+        g1 = session.query(Group).where(Group.id == 1).one()
+        g1_description = session.query(Group.description).where(Group.id == 1).one()
+        g2 = session.query(Group).where(Group.id == 2).one()
+        g2_description = session.query(Group.description).where(Group.id == 2).one()
 
-    prj2 = Project(name="Project 2")
-    session.add(prj2)
+with SessionLocal() as session:
+    g1 = session.query(Group).where(Group.id == 1).one()
+    print(g1.owner_id)
+    print("group1 owner " + g1.owner.username)
+    for u in g1.users:
+        print(u.username)
+    g2 = session.query(Group).where(Group.id == 2).one()
+    print(g2.owner_id)
+    print("group2 owner " + g2.owner.username)
+    for u in g2.users:
+        print(u.username)
 
-    session.commit()
-
-    # map users to projects
-    prj1.users = [usr1, usr2]
-    prj2.users = [usr2]
-
-    session.commit()
-
-
-with Session(bind=engine) as session:
-
-    print(session.query(User).where(User.id == 1).one().projects)
-    print(session.query(Project).where(Project.id == 1).one().users)
-"""
+# Fix N+1 SELECTS problem
+with SessionLocal() as session:
+    g1 = (
+        session.query(Group).options(joinedload(Group.users)).where(Group.id == 1).one()
+    )
+print(g1.name)
