@@ -45,7 +45,7 @@
                     - Simpler alternative
 
             - For auth, I am going to attempt Cerbos (at some point in this demo)
-                - Docs recommended OAuth2
+                - Docs recommended OAuth2, so still need to decide between how exactly this process will be finalized or if there tradeoffs between the two
 
             - Models Setup
                 - [Implementing Back_Populates](https://stackoverflow.com/questions/39869793/when-do-i-need-to-use-sqlalchemy-back-populates)
