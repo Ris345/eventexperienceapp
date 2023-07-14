@@ -77,13 +77,13 @@
     - ![Output Table Info](../docs/Images/Outputting_Table_Info.png)
         - if sqlite explorer is installed(?), then u can view tables
             - ![Users Table](../docs/Images/Users_Table.png)
-        - ![Groups Table](../docs/Images/GroupsTable.png)
-        - ![Group Users Many2Many](../docs/Images/GroupUsers_Table.png)
+            - ![Groups Table](../docs/Images/GroupsTable.png)
+            - ![Group Users Many2Many](../docs/Images/GroupUsers_Table.png)
 
 
 
 - Worked on Schemas
     - ![](../docs/Images/Schema_Work.png)
-    - ![](../docs/Images/Return_JSON_via_Schemas.png)
+        - ![](../docs/Images/Return_JSON_via_Schemas.png)
 
 - Need to work on Crud, Main.py in order to get FastApi docs operational
