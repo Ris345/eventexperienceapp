@@ -9,13 +9,15 @@
 		"lint": "prettier --plugin-search-dir . --check .",
 		"format": "prettier --plugin-search-dir . --write .",
 		"prepare": "npm run smui-theme",
-		"smui-theme": "smui-theme compile static/smui.css -i src/theme"
+		"smui-theme": "smui-theme compile static/smui.css -i src/theme/dark"
 	},
 	"devDependencies": {
 		"@material/typography": "^14.0.0",
 		"@smui/button": "^7.0.0-beta.14",
 		"@smui/dialog": "^7.0.0-beta.14",
 		"@smui/paper": "^7.0.0-beta.14",
+		"@smui/segmented-button": "^7.0.0-beta.14",
+		"@smui/textfield": "^7.0.0-beta.14",
 		"@smui/top-app-bar": "^7.0.0-beta.14",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.20.4",
