@@ -6,26 +6,26 @@
 	};
 
 	// handle form input
-	let F_name = '';
-	let L_name = '';
+	let First_name = '';
+	let Last_name = '';
 	let E_mail = '';
-	let P_word = '';
+	let Pass_word = '';
 
 	const handleInputfirstName = (e) => {
-		F_name = e.target.value;
-		console.log('F_name', F_name);
+		First_name = e.target.value;
+		console.log('F_name', First_name);
 	};
 	const handleInputlastName = (e) => {
-		L_name = e.target.value;
-		console.log('L_name', L_name);
+		Last_name = e.target.value;
+		console.log('L_name', Last_name);
 	};
 	const handleInputEmail = (e) => {
 		E_mail = e.target.value;
 		console.log('E_mail', E_mail);
 	};
 	const handleInputPassword = (e) => {
-		P_word = e.target.value;
-		console.log('P_word', P_word);
+		Pass_word = e.target.value;
+		console.log('P_word', Pass_word);
 	};
 
 	//  radio buttons
