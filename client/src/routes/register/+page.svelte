@@ -10,11 +10,29 @@
 		password = '',
 		selectedRole;
 	const choices = ['Admin', 'Organizer', 'Volunteer'];
+	// handleSubmit
+	const handleOnSubmit = (e) => {
+		e.preventDefault();
+		console.log('submitting  the data to the back end ');
+	};
+
+	const handleInputfirstName = (e) => {
+		console.log('F_name', firstName);
+	};
+	const handleInputlastName = (e) => {
+		console.log('L_name', lastName);
+	};
+	const handleInputEmail = (e) => {
+		console.log('E_mail', email);
+	};
+	const handleInputPassword = (e) => {
+		console.log('P_word', password);
+	};
 </script>
 
 <main>
 	<h2>Register</h2>
-	<form method="POST">
+	<form on:submit={handleOnSubmit}>
 		<Textfield bind:value={firstName} label="First Name" />
 
 		<Textfield bind:value={lastName} label="Last Name" />
