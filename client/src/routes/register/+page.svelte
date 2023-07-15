@@ -6,7 +6,7 @@
 
 <main>
     <h2>Register</h2>
-	<form>
+	<form method="POST">
 		<label>First Name:</label>
 		<input/>
 		<label>Last Name:</label>

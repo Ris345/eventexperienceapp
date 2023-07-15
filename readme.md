@@ -9,7 +9,7 @@ Event Experience App (EEA) is an event organizer application that allows users t
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
+
 
 ## Features
 1. **User Registration**: Users can register with the application and select their role as admin, organizer, or volunteer. The registration process requires basic user information such as name, email, and password.
