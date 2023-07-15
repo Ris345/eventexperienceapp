@@ -4,18 +4,11 @@
 	import HelperText from '@smui/textfield/helper-text';
 	let username = '',
 		password = '';
-	const handleInputUsername = (e) => {
-		username = e.target.value;
-		console.log('username', username);
-	};
-
-	const handleInputPassword = () => {
-		password = '';
-		console.log('password', password);
-	};
+	$: console.log(username);
+	$: console.log(password);
 
 	const handleOnSubmit = () => {
-		console.log('subbmitting login information');
+		console.log('submitting login information');
 	};
 </script>
 
