@@ -31,6 +31,8 @@ Event Experience App (EEA) is an event organizer application that allows users t
 
 3. **Volunteer**: Volunteers can RSVP for events, view event details, and access task lists. They can mark tasks as complete and communicate with organizers or other volunteers. Volunteers have limited access compared to admins and organizers.
 
+## Installation
+To run the client-side application locally, clone this repo and open a terminal in the /client directory. If this is the first time you are running the application, first run "npm install" (to install dependencies) and then "npm run prepare" (to set up Material UI themes and compile .scss). After you've done that, "npm run dev" is all you need to do to get a local server working.
 
 ## Usage
 Once the application is installed and running, users can perform the following actions:
