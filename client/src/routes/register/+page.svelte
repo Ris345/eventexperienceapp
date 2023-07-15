@@ -31,7 +31,7 @@
 	//  radio buttons
 	let roles = ['Admin', 'Organizer', 'Volunteer'];
 	let user_role = '';
-	
+
 </script>
 
 <main>
@@ -63,7 +63,7 @@
 			<input type="radio" value="role" bind:group={user_role} />
 		</label>
 	{/each}
-</main>
+	</main>
 
 <style>
 	label {
