@@ -2,14 +2,24 @@
 	import Button, { Label } from '@smui/button';
 	import Textfield from '@smui/textfield';
 	import HelperText from '@smui/textfield/helper-text';
+	import { createEventDispatcher } from 'svelte';
+	import axios from 'axios';
 	let username = '',
 		password = '';
 	$: console.log(username);
 	$: console.log(password);
+	const dispatch = createEventDispatcher();
 
-	const handleOnSubmit = (e) => {
+	const handleOnSubmit = async  (e) => {
 		e.preventDefault()
 		console.log('submitting login information');
+		// submit post request 
+		try {
+			const response = await axios.post('/api/backend', { username, password });
+			dispatch('formSubmitted', response.data);
+		} catch (error) {
+			console.error(error);
+		}
 	};
 </script>
 
