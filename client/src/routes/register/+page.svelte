@@ -16,17 +16,14 @@
 		console.log('submitting  the data to the back end ');
 	};
 
+	$: console.log('First_name', firstName);
 
-		console.log('First_name', firstName);
+	$: console.log('Last_name', lastName);
 
-	
-		console.log('Last_name', lastName);
-	
+	$: console.log('E_mail', email);
+	$: console.log('Pass_word', password);
+	$: console.log('selected_role', selectedRole);
 
-		console.log('E_mail', email);
-	
-
-		console.log('Pass_word', password);
 </script>
 
 <main>
