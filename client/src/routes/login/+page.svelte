@@ -7,7 +7,8 @@
 	$: console.log(username);
 	$: console.log(password);
 
-	const handleOnSubmit = () => {
+	const handleOnSubmit = (e) => {
+		e.preventDefault()
 		console.log('submitting login information');
 	};
 </script>
