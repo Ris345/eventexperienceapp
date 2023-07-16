@@ -16,18 +16,17 @@
 		console.log('submitting  the data to the back end ');
 	};
 
-	const handleInputfirstName = (e) => {
-		console.log('F_name', firstName);
-	};
-	const handleInputlastName = (e) => {
-		console.log('L_name', lastName);
-	};
-	const handleInputEmail = (e) => {
+
+		console.log('First_name', firstName);
+
+	
+		console.log('Last_name', lastName);
+	
+
 		console.log('E_mail', email);
-	};
-	const handleInputPassword = (e) => {
-		console.log('P_word', password);
-	};
+	
+
+		console.log('Pass_word', password);
 </script>
 
 <main>
