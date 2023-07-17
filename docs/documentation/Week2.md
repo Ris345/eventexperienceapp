@@ -134,3 +134,15 @@
     - Spatial/Location Info
         - [Using Open Street Map](https://wiki.openstreetmap.org/wiki/Using_OpenStreetMap#Web_applications)
         - [Spatial Data Apis](https://www.reddit.com/r/gis/comments/tb5rcq/what_are_some_of_your_favorite_apis_that_expose/)
+
+- Google Calendar
+    - [Python Quick Start](https://developers.google.com/calendar/api/quickstart/python)
+        - ![Quick Start Guide](../imgs/PyQuickStart.png)
+
+    - [Successful Response](../imgs/successful_response.png)
+
+    - ![Api Setup](../imgs/successful_response.png)
+        - [Api Key Setup](https://stackoverflow.com/questions/50881005/google-sheet-api-message-the-request-is-missing-a-valid-api-key)
+- Python Example
+    - [Google Python Api Gateway](https://github.com/googleapis/python-api-gateway)
+        - There is a quick start guide on that page, alot of instruction on implementing it locally !
