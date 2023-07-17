@@ -93,3 +93,44 @@
     - Need to get to localhost stage
 
 # 07/17/23
+- __GENERAL AGENDA__
+    - Demo/Sample of BE -> FE functionality
+        - User MS
+            - First Draft
+                - [ ] Establish DB setup for users first
+                - [ ] Ensure that user table can be setup with chosen db
+                - [ ] (fastapi) Setup queries, routers for users service and ensure there is proper operation with chosen db
+                - [ ] Establish the ability to CRUD users (FA docs)
+                    - Create Account
+                        - POST -> GET TOKEN
+                    - Update Account
+                        - PUT/USER_ID
+                    - View Account Details
+                        - GET/USER_ID
+                    - Search for other accounts
+                        - GET/ACCOUNT_ID or ACCOUNT_USERNAME, NAME, EMAIL
+                - [ ] Establish retrieval of user data from BE to mock up FE
+                    - [ ] Ensure that the password is hashed and that said password is deleted on the FrontEnd ( req password security )
+                    - [ ] Logged in user can view account details
+                    - [ ] Logged in user can update account details
+                    - [ ] Logged in
+                - [ ] Establish that users are able to create account in mockup
+                    - POST + GET TOKEN
+                - [ ] Establish users are able to log out in mockup
+                    - DELETE TOKEN
+                - [ ] Establish users are able to login
+                    - GET TOKEN
+                - [ ] Establish errors are present with invalid account creation, login in mockup
+            - [] Implement Roles with Casbin/FastAPI middleware
+                - [] Implementation of ACL Middleware/System for roles
+        - [] Implementation of a notification system
+            - [] Notification Endpoints
+        - [] Implementation of a scheduling system
+            - [] Scheduling system Endpoints
+        - [] Analytics Dashboard (tracking users, other user information)
+            - [] Analytics Dashboard Endpoints
+
+- Notes/Extraneous resources
+    - Spatial/Location Info
+        - [Using Open Street Map](https://wiki.openstreetmap.org/wiki/Using_OpenStreetMap#Web_applications)
+        - [Spatial Data Apis](https://www.reddit.com/r/gis/comments/tb5rcq/what_are_some_of_your_favorite_apis_that_expose/)
