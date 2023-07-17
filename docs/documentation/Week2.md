@@ -121,14 +121,14 @@
                 - [ ] Establish users are able to login
                     - GET TOKEN
                 - [ ] Establish errors are present with invalid account creation, login in mockup
-            - [] Implement Roles with Casbin/FastAPI middleware
+            - [ ] Implement Roles with Casbin/FastAPI middleware
                 - [] Implementation of ACL Middleware/System for roles
-        - [] Implementation of a notification system
-            - [] Notification Endpoints
-        - [] Implementation of a scheduling system
-            - [] Scheduling system Endpoints
-        - [] Analytics Dashboard (tracking users, other user information)
-            - [] Analytics Dashboard Endpoints
+        - [ ] Implementation of a notification system
+            - [ ] Notification Endpoints
+        - [ ] Implementation of a scheduling system
+            - [ ] Scheduling system Endpoints
+        - [ ] Analytics Dashboard (tracking users, other user information)
+            - [ ] Analytics Dashboard Endpoints
 
 - Notes/Extraneous resources
     - Spatial/Location Info
