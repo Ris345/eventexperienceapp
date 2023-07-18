@@ -93,6 +93,7 @@
     - Need to get to localhost stage
 
 # 07/17/23
+
 - __GENERAL AGENDA__
     - Demo/Sample of BE -> FE functionality
         - User MS
@@ -122,7 +123,34 @@
                     - GET TOKEN
                 - [ ] Establish errors are present with invalid account creation, login in mockup
             - [ ] Implement Roles with Casbin/FastAPI middleware
-                - [] Implementation of ACL Middleware/System for roles
+                - [ ] Implementation of ACL Middleware/System for roles
+
+- __SKELETON__
+- Users:
+    - The first step will be the entire user flow
+        - 2 paths being: Create Account, Log In
+            - Logged out (page that has printed on it 'ur logged out') -> (a) (button 'sign up') Create account -> button directs to a (form page) or (b) (button 'login') Login to prev created account
+                - Successful Attempts (status code 500)
+                    - (a) user inputs info on form page [ check to make sure there are no duplicate accounts, password is ok, username is okay, email is valid] [POST REQUEST] (500)-> clear form, successful login [GET TOKEN] -> direct to new page (page that has 'ur logged in' with user data on it except password) (cookie/token obtained after logging in) -> (button 'log out') Sign out [DELETE TOKEN] -> Back to start (page that has 'ur logged out' on it)
+                        - Login form allows one to input username, email, first name, last name, password, profile photo, about me section {`user.description`}, profile photo (upload profile photo), select interests (drawn from a db that has all potential interests to match to a recommended event/events)
+                    - (b) user inputs username and password -> press login button with correct info -> [LOGIN BE to check for correct account info]+[ GET TOKEN ] (500)-> site ('ur logged in' with 'sign out' button) has user data present without password
+                        - Means I'm able to pass in user data from be to fe [ token, user data with hashed password, session (cookies) ]
+                - Unsuccessful Attempts (status code 400?)
+                    - (a) bad create account attempts -> tells user that 'x' is wrong
+                        - user inputs data that is present with another user
+                            - data that would present errors: same username
+                            - tell user that there is an account with same username
+                                - different accounts can have same email, first, last name etc. but not same username
+                                - searching for accounts (?)
+                        - invalid username, invalid first or last, invalid email
+                    - (b) bad login attempt -> tell user there is no user with 'x' username, 'y' password
+                        - 'user with {x} username not found'
+                        - 'password and username combo does not match'
+        - View account and details
+            - View account role, access privileges
+        - View account favorite events and rsvps
+        - Update account
+            - Update username, email, first name, last name, password, profile photo, about me section , profile photo (upload profile photo), interests
 
 - Notes/Extraneous resources
     - Spatial/Location Info
