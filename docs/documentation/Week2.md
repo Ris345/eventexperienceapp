@@ -141,8 +141,9 @@
 
     - [Successful Response](../imgs/successful_response.png)
 
-    - ![Api Setup](../imgs/successful_response.png)
-        - [Api Key Setup](https://stackoverflow.com/questions/50881005/google-sheet-api-message-the-request-is-missing-a-valid-api-key)
+    - [Api Key Setup](https://stackoverflow.com/questions/50881005/google-sheet-api-message-the-request-is-missing-a-valid-api-key)
+        - ![Api Setup](../imgs/successful_response.png)
+
 - Python Example
     - [Google Python Api Gateway](https://github.com/googleapis/python-api-gateway)
         - There is a quick start guide on that page, alot of instruction on implementing it locally !
