@@ -68,9 +68,9 @@ class GroupCreate(GroupBase):
 #     "id": 1,
 #     "name": "group1",
 #     "users": [{"id": 1, "username": "user1"}, {"id": 2, "username": "user2"}],
-# }
+# # }
 
-with SessionLocal() as session:
-    g1 = session.query(Group).options(joinedload(Group.users)).first()
-g1_schema = GroupSchema.from_orm(g1)
-print(g1_schema.json())
+# with SessionLocal() as session:
+#     g1 = session.query(Group).options(joinedload(Group.users)).first()
+# g1_schema = GroupSchema.from_orm(g1)
+# print(g1_schema.json())
