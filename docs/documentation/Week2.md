@@ -123,12 +123,6 @@
                 - [ ] Establish errors are present with invalid account creation, login in mockup
             - [ ] Implement Roles with Casbin/FastAPI middleware
                 - [] Implementation of ACL Middleware/System for roles
-        - [ ] Implementation of a notification system
-            - [ ] Notification Endpoints
-        - [ ] Implementation of a scheduling system
-            - [ ] Scheduling system Endpoints
-        - [ ] Analytics Dashboard (tracking users, other user information)
-            - [ ] Analytics Dashboard Endpoints
 
 - Notes/Extraneous resources
     - Spatial/Location Info
@@ -137,13 +131,9 @@
 
 - Google Calendar
     - [Python Quick Start](https://developers.google.com/calendar/api/quickstart/python)
-        - ![Quick Start Guide](../imgs/PyQuickStart.png)
-
-    - [Successful Response](../imgs/successful_response.png)
 
     - [Api Key Setup](https://stackoverflow.com/questions/50881005/google-sheet-api-message-the-request-is-missing-a-valid-api-key)
-        - ![Api Setup](../imgs/successful_response.png)
 
-- Python Example
-    - [Google Python Api Gateway](https://github.com/googleapis/python-api-gateway)
-        - There is a quick start guide on that page, alot of instruction on implementing it locally !
+        - Python Example
+            - [Google Python Api Gateway](https://github.com/googleapis/python-api-gateway)
+                - There is a quick start guide on that page, alot of instruction on implementing it locally !
