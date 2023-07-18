@@ -3,14 +3,6 @@ from sqlalchemy.orm import Session, joinedload
 from fastapi import Depends
 
 
-# def get_db():
-#     db = Session(bind=engine)
-#     try:
-#         yield db
-#     finally:
-#         db.close()
-
-
 def get_users(db: Session, skip: int = 0, limit: int = 100):
     db_users = (
         db.query(models.User)
