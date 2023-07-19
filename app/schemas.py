@@ -1,10 +1,8 @@
 from datetime import date, datetime, time, timedelta
 from pydantic import BaseModel
 from typing import Optional, List
-from database import engine, SessionLocal
 from sqlalchemy.orm import joinedload
 from models import Group, User
-
 
 """
 ModelBase - common attributes when creating or reading data
