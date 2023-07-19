@@ -3,6 +3,7 @@
 	import Paper, { Title, Content } from '@smui/paper';
 	import Dialog, { Title as DTitle, Content as DContent, Actions } from '@smui/dialog';
 	import { fly } from 'svelte/transition';
+
 	class Meetup {
 		constructor(date, duration = 3, attendees = []) {
 			this.date = date;
@@ -25,7 +26,7 @@
 			events.push(new Meetup(date));
 		}
 		events = events;
-	}
+}
 </script>
 
 <main>
@@ -98,4 +99,5 @@
 		align-items: center;
 		height: 200px;
 	}
+	
 </style>
