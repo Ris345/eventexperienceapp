@@ -60,7 +60,7 @@ class GroupUser(Base):
     user_id = Column(Integer, ForeignKey("users.id"))
     group_id = Column(Integer, ForeignKey("groups.id"))
 
-
+print(id)
 # class Event(Base):
 #     pass
 
