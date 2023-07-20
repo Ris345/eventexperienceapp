@@ -1,10 +1,8 @@
 from datetime import date, datetime, time, timedelta
 from pydantic import BaseModel
 from typing import Optional, List
-from database import engine, SessionLocal
 from sqlalchemy.orm import joinedload
 from models import Group, User
-
 
 """
 ModelBase - common attributes when creating or reading data
@@ -17,6 +15,7 @@ ModelSchema - schemas used when reading data,w hen returning it from API
 
 
 class UserBase(BaseModel):
+    id: int
     username: str
     first_name: str
     last_name: str
@@ -30,16 +29,17 @@ class UserBase(BaseModel):
 
 
 class GroupBase(BaseModel):
+    id: int
+    owner_id: int
     name: str
     description: str | None = None
+    users: List[UserBase]
 
     class Config:
         orm_mode = True
 
 
 class GroupSchema(GroupBase):
-    id: int
-    owner_id: int
     users: Optional[List[UserBase]]
 
     class Config:
@@ -47,7 +47,6 @@ class GroupSchema(GroupBase):
 
 
 class UserSchema(UserBase):
-    id: int
     is_active: bool
     created_at: datetime = None
     groups: Optional[List[GroupBase]]
@@ -62,15 +61,3 @@ class UserCreate(UserBase):
 
 class GroupCreate(GroupBase):
     pass
-
-
-# {
-#     "id": 1,
-#     "name": "group1",
-#     "users": [{"id": 1, "username": "user1"}, {"id": 2, "username": "user2"}],
-# }
-
-with SessionLocal() as session:
-    g1 = session.query(Group).options(joinedload(Group.users)).first()
-g1_schema = GroupSchema.from_orm(g1)
-print(g1_schema.json())

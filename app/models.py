@@ -1,8 +1,11 @@
 from datetime import datetime
 from sqlalchemy import Boolean, Column, ForeignKey, String, DateTime, Integer, Text
 from sqlalchemy.orm import relationship, joinedload
-from database import Base, engine, SessionLocal
+import database
 
+Base = database.Base
+engine = database.engine
+SessionLocal = database.SessionLocal
 
 """
 for test db:
