@@ -1,3 +1,21 @@
+# 07/19/23
+- changed schemas slightly
+- removes uncommitted changes
+    - revert back to progress of previous commit
+        - `git reset --hard HEAD`
+    - go back to a particular commit in current branch history
+        - `git reset --hard HEAD@{n}`
+- don't want to remove unstaged changes
+    - `--soft` flag as opposed to `--hard`
+- view commit history and what n is attached to which commit
+    - `git reflog`
+    - `git log --oneline --graph` (for visual representation)
+        - to exit, press q
+
+- Need to figure out migrations
+- Need to figure out how to get Users connected to Groups via relationship to access User information
+    - ie how do i get the username of a group's owner to show up when i do GET/groups, GET/group/{group_id}
+
 # 07/18/23
 - Used Peter's suggestions to modularize queries and routers of users and groups, users in users ms, groups in users ms
 - Need to figure out migrations via Aembic
