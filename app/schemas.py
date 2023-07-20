@@ -30,6 +30,7 @@ class UserBase(BaseModel):
 
 class GroupBase(BaseModel):
     id: int
+    owner_id: int
     name: str
     description: str | None = None
     users: List[UserBase]
@@ -39,7 +40,6 @@ class GroupBase(BaseModel):
 
 
 class GroupSchema(GroupBase):
-    owner_id: int
     users: Optional[List[UserBase]]
 
     class Config:
