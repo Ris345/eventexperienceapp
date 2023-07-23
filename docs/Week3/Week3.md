@@ -1,3 +1,6 @@
+# 07/21/23
+- [Inheritance Hiearchies](https://docs.sqlalchemy.org/en/14/orm/inheritance_loading.html)
+
 # 07/19/23
 - changed schemas slightly
 - removes uncommitted changes
