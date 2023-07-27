@@ -6,9 +6,40 @@
 - Going to get the ball back rolling and complete this
 - Thinking about for the sake of conveince
     - creating a script that would automate dropping and adding of tables via alembic
-        - in previous project used [A Sh Script for PostgreSQL](create-multiple-databases.md) in order to have several dbs created
+        - in previous project used a sh script for postgresql in order to have several dbs created
+        ```sh
+            #!/bin/bash
+
+            set -e
+            set -u
+
+            function create_user_and_database() {
+                local database=$1
+                echo "  Creating user and database '$database'"
+                psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
+                    CREATE USER $database WITH LOGIN PASSWORD 'password';
+                    CREATE DATABASE $database;
+                    GRANT ALL PRIVILEGES ON DATABASE $database TO $database;
+            EOSQL
+            }
+
+            if [ -n "$POSTGRES_MULTIPLE_DATABASES" ]; then
+                echo "Multiple database creation requested: $POSTGRES_MULTIPLE_DATABASES"
+                for db in $(echo $POSTGRES_MULTIPLE_DATABASES | tr ',' ' '); do
+                    create_user_and_database $db
+                done
+                echo "Multiple databases created"
+            fi
+        ```
     - a script similar could be in the form, taking into account sqlite
-        - script for sqlite [SQLite SH](create-multiple-databases.sh)
+        1. script for sqlite [SQLite SH](../../relational-data/create-multiple-databases.sh)
+        2. alembic ini for each microservice
+            -update url to point to corresponding db file
+                - example: [users alembic.ini](../../users/alembic.ini)
+        3. Ensure each ms has own alembic directory
+            - in each ms create separate
+                - example: [users_alembic](..)
+
 
 ## WEEK 5 AGENDA
 - Rest of Agenda
