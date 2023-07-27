@@ -59,6 +59,8 @@
         - ! Ran into a problem when trying to execute `uvicorn main:app --reload` after this now I get a constraint failed error and fastapi docs doesnt start
             - most likely due to fact that sql table is attempted to be created when starting fast docs
         !
+        - Resolved error of conflicting commands
+            - muted lines at end of models.py, and had to restore versions directory in alembic_users
 
 - > Edit Group Structure
     - For groups, I need to modify the returned structure in order to receive owner username as opposed to id
