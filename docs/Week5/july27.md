@@ -1,48 +1,18 @@
-# 07/21/23
-- [Inheritance Hiearchies](https://docs.sqlalchemy.org/en/14/orm/inheritance_loading.html)
+# Outline
+- [Jul27th](#july-27th)
+- [General Agenda](#week-5-agenda)
 
-# 07/19/23
-- changed schemas slightly
-- removes uncommitted changes
-    - revert back to progress of previous commit
-        - `git reset --hard HEAD`
-    - go back to a particular commit in current branch history
-        - `git reset --hard HEAD@{n}`
-- don't want to remove unstaged changes
-    - `--soft` flag as opposed to `--hard`
-- view commit history and what n is attached to which commit
-    - `git reflog`
-    - `git log --oneline --graph` (for visual representation)
-        - to exit, press q
+## JUly 27TH
+- Going to get the ball back rolling and complete this
+- Thinking about for the sake of conveince
+    - creating a script that would automate dropping and adding of tables via alembic
+        - in previous project used [A Sh Script for PostgreSQL](create-multiple-databases.md) in order to have several dbs created
+    - a script similar could be in the form, taking into account sqlite
+        - script for sqlite [SQLite SH](create-multiple-databases.sh)
 
-- Need to figure out migrations
-- Need to figure out how to get Users connected to Groups via relationship to access User information
-    - ie how do i get the username of a group's owner to show up when i do GET/groups, GET/group/{group_id}
-
-# 07/18/23
-- Used Peter's suggestions to modularize queries and routers of users and groups, users in users ms, groups in users ms
-- Need to figure out migrations via Aembic
-
-
-# GENERAL AGENDA
-- Demo/Sample of BE -> FE functionality
-    - User MS
-        - To run user MS currently, (1) `uvicorn main:app --reload` -> (2) [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-        - First Draft
-            - Local
-                - [x] Establish DB setup for users first
-                - [x] Ensure that user table can be setup with chosen db
-                - [x] (fastapi) Setup queries, routers for users service and ensure there is proper operation with chosen db
-                - [x] CRUD ( GET )
-                    - [x] Able to get user(id), get users
-                        - [x] GET /USER{ID} allows for viewing of user details
-                        - [x] GET /USERS allows for viewing all users
-                    - [x] Able to get group(id), get groups
-                        - [x] GET /GROUP{ID} allows for viewing of group details
-                        - [x] GET /GROUPS allows for viewing of all groups
-
+## WEEK 5 AGENDA
 - Rest of Agenda
-    - [ ] Establish the ability to CRUD users (FA docs)
+    - [ ] FINISH CRUD
         - Create Account (soon) -> Login
             - POST /USERS (soon) -> GET /TOKEN
         - Update Account
