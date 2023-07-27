@@ -54,8 +54,8 @@
         5. [Docs on DB Migration](DatabaseMigrations.md)
         6. Revised [env file](../../users/alembic_users/env.py)
             - to include db parameters
-        7. Ran `alembic revision --autogenerate -m "Create tasks table"`
-        8. succesfully created all tables
+        7. Ran `alembic revision --autogenerate -m "Create tasks table"` in users microservice
+        8. successfully created user tables
 
 - > Edit Group Structure
     - For groups, I need to modify the returned structure in order to receive owner username as opposed to id
