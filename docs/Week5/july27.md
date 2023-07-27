@@ -1,55 +1,94 @@
 # Outline
 - [Jul27th](#july-27th)
 - [General Agenda](#week-5-agenda)
+- APP CHART
+    ![General](../Images/General%20Diagram%20for%20App.png)
 
-## JUly 27TH
-- Going to get the ball back rolling and complete this
-- Thinking about for the sake of conveince
-    - creating a script that would automate dropping and adding of tables via alembic
-        - in previous project used a sh script for postgresql in order to have several dbs created
-        ```sh
-            #!/bin/bash
+## JULY 27TH
+> Going to get the ball back rolling and get significant work done
+- > Thinking about for the sake of convenience about dropping and adding tables using alembic for migrations
+    - In a previous project used a sh script for postgresql in order to have several dbs created
+    ```sh
+        #!/bin/bash
 
-            set -e
-            set -u
+        set -e
+        set -u
 
-            function create_user_and_database() {
-                local database=$1
-                echo "  Creating user and database '$database'"
-                psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
-                    CREATE USER $database WITH LOGIN PASSWORD 'password';
-                    CREATE DATABASE $database;
-                    GRANT ALL PRIVILEGES ON DATABASE $database TO $database;
+        function create_user_and_database() {
+            local database=$1
+            echo "  Creating user and database '$database'"
+            psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
+                CREATE USER $database WITH LOGIN PASSWORD 'password';
+                CREATE DATABASE $database;
+                GRANT ALL PRIVILEGES ON DATABASE $database TO $database;
             EOSQL
-            }
+        }
 
-            if [ -n "$POSTGRES_MULTIPLE_DATABASES" ]; then
-                echo "Multiple database creation requested: $POSTGRES_MULTIPLE_DATABASES"
-                for db in $(echo $POSTGRES_MULTIPLE_DATABASES | tr ',' ' '); do
-                    create_user_and_database $db
-                done
-                echo "Multiple databases created"
-            fi
-        ```
-    - a script similar could be in the form, taking into account sqlite
-        1. script for sqlite [SQLite SH](../../relational-data/create-multiple-databases.sh)
+        if [ -n "$POSTGRES_MULTIPLE_DATABASES" ]; then
+            echo "Multiple database creation requested: $POSTGRES_MULTIPLE_DATABASES"
+            for db in $(echo $POSTGRES_MULTIPLE_DATABASES | tr ',' ' '); do
+                create_user_and_database $db
+            done
+            echo "Multiple databases created"
+        fi
+    ```
+    - > a script similar could be in the above form, taking into account sqlite
+        1. script for sqlite: [SQLite SH](../../relational-data/create-multiple-databases.sh)
         2. alembic ini for each microservice
             -update url to point to corresponding db file
                 - example: [users alembic.ini](../../users/alembic.ini)
         3. Ensure each ms has own alembic directory
-            - in each ms create separate
-                - example: [users_alembic](..)
+            - in each perform `alembic init alembic`
+                - creates an alembic dir (retitled to alembic_{microservice}) and creates an alembic.ini to inform about where migrations of tables occur
+                - example: [users_alembic directory](../../users/alembic_users/) and [users ini](../../users/alembic.ini)
+        4. (*sigh*) Will have to use docker with alembic
+            - Created a docker-compose.yml
+                - [DOCKER YML](../../docker-compose.yml) [ to be completed ]
+            - I may have to create dockerfiles for each ms individually (?)
+                ```
+                You need a Dockerfile.
+                Dockerfile defines how to create certain docker image (at low level).
+                Docker compose defines how to run, link,configure containers (from images) together
+                ```
+            - (unrelated) will also have to use docker with cerbos (acls)
+        5. [Docs on DB Migration](DatabaseMigrations.md)
+        6. Revised [env file](../../users/alembic_users/env.py)
+            - to include db parameters
+        7. Ran `alembic revision --autogenerate -m "Create tasks table"`
+        8. succesfully created all tables
 
+- > Edit Group Structure
+    - For groups, I need to modify the returned structure in order to receive owner username as opposed to id
+        - ![UsernamevId](../Images/GetOwnerUsernamevsID.jpeg)
+
+- > Need to get progress on ACLS/User roles
+    - [Previous Notes](AccessControl.md)
+        - I'm going to try this out for an amateur start
+
+-
 
 ## WEEK 5 AGENDA
+- [BE PDF Diagram](../Images/DataBase%20Wireframe.pdf)
+    - which is out of date :3
 - Rest of Agenda
     - [ ] FINISH CRUD
-        - Create Account (soon) -> Login
-            - POST /USERS (soon) -> GET /TOKEN
-        - Update Account
-            - PUT/USER_ID
-        - Search for other accounts
-            - ACCOUNT_USERNAME, NAME, EMAIL
+        - Users
+            - Create Account (soon) -> Login
+                - POST /USERS (soon) -> GET /TOKEN
+            - Update Account
+                - PUT/USER_ID
+            - Delete Account
+                - DELETE/USER_ID
+            - Search for other accounts
+                - account username, name (last, first, or  both), email, group
+                    - GET /user/{username}
+                    -
+        - Groups
+            - Create Groups
+            - Update Groups
+            - Delete Groups
+            - Search for other Groups
+                - Via id, name, event, group owner
     - [ ] TOKEN BE
         - [ ] GET /TOKEN
         - [ ] (Sign Up) Ensure that the password is hashed and that said password is deleted on the FrontEnd ( req password security )
