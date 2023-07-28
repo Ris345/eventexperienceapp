@@ -62,9 +62,13 @@
         - Resolved error of conflicting commands
             - muted lines at end of models.py, and had to restore versions directory in alembic_users
 
-- > Edit Group Structure
+- > Edit Group Structure [ COMPLETE ]
     - For groups, I need to modify the returned structure in order to receive owner username as opposed to id
         - ![UsernamevId](../Images/GetOwnerUsernamevsID.jpeg)
+    - [ Completed ]
+        - Get groups now returns jsonresponse with owner data with key 'owner'
+            - [Get Groups](response_1690523620808.json)
+        - Edited schemas, queries and confirmed that the endpoints operate correctly in fastapi docs
 
 - > Need to get progress on ACLS/User roles
     - [Previous Notes](AccessControl.md)

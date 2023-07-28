@@ -5,6 +5,22 @@ from fastapi import Depends
 from typing import List
 
 
+# now returns with owner data
+"""
+db = Session object via sqlalchemy
+skip = number of records to skip when querying
+list = integer max number of records to retrieve
+points to List[GroupSchema] i.e return all json objects matching groupschema
+
+query method creates query object from Group model. use options w/ joinedload to eager load users-Group model
+Associated users fetched in single query
+
+.from_orm using list comprehension iterate through instances of Group model and use .from_orm to map attribute from group model instance to fields of groupSchema
+
+I am under the belief that this .from_orm takes advantage of orm_mode=True which allows pydantic to use the built in orm for attribute mapping
+"""
+
+
 def db_get_groups(db: Session, skip: int = 0, limit: int = 100) -> List[GroupSchema]:
     db_groups = (
         db.query(models.Group)

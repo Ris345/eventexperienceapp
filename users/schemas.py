@@ -26,9 +26,10 @@ class UserBase(BaseModel):
         orm_mode = True
 
 
+# changed groupbase and group schema in order to incoporate owner data, so removed owner_id from groupbase and added an owner field for owner data in group schema
+# groups already had an owner relation on its model
 class GroupBase(BaseModel):
     id: int
-    owner_id: int
     name: str
     description: str | None = None
     users: List[UserBase]
