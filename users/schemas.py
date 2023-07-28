@@ -1,8 +1,6 @@
 from datetime import date, datetime, time, timedelta
 from pydantic import BaseModel
 from typing import Optional, List
-from sqlalchemy.orm import joinedload
-from models import Group, User
 
 """
 ModelBase - common attributes when creating or reading data
@@ -41,6 +39,7 @@ class GroupBase(BaseModel):
 
 class GroupSchema(GroupBase):
     users: Optional[List[UserBase]]
+    owner: Optional[UserBase]
 
     class Config:
         orm_mode = True
