@@ -1,4 +1,4 @@
-# Outline
+# NOTES FOR JUL 27TH
 - [Jul27th](#july-27th)
 - [General Agenda](#week-5-agenda)
 - APP CHART
@@ -67,14 +67,15 @@
         - ![UsernamevId](../Images/GetOwnerUsernamevsID.jpeg)
     - [ Completed ]
         - Get groups now returns jsonresponse with owner data with key 'owner'
-            - [Get Groups](response_1690523620808.json)
+            - [Get Groups](groups.json)
         - Edited schemas, queries and confirmed that the endpoints operate correctly in fastapi docs
+            - [Using From Orm](https://self-learning-java-tutorial.blogspot.com/2021/09/pydantic-fromorm-load-data-into-model.html)
 
 - > Need to get progress on ACLS/User roles
     - [Previous Notes](AccessControl.md)
         - I'm going to try this out for an amateur start
 
--
+- *S3 Image Storage
 
 ## WEEK 5 AGENDA
 - [BE PDF Diagram](../Images/DataBase%20Wireframe.pdf)
@@ -89,21 +90,27 @@
             - Delete Account
                 - DELETE/USER_ID
             - Search for other accounts
-                - account username, name (last, first, or  both), email, group
-                    - GET /user/{username}
-                    -
+                - account username, name (last, first, or  both), email, group, id
+                    - GET /user/`{id}`
+                    - GET /user/`{username}`
+                    - GET /user/`{email}`
+                    - GET /user/`{first} {last}`
         - Groups
             - Create Groups
             - Update Groups
             - Delete Groups
             - Search for other Groups
                 - Via id, name, event, group owner
-    - [ ] TOKEN BE
+                - Get users from a group
+                    * GET /groups/`{group_id}`/users
+                - Get user from a group
+                    * GET /groups/ `{group_id}`/users/`{user_id}`
+    - [ ] TOKEN BE ( OAuthv2 )
         - [ ] GET /TOKEN
-        - [ ] (Sign Up) Ensure that the password is hashed and that said password is deleted on the FrontEnd ( req password security )
-        - [ ] Logged in user can view account details
-        - [ ] Logged in user can update account details
-        - [ ] Logged in
+        - [ ] (Sign Up) Ensure that the password is hashed and that said password is deleted on the FrontEnd when u get a user ( req password security )
+        - [ ] Protected Endpoints
+            - [ ] Logged in user can view account details
+            - [ ] Logged in user can update account details
     - [ ] Establish users are able to log out in mockup
         - DELETE TOKEN (or this might be a process of deleting token on fe?)
     - [ ] Establish users are able to login
@@ -111,6 +118,9 @@
     - [ ] Establish errors are present with invalid account creation, login in mockup
 - [ ] Implement Roles with Casbin/FastAPI middleware
     - [ ] Implementation of ACL Middleware/System for roles
+        * Admin
+        * Organizer
+        * Volunteer
 
 - __SKELETON__
 - Users:

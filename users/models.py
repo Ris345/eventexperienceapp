@@ -61,30 +61,6 @@ class GroupUser(Base):
     group_id = Column(Integer, ForeignKey("groups.id"))
 
 
-# class Event(Base):
-#     pass
-
-
-# class Task(Base):
-#     pass
-
-
-# class TaskList(Base):
-#     pass
-
-
-# class Location(Base):
-#     pass
-
-
-# class Favorites(Base):
-#     pass
-
-
-# class RSVPS(Base):
-#     pass
-
-
 # Testing Data Insertion
 Base.metadata.create_all(engine)
 with SessionLocal() as session:
