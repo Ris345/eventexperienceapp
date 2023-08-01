@@ -1,0 +1,2834 @@
+{
+    "comment": "events list for testing",
+    "kind": "calendar#event",
+    "etag": "\"3330200399526000\"",
+    "id": "2k73hn0drb3f5ngl3ijs6dsrro",
+    "status": "confirmed",
+    "htmlLink": "https://www.google.com/calendar/event?eid=Mms3M2huMGRyYjNmNW5nbDNpanM2ZHNycm8gMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+    "created": "2022-10-03T21:54:30.000Z",
+    "updated": "2022-10-06T23:49:59.763Z",
+    "summary": "Organizer Dinner(RSVP by Weds Oct 5 11:59pm) @ Spicy Moon",
+    "description": "\u003chtml-blob\u003eTo ensure Dana gets the correct headcount,\u003cb\u003e RSVP hit \"Yes\" or \"No\" by this midnight on Wednesday\u003c/b\u003e! Spicy Moon is a gorgeous Chinese-vegan restaurant 9mins away from BrainStation.\u003cbr\u003e\u003cspan\u003e\u003ci\u003e\u003cbr\u003e\u003c/i\u003e\u003c/span\u003e\u003cbr\u003eThis dinner aims to bring to light that any blindspots Steve may have missed are talked about, recorded, and adequately managed. As well as for Steve to connect (tentatively) one last time, in person!&nbsp;\u003c/html-blob\u003e\u003cbr\u003e\u003chtml-blob\u003e\u003cbr\u003e\u003c/html-blob\u003e\u003cbr\u003e\u003chtml-blob\u003e\u003ci\u003eWe will have a&nbsp;\u003cu\u003evolunteer AND organizer dinner\u003c/u\u003e&nbsp;in the future.&nbsp;\u003c/i\u003e\u003cbr\u003e\u003c/html-blob\u003e\u003cbr\u003e\u003chtml-blob\u003e\u003ci\u003e\u003cbr\u003e\u003c/i\u003e\u003c/html-blob\u003e\u003cbr\u003e\u003chtml-blob\u003e\u003ci\u003e\u003cbr\u003e\u003c/i\u003e\u003c/html-blob\u003e\u003cbr\u003e\u003chtml-blob\u003e\u003ci\u003e\u003cbr\u003e\u003c/i\u003e\u003c/html-blob\u003e",
+    "creator": {
+        "email": "stevechenweb@gmail.com"
+    },
+    "organizer": {
+        "email": "<calendar id>",
+        "displayName": "<event organizer>",
+        "self": true
+    },
+    "start": {
+        "dateTime": "2022-10-09T17:30:00-04:00",
+        "timeZone": "America/New_York"
+    },
+    "end": {
+        "dateTime": "2022-10-09T18:30:00-04:00",
+        "timeZone": "America/New_York"
+    },
+    "iCalUID": "2k73hn0drb3f5ngl3ijs6dsrro@google.com",
+    "sequence": 0,
+    "attendees": [
+        {
+            "email": "theoriginaldanalee@gmail.com",
+            "responseStatus": "accepted"
+        },
+        {
+            "email": "dana.lee3986@gmail.com",
+            "responseStatus": "needsAction"
+        },
+        {
+            "email": "brown.3794@gmail.com",
+            "responseStatus": "accepted"
+        },
+        {
+            "email": "jonathanschumann11@gmail.com",
+            "responseStatus": "declined"
+        },
+        {
+            "email": "jimmy@skelios.com",
+            "responseStatus": "needsAction"
+        },
+        {
+            "email": "stevechenweb@gmail.com",
+            "responseStatus": "accepted"
+        },
+        {
+            "email": "s.gonza.gills@gmail.com",
+            "responseStatus": "accepted"
+        },
+        {
+            "email": "juliafmorgado@gmail.com",
+            "responseStatus": "accepted"
+        },
+        {
+            "email": "molawunmi21@gmail.com",
+            "responseStatus": "needsAction"
+        }
+    ],
+    "reminders": {
+        "useDefault": true
+    },
+    "eventType": "default"
+}
+
+    "kind": "calendar#events",
+"etag": "\"p32senu5uhftfu0g\"",
+"summary": "<event organizer> - Staff",
+"description": "Code & Coffee events, RSVP Yes if you're coming! ",
+"updated": "2023-07-06T12:33:06.627Z",
+"timeZone": "America/New_York",
+"accessRole": "reader",
+"defaultReminders": [],
+"nextSyncToken": "CLjr-L6L-v8CELjr-L6L-v8CGAEgjrmKhAI=",
+"items": [
+    {
+        "kind": "calendar#event",
+        "etag": "\"3330200399526000\"",
+        "id": "2k73hn0drb3f5ngl3ijs6dsrro",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=Mms3M2huMGRyYjNmNW5nbDNpanM2ZHNycm8gMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2022-10-03T21:54:30.000Z",
+        "updated": "2022-10-06T23:49:59.763Z",
+        "summary": "Organizer Dinner(RSVP by Weds Oct 5 11:59pm) @ Spicy Moon",
+        "description": "\u003chtml-blob\u003eTo ensure Dana gets the correct headcount,\u003cb\u003e RSVP hit \"Yes\" or \"No\" by this midnight on Wednesday\u003c/b\u003e! Spicy Moon is a gorgeous Chinese-vegan restaurant 9mins away from BrainStation.\u003cbr\u003e\u003cspan\u003e\u003ci\u003e\u003cbr\u003e\u003c/i\u003e\u003c/span\u003e\u003cbr\u003eThis dinner aims to bring to light that any blindspots Steve may have missed are talked about, recorded, and adequately managed. As well as for Steve to connect (tentatively) one last time, in person!&nbsp;\u003c/html-blob\u003e\u003cbr\u003e\u003chtml-blob\u003e\u003cbr\u003e\u003c/html-blob\u003e\u003cbr\u003e\u003chtml-blob\u003e\u003ci\u003eWe will have a&nbsp;\u003cu\u003evolunteer AND organizer dinner\u003c/u\u003e&nbsp;in the future.&nbsp;\u003c/i\u003e\u003cbr\u003e\u003c/html-blob\u003e\u003cbr\u003e\u003chtml-blob\u003e\u003ci\u003e\u003cbr\u003e\u003c/i\u003e\u003c/html-blob\u003e\u003cbr\u003e\u003chtml-blob\u003e\u003ci\u003e\u003cbr\u003e\u003c/i\u003e\u003c/html-blob\u003e\u003cbr\u003e\u003chtml-blob\u003e\u003ci\u003e\u003cbr\u003e\u003c/i\u003e\u003c/html-blob\u003e",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer>",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2022-10-09T17:30:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-10-09T18:30:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "2k73hn0drb3f5ngl3ijs6dsrro@google.com",
+        "sequence": 0,
+        "attendees": [
+            {
+                "email": "theoriginaldanalee@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "dana.lee3986@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "brown.3794@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "jonathanschumann11@gmail.com",
+                "responseStatus": "declined"
+            },
+            {
+                "email": "jimmy@skelios.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "stevechenweb@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "s.gonza.gills@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "molawunmi21@gmail.com",
+                "responseStatus": "needsAction"
+            }
+        ],
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3330200418574000\"",
+        "id": "1kivpvj56fonnh9vu2144vjnga",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MWtpdnB2ajU2Zm9ubmg5dnUyMTQ0dmpuZ2EgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2022-10-03T07:24:44.000Z",
+        "updated": "2022-10-06T23:50:09.287Z",
+        "summary": "(RSVP pls pls) NYC Code & Coffee 2.12. @ Brainstation",
+        "location": "BrainStation, 136 Crosby St 4th floor, New York, NY 10012, USA",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer>",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2022-10-09T14:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-10-09T17:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "1kivpvj56fonnh9vu2144vjnga@google.com",
+        "sequence": 0,
+        "attendees": [
+            {
+                "email": "theoriginaldanalee@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "dana.lee3986@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "brown.3794@gmail.com",
+                "responseStatus": "declined"
+            },
+            {
+                "email": "jonathanschumann11@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "jimmy@skelios.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "cinwald@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "s.gonza.gills@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "<calendar id>",
+                "displayName": "<event organizer>",
+                "organizer": true,
+                "self": true,
+                "responseStatus": "accepted"
+            }
+        ],
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3332144161810000\"",
+        "id": "_clr6arjkbsp3ge9g60oj4c9l81mmapbkelo2sorfdk",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=X2NscjZhcmprYnNwM2dlOWc2MG9qNGM5bDgxbW1hcGJrZWxvMnNvcmZkayAxNTA4NzFhNDhjZjg0YzI2ODEyNmJmYWRkZmY2MDM1MmQyZjA4MTM5NTAyNjM2MWJiZjgzYWEzN2QxNjg3NDUxQGc",
+        "created": "2022-10-18T05:45:17.000Z",
+        "updated": "2022-10-18T05:48:00.905Z",
+        "summary": "NYC Code and Coffee 2.2 @ General Assembly",
+        "description": "New York Code and Coffee\nSunday, October 23 at 2:00 PM\n\n*Please RSVP using this link below ahead of time so we can get an accurate count on coffee, if you are unable to - we will have sign-in tablet at the ...\n\nhttps://www.meetup.com/new-york-code-coffee/events/289001215/",
+        "location": "General Assembly New York (10 E 21st St #2, New York, NY 10010)",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer>",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2022-10-23T14:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-10-23T17:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "visibility": "public",
+        "iCalUID": "event_289001215@meetup.com",
+        "sequence": 0,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3332486725300000\"",
+        "id": "4isup186lk4ab1fmm67i1dhl30",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NGlzdXAxODZsazRhYjFmbW02N2kxZGhsMzAgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2022-10-16T05:40:56.000Z",
+        "updated": "2022-10-20T05:22:42.650Z",
+        "summary": "(RSVP pls pls) NYC Code & Coffee @ General Assembly",
+        "description": "Steve won't be there... but he might #partnerships-growth-sales",
+        "location": "General Assembly New York, 10 E 21st St #2, New York, NY 10010, USA",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer>",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2022-10-23T14:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-10-23T17:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "4isup186lk4ab1fmm67i1dhl30@google.com",
+        "sequence": 0,
+        "attendees": [
+            {
+                "email": "<calendar id>",
+                "displayName": "<event organizer>",
+                "organizer": true,
+                "self": true,
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "brown.3794@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "cinwald@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "dana.lee3986@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "jimmy@skelios.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "jonathanschumann11@gmail.com",
+                "responseStatus": "declined"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "responseStatus": "declined"
+            },
+            {
+                "email": "s.gonza.gills@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "theoriginaldanalee@gmail.com",
+                "displayName": "Dana Lee",
+                "responseStatus": "tentative"
+            }
+        ],
+        "hangoutLink": "https://meet.google.com/zyx-eiye-uin",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/zyx-eiye-uin",
+                    "label": "meet.google.com/zyx-eiye-uin"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "zyx-eiye-uin"
+        },
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3335738385578000\"",
+        "id": "2ae1f9201f514c0fb8d54ef1bce7f509",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MmFlMWY5MjAxZjUxNGMwZmI4ZDU0ZWYxYmNlN2Y1MDkgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2022-11-08T00:59:52.000Z",
+        "updated": "2022-11-08T00:59:52.789Z",
+        "summary": "Event Staff Pre Meetup Meeting",
+        "creator": {
+            "email": "brown.3794@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer>",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2022-11-28T21:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-11-28T21:30:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "2ae1f9201f514c0fb8d54ef1bce7f509@google.com",
+        "sequence": 0,
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3340357249336000\"",
+        "id": "7nms9e6dks6rdlakeiu1er4t1i",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=N25tczllNmRrczZyZGxha2VpdTFlcjR0MWkgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2022-11-29T03:23:51.000Z",
+        "updated": "2022-12-04T18:30:24.668Z",
+        "summary": "(RSVP pls pls) NYC Code & Coffee @ BrainStation",
+        "description": "\u003chtml-blob\u003e\u003cspan\u003eI hope\u003c/span\u003e\u003cspan\u003e&nbsp;you can make it! BrainStation has confirmed this event.\u003c/span\u003e\u003cbr\u003e\u003cbr\u003e\u003cb\u003ePlease RSVP to this as soon as possible so we can adequately plan!&nbsp;\u003c/b\u003e\u003cspan\u003eWe will not be doing one in 2 weeks(holiday week) and will be re-continuing our 2-week cadence on Jan 8!\u003c/span\u003e\u003cbr\u003e\u003cbr\u003eIn other news:\u003cbr\u003e\u003cspan\u003e- Couchbase has approved/signed-on to be our 2nd (non-exclusive) sponsor for the next 6 months!&nbsp;\u003c/span\u003e\u003c/html-blob\u003e\u003cbr\u003e\u003chtml-blob\u003e- In contact with T-shirt merch partner on quotes and proofs for the black version of the C&amp;C t-shirt. Still aiming to get you those by Christmas :fingers_crossed:\u003cbr\u003e\u003c/html-blob\u003e",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2022-12-04T14:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-12-04T17:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "7nms9e6dks6rdlakeiu1er4t1i@google.com",
+        "sequence": 0,
+        "attendees": [
+            {
+                "email": "dana.lee3986@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "theoriginaldanalee@gmail.com",
+                "displayName": "Dana Lee",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "brown.3794@gmail.com",
+                "responseStatus": "declined"
+            },
+            {
+                "email": "jonathanschumann11@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "jimmy@skelios.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "cinwald@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "s.gonza.gills@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "stevechenweb@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "responseStatus": "accepted"
+            }
+        ],
+        "hangoutLink": "https://meet.google.com/fur-ymtm-rrz",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/fur-ymtm-rrz",
+                    "label": "meet.google.com/fur-ymtm-rrz"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "fur-ymtm-rrz"
+        },
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3341789313086000\"",
+        "id": "5dln2rsuomme751775o1oaokpd",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NWRsbjJyc3VvbW1lNzUxNzc1bzFvYW9rcGRfMjAyMjEwMTlUMjMzMDAwWiAxNTA4NzFhNDhjZjg0YzI2ODEyNmJmYWRkZmY2MDM1MmQyZjA4MTM5NTAyNjM2MWJiZjgzYWEzN2QxNjg3NDUxQGc",
+        "created": "2022-10-05T09:11:28.000Z",
+        "updated": "2022-12-13T01:24:16.543Z",
+        "summary": "Marketing Content Calendar - Biweekly",
+        "description": "A quick meet to sync over marketing priorities.",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer>",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2022-10-19T19:30:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-10-19T20:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "recurrence": [
+            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20221228T045959Z;INTERVAL=2;BYDAY=WE"
+        ],
+        "iCalUID": "5dln2rsuomme751775o1oaokpd@google.com",
+        "sequence": 1,
+        "attendees": [
+            {
+                "email": "stevechenweb@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "mattjmorrisnyc@gmail.com",
+                "optional": true,
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "brancastillo32@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "<calendar id>",
+                "displayName": "<event organizer>",
+                "organizer": true,
+                "self": true,
+                "responseStatus": "accepted"
+            }
+        ],
+        "hangoutLink": "https://meet.google.com/jiu-vvtu-ztq",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/jiu-vvtu-ztq",
+                    "label": "meet.google.com/jiu-vvtu-ztq"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "jiu-vvtu-ztq"
+        },
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3341789313086000\"",
+        "id": "5dln2rsuomme751775o1oaokpd_20221117T003000Z",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NWRsbjJyc3VvbW1lNzUxNzc1bzFvYW9rcGRfMjAyMjExMTdUMDAzMDAwWiAxNTA4NzFhNDhjZjg0YzI2ODEyNmJmYWRkZmY2MDM1MmQyZjA4MTM5NTAyNjM2MWJiZjgzYWEzN2QxNjg3NDUxQGc",
+        "created": "2022-10-05T09:11:28.000Z",
+        "updated": "2022-12-13T01:24:16.543Z",
+        "summary": "Marketing Content Calendar - Biweekly",
+        "description": "A quick meet to sync over marketing priorities.",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer>",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2022-11-16T19:30:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-11-16T20:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "recurringEventId": "5dln2rsuomme751775o1oaokpd",
+        "originalStartTime": {
+            "dateTime": "2022-11-16T19:30:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "5dln2rsuomme751775o1oaokpd@google.com",
+        "sequence": 1,
+        "attendees": [
+            {
+                "email": "stevechenweb@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "mattjmorrisnyc@gmail.com",
+                "optional": true,
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "brancastillo32@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "<calendar id>",
+                "displayName": "<event organizer>",
+                "organizer": true,
+                "self": true,
+                "responseStatus": "accepted"
+            }
+        ],
+        "hangoutLink": "https://meet.google.com/jiu-vvtu-ztq",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/jiu-vvtu-ztq",
+                    "label": "meet.google.com/jiu-vvtu-ztq"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "jiu-vvtu-ztq"
+        },
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3341789313086000\"",
+        "id": "5dln2rsuomme751775o1oaokpd_20221215T003000Z",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NWRsbjJyc3VvbW1lNzUxNzc1bzFvYW9rcGRfMjAyMjEyMTVUMDAzMDAwWiAxNTA4NzFhNDhjZjg0YzI2ODEyNmJmYWRkZmY2MDM1MmQyZjA4MTM5NTAyNjM2MWJiZjgzYWEzN2QxNjg3NDUxQGc",
+        "created": "2022-10-05T09:11:28.000Z",
+        "updated": "2022-12-13T01:24:16.543Z",
+        "summary": "Marketing Content Calendar - Biweekly",
+        "description": "A quick meet to sync over marketing priorities.",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer>",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2022-12-14T19:30:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-12-14T20:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "recurringEventId": "5dln2rsuomme751775o1oaokpd",
+        "originalStartTime": {
+            "dateTime": "2022-12-14T19:30:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "5dln2rsuomme751775o1oaokpd@google.com",
+        "sequence": 1,
+        "attendees": [
+            {
+                "email": "stevechenweb@gmail.com",
+                "responseStatus": "declined"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "responseStatus": "declined"
+            },
+            {
+                "email": "mattjmorrisnyc@gmail.com",
+                "optional": true,
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "brancastillo32@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "<calendar id>",
+                "displayName": "<event organizer>",
+                "organizer": true,
+                "self": true,
+                "responseStatus": "accepted"
+            }
+        ],
+        "hangoutLink": "https://meet.google.com/jiu-vvtu-ztq",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/jiu-vvtu-ztq",
+                    "label": "meet.google.com/jiu-vvtu-ztq"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "jiu-vvtu-ztq"
+        },
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3346403773056000\"",
+        "id": "3mq5lr9a7mqlhm2pn28ocigq34",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=M21xNWxyOWE3bXFsaG0ycG4yOG9jaWdxMzQgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-01-02T07:40:10.000Z",
+        "updated": "2023-01-08T18:18:06.528Z",
+        "summary": "(RSVP pls pls) NYC Code & Coffee @ BrainStation Jan 8th",
+        "description": "\u003cu\u003e\u003c/u\u003e\u003cspan\u003eI hope\u003c/span\u003e\u003cspan\u003e&nbsp;you can make it! BrainStation has confirmed this event.\u003c/span\u003e\u003cbr\u003e\u003cbr\u003e\u003cb\u003ePlease RSVP to this as soon as possible so we can adequately plan!&nbsp;\u003c/b\u003e\u003cbr\u003e\u003cbr\u003eFor updates check #nyc-private. T-shirts will be delivered on Jan 22nd for those that have filled out the form, DM Steve if you haven't!",
+        "location": "BrainStation, 136 Crosby St 4th floor, New York, NY 10012, USA",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-01-08T14:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-01-08T17:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "3mq5lr9a7mqlhm2pn28ocigq34@google.com",
+        "sequence": 0,
+        "attendees": [
+            {
+                "email": "dana.lee3986@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "theoriginaldanalee@gmail.com",
+                "displayName": "Dana Lee",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "brown.3794@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "jonathanschumann11@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "jimmy@skelios.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "cinwald@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "s.gonza.gills@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "displayName": "Julia Furst",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "abe@habet.dev",
+                "displayName": "Abe",
+                "responseStatus": "needsAction"
+            }
+        ],
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3348499159308000\"",
+        "id": "2a2amtvmrdgp40hcr54l6eo7j4",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MmEyYW10dm1yZGdwNDBoY3I1NGw2ZW83ajQgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-01-16T00:49:13.000Z",
+        "updated": "2023-01-20T21:19:39.654Z",
+        "summary": "(RSVP pls pls) NYC Code & Coffee @ General Assembly Jan 22nd",
+        "description": "The big one sponsored by Swimm. 2 talks(1 Swimm, 1 GA panel) and the main event! \n\nSwimm talk at 3:05. \nGA panel at 4:05.",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-01-22T14:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-01-22T17:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "2a2amtvmrdgp40hcr54l6eo7j4@google.com",
+        "sequence": 0,
+        "attendees": [
+            {
+                "email": "dana.lee3986@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "theoriginaldanalee@gmail.com",
+                "displayName": "Dana Lee",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "brown.3794@gmail.com",
+                "responseStatus": "declined"
+            },
+            {
+                "email": "abe@habet.dev",
+                "displayName": "Abe",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "jonathanschumann11@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "jimmy@skelios.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "cinwald@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "s.gonza.gills@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "displayName": "Julia Furst",
+                "responseStatus": "accepted"
+            }
+        ],
+        "hangoutLink": "https://meet.google.com/iui-zkcx-ira",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/iui-zkcx-ira",
+                    "label": "meet.google.com/iui-zkcx-ira"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "iui-zkcx-ira"
+        },
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3351780458026000\"",
+        "id": "unedk2is2i7c1sbcru0b4iqcgj",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=dW5lZGsyaXMyaTdjMXNiY3J1MGI0aXFjZ2pfMjAyMjEyMTVUMDAzMDAwWiAxNTA4NzFhNDhjZjg0YzI2ODEyNmJmYWRkZmY2MDM1MmQyZjA4MTM5NTAyNjM2MWJiZjgzYWEzN2QxNjg3NDUxQGc",
+        "created": "2022-10-05T09:11:28.000Z",
+        "updated": "2023-02-08T21:03:49.013Z",
+        "summary": "Marketing Content Calendar - Biweekly",
+        "description": "A quick meet to sync over marketing priorities.",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer>",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2022-12-14T19:30:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2022-12-14T20:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "recurrence": [
+            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20230208T045959Z;INTERVAL=2;BYDAY=WE"
+        ],
+        "iCalUID": "unedk2is2i7c1sbcru0b4iqcgj@google.com",
+        "sequence": 2,
+        "attendees": [
+            {
+                "email": "stevechenweb@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "responseStatus": "tentative"
+            },
+            {
+                "email": "mattjmorrisnyc@gmail.com",
+                "optional": true,
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "brancastillo32@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "<calendar id>",
+                "displayName": "<event organizer>",
+                "organizer": true,
+                "self": true,
+                "responseStatus": "accepted"
+            }
+        ],
+        "hangoutLink": "https://meet.google.com/jiu-vvtu-ztq",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/jiu-vvtu-ztq",
+                    "label": "meet.google.com/jiu-vvtu-ztq"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "jiu-vvtu-ztq"
+        },
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3351780458026000\"",
+        "id": "unedk2is2i7c1sbcru0b4iqcgj_20230126T003000Z",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=dW5lZGsyaXMyaTdjMXNiY3J1MGI0aXFjZ2pfMjAyMzAxMjZUMDAzMDAwWiAxNTA4NzFhNDhjZjg0YzI2ODEyNmJmYWRkZmY2MDM1MmQyZjA4MTM5NTAyNjM2MWJiZjgzYWEzN2QxNjg3NDUxQGc",
+        "created": "2022-10-05T09:11:28.000Z",
+        "updated": "2023-02-08T21:03:49.013Z",
+        "summary": "Marketing Content Calendar - Biweekly",
+        "description": "The big one. Syncing up on Julia's video release for Coffee Chat Series! \u003cbr\u003e\u003cbr\u003e\u003cbr\u003eMoving this sync from the typical Weds so we can meet before the video release.\u003cbr\u003e\u003cbr\u003e\u003cbr\u003e\u003cb\u003eAgenda\u003c/b\u003e\u003cbr\u003e\u003col\u003e\u003cli\u003eTour Poster review: current draft\u003c/li\u003e\u003cli\u003eJulia Video: Release date, Linkedin/Twitter playbook review strat and date \u003c/li\u003e\u003c/ol\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cp\u003e(Minimal) Action items:\u003c/p\u003e\u003cul\u003e\u003cli\u003eSet up dates on Marketing Calendar\u003c/li\u003e\u003c/ul\u003e\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\u003cul\u003e\u003c/ul\u003e",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer>",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-01-23T20:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-01-23T20:30:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "recurringEventId": "unedk2is2i7c1sbcru0b4iqcgj",
+        "originalStartTime": {
+            "dateTime": "2023-01-25T19:30:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "unedk2is2i7c1sbcru0b4iqcgj@google.com",
+        "sequence": 4,
+        "attendees": [
+            {
+                "email": "stevechenweb@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "mattjmorrisnyc@gmail.com",
+                "optional": true,
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "brancastillo32@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "<calendar id>",
+                "displayName": "<event organizer>",
+                "organizer": true,
+                "self": true,
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "s.gonza.gills@gmail.com",
+                "responseStatus": "accepted"
+            }
+        ],
+        "hangoutLink": "https://meet.google.com/jiu-vvtu-ztq",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/jiu-vvtu-ztq",
+                    "label": "meet.google.com/jiu-vvtu-ztq"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "jiu-vvtu-ztq"
+        },
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3353011782492000\"",
+        "id": "ef6abb3d50384941bfae15278a06bf76",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=ZWY2YWJiM2Q1MDM4NDk0MWJmYWUxNTI3OGEwNmJmNzYgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-02-16T00:04:49.000Z",
+        "updated": "2023-02-16T00:04:51.246Z",
+        "summary": "Feature: GA Panel",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-03-05T15:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-03-05T16:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "ef6abb3d50384941bfae15278a06bf76@google.com",
+        "sequence": 0,
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3353011819438000\"",
+        "id": "091e32f8cdc84db989cf83bb2b070356",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MDkxZTMyZjhjZGM4NGRiOTg5Y2Y4M2JiMmIwNzAzNTYgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-02-16T00:05:00.000Z",
+        "updated": "2023-02-16T00:05:09.719Z",
+        "summary": "Feature: Yizong's talk",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-03-05T16:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-03-05T16:45:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "091e32f8cdc84db989cf83bb2b070356@google.com",
+        "sequence": 0,
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3353011851740000\"",
+        "id": "33f3577477e44920851a46fa32c11e65",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MzNmMzU3NzQ3N2U0NDkyMDg1MWE0NmZhMzJjMTFlNjUgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-02-16T00:05:25.000Z",
+        "updated": "2023-02-16T00:05:25.870Z",
+        "summary": "Feature: Tyler L's talk",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-03-05T16:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-03-05T16:30:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "33f3577477e44920851a46fa32c11e65@google.com",
+        "sequence": 0,
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3355265382824000\"",
+        "id": "1tcm50d00laqfjjbeqk5rvoian",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MXRjbTUwZDAwbGFxZmpqYmVxazVydm9pYW4gMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-02-27T03:40:10.000Z",
+        "updated": "2023-03-01T01:04:51.412Z",
+        "summary": "(RSVP pls pls) Code & Coffee at General Assembly",
+        "description": "Quick RSVP reminder. Pls RSVP Yes or No as soon as you can!  \n\nThis one will have a panel organized by GA at 3:05pm.\nThen 2 talks at (Yizong, Tyler) at 4:05pm. Details on Meetup.com",
+        "location": "General Assembly New York, 10 E 21st St #2, New York, NY 10010, USA",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-03-05T14:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-03-05T17:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "1tcm50d00laqfjjbeqk5rvoian@google.com",
+        "sequence": 0,
+        "attendees": [
+            {
+                "email": "dana.lee3986@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "theoriginaldanalee@gmail.com",
+                "displayName": "Dana Lee",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "brown.3794@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "jonathanschumann11@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "jimmy@skelios.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "cinwald@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "s.gonza.gills@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "stevechenweb@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "displayName": "Julia Furst",
+                "responseStatus": "declined"
+            },
+            {
+                "email": "brancastillo32@gmail.com",
+                "optional": true,
+                "responseStatus": "declined"
+            }
+        ],
+        "hangoutLink": "https://meet.google.com/ffw-fbbx-qen",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/ffw-fbbx-qen",
+                    "label": "meet.google.com/ffw-fbbx-qen"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "ffw-fbbx-qen"
+        },
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3355350606308000\"",
+        "id": "4qfiuihqhdpbcnj30kb6j0vhj1",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NHFmaXVpaHFoZHBiY25qMzBrYjZqMHZoajFfMjAyMzAyMTZUMDAzMDAwWiAxNTA4NzFhNDhjZjg0YzI2ODEyNmJmYWRkZmY2MDM1MmQyZjA4MTM5NTAyNjM2MWJiZjgzYWEzN2QxNjg3NDUxQGc",
+        "created": "2022-10-05T09:11:28.000Z",
+        "updated": "2023-03-01T12:55:03.154Z",
+        "summary": "Marketing Content Calendar - Biweekly",
+        "description": "A quick meet to sync over marketing priorities.",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer>",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-02-15T19:30:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-02-15T20:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "recurrence": [
+            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20230301T045959Z;INTERVAL=2;BYDAY=WE"
+        ],
+        "iCalUID": "4qfiuihqhdpbcnj30kb6j0vhj1@google.com",
+        "sequence": 3,
+        "attendees": [
+            {
+                "email": "stevechenweb@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "mattjmorrisnyc@gmail.com",
+                "optional": true,
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "brancastillo32@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "<calendar id>",
+                "displayName": "<event organizer>",
+                "organizer": true,
+                "self": true,
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "scallan.em@gmail.com",
+                "responseStatus": "accepted"
+            }
+        ],
+        "hangoutLink": "https://meet.google.com/jiu-vvtu-ztq",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/jiu-vvtu-ztq",
+                    "label": "meet.google.com/jiu-vvtu-ztq"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "jiu-vvtu-ztq"
+        },
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3355350606308000\"",
+        "id": "4qfiuihqhdpbcnj30kb6j0vhj1_20230216T003000Z",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NHFmaXVpaHFoZHBiY25qMzBrYjZqMHZoajFfMjAyMzAyMTZUMDAzMDAwWiAxNTA4NzFhNDhjZjg0YzI2ODEyNmJmYWRkZmY2MDM1MmQyZjA4MTM5NTAyNjM2MWJiZjgzYWEzN2QxNjg3NDUxQGc",
+        "created": "2022-10-05T09:11:28.000Z",
+        "updated": "2023-03-01T12:55:03.154Z",
+        "summary": "Marketing Content Calendar - Biweekly",
+        "description": "A quick meet to sync over marketing priorities.",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer>",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-02-15T19:30:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-02-15T20:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "recurringEventId": "4qfiuihqhdpbcnj30kb6j0vhj1",
+        "originalStartTime": {
+            "dateTime": "2023-02-15T19:30:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "4qfiuihqhdpbcnj30kb6j0vhj1@google.com",
+        "sequence": 3,
+        "attendees": [
+            {
+                "email": "stevechenweb@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "mattjmorrisnyc@gmail.com",
+                "optional": true,
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "brancastillo32@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "<calendar id>",
+                "displayName": "<event organizer>",
+                "organizer": true,
+                "self": true,
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "scallan.em@gmail.com",
+                "responseStatus": "accepted"
+            }
+        ],
+        "hangoutLink": "https://meet.google.com/jiu-vvtu-ztq",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/jiu-vvtu-ztq",
+                    "label": "meet.google.com/jiu-vvtu-ztq"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "jiu-vvtu-ztq"
+        },
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3356469453760000\"",
+        "id": "3hf46q703at63cjr7jp52qu4fu",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=M2hmNDZxNzAzYXQ2M2NqcjdqcDUycXU0ZnUgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-03-08T00:18:30.000Z",
+        "updated": "2023-03-08T00:18:46.880Z",
+        "summary": "3/5 meetup retro",
+        "creator": {
+            "email": "s.gonza.gills@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-03-07T19:30:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-03-07T20:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "3hf46q703at63cjr7jp52qu4fu@google.com",
+        "sequence": 0,
+        "attendees": [
+            {
+                "email": "theoriginaldanalee@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "brown.3794@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "jonathanschumann11@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "mattjmorrisnyc@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "cinwald@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "stevechenweb@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "responseStatus": "needsAction"
+            }
+        ],
+        "hangoutLink": "https://meet.google.com/jyp-kzpd-ukg",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/jyp-kzpd-ukg",
+                    "label": "meet.google.com/jyp-kzpd-ukg"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "jyp-kzpd-ukg"
+        },
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3357685080072000\"",
+        "id": "25dfa2bf96134c4099254240d07fa2aa",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MjVkZmEyYmY5NjEzNGM0MDk5MjU0MjQwZDA3ZmEyYWEgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-02-16T00:19:21.000Z",
+        "updated": "2023-03-15T01:09:00.036Z",
+        "summary": "Only Talk: Swimm talk day",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-03-19T15:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-03-19T17:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "25dfa2bf96134c4099254240d07fa2aa@google.com",
+        "sequence": 0,
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3357685128206000\"",
+        "id": "1b48730ef3cd4d6996cf9588dc385891",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MWI0ODczMGVmM2NkNGQ2OTk2Y2Y5NTg4ZGMzODU4OTEgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-02-18T02:10:38.000Z",
+        "updated": "2023-03-15T01:09:24.103Z",
+        "summary": "2/4 TENTATIVE: DQ's talk",
+        "description": "\u003cp\u003eGA very likely\u003c/p\u003e",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-04-02T16:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-04-02T17:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "1b48730ef3cd4d6996cf9588dc385891@google.com",
+        "sequence": 1,
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3357720648294000\"",
+        "id": "0404f09f86ac482c9b7eb1b914751374",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MDQwNGYwOWY4NmFjNDgyYzliN2ViMWI5MTQ3NTEzNzQgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-03-10T05:00:10.000Z",
+        "updated": "2023-03-15T06:05:24.147Z",
+        "summary": "1/4 Intro to Databases - Charles and Lucas talk",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-04-02T15:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-04-02T15:45:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "0404f09f86ac482c9b7eb1b914751374@google.com",
+        "sequence": 0,
+        "attendees": [
+            {
+                "email": "<calendar id>",
+                "displayName": "<event organizer> - Staff",
+                "organizer": true,
+                "self": true,
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "cinwald@gmail.com",
+                "responseStatus": "accepted"
+            }
+        ],
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3358497524750000\"",
+        "id": "2tf4n79itjgj9sj7eqt3pbutm8",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MnRmNG43OWl0amdqOXNqN2VxdDNwYnV0bTggMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-03-14T19:43:06.000Z",
+        "updated": "2023-03-19T17:59:22.375Z",
+        "summary": "(RSVP pls pls) Code & Coffee at BrainStation ",
+        "description": "Quick RSVP reminder. \u003cb\u003ePlease RSVP\u003c/b\u003e Yes or No as soon as you can!\u003cbr\u003e\u003cspan\u003e\u003cbr\u003e\u003c/span\u003e\u003cbr\u003e\u003cspan\u003eThis one will have only one talk featuring Swimm after the intro circles at 3:05 pm. Swimm will have at least 4 employees there so Steve Chen will be there to ham it up! \u003c/span\u003e\u003cbr\u003e\u003cspan\u003e\u003cbr\u003e\u003c/span\u003e",
+        "location": "BrainStation, 136 Crosby St 4th floor, New York, NY 10012, USA",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-03-19T14:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-03-19T17:30:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "2tf4n79itjgj9sj7eqt3pbutm8@google.com",
+        "sequence": 1,
+        "attendees": [
+            {
+                "email": "dana.lee3986@gmail.com",
+                "responseStatus": "declined"
+            },
+            {
+                "email": "theoriginaldanalee@gmail.com",
+                "displayName": "Dana Lee",
+                "responseStatus": "declined"
+            },
+            {
+                "email": "brown.3794@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "jonathanschumann11@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "jimmy@skelios.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "cinwald@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "s.gonza.gills@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "stevechenweb@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "brancastillo32@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "displayName": "Julia Furst",
+                "responseStatus": "accepted"
+            }
+        ],
+        "hangoutLink": "https://meet.google.com/qap-wskb-pyg",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/qap-wskb-pyg",
+                    "label": "meet.google.com/qap-wskb-pyg"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "qap-wskb-pyg"
+        },
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3360606450758000\"",
+        "id": "1olnc7n388cdogt2vtu7497og9",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MW9sbmM3bjM4OGNkb2d0MnZ0dTc0OTdvZzkgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-03-29T02:21:58.000Z",
+        "updated": "2023-03-31T22:53:45.379Z",
+        "summary": "(RSVP pls pls) Code & Coffee at BrainStation",
+        "description": "\n3:05pm - Intro to Databases by Lucas Lu(tentative)\n4:05pm Talk - Building a Cost-Effective Data Pipeline: One-Person Data Team's Journey by DQ Choi",
+        "location": "BrainStation, 136 Crosby St 4th floor, New York, NY 10012, USA",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-04-02T14:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-04-02T17:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "1olnc7n388cdogt2vtu7497og9@google.com",
+        "sequence": 0,
+        "attendees": [
+            {
+                "email": "dana.lee3986@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "theoriginaldanalee@gmail.com",
+                "displayName": "Dana Lee",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "brown.3794@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "jonathanschumann11@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "jimmy@skelios.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "s.gonza.gills@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "stevechenweb@gmail.com",
+                "responseStatus": "tentative"
+            },
+            {
+                "email": "brancastillo32@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "displayName": "Julia Furst",
+                "responseStatus": "tentative"
+            },
+            {
+                "email": "watkinsjoe97@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "watkinsjoe99@live.com",
+                "responseStatus": "needsAction"
+            }
+        ],
+        "hangoutLink": "https://meet.google.com/hhz-fstj-nvo",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/hhz-fstj-nvo",
+                    "label": "meet.google.com/hhz-fstj-nvo"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "hhz-fstj-nvo"
+        },
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3362384423044000\"",
+        "id": "8275a6f50d0a41d7b0c6d1bd5d2fb0bd",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=ODI3NWE2ZjUwZDBhNDFkN2IwYzZkMWJkNWQyZmIwYmQgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-02-17T22:11:29.000Z",
+        "updated": "2023-04-11T05:50:11.522Z",
+        "summary": "Reach out to Mike Hartington for AMay dates",
+        "description": "\u003cp\u003eMike mentioned he is more available in May. Steve will sync up with him in pril as we figure out venue dates.\u003c/p\u003e",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-04-17T22:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-04-17T22:30:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "8275a6f50d0a41d7b0c6d1bd5d2fb0bd@google.com",
+        "sequence": 2,
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3362561187296000\"",
+        "id": "6c91t4bikv8k8d6smog5f6bu6q",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NmM5MXQ0YmlrdjhrOGQ2c21vZzVmNmJ1NnEgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-04-12T06:23:04.000Z",
+        "updated": "2023-04-12T06:23:13.648Z",
+        "summary": "NYC Code & Coffee @ Brainstation (Confirmed)",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-04-30T14:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-04-30T17:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "6c91t4bikv8k8d6smog5f6bu6q@google.com",
+        "sequence": 0,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3362561374088000\"",
+        "id": "5h29uig7uc9mdhokc5k0bt1k0f",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NWgyOXVpZzd1YzltZGhva2M1azBidDFrMGYgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-04-12T06:24:40.000Z",
+        "updated": "2023-04-12T06:24:47.044Z",
+        "summary": "NYC Code & Coffee @ Brainstation (Confirmed)",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-06-04T14:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-06-04T17:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "5h29uig7uc9mdhokc5k0bt1k0f@google.com",
+        "sequence": 0,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3362561429800000\"",
+        "id": "0t1g68pd45o9hr83hhbba7l6m6",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MHQxZzY4cGQ0NW85aHI4M2hoYmJhN2w2bTYgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-04-12T06:25:07.000Z",
+        "updated": "2023-04-12T06:25:14.900Z",
+        "summary": "NYC Code & Coffee @ Brainstation (Confirmed)",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-06-25T14:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-06-25T17:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "0t1g68pd45o9hr83hhbba7l6m6@google.com",
+        "sequence": 0,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3363335053680000\"",
+        "id": "27a867b041aa4d6593bad5e399f2b440",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MjdhODY3YjA0MWFhNGQ2NTkzYmFkNWUzOTlmMmI0NDAgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-03-08T06:19:52.000Z",
+        "updated": "2023-04-16T17:52:06.840Z",
+        "summary": "(RSVP pls pls) Code & Coffee at BrainStation",
+        "location": "BrainStation, 136 Crosby St 4th floor, New York, NY 10012, USA",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-04-16T14:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-04-16T14:30:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "27a867b041aa4d6593bad5e399f2b440@google.com",
+        "sequence": 0,
+        "attendees": [
+            {
+                "email": "brancastillo32@gmail.com",
+                "responseStatus": "declined"
+            },
+            {
+                "email": "brown.3794@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "dana.lee3986@gmail.com",
+                "responseStatus": "declined"
+            },
+            {
+                "email": "jonathanschumann11@gmail.com",
+                "responseStatus": "declined"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "responseStatus": "declined"
+            },
+            {
+                "email": "s.gonza.gills@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "theoriginaldanalee@gmail.com",
+                "responseStatus": "declined"
+            }
+        ],
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3363538261506000\"",
+        "id": "6mie7jcc9pqc8vteffp7si2mtc",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=Nm1pZTdqY2M5cHFjOHZ0ZWZmcDdzaTJtdGMgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-04-12T06:24:08.000Z",
+        "updated": "2023-04-17T22:05:30.753Z",
+        "summary": "NYC Code & Coffee @ General Assembly (Confirmed)",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-05-21T14:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-05-21T17:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "6mie7jcc9pqc8vteffp7si2mtc@google.com",
+        "sequence": 0,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3364773345000000\"",
+        "id": "1lrmd4us82jtkhlug6tp1du9cl",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MWxybWQ0dXM4Mmp0a2hsdWc2dHAxZHU5Y2wgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-04-25T01:25:07.000Z",
+        "updated": "2023-04-25T01:37:52.500Z",
+        "summary": "Talk #2 - Amit Jotwani - Workshop - Building a ChatGPT Mobile App with Twilio, Retool, and JavaScript ",
+        "creator": {
+            "email": "theoriginaldanalee@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "date": "2023-04-30"
+        },
+        "end": {
+            "date": "2023-05-01"
+        },
+        "transparency": "transparent",
+        "iCalUID": "1lrmd4us82jtkhlug6tp1du9cl@google.com",
+        "sequence": 0,
+        "reminders": {
+            "useDefault": false
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3364773393266000\"",
+        "id": "06skaenn7bd0mqqoucjvumkbok",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MDZza2Flbm43YmQwbXFxb3VjanZ1bWtib2sgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-04-25T01:27:07.000Z",
+        "updated": "2023-04-25T01:38:16.633Z",
+        "summary": "Talk #1- Edwin S. - Talk - Using Data to Accelerate Your Professional Growth ",
+        "creator": {
+            "email": "theoriginaldanalee@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "date": "2023-04-30"
+        },
+        "end": {
+            "date": "2023-05-01"
+        },
+        "transparency": "transparent",
+        "iCalUID": "06skaenn7bd0mqqoucjvumkbok@google.com",
+        "sequence": 0,
+        "reminders": {
+            "useDefault": false
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3364773856106000\"",
+        "id": "7unp5hggpkas2ba42b6k0rcco5",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=N3VucDVoZ2dwa2FzMmJhNDJiNmswcmNjbzUgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-04-25T01:34:20.000Z",
+        "updated": "2023-04-25T01:42:08.053Z",
+        "summary": "Talk #1 - Erik Hanchett - Getting Started With Amplify For Web Developers",
+        "description": "I'm a developer advocate for Amplify at AWS. I've worked as a software developer for many years at small startups, larger companies and everything in between. When I'm not teaching people, or creating tutorials, I love puzzles and spending time with my family.\u003cbr\u003e\u003cbr\u003e\u003cp dir=\"auto\"\u003eAWS offers a lot of services. Cognito, S3, Hosting, and Lambda functions to name a few. What if we could access those services without having to learn devops, infrastructure as code, and intricate IAM rules? So as front-end developers we can focus on the front-end.\u003c/p\u003e\u003cp dir=\"auto\"\u003eAmplify has us covered! In this talk I'll discuss how to get started with Amplify, how it can be used by Front-end and mobile developers to use AWS services and some of the nice features it has. This will include:\u003c/p\u003e\u003cul dir=\"auto\"\u003e\u003cli\u003eUI Components Library\u003c/li\u003e\u003cli\u003eAuthentication connected components\u003c/li\u003e\u003cli\u003eAmplify Studio with our Figma to Code integration\u003c/li\u003e\u003c/ul\u003e",
+        "creator": {
+            "email": "theoriginaldanalee@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "date": "2023-06-04"
+        },
+        "end": {
+            "date": "2023-06-05"
+        },
+        "transparency": "transparent",
+        "iCalUID": "7unp5hggpkas2ba42b6k0rcco5@google.com",
+        "sequence": 0,
+        "reminders": {
+            "useDefault": false
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3365754573344000\"",
+        "id": "4661d575f49d4650878ada2fd516802c",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NDY2MWQ1NzVmNDlkNDY1MDg3OGFkYTJmZDUxNjgwMmMgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-04-28T10:22:09.000Z",
+        "updated": "2023-04-30T17:54:46.672Z",
+        "summary": "(RSVP pls pls) Code & Coffee at BrainStation",
+        "location": "BrainStation, 136 Crosby St 4th floor, New York, NY 10012, USA",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-04-30T14:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-04-30T17:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "4661d575f49d4650878ada2fd516802c@google.com",
+        "sequence": 0,
+        "attendees": [
+            {
+                "email": "brancastillo32@gmail.com",
+                "responseStatus": "declined"
+            },
+            {
+                "email": "brown.3794@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "dana.lee3986@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "jonathanschumann11@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "responseStatus": "declined"
+            },
+            {
+                "email": "s.gonza.gills@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "theoriginaldanalee@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "<calendar id>",
+                "displayName": "<event organizer> - Staff",
+                "organizer": true,
+                "self": true,
+                "responseStatus": "accepted"
+            }
+        ],
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3365932731336000\"",
+        "id": "1dv6eot85mp9dc68ssgn7b589l",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MWR2NmVvdDg1bXA5ZGM2OHNzZ243YjU4OWxfMjAyMzAzMDlUMDAzMDAwWiAxNTA4NzFhNDhjZjg0YzI2ODEyNmJmYWRkZmY2MDM1MmQyZjA4MTM5NTAyNjM2MWJiZjgzYWEzN2QxNjg3NDUxQGc",
+        "created": "2022-10-05T09:11:28.000Z",
+        "updated": "2023-05-01T18:39:25.668Z",
+        "summary": "Marketing Content Calendar - Biweekly",
+        "description": "A quick meet to sync over marketing priorities.",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "0f56468ca862b386ba2e86e125019e3fb5521cb0ba1cfbbff938dbbc93090717@group.calendar.google.com",
+            "displayName": "Code & Coffee Marketing Content Calendar"
+        },
+        "start": {
+            "dateTime": "2023-03-08T19:30:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-03-08T20:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "recurrence": [
+            "RRULE:FREQ=WEEKLY;WKST=SU;UNTIL=20230503T035959Z;INTERVAL=2;BYDAY=WE"
+        ],
+        "iCalUID": "1dv6eot85mp9dc68ssgn7b589l@google.com",
+        "sequence": 4,
+        "attendees": [
+            {
+                "email": "stevechenweb@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "mattjmorrisnyc@gmail.com",
+                "optional": true,
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "brancastillo32@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "<calendar id>",
+                "displayName": "<event organizer> - Staff",
+                "self": true,
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "scallan.em@gmail.com",
+                "responseStatus": "needsAction"
+            }
+        ],
+        "hangoutLink": "https://meet.google.com/jiu-vvtu-ztq",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/jiu-vvtu-ztq",
+                    "label": "meet.google.com/jiu-vvtu-ztq"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "jiu-vvtu-ztq"
+        },
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3365932731336000\"",
+        "id": "1dv6eot85mp9dc68ssgn7b589l_20230309T003000Z",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MWR2NmVvdDg1bXA5ZGM2OHNzZ243YjU4OWxfMjAyMzAzMDlUMDAzMDAwWiAxNTA4NzFhNDhjZjg0YzI2ODEyNmJmYWRkZmY2MDM1MmQyZjA4MTM5NTAyNjM2MWJiZjgzYWEzN2QxNjg3NDUxQGc",
+        "created": "2022-10-05T09:11:28.000Z",
+        "updated": "2023-05-01T18:39:25.668Z",
+        "summary": "Marketing Content Calendar - Biweekly",
+        "description": "A quick meet to sync over marketing priorities.",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "0f56468ca862b386ba2e86e125019e3fb5521cb0ba1cfbbff938dbbc93090717@group.calendar.google.com",
+            "displayName": "Code & Coffee Marketing Content Calendar"
+        },
+        "start": {
+            "dateTime": "2023-03-08T19:30:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-03-08T20:00:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "recurringEventId": "1dv6eot85mp9dc68ssgn7b589l",
+        "originalStartTime": {
+            "dateTime": "2023-03-08T19:30:00-05:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "1dv6eot85mp9dc68ssgn7b589l@google.com",
+        "sequence": 4,
+        "attendees": [
+            {
+                "email": "stevechenweb@gmail.com",
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "juliafmorgado@gmail.com",
+                "responseStatus": "declined"
+            },
+            {
+                "email": "mattjmorrisnyc@gmail.com",
+                "optional": true,
+                "responseStatus": "declined"
+            },
+            {
+                "email": "brancastillo32@gmail.com",
+                "responseStatus": "needsAction"
+            },
+            {
+                "email": "<calendar id>",
+                "displayName": "<event organizer> - Staff",
+                "self": true,
+                "responseStatus": "accepted"
+            },
+            {
+                "email": "scallan.em@gmail.com",
+                "responseStatus": "needsAction"
+            }
+        ],
+        "hangoutLink": "https://meet.google.com/jiu-vvtu-ztq",
+        "conferenceData": {
+            "entryPoints": [
+                {
+                    "entryPointType": "video",
+                    "uri": "https://meet.google.com/jiu-vvtu-ztq",
+                    "label": "meet.google.com/jiu-vvtu-ztq"
+                }
+            ],
+            "conferenceSolution": {
+                "key": {
+                    "type": "hangoutsMeet"
+                },
+                "name": "Google Meet",
+                "iconUri": "https://fonts.gstatic.com/s/i/productlogos/meet_2020q4/v6/web-512dp/logo_meet_2020q4_color_2x_web_512dp.png"
+            },
+            "conferenceId": "jiu-vvtu-ztq"
+        },
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3365932731336000\"",
+        "id": "1dv6eot85mp9dc68ssgn7b589l_20230419T233000Z",
+        "status": "cancelled",
+        "recurringEventId": "1dv6eot85mp9dc68ssgn7b589l",
+        "originalStartTime": {
+            "dateTime": "2023-04-19T19:30:00-04:00",
+            "timeZone": "America/New_York"
+        }
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3367677562632000\"",
+        "id": "46n8cgf6i42ue4g0eo2vlk6u6e",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NDZuOGNnZjZpNDJ1ZTRnMGVvMnZsazZ1NmUgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-04-25T01:40:12.000Z",
+        "updated": "2023-05-11T20:59:41.316Z",
+        "summary": "Talk #2 - Lucas Lu - Introduction to Communication between Software Systems",
+        "description": "In the era of cloud computing and distributed micro-services, a critical question is how computers communicate with each other networks which contain machines running software on different operating systems and programs in different programming languages. This lecture will cover how complex data structures are packaged into formats that can be understood by different hardware and different programming langugages in compressible formats that work well with internet protocols. Then it will cover RPC (remote procedure calls) and API (application programming interfaces), the two primary frameworks of cross software communication, and which parts of the internet stack they interact with.Brief summary of topics1. Data Serialization: formats like XML, Protocol Buffers, JSON2. Communication Frameworks: APIs and RPC3. OSI layers used for APIs and RPC",
+        "creator": {
+            "email": "theoriginaldanalee@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "date": "2023-06-04"
+        },
+        "end": {
+            "date": "2023-06-05"
+        },
+        "transparency": "transparent",
+        "iCalUID": "46n8cgf6i42ue4g0eo2vlk6u6e@google.com",
+        "sequence": 1,
+        "reminders": {
+            "useDefault": false
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3368020659754000\"",
+        "id": "56b4b4cd3fc44d19917ec548c18769e7",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NTZiNGI0Y2QzZmM0NGQxOTkxN2VjNTQ4YzE4NzY5ZTcgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-05-11T20:57:32.000Z",
+        "updated": "2023-05-13T20:38:49.877Z",
+        "summary": "2. GA Panel ",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-05-21T15:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-05-21T16:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "56b4b4cd3fc44d19917ec548c18769e7@google.com",
+        "sequence": 2,
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3370095071444000\"",
+        "id": "6d991215b2d3478fb55b3b5734267f15",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NmQ5OTEyMTViMmQzNDc4ZmI1NWIzYjU3MzQyNjdmMTUgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-05-25T20:45:26.000Z",
+        "updated": "2023-05-25T20:45:35.722Z",
+        "summary": "Create events",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-05-25T23:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-05-25T23:30:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "6d991215b2d3478fb55b3b5734267f15@google.com",
+        "sequence": 1,
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3372337026058000\"",
+        "id": "0kurbi8k8aeffc2gfaehtthe4c",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MGt1cmJpOGs4YWVmZmMyZ2ZhZWh0dGhlNGMgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-05-09T13:46:18.000Z",
+        "updated": "2023-06-07T20:08:33.029Z",
+        "summary": "1. Taking a deeper dive into the world of databases (Tom, Vani, Blu from Couchbase)",
+        "creator": {
+            "email": "dana.lee3986@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "date": "2023-06-25"
+        },
+        "end": {
+            "date": "2023-06-26"
+        },
+        "transparency": "transparent",
+        "iCalUID": "0kurbi8k8aeffc2gfaehtthe4c@google.com",
+        "sequence": 0,
+        "reminders": {
+            "useDefault": false
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3372736699154000\"",
+        "id": "7uaaskvlcu3traeqdp0ikqji6s",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=N3VhYXNrdmxjdTN0cmFlcWRwMGlrcWppNnMgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-06-10T03:35:38.000Z",
+        "updated": "2023-06-10T03:39:09.577Z",
+        "summary": "2. Compressing Decades into Weeks: How to Gain Years of Practical Real-World Experience the Fastest Way Possible (Edwin Sarmiento)",
+        "description": "\u003cp\u003eBreaking into tech, whether you're a student completing a degree or a professional switching careers, can be a Catch-22. The dream jobs you want require years of experience.\u003c/p\u003e\u003cp\u003eBut how do you get the job experience necessary if nobody wants to hire you because you don't have any experience?\u003c/p\u003e\u003cp\u003eThe job search process can be a very frustrating when you know you can do the job but keep getting disqualified because you don't have the years of experience.\u003c/p\u003e\u003cp\u003eIt's time to fix this.\u003c/p\u003e\u003cp\u003eThis talk will show you how to gain years of practical, real-world experience the fastest way possible and help you land that dream job you've always wanted. Drawing from my personal experience of breaking into tech without a computer-related degree nor certifications, I'll share the hacks I learned the hard way to bypass the \"years of experience\" requirement in tech job postings.\u003cbr\u003e\u003cbr\u003e~~~~~~~~~~~~~~~~\u003cbr\u003e\u003c/p\u003e\u003cp\u003eEdwin M Sarmiento is the Managing Director of 15C, a consulting company that specializes in designing, implementing, and managing high-availability infrastructures. He is a former Microsoft Data Platform MVP of 12 years standing, a Microsoft Certified Master for SQL Server, and author of the book \u003ca href=\"https://www.amazon.com/Server-Guide-Docker-Containers-Lock/dp/1484258258\"\u003eThe SQL Server DBA's Guide to Docker Containers\u003c/a\u003e. He is very passionate about technology, and has interests in music, social psychology, professional and organizational development, leadership, and management matters when not working with databases.\u003c/p\u003e\u003cp dir=\"auto\"\u003e\u003cstrong\u003eTwitter handle (optional):\u003c/strong\u003e\u003cbr\u003e\u003ca href=\"https://www.twitter.com/EdwinMSarmiento\"\u003ehttps://www.twitter.com/EdwinMSarmiento\u003c/a\u003e\u003c/p\u003e\u003cp dir=\"auto\"\u003e\u003cstrong\u003eThe best way to reach out to you:\u003c/strong\u003e\u003cbr\u003eLinkedIn: \u003ca href=\"https://www.linkedin.com/in/EdwinMSarmiento\"\u003ehttps://www.linkedin.com/in/EdwinMSarmiento\u003c/a\u003e\u003cbr\u003eEmail: \u003ca href=\"mailto:edwinmsarmiento@outlook.com\"\u003eedwinmsarmiento@outlook.com\u003c/a\u003e\u003c/p\u003e",
+        "creator": {
+            "email": "dana.lee3986@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "date": "2023-06-25"
+        },
+        "end": {
+            "date": "2023-06-26"
+        },
+        "transparency": "transparent",
+        "iCalUID": "7uaaskvlcu3traeqdp0ikqji6s@google.com",
+        "sequence": 0,
+        "reminders": {
+            "useDefault": false
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3372742033416000\"",
+        "id": "356art71qrhg3verjr69seam7s",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MzU2YXJ0NzFxcmhnM3ZlcmpyNjlzZWFtN3MgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-06-10T04:23:36.000Z",
+        "updated": "2023-06-10T04:23:36.708Z",
+        "summary": "Rumble boxing",
+        "creator": {
+            "email": "theoriginaldanalee@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-06-10T14:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-06-10T15:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "356art71qrhg3verjr69seam7s@google.com",
+        "sequence": 0,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3374671931214000\"",
+        "id": "239neqbeeqg9199i89ln0qgojk",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MjM5bmVxYmVlcWc5MTk5aTg5bG4wcWdvamsgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-06-21T08:26:05.000Z",
+        "updated": "2023-06-21T08:26:05.607Z",
+        "summary": "NYC Code & Coffee @ Brainstation (Confirmed)",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "date": "2023-07-09"
+        },
+        "end": {
+            "date": "2023-07-10"
+        },
+        "transparency": "transparent",
+        "iCalUID": "239neqbeeqg9199i89ln0qgojk@google.com",
+        "sequence": 0,
+        "reminders": {
+            "useDefault": false
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3374672030292000\"",
+        "id": "6c5n2gsn8pgmhqlfv217pu2hf8",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NmM1bjJnc244cGdtaHFsZnYyMTdwdTJoZjggMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-06-21T08:26:55.000Z",
+        "updated": "2023-06-21T08:26:55.146Z",
+        "summary": "NYC C&C @ General Assembly (Confirmed)",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "date": "2023-07-23"
+        },
+        "end": {
+            "date": "2023-07-24"
+        },
+        "transparency": "transparent",
+        "iCalUID": "6c5n2gsn8pgmhqlfv217pu2hf8@google.com",
+        "sequence": 0,
+        "reminders": {
+            "useDefault": false
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3374672070872000\"",
+        "id": "7qk1jfc3m1q3cmn13p5nsp7kre",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=N3FrMWpmYzNtMXEzY21uMTNwNW5zcDdrcmUgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-06-21T08:27:15.000Z",
+        "updated": "2023-06-21T08:27:15.436Z",
+        "summary": "NYC Code & Coffee @ Brainstation (Confirmed)",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "date": "2023-08-06"
+        },
+        "end": {
+            "date": "2023-08-07"
+        },
+        "transparency": "transparent",
+        "iCalUID": "7qk1jfc3m1q3cmn13p5nsp7kre@google.com",
+        "sequence": 0,
+        "reminders": {
+            "useDefault": false
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3374672098112000\"",
+        "id": "53egrv8c8tu2v8ckt4locbq26b",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NTNlZ3J2OGM4dHUydjhja3Q0bG9jYnEyNmIgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-06-21T08:27:29.000Z",
+        "updated": "2023-06-21T08:27:29.056Z",
+        "summary": "NYC Code & Coffee @ Brainstation (Confirmed)",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "date": "2023-08-20"
+        },
+        "end": {
+            "date": "2023-08-21"
+        },
+        "transparency": "transparent",
+        "iCalUID": "53egrv8c8tu2v8ckt4locbq26b@google.com",
+        "sequence": 0,
+        "reminders": {
+            "useDefault": false
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3374672382958000\"",
+        "id": "0m3k8tg670hvd3htjf3gd9giim",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MG0zazh0ZzY3MGh2ZDNodGpmM2dkOWdpaW0gMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-06-21T08:29:42.000Z",
+        "updated": "2023-06-21T08:29:51.479Z",
+        "summary": "2yr Birthday - NYC Code & Coffee @ Brainstation (Confirmed)",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "date": "2023-09-10"
+        },
+        "end": {
+            "date": "2023-09-11"
+        },
+        "transparency": "transparent",
+        "iCalUID": "0m3k8tg670hvd3htjf3gd9giim@google.com",
+        "sequence": 0,
+        "reminders": {
+            "useDefault": false
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3374672429024000\"",
+        "id": "4nbt3lvn0g6pdt81ddqf1lpil0",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NG5idDNsdm4wZzZwZHQ4MWRkcWYxbHBpbDAgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-06-21T08:30:14.000Z",
+        "updated": "2023-06-21T08:30:14.512Z",
+        "summary": "NYC Code & Coffee @ Brainstation (Confirmed)",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "date": "2023-09-24"
+        },
+        "end": {
+            "date": "2023-09-25"
+        },
+        "transparency": "transparent",
+        "iCalUID": "4nbt3lvn0g6pdt81ddqf1lpil0@google.com",
+        "sequence": 0,
+        "reminders": {
+            "useDefault": false
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3376762280116000\"",
+        "id": "4087571b5e954e4f8891c9b6b6053d9c",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=NDA4NzU3MWI1ZTk1NGU0Zjg4OTFjOWI2YjYwNTNkOWMgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-07-03T10:45:36.000Z",
+        "updated": "2023-07-03T10:45:40.058Z",
+        "summary": "write to appwrite",
+        "creator": {
+            "email": "stevechenweb@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2023-07-04T23:30:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "end": {
+            "dateTime": "2023-07-05T00:00:00-04:00",
+            "timeZone": "America/New_York"
+        },
+        "iCalUID": "4087571b5e954e4f8891c9b6b6053d9c@google.com",
+        "sequence": 0,
+        "guestsCanModify": true,
+        "reminders": {
+            "useDefault": true
+        },
+        "eventType": "default"
+    },
+    {
+        "kind": "calendar#event",
+        "etag": "\"3376838450414000\"",
+        "id": "3r8b32rajcf1e85lqntaja2uod",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=M3I4YjMycmFqY2YxZTg1bHFudGFqYTJ1b2QgMTUwODcxYTQ4Y2Y4NGMyNjgxMjZiZmFkZGZmNjAzNTJkMmYwODEzOTUwMjYzNjFiYmY4M2FhMzdkMTY4NzQ1MUBn",
+        "created": "2023-07-03T21:19:39.000Z",
+        "updated": "2023-07-03T21:20:25.207Z",
+        "summary": "1. How Video Tech Works (Artur Parkhisenko)",
+        "description": "\u003cp dir=\"auto\"\u003e\u003cstrong\u003eTitle:\u003c/strong\u003e How video tech works, on the web 🌐 2023\u003c/p\u003e\u003cp dir=\"auto\"\u003e\u003cstrong\u003eWhat your talk is about:\u003c/strong\u003e A simple sneak peek into how video works on the web. A bit of history, demo, and examples of how-to, minimal learning path, and other resources.\u003c/p\u003e",
+        "creator": {
+            "email": "theoriginaldanalee@gmail.com"
+        },
+        "organizer": {
+            "email": "<calendar id>",
+            "displayName": "<event organizer> - Staff",
+            "self": true
+        },
+        "start": {
+            "date": "2023-07-23"
+        },
+        "end": {
+            "date": "2023-07-24"
+        },
+        "transparency": "transparent",
+        "iCalUID": "3r8b32rajcf1e85lqntaja2uod@google.com",
+        "sequence": 0,
+        "reminders": {
+            "useDefault": false
+        },
+        "eventType": "default"
+    }
+]
