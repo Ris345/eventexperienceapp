@@ -2,7 +2,7 @@
 
 - [Calendar API](#calendar-api)
   - [Create Calendar](#create-calendar)
-    - [Create Calendar Request](#create-breakfast-request)
+    - [Create Calendar Request](#create-calendar-request)
     - [Create Calednar Response](#create-calendar-response)
   - [Get Calendar](#get-calendar)
     - [Get Calendar Request](#get-calendar-request)
@@ -12,7 +12,7 @@
     - [Update Calendar Response](#update-calendar-response)
   - [Delete Calendar](#delete-calendar)
     - [Delete Calendar Request](#delete-calendar-request)
-    - [Delete Calendar Response](#delete-breakfast-response)
+    - [Delete Calendar Response](#delete-calendar-response)
 
 ## Create Calendar 
 
@@ -66,14 +66,14 @@ POST api/calendar
 GET api/calendar/{{id}}
 ```
 
-### Get Breakfast Response
+### Get Calendar Response
 
 ```js
 200 Ok
 ```
 
 ```json
-
+}
      "event": {
     "id": "01",
     "title": "Dance Party",
@@ -81,12 +81,13 @@ GET api/calendar/{{id}}
     "time": "15:00",
     "rsvp": true,
     "created_date": "2023-08-04T10:30:00Z"
-  }
+   }
+}
 ```
+ 
+## Update Calendar
 
-## Update Breakfast
-
-### Update Breakfast Request
+### Update Calendar Request
 
 ```js
 PUT /breakfasts/{{id}}
@@ -117,15 +118,15 @@ or
 ```
 
 
-## Delete Breakfast
+## Delete Calendar
 
-### Delete Breakfast Request
+### Delete Calendar Request
 
 ```js
 DELETE api/calendar/{{id}}
 ```
 
-### Delete Breakfast Response
+### Delete Calendar Response
 
 ```js
 204 No Content
