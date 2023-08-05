@@ -66,17 +66,20 @@ def db_get_user_by_email(
 
 # attempted OAuth2 w/ password + hashing, bearer w/ JWT tokens
 def db_create_user(db: Session, user: UserCreate):
-    fake_hashed_password = hash(user.password)
-    db_user = models.User(
-        username=user.username,
-        first_name=user.first_name,
-        last_name=user.last_name,
-        email=user.email,
-        about=user.about,
-        profile_photo=user.profile_photo,
-        hashed_password=fake_hashed_password,
-    )
-    db.add(db_user)
-    db.commit()
-    db.refresh(db_user)
-    return db_user
+    try:
+        fake_hashed_password = hash(user.password)
+        db_user = models.User(
+            username=user.username,
+            first_name=user.first_name,
+            last_name=user.last_name,
+            email=user.email,
+            about=user.about,
+            profile_photo=user.profile_photo,
+            hashed_password=fake_hashed_password,
+        )
+        db.add(db_user)
+        db.commit()
+        db.refresh(db_user)
+        return db_user
+    except:
+        return {"message": "create did not work"}

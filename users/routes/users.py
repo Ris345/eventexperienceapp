@@ -8,11 +8,10 @@ from queries.users import (
     UserCreate,
     db_create_user,
 )
-from fastapi import Depends, HTTPException, APIRouter, Request, status
+from fastapi import Depends, HTTPException, APIRouter, Form
 from sqlalchemy.orm import Session
 from typing import List
 from database import SessionLocal
-from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
@@ -62,11 +61,30 @@ def get_user_by_username(username: str, db: Session = Depends(get_db)):
 
 
 @router.post("/users", response_model=UserSchema)
-def create_user(user: UserCreate, db: Session = Depends(get_db)):
-    db_create_user = db_get_user_by_username(db, username=user.username)
-    if user:
+def create_user(
+    username: str = Form(...),
+    first_name: str = Form(...),
+    last_name: str = Form(...),
+    email: str = Form(...),
+    profile_photo: str = Form(...),
+    about: str = Form(...),
+    password: str = Form(...),
+    db: Session = Depends(get_db),
+):
+    user = UserCreate(
+        username=username,
+        first_name=first_name,
+        last_name=last_name,
+        email=email,
+        hashed_password=password,
+        about=about,
+        profile_photo=profile_photo,
+        password=password,
+    )
+    db_get_user = db_get_user_by_username(db, username=user.username)
+    if db_get_user is not None:
         raise HTTPException(status_code=404, detail="Info is already registered")
-    return create_user(db=db, user=user)
+    return db_create_user(db=db, user=user)
 
 
 """
