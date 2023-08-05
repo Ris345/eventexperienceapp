@@ -1,3 +1,6 @@
+# 07/21/23
+- [Inheritance Hiearchies](https://docs.sqlalchemy.org/en/14/orm/inheritance_loading.html)
+
 # 07/19/23
 - changed schemas slightly
 - removes uncommitted changes
@@ -24,7 +27,7 @@
 # GENERAL AGENDA
 - Demo/Sample of BE -> FE functionality
     - User MS
-        - To run user MS currently, (1) `uvicorn main:app --reload` -> (2) [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+        - To run user MS currently, (1) `uvicorn main:app --reload` -> (2) navigate to [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
         - First Draft
             - Local
                 - [x] Establish DB setup for users first
@@ -37,27 +40,28 @@
                     - [x] Able to get group(id), get groups
                         - [x] GET /GROUP{ID} allows for viewing of group details
                         - [x] GET /GROUPS allows for viewing of all groups
+
 - Rest of Agenda
-            - [ ] Establish the ability to CRUD users (FA docs)
-                - Create Account (soon) -> Login
-                    - POST /USERS (soon) -> GET /TOKEN
-                - Update Account
-                    - PUT/USER_ID
-                - Search for other accounts
-                    - ACCOUNT_USERNAME, NAME, EMAIL
-            - [ ] TOKEN BE
-                - [ ] GET /TOKEN
-                - [ ] (Sign Up) Ensure that the password is hashed and that said password is deleted on the FrontEnd ( req password security )
-                - [ ] Logged in user can view account details
-                - [ ] Logged in user can update account details
-                - [ ] Logged in
-            - [ ] Establish users are able to log out in mockup
-                - DELETE TOKEN (or this might be a process of deleting token on fe?)
-            - [ ] Establish users are able to login
-                - GET TOKEN
-            - [ ] Establish errors are present with invalid account creation, login in mockup
-        - [ ] Implement Roles with Casbin/FastAPI middleware
-            - [ ] Implementation of ACL Middleware/System for roles
+    - [ ] Establish the ability to CRUD users (FA docs)
+        - Create Account (soon) -> Login
+            - POST /USERS (soon) -> GET /TOKEN
+        - Update Account
+            - PUT/USER_ID
+        - Search for other accounts
+            - ACCOUNT_USERNAME, NAME, EMAIL
+    - [ ] TOKEN BE
+        - [ ] GET /TOKEN
+        - [ ] (Sign Up) Ensure that the password is hashed and that said password is deleted on the FrontEnd ( req password security )
+        - [ ] Logged in user can view account details
+        - [ ] Logged in user can update account details
+        - [ ] Logged in
+    - [ ] Establish users are able to log out in mockup
+        - DELETE TOKEN (or this might be a process of deleting token on fe?)
+    - [ ] Establish users are able to login
+        - GET TOKEN
+    - [ ] Establish errors are present with invalid account creation, login in mockup
+- [ ] Implement Roles with Casbin/FastAPI middleware
+    - [ ] Implementation of ACL Middleware/System for roles
 
 - __SKELETON__
 - Users:
