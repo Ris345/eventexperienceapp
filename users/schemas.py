@@ -53,11 +53,15 @@ class UserSchema(UserBase):
     id: int
     is_active: bool
     created_at: datetime = None
-    groups: List[GroupBase]
+    groups: List[GroupSchema]
 
     class Config:
         orm_mode = True
 
 
 class GroupCreate(GroupBase):
+    pass
+
+
+class DuplicateAccountError(ValueError):
     pass
