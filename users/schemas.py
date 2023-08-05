@@ -13,7 +13,6 @@ ModelSchema - schemas used when reading data,w hen returning it from API
 
 
 class UserBase(BaseModel):
-    id: int
     username: str
     first_name: str
     last_name: str
@@ -46,17 +45,18 @@ class GroupSchema(GroupBase):
         orm_mode = True
 
 
+class UserCreate(UserBase):
+    password: str
+
+
 class UserSchema(UserBase):
+    id: int
     is_active: bool
     created_at: datetime = None
     groups: Optional[List[GroupBase]]
 
     class Config:
         orm_mode = True
-
-
-class UserCreate(UserBase):
-    password: str
 
 
 class GroupCreate(GroupBase):

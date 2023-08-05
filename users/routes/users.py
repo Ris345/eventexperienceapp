@@ -29,14 +29,14 @@ router = APIRouter()
 
 
 # Added RequestValidationError Handler that if app is provided invalid data will respond with type of error, and invalid response body
-@router.exception_handler(RequestValidationError)
-def validation_exception_handler(request: Request, exc: RequestValidationError):
-    return JSONResponse(
-        status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
-        content=jsonable_encoder(
-            {"response details": exc.errors(), "invalid body": exc.body}
-        ),
-    )
+# @router.exception_handler(RequestValidationError)
+# def validation_exception_handler(request: Request, exc: RequestValidationError):
+#     return JSONResponse(
+#         status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+#         content=jsonable_encoder(
+#             {"response details": exc.errors(), "invalid body": exc.body}
+#         ),
+#     )
 
 
 @router.get("/users", response_model=List[UserSchema])
@@ -53,12 +53,20 @@ def get_user_by_id(user_id: int, db: Session = Depends(get_db)):
     return user
 
 
-@router.get("/users/{username}", response_model=UserSchema)
+@router.get("/users_by_username/{username}", response_model=UserSchema)
 def get_user_by_username(username: str, db: Session = Depends(get_db)):
     user = db_get_user_by_username(db, username)
     if user is None:
         raise HTTPException(status_code=400, detail="user not found")
     return user
+
+
+@router.post("/users", response_model=UserSchema)
+def create_user(user: UserCreate, db: Session = Depends(get_db)):
+    db_create_user = db_get_user_by_username(db, username=user.username)
+    if user:
+        raise HTTPException(status_code=404, detail="Info is already registered")
+    return create_user(db=db, user=user)
 
 
 """
