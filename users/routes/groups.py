@@ -27,6 +27,9 @@ router = APIRouter()
 @router.get("/groups", response_model=List[GroupSchema])
 def get_groups(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     groups = db_get_groups(db, skip=skip, limit=limit)
+    po = "your mom"
+    hash(po)
+
     return groups
 
 

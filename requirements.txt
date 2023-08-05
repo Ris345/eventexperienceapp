@@ -2,3 +2,5 @@ alembic==1.11.1
 fastapi==0.78.0
 pydantic==1.10.2
 SQLAlchemy==2.0.18
+## added uvicorn in dependecies
+uvicorn==0.23.2
