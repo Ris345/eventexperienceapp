@@ -7,17 +7,11 @@ Base = database.Base
 engine = database.engine
 SessionLocal = database.SessionLocal
 
-class User(Base):
-    __tablename__ = "users"
+class Task(Base):
+    __tablename__ = "task"
     id = Column(Integer, primary_key=True, index=True)
-    username = Column(String, unique=True, index=True)
-    first_name = Column(String)
-    last_name = Column(String)
-    email = Column(String, unique=True, index=True)
-    about = Column(Text)
-    hashed_password = Column(String)
-    profile_photo = Column(String)
-    created_at = Column(DateTime, default=datetime.utcnow())
-    # M2M
-    groups = relationship("Group", secondary="group_users", back_populates="users")
-    is_active = Column(Boolean, default=True)
+    task = Column(String)
+    quantity = Column(Integer)
+    date_created = Column(DateTime, default=datetime.utcnow())
+    lastModifiedDateTime = Column(DateTime)
+
