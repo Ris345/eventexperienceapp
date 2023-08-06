@@ -56,7 +56,7 @@ class UserSchema(UserBase):
     id: int
     is_active: bool
     created_at: datetime = None
-    groups: List[GroupSchema]
+    groups: Optional[List[GroupSchema]]
 
     class Config:
         orm_mode = True

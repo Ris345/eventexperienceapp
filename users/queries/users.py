@@ -1,7 +1,10 @@
 import models
 from sqlalchemy.orm import Session, joinedload
-from fastapi import Depends
 from schemas import UserSchema, UserCreate
+
+
+class DuplicateAccountError(ValueError):
+    pass
 
 
 def db_get_users(db: Session, skip: int = 0, limit: int = 100):
@@ -16,13 +19,20 @@ def db_get_users(db: Session, skip: int = 0, limit: int = 100):
     return user_schemas
 
 
-def db_confirm_user(db: Session, username: str, email: str):
+def db_check_email_and_username(db: Session, username: str, email: str):
     user_id_and_email = (
         db.query(models.User)
         .where(models.User.username == username and models.User.email == email)
-        .first()
+        .all()
     )
     return user_id_and_email
+
+
+def db_check_email_or_username(db: Session, username: str, email: str):
+    user_id_or_email = db.query(models.User).where(
+        models.User.username == username or models.User.email == email
+    )
+    return user_id_or_email
 
 
 def db_get_user_by_id(

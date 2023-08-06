@@ -1,6 +1,5 @@
 from queries.users import (
     db_get_users,
-    db_confirm_user,
     db_get_user_by_id,
     db_get_user_by_username,
     db_get_user_by_email,
@@ -71,24 +70,55 @@ def create_user(
     password: str = Form(...),
     db: Session = Depends(get_db),
 ):
-    user = UserCreate(
-        username=username,
-        first_name=first_name,
-        last_name=last_name,
-        email=email,
-        hashed_password=password,
-        about=about,
-        profile_photo=profile_photo,
-        password=password,
-    )
-    db_get_user = db_get_user_by_username(db, username=user.username)
-    if db_get_user is not None:
-        raise HTTPException(status_code=404, detail="Info is already registered")
-    return db_create_user(db=db, user=user)
+    try:
+        db_get_userby_username = db_get_user_by_username(db, username=username)
+        if db_get_userby_username is not None:
+            raise HTTPException(
+                status_code=400, detail="Username is already registered to a user"
+            )
 
+        db_get_userby_email = db_get_user_by_email(db, email=email)
+        if db_get_userby_email is not None:
+            raise HTTPException(
+                status_code=400, detail="Email is already registered to a user"
+            )
+
+        user = UserCreate(
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            password=hash(password),
+            about=about,
+            profile_photo=profile_photo,
+        )
+
+        return db_create_user(db=db, user=user)
+    except HTTPException:
+        raise
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=400,
+            detail="Can not create an account with those credentials",
+        ) from e
+
+
+# def update_user('/usr')
 
 """
-router.get('/users/{user_id}/rsvps/)
+router.get('/users/{user_id}/rsvps)
+router.get('/users/{user_id}/favorites')
+
+or we get rsvps, favorites, task, task' notifications via the current user
+
+router.get('/get_user/rsvps')
+router.get('/get_user/favorites')
+router.get('/get_user/tasks')
+router.get('/get_user/tasklists')
+
+or get favorites, rsvps,
+)
 - Get notifications for user via id
 
 - will  have to query the rsvps of a user via the rsvp table that has foreign keys tied to user and event
