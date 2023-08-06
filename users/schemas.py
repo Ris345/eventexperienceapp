@@ -23,6 +23,7 @@ class UserBase(BaseModel):
     # SQL Alchemy does not return dict, which pydantic expects by default. Config allows loading from standard orm parameters (attributes on object as opposed to a dict lookup)
     class Config:
         orm_mode = True
+        from_attributes = True
 
 
 # changed groupbase and group schema in order to incoporate owner data, so removed owner_id from groupbase and added an owner field for owner data in group schema
@@ -35,6 +36,7 @@ class GroupBase(BaseModel):
 
     class Config:
         orm_mode = True
+        from_attributes = True
 
 
 class GroupSchema(GroupBase):
@@ -43,6 +45,7 @@ class GroupSchema(GroupBase):
 
     class Config:
         orm_mode = True
+        from_attributes = True
 
 
 class UserCreate(UserBase):
@@ -57,6 +60,7 @@ class UserSchema(UserBase):
 
     class Config:
         orm_mode = True
+        from_attributes = True
 
 
 class GroupCreate(GroupBase):
