@@ -6,18 +6,20 @@ from sqlalchemy.orm import joinedload
 
 # To do change these to a tasks
 
-class GroupBase(BaseModel):
+class TaskBase(BaseModel):
     id: int
-    owner_id: int
-    name: str
-    description: str | None = None
-    users: List[UserBase]
+    task: str
+    quantity: int
 
+
+    # SQL Alchemy does not return dict, which pydantic expects by default. Config allows loading from standard orm parameters (attributes on object as opposed to a dict lookup)
     class Config:
         orm_mode = True
 
-class GroupSchema(GroupBase):
-    users: Optional[List[UserBase]]
+
+class TaskSchema(TaskBase):
+
+    created_at: datetime = None
 
     class Config:
         orm_mode = True

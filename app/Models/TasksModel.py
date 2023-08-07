@@ -15,3 +15,15 @@ class Task(Base):
     date_created = Column(DateTime, default=datetime.utcnow())
     lastModifiedDateTime = Column(DateTime)
 
+Base.metadata.create_all(engine)
+with SessionLocal() as session:
+    Task1 = Task(
+        task="task1",
+        quantity=2,
+    )
+    Task2 = Task(
+        task="task2",
+        quantity=420
+    )
+    session.add_all([Task1, Task2])
+    session.commit()
