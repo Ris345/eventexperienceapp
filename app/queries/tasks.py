@@ -1,27 +1,26 @@
-import models
+from Models import TasksModel
 from sqlalchemy.orm import Session, joinedload
 from fastapi import Depends
 
 
-def db_get_users(db: Session, skip: int = 0, limit: int = 100):
-    db_users = (
-        db.query(models.User)
-        .options(joinedload(models.User.groups))
+def db_get_tasks(db: Session, skip: int = 0, limit: int = 100):
+    db_tasks = (
+        db.query(TasksModel.Task)
         .offset(skip)
         .limit(limit)
         .all()
     )
-    return db_users
+    return db_tasks
 
 
-def db_get_user(
+def db_get_task(
     db: Session,
-    user_id: int,
+    task_id: int,
 ):
-    db_user = (
-        db.query(models.User)
-        .options(joinedload(models.User.groups))
-        .where(models.User.id == user_id)
+    db_task = (
+        db.query(TasksModel.Task)
+        # .options(joinedload(models.User.groups))
+        .where(TasksModel.Task.id == task_id)
         .first()
     )
-    return db_user
+    return db_task

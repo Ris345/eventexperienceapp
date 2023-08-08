@@ -1,6 +1,6 @@
 from queries import users
-import schemas
-from queries.users import db_get_user, db_get_users
+from Schema import TaskSchema
+from queries.tasks import db_get_tasks, db_get_task
 from fastapi import (
     Depends,
     HTTPException,
@@ -26,15 +26,15 @@ def get_db():
 router = APIRouter()
 
 
-@router.get("/users", response_model=List[schemas.UserSchema])
-def get_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    users = db_get_users(db, skip=skip, limit=limit)
-    return users
+@router.get("/tasks", response_model=List[TaskSchema.TaskSchema])
+def get_tasks(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    tasks = db_get_tasks(db, skip=skip, limit=limit)
+    return tasks
 
 
-@router.get("/users/{user_id}", response_model=schemas.UserSchema)
-def get_user(user_id: int, db: Session = Depends(get_db)):
-    user = db_get_user(db, user_id)
-    if user is None:
-        raise HTTPException(status_code=400, detail="user not found")
-    return user
+@router.get("/tasks/{task_id}", response_model=TaskSchema.TaskSchema)
+def get_task(task_id: int, db: Session = Depends(get_db)):
+    task = db_get_task(db, task_id)
+    if task is None:
+        raise HTTPException(status_code=400, detail="task not found")
+    return task
