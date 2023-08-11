@@ -1,6 +1,5 @@
-from queries import users
 from Schema import TaskSchema
-from queries.tasks import db_get_tasks, db_get_task
+from queries.tasks import db_get_tasks, db_get_task, db_post_tasks
 from fastapi import (
     Depends,
     HTTPException,
@@ -36,5 +35,12 @@ def get_tasks(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 def get_task(task_id: int, db: Session = Depends(get_db)):
     task = db_get_task(db, task_id)
     if task is None:
+        raise HTTPException(status_code=400, detail="task not found")
+    return task
+
+@router.post("/tasks/create", response_model=TaskSchema.TaskSchema)
+def post_task(task : TaskSchema.TaskSchema, db: Session = Depends(get_db)):
+    tasks = db_post_tasks(task.task, task.quantity, db)
+    if tasks is None:
         raise HTTPException(status_code=400, detail="task not found")
     return task

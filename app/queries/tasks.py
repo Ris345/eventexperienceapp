@@ -24,3 +24,18 @@ def db_get_task(
         .first()
     )
     return db_task
+
+def db_post_tasks(task_name, quantity, db: Session):
+    newTask = TasksModel.Task(
+        task=task_name,
+        quantity = quantity
+    )
+    db.add(newTask)
+    db.commit()
+    db_tasks = (
+        db.query(TasksModel.Task)
+        .where(TasksModel.Task.task == task_name)
+        .all()
+    )
+    return db_tasks
+

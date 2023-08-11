@@ -7,7 +7,7 @@ from sqlalchemy.orm import joinedload
 # To do change these to a tasks
 
 class TaskBase(BaseModel):
-    id: int
+    id: int | None = None
     task: str
     quantity: int
 
