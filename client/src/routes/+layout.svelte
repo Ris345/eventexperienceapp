@@ -1,29 +1,15 @@
 <script>
-	import Menu from '@smui/menu';
+
 	import Button, { Label } from '@smui/button';
-	import List, { Item, Separator, Text } from '@smui/list';
-  	import { Anchor } from '@smui/menu-surface';
+	import { onMount, setContext } from 'svelte';
 
-  let menu;
 
-  class Notification {
-		constructor(type, date, user, meetup) {
-				this.date = date;
-				this.type = type;
-				this.user = user;
-				this.meetup = meetup;
-			}
-	}
-	function getNotifications () {
-		let notifications = [];
-		const notification = new Notification(
-			"event",
-			"NewAlert",
-			"username 123",
-			"Meetup On AI and Robots"
-		);
-		notifications.push(notification);
-	}
+
+	
+	// onMount(() => {
+	// 	notifications = [];
+	// });
+
 </script>
 
 <h1>
@@ -45,12 +31,10 @@
 	<span style="font-size:.5em; font-weight:300;">Event Experience Team Coordination</span>
 </h1>
 
-<!-- Notifications menu using SMUI https://sveltematerialui.com/demo/menu/ -->
-<!-- currently not working -->
-<div class='notifications'>
-	<Button type="button" on:click={getNotifications} variant="raised"
-		><Label>Notifications</Label></Button>
-</div>
+
+
+	
+
 
 <!-- Bell icon for notifications?
 <div>
@@ -115,10 +99,15 @@
 	:global(html) {
 		min-height: 100vh;
 	}
-	.notifications {
-		position: absolute;
-		right: 2em;
-		margin-top: 20px;
-		font-weight: bolder;
-	}
+	
+	/* #notification {
+		border: 1px solid black;
+		background: white;
+		margin: 0 5px 1em 5px;
+		display: flex;
+		flex-flow: column;
+		gap: 0.5em;
+		padding: 0.5em;
+		overflow: hidden;
+	} */
 </style>
