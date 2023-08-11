@@ -6,7 +6,24 @@
 
   let menu;
 
-
+  class Notification {
+		constructor(type, date, user, meetup) {
+				this.date = date;
+				this.type = type;
+				this.user = user;
+				this.meetup = meetup;
+			}
+	}
+	function getNotifications () {
+		let notifications = [];
+		const notification = new Notification(
+			"event",
+			"NewAlert",
+			"username 123",
+			"Meetup On AI and Robots"
+		);
+		notifications.push(notification);
+	}
 </script>
 
 <h1>
@@ -30,20 +47,9 @@
 
 <!-- Notifications menu using SMUI https://sveltematerialui.com/demo/menu/ -->
 <!-- currently not working -->
-<div class='notifications' style="min-width: 100px;">
-	<Button on:click={() => {
-		menu.setOpen(true);
-		console.log(menu);
-	}}>
-	  <Label>Notifications</Label>
-	</Button>
-	<Menu bind:this={menu}>
-		<List>
-			<Item on:SMUI:action={() => (console.log("clicked"))}>
-				<Text style='color:black;'>Insert Item</Text>
-			</Item>
-		</List>
-	</Menu>
+<div class='notifications'>
+	<Button type="button" on:click={getNotifications} variant="raised"
+		><Label>Notifications</Label></Button>
 </div>
 
 <!-- Bell icon for notifications?
@@ -111,9 +117,8 @@
 	}
 	.notifications {
 		position: absolute;
-		right: 5em;
+		right: 2em;
 		margin-top: 20px;
 		font-weight: bolder;
-		transform: scale(1.5);
 	}
 </style>

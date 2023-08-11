@@ -11,6 +11,9 @@
 			this.attendees = attendees;
 		}
 	}
+
+
+
 	export let events = [];
 	let open = false,
 		selectedEvent = null;
@@ -72,6 +75,12 @@
 	<Button type="button" on:click={populate} variant="raised"
 		><Label>Populate Events (TESTING ONLY)</Label></Button
 	>
+	
+	
+	
+	
+	
+	
 </main>
 
 <style>
