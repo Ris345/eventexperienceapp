@@ -74,7 +74,7 @@ def db_get_user_by_email(
     return user
 
 
-# attempted OAuth2 w/ password + hashing, bearer w/ JWT tokens
+# desire: attempt OAuth2 w/ password + hashing, bearer w/ JWT tokens
 def db_create_user(db: Session, user: UserCreate):
     try:
         fake_hashed_password = hash(user.password)
@@ -93,3 +93,20 @@ def db_create_user(db: Session, user: UserCreate):
         return db_user
     except:
         return {"message": "create did not work"}
+
+
+"""
+endpoint can only be performed by specific user from profile page
+"""
+# def db_update_user('/users/{user_id}')
+# def db_update_user('/users/{username})
+
+# protected endpoint
+# def db_delete_user('/users/{user_id}')
+
+"""
+def db_get_user_notifications(
+    db:Session,
+    user_id: int,
+):
+"""

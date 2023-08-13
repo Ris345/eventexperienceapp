@@ -104,15 +104,9 @@ def create_user(
         ) from e
 
 
-"""
-endpoint can only be performed by specific user from profile page
-"""
-# def update_user('/users/{user_id}')
-# def update_user('/users/{username})
+# @router.put
 
-# protected endpoint
-# def delete_user('/users/{user_id}')
-
+# @router.delete
 """
 # Admin Router
 router.get('/users/{user_id}/rsvps)
@@ -160,6 +154,7 @@ push_notifications = []
 [ if we want notifications to be pushed to a user dashboard an interval before event]
 
 notification_interval = 1 day
+notification = "your event is soon"
 for user in users:
     for event in user.events:
         if event[attending]==True and (current_day-event.start_time==notification_interval):

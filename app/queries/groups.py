@@ -44,3 +44,11 @@ def db_get_group(
         .first()
     )
     return db_group
+
+
+"""
+def db_get_group_notifications(
+    db:Session,
+    group_id: int,
+):
+"""
