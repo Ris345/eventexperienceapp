@@ -1,5 +1,5 @@
-import models.GroupsUsers as models
-from schemas.GroupUsers import GroupSchema
+import models.userGroups as models
+from schemas.userGroups import GroupSchema
 from sqlalchemy.orm import Session, joinedload
 from fastapi import Depends
 from typing import List
@@ -45,6 +45,17 @@ def db_get_group(
     )
     return db_group
 
+
+"""
+potentially protected endpoints
+(1) who can create new groups?
+(2) who can update/delete groups?
+"""
+
+# def db_create_group
+
+# def db_update_grouo
+# def db_delete_group
 
 """
 def db_get_group_notifications(

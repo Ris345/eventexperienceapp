@@ -35,6 +35,8 @@
     - > a script similar could be in the above form, taking into account sqlite
         1. script for sqlite: [SQLite SH](../../relational-data/create-multiple-databases.sh)
         2. alembic ini for each microservice
+            - install alembic
+                - `pip install alembic`
             -update url to point to corresponding db file
                 - example: [users alembic.ini](../../users/alembic.ini)
         3. Ensure each ms has own alembic directory
