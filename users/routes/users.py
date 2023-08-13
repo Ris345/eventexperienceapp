@@ -43,7 +43,7 @@ def get_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return users
 
 
-@router.get("/users/{user_id}", response_model=UserSchema)
+@router.get("/users_by_user_id/{user_id}", response_model=UserSchema)
 def get_user_by_id(user_id: int, db: Session = Depends(get_db)):
     user = db_get_user_by_id(db, user_id)
     if user is None:
@@ -104,14 +104,23 @@ def create_user(
         ) from e
 
 
-# def update_user('/usr')
+"""
+endpoint can only be performed by specific user from profile page
+"""
+# def update_user('/users/{user_id}')
+# def update_user('/users/{username})
+
+# protected endpoint
+# def delete_user('/users/{user_id}')
 
 """
+# Admin Router
 router.get('/users/{user_id}/rsvps)
 router.get('/users/{user_id}/favorites')
 
 or we get rsvps, favorites, task, task' notifications via the current user
 
+# Via GetAccount Data
 router.get('/get_user/rsvps')
 router.get('/get_user/favorites')
 router.get('/get_user/tasks')

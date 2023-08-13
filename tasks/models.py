@@ -1,6 +1,6 @@
-# class Task(Base):
-#     pass
+"""
+Can assign multiple users to a tasklist and multiple tasks to a single user
 
-
-# class TaskList(Base):
-#     pass
+class Task
+class TaskList
+"""
