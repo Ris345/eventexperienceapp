@@ -24,13 +24,14 @@ POST api/tasks
 
 ```json
 {
-   
-  "task": "Buy groceries",
-  "quantity": 10,
-  "complete": false,
-  "date_created": "2023-08-03T12:00:00Z",
-  "lastModifiedDateTime": "2022-04-06T12:00:00Z"
-
+    "properties": {
+        "description": "Buy Groceries",
+        "quantity": 10,           
+        "assigned_user": "volunteer",
+    },
+    "complete": false,
+    "date_created": "2023-08-03T12:00:00Z",
+    "lastModifiedDateTime": "2022-04-06T12:00:00Z"
 }
 ```
 
@@ -43,12 +44,15 @@ POST api/tasks
 
 ```json
 {
-  "id": "01",
-  "task": "Buy groceries",
-  "quantity": 10,
-  "complete": false,
-  "date_created": "2023-08-03T12:00:00Z",
-  "lastModifiedDateTime": "2022-04-06T12:00:00Z"
+    "id": "01",
+    "properties": {
+        "description": "Buy Groceries",
+        "quantity": 10,           
+        "assigned_user": "volunteer",
+    },
+    "complete": false,
+    "date_created": "2023-08-03T12:00:00Z",
+    "lastModifiedDateTime": "2022-04-06T12:00:00Z"
 }
 ```
 
@@ -66,12 +70,15 @@ POST api/tasks
 
 ```json
 {
-  "id": "01",
-  "task": "Buy groceries",
-  "quantity": 10,
-  "complete": false,
-  "date_created": "2023-08-03T12:00:00Z",
-  "lastModifiedDateTime": "2022-04-06T12:00:00Z"
+    "id": "01",
+    "properties": {
+        "description": "Buy Groceries",
+        "quantity": 10,           
+        "assigned_user": "volunteer",
+    },
+    "complete": false,
+    "date_created": "2023-08-03T12:00:00Z",
+    "lastModifiedDateTime": "2022-04-06T12:00:00Z"
 }
 ```
 
@@ -85,11 +92,15 @@ PUT /tasks/{{id}}
 
 ```json
 {
-  "task": "Buy groceries",
-  "quantity": 10,
-  "complete": false,
-  "date_created": "2023-08-03T12:00:00Z",
-  "lastModifiedDateTime": "2022-04-06T12:00:00Z"
+    "id": "01",
+    "properties": {
+        "description": "Buy Groceries",
+        "quantity": 10,           
+        "assigned_user": "volunteer",
+    },
+    "complete": false,
+    "date_created": "2023-08-03T12:00:00Z",
+    "lastModifiedDateTime": "2022-04-06T12:00:00Z"
 }
 ```
 
