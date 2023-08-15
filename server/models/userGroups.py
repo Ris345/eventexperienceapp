@@ -13,6 +13,7 @@ from sqlalchemy.orm import relationship, joinedload
 import database
 from .events import Event
 
+
 Base = database.Base
 engine = database.engine
 SessionLocal = database.SessionLocal
@@ -49,26 +50,32 @@ class User(Base):
 
 """
 Favorites Model
+many favorites to one event, fk to events
+
+class Favorite(Base):
+    __tablename__='favorites'
+    (attributes)
+        event
+        user
 
 RSVP Model
+many rsvps to one event, fk to events
+
+class RSVPs(Base):
+    __tablename__='rsvps'
+    (attributes)
+        event
+        user
+        is_attending = Column(Boolean, default=True)
 """
 
 
-class Favorites(Base):
-    __tablename__='favorites'
-    event =
-    user =
-
-
-class RSVPS(Base):
-    event =
-    user =
-    is_attending = Column(Boolean, default=True)
-
-
 """
+We need to flesh this idea out more
+
 class UserNotfication(Base):
     user = relationship('User')
+    ... (Not sure about rest)
 """
 
 

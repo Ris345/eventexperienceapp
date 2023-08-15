@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # ./sql_app.db (opening a file in sqlite db), file located in same directory in file sql_app.db
-SQLALCHEMY_DATABASE_URL = "sqlite:///./users_sql_app.db"
+SQLALCHEMY_DATABASE_URL = "sqlite:///./server_sql_app.db"
 
 # using sync(def) functions, check_same_thread parameter allows >1 thread to interact with db for same request
 """

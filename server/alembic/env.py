@@ -8,7 +8,7 @@ from models.GroupsUsers import Base
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
-database_url = "sqlite:///./users_sql_app.db"
+database_url = "sqlite:///./server_sql_app.db"
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.

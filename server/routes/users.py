@@ -28,17 +28,6 @@ def get_db():
 router = APIRouter()
 
 
-# Added RequestValidationError Handler that if app is provided invalid data will respond with type of error, and invalid response body
-@router.exception_handler(RequestValidationError)
-def validation_exception_handler(request: Request, exc: RequestValidationError):
-    return JSONResponse(
-        status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
-        content=jsonable_encoder(
-            {"response details": exc.errors(), "invalid body": exc.body}
-        ),
-    )
-
-
 @router.get("/users", response_model=List[UserSchema])
 def get_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     users = db_get_users(db, skip=skip, limit=limit)
@@ -111,20 +100,30 @@ def create_user(
 # @router.delete
 """
 # Admin Router
+- As a start we can perform a get request for a singular user and get their rsvps, favorites, and tasks, tasklists
+
 router.get('/users/{user_id}/rsvps)
 router.get('/users/{user_id}/favorites')
+* router.get('/users/.../tasks')
+* router.get('/users/.../tasklists')
+    * basically want to get the tasks, tasklists that a user has subscribed with
 
-or we get rsvps, favorites, task, task' notifications via the current user
+
+- Eventually we want to do it for the signed in user using account data via the token/user session
 
 # Via GetAccount Data
-router.get('/get_user/rsvps')
-router.get('/get_user/favorites')
-router.get('/get_user/tasks')
-router.get('/get_user/tasklists')
+router.get('/get_account/rsvps')
+router.get('/get_account/favorites')
+router.get('/get_account/tasks')
+router.get('/get_account/tasklists')
 
-or get favorites, rsvps,
-)
+
 - Get notifications for user via id
+router.get('/get_account/notifications')
+    * with this we want to have notifications about events, changes made to events, tasks, changes made to tasks/tasklists
+
+
+! AMATEUR NOVICE IMPLEMENTATION !
 
 - will  have to query the rsvps of a user via the rsvp table that has foreign keys tied to user and event
 - the rsvp object should look like this
