@@ -33,9 +33,10 @@ calendar2 | [event2, event3]
 """
 
 """
-Events polled in from google calendar would resemble this model:
+! need to think about poller for google calendar date !
 
-# via calendar_list_data.json in the data folder
+Calendar polled in from google calendar would resemble this model:
+# via calendar_list_data.json in /data
 
 class CalendarVO(Base):
     id = str
@@ -49,7 +50,35 @@ class CalendarVO(Base):
     nextSyncToken = str
     items ('events') = [ ]
 
-Going to test using jsonencooder 'ACL' in order to see if i can get events from json file to show up in current db sessions
+Going to test using jsonencooder in order to see if i can get events from json file to show up in current db sessions
+
+Events polled in from google calendar would resemble this model:
+# via calendar_event_data.json in /data
+
+class EventVO(Base):
+    id = str
+    kind = str
+    etag = str
+    status = str
+    htmlLink = str
+    created = datetime
+    updated = datetime
+    summary = text
+    description = text
+    creator (dict)
+        email = str
+    organizer (dict)
+        email
+        displayName
+    start
+        dateTime
+        timeZone
+    end
+        dateTime
+        timeZone
+    icalUID
+    attendees = []
+    eventType = str
 """
 
 
