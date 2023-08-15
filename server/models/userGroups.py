@@ -27,7 +27,7 @@ user3 | secret3 | volunteer
 
 # Creating classes that inherit from Base
 """
- User Model that contains the attributes of id, username, ..., profile_photo to be a url coming from an s3 storage bucket, many to manyrelationship with groups meaning that there can be many users in one group, many groups assigned to one user
+ User Model that contains the attributes of id, username, ..., profile_photo to be a url coming from an s3 storage bucket, many to many relationship with groups meaning that there can be many users in one group, many groups assigned to one user
  """
 
 

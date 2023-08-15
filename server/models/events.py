@@ -94,11 +94,12 @@ class Event(Base):
 
 '''
 one event has one type
-'''
 class EventType(Base):
     __tablename__ = 'event_type'
-    id =
-    name =
+
+    this should have id, name
+'''
+
 
 
 

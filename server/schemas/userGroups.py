@@ -8,7 +8,6 @@ ModelBase - common attributes when creating or reading data
 ModelCreate - inherit from BaseModel and include additional info for creation
 
 ModelSchema - schemas used when reading data, when returning it from API
-    - For User
 """
 
 
