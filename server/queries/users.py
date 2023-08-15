@@ -1,6 +1,6 @@
-import models.userGroups as models
+import models.users as models
 from sqlalchemy.orm import Session, joinedload
-from schemas.userGroups import UserSchema, UserCreate
+from schemas.users import UserSchema, UserCreate
 
 
 class DuplicateAccountError(ValueError):

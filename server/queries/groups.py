@@ -1,5 +1,5 @@
-import models.userGroups as models
-from schemas.userGroups import GroupSchema
+import models.users as models
+from schemas.users import GroupSchema
 from sqlalchemy.orm import Session, joinedload
 from fastapi import Depends
 from typing import List

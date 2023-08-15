@@ -93,7 +93,7 @@ class Event(Base):
     max_rsvps - max number of allowed rsvps, int
 
     attendees - number of users that are registered for event, type is list []
-        - this will have to read from the rsvp table from userGroups
+        - this will have to read from the rsvp table from users
 
     attachment - str, attachment for the event maybe like a pdf for flier
 

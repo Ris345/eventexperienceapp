@@ -78,6 +78,16 @@ class UserNotfication(Base):
     ... (Not sure about rest)
 """
 
+"""
+Groups<->Events
+multiple groups to one event
+multiple events to one group
+
+needs to have a formed relationship with events
+
+events = relationship("Event", secondary="event_group", back_populates="groups")
+"""
+
 
 class Group(Base):
     __tablename__ = "groups"
@@ -90,7 +100,6 @@ class Group(Base):
     # establish bidirectional relation between objects
     # user foreignkey relationship prior to indicate to sqlalchemy to load related obj at attribute access time
     owner = relationship("User", back_populates="groups", lazy="joined")
-    events = relationship("Event", secondary="event_group", back_populates="groups")
 
 
 # GroupUser, EventGroup Table facilitates Many to Many relationship
