@@ -124,10 +124,15 @@ class GroupUser(Base):
     group_id = Column(Integer, ForeignKey("groups.id"))
 
 
+"""
+Theoretical implementation
+Required for many to many relationship with events
+
 class EventGroup(Base):
     __tablename__ = "event_group"
     event_id = Column(Integer, ForeignKey("events.id"))
     group_id = Column(Integer, ForeignKey("groups.id"))
+"""
 
 
 # Testing Data Insertion
