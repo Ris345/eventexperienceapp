@@ -52,7 +52,7 @@ class User(Base):
 Favorites Model
 many favorites to one event, fk to events
 
-class Favorite(Base):
+class Favorites(Base):
     __tablename__='favorites'
     (attributes)
         event
