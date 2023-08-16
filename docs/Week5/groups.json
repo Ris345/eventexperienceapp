@@ -1,0 +1,70 @@
+[
+  {
+    "id": 1,
+    "name": "group1",
+    "description": "group1 description",
+    "users": [
+      {
+        "id": 1,
+        "username": "user1",
+        "first_name": "first1",
+        "last_name": "last1",
+        "email": "user1@user.com",
+        "about": "about user1",
+        "profile_photo": "aws3.privatebucket.com/user1_photo"
+      },
+      {
+        "id": 2,
+        "username": "user2",
+        "first_name": "first2",
+        "last_name": "last2",
+        "email": "user2@user.com",
+        "about": "about user2",
+        "profile_photo": "aws3.privatebucket.com/user2_photo"
+      }
+    ],
+    "owner": {
+      "id": 1,
+      "username": "user1",
+      "first_name": "first1",
+      "last_name": "last1",
+      "email": "user1@user.com",
+      "about": "about user1",
+      "profile_photo": "aws3.privatebucket.com/user1_photo"
+    }
+  },
+  {
+    "id": 2,
+    "name": "group2",
+    "description": "group2 description",
+    "users": [
+      {
+        "id": 2,
+        "username": "user2",
+        "first_name": "first2",
+        "last_name": "last2",
+        "email": "user2@user.com",
+        "about": "about user2",
+        "profile_photo": "aws3.privatebucket.com/user2_photo"
+      },
+      {
+        "id": 3,
+        "username": "user3",
+        "first_name": "first3",
+        "last_name": "last3",
+        "email": "user3@user.com",
+        "about": "about user3",
+        "profile_photo": "aws3.privatebucket.com/user3_photo"
+      }
+    ],
+    "owner": {
+      "id": 2,
+      "username": "user2",
+      "first_name": "first2",
+      "last_name": "last2",
+      "email": "user2@user.com",
+      "about": "about user2",
+      "profile_photo": "aws3.privatebucket.com/user2_photo"
+    }
+  }
+]
