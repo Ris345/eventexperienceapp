@@ -24,10 +24,18 @@ class Task(Base):
     type - fk to types table
     isCompleted - boolean, true/false
     priority - fk to priority table
-
-Multiple tasks to one user
-Cant have multiple users assigned to one task
-    - thats what im assuming tasklist would alleviate (?)
+    Multiple tasks to one user
+    Cant have multiple users assigned to one task
+        - thats what im assuming tasklist would alleviate (?)
+    """
+class Task(Base):
+    __tablename__ = "tasks"
+    id = Column(Integer, primary_key=True, index = True)
+    name = Column(String, nullable = False)
+    description = Column(String, nullable = False)
+    tasklist_id = Column(Integer, ForeignKey("task_list.id"))
+    owner= relationship("TaskList", back_populates="tasks")
+"""
 
 TaskList Model
     id - pk, int
@@ -37,7 +45,13 @@ TaskList Model
     priority - fk to priority table
     assigned_group - fk to group table
     description - text
-
+"""
+class TaskList(Base):
+    __tablename__ = "task_list"
+    id = Column(Integer, primary_key = True, index = True)
+    name = Column(String, nullable = False)
+    tasks = relationship("Task", back_populates="owner")
+"""
 TaskType Model
     id - pk, int
     name - name of type
@@ -48,14 +62,21 @@ Priority Model
     level - int ex: out of x
 """
 
+# class TaskType(Base):
+#     pass
 
-class Task(Base):
-    pass
-
-
-class TaskList(Base):
-    pass
-
-
-class TaskType(Base):
-    pass
+# Test if models work
+Base.metadata.create_all(engine)
+with SessionLocal() as session:
+    tasklist1 = TaskList(name = "tasklist1")
+    tasklist2 = TaskList(name = "tasklist2")
+    task1 = Task(name = "task1", description = "description1")
+    task2 = Task(name = "task2", description = "description2")
+    task3 = Task(name = "task3", description = "description3")
+    task1.tasklist_id= 1
+    task2.tasklist_id= 1
+    task3.tasklist_id= 2
+    tasklist1.tasks = [task1, task2]
+    tasklist2.tasks = [task3]
+    session.add_all([tasklist1,tasklist2,task1,task2,task3])
+    session.commit()
