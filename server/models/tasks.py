@@ -2,7 +2,7 @@ from datetime import datetime
 from sqlalchemy import Boolean, Column, ForeignKey, String, DateTime, Integer, Text
 from sqlalchemy.orm import relationship, joinedload
 import database
-
+from .users import User
 Base = database.Base
 engine = database.engine
 SessionLocal = database.SessionLocal
@@ -30,11 +30,14 @@ class Task(Base):
     """
 class Task(Base):
     __tablename__ = "tasks"
+    __table_args__ = {'extend_existing':True}
     id = Column(Integer, primary_key=True, index = True)
     name = Column(String, nullable = False)
     description = Column(String, nullable = False)
     tasklist_id = Column(Integer, ForeignKey("task_list.id"))
-    owner= relationship("TaskList", back_populates="tasks")
+    task_list= relationship("TaskList", back_populates="tasks")
+    # fk to a user
+    assigned_user = Column(Integer, ForeignKey("users.id"))
 """
 
 TaskList Model
@@ -50,7 +53,7 @@ class TaskList(Base):
     __tablename__ = "task_list"
     id = Column(Integer, primary_key = True, index = True)
     name = Column(String, nullable = False)
-    tasks = relationship("Task", back_populates="owner")
+    tasks = relationship("Task", back_populates="task_list")
 """
 TaskType Model
     id - pk, int
@@ -76,6 +79,7 @@ with SessionLocal() as session:
     task1.tasklist_id= 1
     task2.tasklist_id= 1
     task3.tasklist_id= 2
+    task1.assigned_user=1
     tasklist1.tasks = [task1, task2]
     tasklist2.tasks = [task3]
     session.add_all([tasklist1,tasklist2,task1,task2,task3])
