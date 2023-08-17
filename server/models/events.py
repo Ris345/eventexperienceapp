@@ -11,7 +11,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship, joinedload
 import database
-
+from .users import User
 
 Base = database.Base
 engine = database.engine
@@ -91,6 +91,18 @@ class Calendar(Base):
     description = Column(Text)
     created = Column(DateTime, default=func.now())
     updated = Column(DateTime, onupdate=func.now())
+
+
+class UserCalendar(Base):
+    __tablename__ = "user_calendar"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, unique=True, index=True)
+    summary = Column(Text)
+    description = Column(Text)
+    created = Column(DateTime, default=func.now())
+    updated = Column(DateTime, onupdate=func.now())
+    user = Column(Integer, ForeignKey("users.id"))
+    user = relationship(User)
 
 
 """

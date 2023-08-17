@@ -55,3 +55,4 @@ We welcome contributions to enhance the Event Experience App. If you would like 
 4. Commit and push your changes to your forked repository.
 5. Submit a pull request, clearly explaining the changes you have made and their purpose.
 
+## Installing Black Formatter
