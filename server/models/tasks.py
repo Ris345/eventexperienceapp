@@ -39,9 +39,11 @@ class Task(Base):
     tasklist_id = Column(Integer, ForeignKey("task_list.id"))
     # task_list = relationship("TaskList", back_populates="tasks")
     # fk to a user
-    assigned_user = Column(Integer, ForeignKey("users.id"))
+    assigned_user_id = Column(Integer, ForeignKey("users.id"))
+    assignedUser = relationship("User", lazy = "joined")
     # fk to type
     type_id = Column(Integer, ForeignKey("task_type.id"))
+    type = relationship("TaskType", lazy = "joined")
     # fk to priority
     priority_id = Column(Integer, ForeignKey("task_priority.id"))
     priority = relationship("Priority", lazy = "joined")
@@ -102,7 +104,7 @@ with SessionLocal() as session:
     task1.tasklist_id= 1
     task2.tasklist_id= 1
     task3.tasklist_id= 2
-    task1.assigned_user=1
+    task1.assigned_user_id=1
     tasklist1.tasks = [task1, task2]
     tasklist2.tasks = [task3]
     priority1 = Priority(name = "high", level = 10)

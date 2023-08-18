@@ -1,7 +1,7 @@
 from datetime import date, datetime, time, timedelta
 from pydantic import BaseModel
 from typing import Optional, List
-
+from .users import UserSchema
 """
 ModelBase - common attributes when creating or reading data
 
@@ -9,6 +9,8 @@ ModelCreate - inherit from BaseModel and include additional info for creation
 
 ModelSchema - schemas used when reading data, when returning it from API
 """
+
+
 class TaskPriorityBase(BaseModel):
     name : str
     class Config:
@@ -17,12 +19,20 @@ class TaskPriorityBase(BaseModel):
 class TaskPriority(TaskPriorityBase):
     id : int
 
+class TaskTypeBase(BaseModel):
+    name : str
+
+class TaskType(TaskTypeBase):
+    id: int
 
 class TaskBase(BaseModel):
     name: str
     description: str
     isCompleted: bool
     priority : TaskPriorityBase
+    type : TaskType
+    assignedUser :UserSchema | None = None
+    # assignedUser : int
     class Config:
         orm_mode = True
         from_attributes = True
