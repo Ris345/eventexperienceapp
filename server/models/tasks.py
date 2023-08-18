@@ -2,7 +2,7 @@ from datetime import datetime
 from sqlalchemy import Boolean, Column, ForeignKey, String, DateTime, Integer, Text
 from sqlalchemy.orm import relationship, joinedload
 import database
-from .users import User
+from .users import User, Group
 Base = database.Base
 engine = database.engine
 SessionLocal = database.SessionLocal
@@ -17,7 +17,7 @@ Task Model
 class Task(Base):
     id - primaryKey, int
     name - str
-    owner - fk to users table
+    owner - fk to users table //duplicate column?
     description - text
     tasklist - fk to tasklist
     assigned_user - fk to users table
@@ -34,10 +34,17 @@ class Task(Base):
     id = Column(Integer, primary_key=True, index = True)
     name = Column(String, nullable = False)
     description = Column(String, nullable = False)
+    isCompleted = Column(Boolean, default = False)
+    # fk to tasklist
     tasklist_id = Column(Integer, ForeignKey("task_list.id"))
-    task_list= relationship("TaskList", back_populates="tasks")
+    task_list = relationship("TaskList", back_populates="tasks")
     # fk to a user
     assigned_user = Column(Integer, ForeignKey("users.id"))
+    # fk to type
+    type_id = Column(Integer, ForeignKey("task_type.id"))
+    # fk to priority
+    priority = Column(Integer, ForeignKey("task_priority.id"))
+
 """
 
 TaskList Model
@@ -51,20 +58,34 @@ TaskList Model
 """
 class TaskList(Base):
     __tablename__ = "task_list"
+    __table_args__ = {'extend_existing':True}
     id = Column(Integer, primary_key = True, index = True)
     name = Column(String, nullable = False)
+    owner = Column(Integer, ForeignKey("users.id"))
+    isCompleted = Column(Boolean, default = False)
+    description = Column(String)
+    priority = Column(Integer, ForeignKey("task_priority.id"))
     tasks = relationship("Task", back_populates="task_list")
 """
 TaskType Model
     id - pk, int
     name - name of type
-
+"""
+class TaskType(Base):
+    __tablename__ = "task_type"
+    id = Column(Integer, primary_key = True, index = True)
+    name = Column(String)
+"""
 Priority Model
     id - pk, int
     name - str ex: urgent
     level - int ex: out of x
 """
-
+class Priority(Base):
+    __tablename__ = "task_priority"
+    id = Column(Integer, primary_key = True, index = True)
+    name = Column(String)
+    level = Column(Integer)
 # class TaskType(Base):
 #     pass
 
