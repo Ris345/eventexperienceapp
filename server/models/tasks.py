@@ -37,13 +37,14 @@ class Task(Base):
     isCompleted = Column(Boolean, default = False)
     # fk to tasklist
     tasklist_id = Column(Integer, ForeignKey("task_list.id"))
-    task_list = relationship("TaskList", back_populates="tasks")
+    # task_list = relationship("TaskList", back_populates="tasks")
     # fk to a user
     assigned_user = Column(Integer, ForeignKey("users.id"))
     # fk to type
     type_id = Column(Integer, ForeignKey("task_type.id"))
     # fk to priority
-    priority = Column(Integer, ForeignKey("task_priority.id"))
+    priority_id = Column(Integer, ForeignKey("task_priority.id"))
+    priority = relationship("Priority", lazy = "joined")
 
 """
 
@@ -65,7 +66,7 @@ class TaskList(Base):
     isCompleted = Column(Boolean, default = False)
     description = Column(String)
     priority = Column(Integer, ForeignKey("task_priority.id"))
-    tasks = relationship("Task", back_populates="task_list")
+    # tasks = relationship("Task", back_populates="task_list")
 """
 TaskType Model
     id - pk, int
@@ -86,6 +87,7 @@ class Priority(Base):
     id = Column(Integer, primary_key = True, index = True)
     name = Column(String)
     level = Column(Integer)
+    # task = relationship("Task", back_populates="priority")
 # class TaskType(Base):
 #     pass
 
@@ -103,5 +105,14 @@ with SessionLocal() as session:
     task1.assigned_user=1
     tasklist1.tasks = [task1, task2]
     tasklist2.tasks = [task3]
-    session.add_all([tasklist1,tasklist2,task1,task2,task3])
+    priority1 = Priority(name = "high", level = 10)
+    tasktype1 = TaskType(name = "tasktype1")
+    task1.priority_id = 1
+    task2.priority_id = 1
+    task3.priority_id = 1
+    task1.type_id = 1
+    task2.type_id = 1
+    task3.type_id = 1
+
+    session.add_all([tasklist1,tasklist2,task1,task2,task3, priority1, tasktype1])
     session.commit()

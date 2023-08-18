@@ -9,13 +9,23 @@ ModelCreate - inherit from BaseModel and include additional info for creation
 
 ModelSchema - schemas used when reading data, when returning it from API
 """
+class TaskPriorityBase(BaseModel):
+    name : str
+    class Config:
+        orm_mode = True
+        from_attributes = True
+class TaskPriority(TaskPriorityBase):
+    id : int
 
 
 class TaskBase(BaseModel):
     name: str
     description: str
     isCompleted: bool
-
+    priority : TaskPriorityBase
+    class Config:
+        orm_mode = True
+        from_attributes = True
 
     # SQL Alchemy does not return dict, which pydantic expects by default. Config allows loading from standard orm parameters (attributes on object as opposed to a dict lookup)
 
@@ -24,12 +34,11 @@ class TaskCreate(TaskBase):
 
 class Task(TaskBase):
     id:int
-    class Config:
-        orm_mode = True
-        from_attributes = True
+
 
 class TasklistBase(BaseModel):
     pass
+
 
 # changed groupbase and group schema in order to incoporate owner data, so removed owner_id from groupbase and added an owner field for owner data in group schema
 # groups already had an owner relation on its model
