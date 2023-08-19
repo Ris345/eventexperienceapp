@@ -1,5 +1,5 @@
 from schemas.tasks import TaskBase
-from queries.tasks import db_get_tasks
+from queries.tasks import db_get_tasks, db_get_task
 from fastapi import (
     Depends,
     HTTPException,
@@ -31,12 +31,12 @@ def get_tasks(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return tasks
 
 
-# @router.get("/tasks/{task_id}", response_model=TaskBase)
-# def get_task(task_id: int, db: Session = Depends(get_db)):
-#     task = db_get_task(db, task_id)
-#     if task is None:
-#         raise HTTPException(status_code=400, detail="task not found")
-#     return task
+@router.get("/tasks/{task_id}", response_model=TaskBase)
+def get_task(task_id: int, db: Session = Depends(get_db)):
+    task = db_get_task(db, task_id)
+    if task is None:
+        raise HTTPException(status_code=400, detail="task not found")
+    return task
 
 # @router.post("/tasks/create", response_model=TaskBase)
 # def post_task(task : TaskBase, db: Session = Depends(get_db)):

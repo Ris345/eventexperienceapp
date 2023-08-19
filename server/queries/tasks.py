@@ -13,17 +13,17 @@ def db_get_tasks(db: Session, skip: int = 0, limit: int = 100):
     return db_tasks
 
 
-# def db_get_task(
-#     db: Session,
-#     task_id: int,
-# ):
-#     db_task = (
-#         db.query(TasksModel.Task)
-#         # .options(joinedload(models.User.groups))
-#         .where(TasksModel.Task.id == task_id)
-#         .first()
-#     )
-#     return db_task
+def db_get_task(
+    db: Session,
+    task_id: int,
+):
+    db_task = (
+        db.query(Task)
+
+        .where(Task.id == task_id)
+        .first()
+    )
+    return db_task
 
 # def db_post_tasks(task_name, quantity, db: Session):
 #     newTask = TasksModel.Task(
