@@ -101,7 +101,7 @@ class UserCalendar(Base):
     description = Column(Text)
     created = Column(DateTime, default=func.now())
     updated = Column(DateTime, onupdate=func.now())
-    user = Column(Integer, ForeignKey("users.id"))
+    user_id = Column(Integer, ForeignKey("users.id"))
     user = relationship(User)
 
 
@@ -153,7 +153,8 @@ class Event(Base):
     html_link = Column(String)
     event_calendar = relationship("Calendar", back_populates="events", lazy="joined")
     groups = relationship("Group", secondary="event_group", back_populates="events")
-    type = relationship("EventType", ForeignKey("event_type.id"))
+    type = relationship("EventType", back_populates="events", lazy="joined")
+    user_calendar = relationship("User", back_populates="events", lazy="joined")
     # author =
     # organizer =
     # start =

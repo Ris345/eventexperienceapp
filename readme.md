@@ -61,9 +61,11 @@ We welcome contributions to enhance the Event Experience App. If you would like 
 > - Black is a PEP 8 compliant opinionated formatter
 
 ### Black Installation
+
 1. Black requires Python 3.7+ and can be installed by running `pip install black`
     - Viewing python version can be done by performing `python --version`
     - Upgrading python via instructions @ [link](https://blog.enterprisedna.co/how-to-update-python/)
+
 
 2. In order to get started with current files, run `black {source_file_or_directory}`
     - can also run *Black* as a package via `python -m black {source_file_or_directory}`
