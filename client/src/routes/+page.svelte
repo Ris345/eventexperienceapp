@@ -34,11 +34,6 @@
 }
 	
 	
-	// const unsubscribe = content.subscribe(value => {
-	// 	notifications = value;
-	// });
-
-	
   class Notification {
 		constructor(type, date, user, meetup, content) {
 				this.type = type;
@@ -61,15 +56,10 @@
 		notifications.push(notification);
 		//remove events from display
 		events = [];
-		
+
 		console.log(notifications);
 	}
 
-	// onMount (() => {
-	// 	return () => {
-	// 		unsubscribe();
-	// 	};
-	// });
 
 </script>
 
@@ -137,7 +127,6 @@
 		
 	
 	
-	<!-- Notifications page -->
 	
 	
 </main>
