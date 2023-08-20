@@ -11,8 +11,6 @@
 	const dispatch = createEventDispatcher();
 
 
-	// Hello theagainre Gavin
-
 	const handleOnSubmit = async  (e) => {
 		e.preventDefault()
 		console.log('submitting login information');
