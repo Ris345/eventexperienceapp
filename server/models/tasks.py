@@ -83,6 +83,12 @@ Priority Model
     id - pk, int
     name - str ex: urgent
     level - int ex: out of x
+
+# from docs, track for progress of tasks
+Status Model
+    id - pk, int
+    name - str, ex: started, in progress, review
+
 """
 class Priority(Base):
     __tablename__ = "task_priority"
