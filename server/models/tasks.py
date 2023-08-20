@@ -24,6 +24,7 @@ class Task(Base):
     type - fk to types table
     isCompleted - boolean, true/false
     priority - fk to priority table
+    status - fk to status table
 
 Multiple tasks to one user
 Cant have multiple users assigned to one task
@@ -46,6 +47,12 @@ Priority Model
     id - pk, int
     name - str ex: urgent
     level - int ex: out of x
+
+# from docs, track for progress of tasks
+Status Model
+    id - pk, int
+    name - str, ex: started, in progress, review
+
 """
 
 
