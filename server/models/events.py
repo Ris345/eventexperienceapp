@@ -136,7 +136,7 @@ class Event(Base):
     attendees - number of users that are registered for event, type is list []
         - this will have to read from the rsvp table from users
 
-    attachment - str, attachment for the event maybe like a pdf for flier
+    attachments - [], (many attachments to one event) foreign key to attachment class
 
     location - foreign key to locations table
 """
@@ -162,11 +162,18 @@ class Event(Base):
     # duration =
     # max_rsvps =
     # attendees =
-    # attachment
+    # attachments =
     # location =
 
 
 """
+events can have multiple attachments
+class Attachment(Base):
+    __tablename__ = 'attachments'
+    id =
+    name =
+    attachment_link =
+
 one event has one type
 class EventType(Base):
     __tablename__ = 'event_type'
