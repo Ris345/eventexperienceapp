@@ -17,7 +17,7 @@ Task Model
 class Task(Base):
     id - primaryKey, int
     name - str
-    owner - fk to users table //duplicate column?
+    author - fk to users table
     description - text
     tasklist - fk to tasklist
     assigned_user - fk to users table
