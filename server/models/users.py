@@ -11,8 +11,9 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship, joinedload
 import database
-from .events import Event
+from .tasks import Task
 
+# from .events import Event
 
 Base = database.Base
 engine = database.engine
@@ -46,6 +47,12 @@ class User(Base):
     # M2M
     groups = relationship("Group", secondary="group_users", back_populates="users")
     is_active = Column(Boolean, default=True)
+    tasks = relationship(
+        "Task", back_populates="assignedUser", foreign_keys=[Task.assignedUser_id]
+    )
+    authored_tasks = relationship(
+        "Task", back_populates="author", foreign_keys=[Task.author_id]
+    )
 
 
 """
@@ -100,6 +107,7 @@ class Group(Base):
     # establish bidirectional relation between objects
     # user foreignkey relationship prior to indicate to sqlalchemy to load related obj at attribute access time
     owner = relationship("User", back_populates="groups", lazy="joined")
+    task_list = relationship("TaskList", back_populates="assignedGroup", lazy="joined")
 
 
 # GroupUser, EventGroup Table facilitates Many to Many relationship

@@ -1,4 +1,4 @@
-import models.users as models
+from models.users import Group
 from schemas.users import GroupSchema
 from sqlalchemy.orm import Session, joinedload
 from fastapi import Depends
@@ -23,11 +23,7 @@ I am under the belief that this .from_orm takes advantage of orm_mode=True which
 
 def db_get_groups(db: Session, skip: int = 0, limit: int = 100) -> List[GroupSchema]:
     db_groups = (
-        db.query(models.Group)
-        .options(joinedload(models.Group.users))
-        .offset(skip)
-        .limit(limit)
-        .all()
+        db.query(Group).options(joinedload(Group.users)).offset(skip).limit(limit).all()
     )
     group_schemas = [GroupSchema.from_orm(group) for group in db_groups]
     return group_schemas
@@ -38,9 +34,9 @@ def db_get_group(
     group_id: int,
 ):
     db_group = (
-        db.query(models.Group)
-        .options(joinedload(models.Group.users))
-        .where(models.Group.id == group_id)
+        db.query(Group)
+        .options(joinedload(Group.users))
+        .where(Group.id == group_id)
         .first()
     )
     return db_group

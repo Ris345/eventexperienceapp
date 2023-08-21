@@ -1,4 +1,4 @@
-import models.users as models
+from models.users import User
 from sqlalchemy.orm import Session, joinedload
 from schemas.users import UserSchema, UserCreate
 
@@ -9,11 +9,7 @@ class DuplicateAccountError(ValueError):
 
 def db_get_users(db: Session, skip: int = 0, limit: int = 100):
     users = (
-        db.query(models.User)
-        .options(joinedload(models.User.groups))
-        .offset(skip)
-        .limit(limit)
-        .all()
+        db.query(User).options(joinedload(User.groups)).offset(skip).limit(limit).all()
     )
     user_schemas = [UserSchema.from_orm(user) for user in users]
     return user_schemas
@@ -21,16 +17,14 @@ def db_get_users(db: Session, skip: int = 0, limit: int = 100):
 
 def db_check_email_and_username(db: Session, username: str, email: str):
     user_id_and_email = (
-        db.query(models.User)
-        .where(models.User.username == username and models.User.email == email)
-        .all()
+        db.query(User).where(User.username == username and User.email == email).all()
     )
     return user_id_and_email
 
 
 def db_check_email_or_username(db: Session, username: str, email: str):
-    user_id_or_email = db.query(models.User).where(
-        models.User.username == username or models.User.email == email
+    user_id_or_email = db.query(User).where(
+        User.username == username or User.email == email
     )
     return user_id_or_email
 
@@ -40,11 +34,12 @@ def db_get_user_by_id(
     user_id: int,
 ):
     user_by_id = (
-        db.query(models.User)
-        .options(joinedload(models.User.groups))
-        .where(models.User.id == user_id)
+        db.query(User)
+        .options(joinedload(User.groups))
+        .where(User.id == user_id)
         .first()
     )
+    print("found")
     return user_by_id
 
 
@@ -52,10 +47,11 @@ def db_get_user_by_username(
     db: Session,
     username: str,
 ):
+    print("looking")
     user_username = (
-        db.query(models.User)
-        .options(joinedload(models.User.groups))
-        .where(models.User.username == username)
+        db.query(User)
+        .options(joinedload(User.groups))
+        .where(User.username == username)
         .first()
     )
     return user_username
@@ -66,9 +62,9 @@ def db_get_user_by_email(
     email: str,
 ):
     user = (
-        db.query(models.User)
-        .options(joinedload(models.User.groups))
-        .where(models.User.email == email)
+        db.query(User)
+        .options(joinedload(User.groups))
+        .where(User.email == email)
         .first()
     )
     return user
@@ -78,7 +74,7 @@ def db_get_user_by_email(
 def db_create_user(db: Session, user: UserCreate):
     try:
         fake_hashed_password = hash(user.password)
-        db_user = models.User(
+        db_user = User(
             username=user.username,
             first_name=user.first_name,
             last_name=user.last_name,
@@ -92,17 +88,23 @@ def db_create_user(db: Session, user: UserCreate):
         db.refresh(db_user)
         return db_user
     except:
-        return {"message": "create did not work"}
+        return {"alert": "could not create user"}
 
 
 """
 endpoint can only be performed by specific user from profile page
 """
-# def db_update_user('/users/{user_id}')
-# def db_update_user('/users/{username})
+"""
+def db_update_user('/users/{user_id}')
+def db_update_user('/users/{username})
+def db_get_user_by_first_and_last
+def db_get_users_by_created_at
+def db_get_users_by_active
+def db_get_users_by_inactive
 
-# protected endpoint
-# def db_delete_user('/users/{user_id}')
+- protected endpoint
+def db_delete_user('/users/{user_id}')
+"""
 
 """
 def db_get_user_notifications(

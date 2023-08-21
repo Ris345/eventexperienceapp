@@ -6,15 +6,23 @@ from queries.users import (
     UserSchema,
     UserCreate,
     db_create_user,
+    db_check_email_and_username,
 )
-from fastapi import Depends, HTTPException, APIRouter, Form, status, Request
+from fastapi import (
+    Depends,
+    HTTPException,
+    APIRouter,
+    Form,
+    status,
+    Request,
+    Query,
+    Path,
+)
 from fastapi.encoders import jsonable_encoder
 
 from sqlalchemy.orm import Session
 from typing import List
 from database import SessionLocal
-from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse
 
 
 def get_db():
@@ -42,12 +50,30 @@ def get_user_by_id(user_id: int, db: Session = Depends(get_db)):
     return user
 
 
-@router.get("/users_by_username/{username}", response_model=UserSchema)
+@router.get("/users_by_user_username/{username}", response_model=UserSchema)
 def get_user_by_username(username: str, db: Session = Depends(get_db)):
-    user = db_get_user_by_username(db, username)
-    if user is None:
+    username = db_get_user_by_username(db, username)
+    if username is None:
         raise HTTPException(status_code=400, detail="user not found")
-    return user
+    return username
+
+
+@router.get(
+    "/search/user={username}+email={email}",
+    response_model=UserSchema,
+)
+def get_user_by_username_and_email(
+    username: str = Path(..., description="user username"),
+    email: str = Path(..., description="user email"),
+    db: Session = Depends(get_db),
+):
+    try:
+        userFound = db_check_email_and_username(db, username=username, email=email)
+        if userFound is None:
+            raise HTTPException(status_code=400, detail="user not found")
+        return userFound
+    except HTTPException:
+        raise
 
 
 @router.post("/users", response_model=UserSchema)
