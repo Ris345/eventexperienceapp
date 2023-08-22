@@ -11,12 +11,13 @@ from queries.tasks import (
     TaskSchema,
     TaskListSchema,
 )
-from routes.users import get_user_by_username
+from routes.users import get_user_by_username, get_user_by_username_for_tasks
 from fastapi import Depends, HTTPException, APIRouter, Form, status, Request
 from fastapi.exceptions import ResponseValidationError
 from sqlalchemy.orm import Session
 from typing import List
 from database import SessionLocal
+from schemas.tasks import UserBase
 
 
 def get_db():
@@ -27,7 +28,11 @@ def get_db():
         db.close()
 
 
-router = APIRouter()
+router = APIRouter(
+    tags=["tasks"],
+    # dependencies=[Depends(get_token_header)],
+    responses={404: {"description": "Not Found"}},
+)
 
 
 # Validation error here for some reason after trying to display users
@@ -57,8 +62,7 @@ def post_task(
         existingTask = db_get_task_by_name(db, name=name)
         if existingTask is not None:
             raise HTTPException(status_code=400, detail="task found")
-        user_author = get_user_by_username(username=author, db=db)
-        print(user_author.username)
+        user_author = get_user_by_username_for_tasks(username=author, db=db)
         task = TaskCreate(name=name, description=description, author=user_author)
         print(task)
         return db_create_task(db=db, task=task)

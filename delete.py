@@ -19,7 +19,7 @@ if __name__ == "__main__":
     server_cache = os.path.join(base, "__pycache__")
     shutil.rmtree(server_cache)
     delete_files_folders(base)
-    nested = ["queries", "routes", "models"]
+    nested = ["queries", "routes", "models", "schemas"]
     for dir in nested:
         full_path = os.path.join(base, dir)
         delete_files_folders(full_path)

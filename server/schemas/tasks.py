@@ -1,7 +1,6 @@
 from datetime import date, datetime, time, timedelta
 from pydantic import BaseModel
 from typing import Optional, List, Text
-from .users import UserSchema, GroupSchema, UserBase
 
 """
 ModelBase - common attributes when creating or reading data
@@ -10,6 +9,35 @@ ModelCreate - inherit from BaseModel and include additional info for creation
 
 ModelSchema - schemas used when reading data, when returning it from API
 """
+
+
+class UserBase(BaseModel):
+    username: str
+    first_name: str
+    last_name: str
+    email: str
+    about: str
+    profile_photo: str
+
+    class Config:
+        orm_mode = True
+        from_attributes = True
+
+
+class GroupBase(BaseModel):
+    name: str
+    description: Optional[str] = None
+    users: List[UserBase]
+
+    class Config:
+        orm_mode = True
+        from_attributes = True
+
+
+class GroupSchema(GroupBase):
+    id: int
+    users: Optional[List[UserBase]] = None
+    owner: Optional[UserBase] = None
 
 
 class TaskPriorityBase(BaseModel):
@@ -41,7 +69,7 @@ class TaskTypeSchema(TaskTypeBase):
 class TaskBase(BaseModel):
     name: str
     description: str
-    author: Optional[UserSchema]
+    author: UserBase
 
     # assignedUser : int
     class Config:
@@ -61,7 +89,7 @@ class TaskSchema(TaskBase):
     quantity: Optional[int] = None
     type: Optional[TaskTypeSchema] = None
     priority: Optional[TaskPrioritySchema] = None
-    assignedUser: Optional[UserSchema] = None
+    assignedUser: Optional[UserBase] = None
 
     class Config:
         orm_mode = True
@@ -70,7 +98,7 @@ class TaskSchema(TaskBase):
 
 class TasklistBase(BaseModel):
     name: str
-    owner: UserSchema
+    owner: UserBase
     description: Text
 
     class Config:

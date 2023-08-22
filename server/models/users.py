@@ -11,7 +11,6 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship, joinedload
 import database
-from .tasks import Task
 
 # from .events import Event
 
@@ -47,14 +46,9 @@ class User(Base):
     # M2M
     groups = relationship("Group", secondary="group_users", back_populates="users")
     is_active = Column(Boolean, default=True)
-    tasks = relationship(
-        "models.tasks.Task",
-        back_populates="assignedUser",
-        foreign_keys=[Task.assignedUser_id],
-    )
-    authored_tasks = relationship(
-        "models.tasks.Task", back_populates="author", foreign_keys=[Task.author_id]
-    )
+    # need to clarify, need a authored_tasks, task_assignments parameters
+    # going to change routes, queries, etc
+    tasks = relationship("Task", secondary="authored_tasks", back_populates="author")
 
 
 """
@@ -139,7 +133,15 @@ class UserTasks(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("users.id"))
     task_id = Column(Integer, ForeignKey("tasks.id"))
-    task = relationship("Task")
+    task = relationship("Task", foreign_keys=[task_id])
+
+
+class AuthoredTasks(Base):
+    __tablename__ = "authored_tasks"
+    id = Column(Integer, primary_key=True)
+    author_id = Column(Integer, ForeignKey("users.id"))
+    task_id = Column(Integer, ForeignKey("tasks.id"))
+    task = relationship("Task", foreign_keys=[task_id])
 
 
 """

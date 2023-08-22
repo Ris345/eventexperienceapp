@@ -11,6 +11,13 @@ ModelSchema - schemas used when reading data, when returning it from API
 """
 
 
+class TaskSchema(BaseModel):
+    id: int
+    name: str
+    description: str
+    isCompleted: bool
+
+
 class UserBase(BaseModel):
     username: str
     first_name: str
@@ -51,16 +58,12 @@ class UserCreate(UserBase):
     password: str
 
 
-class TaskUser(UserBase):
-    id: int
-    is_active: bool
-
-
 class UserSchema(UserBase):
     id: int
     is_active: bool
     created_at: datetime = None
     groups: Optional[List[GroupSchema]] = None
+    tasks: List[TaskSchema]
 
     class Config:
         orm_mode = True

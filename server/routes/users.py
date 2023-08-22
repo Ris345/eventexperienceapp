@@ -19,7 +19,9 @@ from fastapi import (
     Path,
 )
 from fastapi.encoders import jsonable_encoder
-from ..dependencies import get_token_header
+from schemas.tasks import UserBase
+
+# from ..dependencies import get_token_header
 from sqlalchemy.orm import Session
 from typing import List
 from database import SessionLocal
@@ -35,7 +37,7 @@ def get_db():
 
 router = APIRouter(
     tags=["users"],
-    dependencies=[Depends(get_token_header)],
+    # dependencies=[Depends(get_token_header)],
     responses={404: {"description": "Not Found"}},
 )
 
@@ -62,19 +64,29 @@ def get_user_by_username(username: str, db: Session = Depends(get_db)):
     return username
 
 
+@router.get("/users_by_user_username_for_tasks/{username}", response_model=UserBase)
+def get_user_by_username_for_tasks(username: str, db: Session = Depends(get_db)):
+    username = db_get_user_by_username(db, username)
+    if username is None:
+        raise HTTPException(status_code=400, detail="user not found")
+    return username
+
+
 @router.get(
-    "/search/user={username}+email={email}",
+    "/search/{username}{email}",
     response_model=UserSchema,
 )
 def get_user_by_username_and_email(
-    username: str = Path(..., description="user username"),
-    email: str = Path(..., description="user email"),
+    username: str,
+    email: str,
     db: Session = Depends(get_db),
 ):
     try:
         userFound = db_check_email_and_username(db, username, email)
         if userFound is None:
-            raise HTTPException(status_code=400, detail="user not found")
+            raise HTTPException(
+                status_code=400, detail="user not found with that email and username"
+            )
         return userFound
     except HTTPException:
         raise

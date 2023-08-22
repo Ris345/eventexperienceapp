@@ -2,6 +2,7 @@ from models.tasks import Task, TaskList
 from sqlalchemy.orm import Session, joinedload
 from fastapi import Depends
 from schemas.tasks import TaskCreate, TaskListCreate, TaskSchema, TaskListSchema
+from fastapi import HTTPException
 
 
 def db_get_tasks(db: Session, skip: int = 0, limit: int = 100):
@@ -33,8 +34,10 @@ def db_create_task(db: Session, task: TaskCreate):
         db.commit()
         db.refresh(newTask)
         return newTask
-    except:
-        {"alert": "could not create task"}
+    except Exception as e:
+        print(e)
+        raise HTTPException(status_code=500, detail="could not create task") from e
+        print(e)
 
 
 def db_get_tasklists(db: Session, skip: int = 0, limit: int = 100):

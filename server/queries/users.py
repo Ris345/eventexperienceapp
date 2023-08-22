@@ -1,6 +1,7 @@
 from models.users import User
 from sqlalchemy.orm import Session, joinedload
 from schemas.users import UserSchema, UserCreate
+from sqlalchemy import and_
 
 
 class DuplicateAccountError(ValueError):
@@ -13,13 +14,6 @@ def db_get_users(db: Session, skip: int = 0, limit: int = 100):
     )
     user_schemas = [UserSchema.from_orm(user) for user in users]
     return user_schemas
-
-
-def db_check_email_and_username(db: Session, username: str, email: str):
-    user_id_and_email = (
-        db.query(User).where(User.username == username and User.email == email).all()
-    )
-    return user_id_and_email
 
 
 def db_check_email_or_username(db: Session, username: str, email: str):
@@ -47,7 +41,6 @@ def db_get_user_by_username(
     db: Session,
     username: str,
 ):
-    print("looking")
     user_username = (
         db.query(User)
         .options(joinedload(User.groups))
@@ -55,6 +48,16 @@ def db_get_user_by_username(
         .first()
     )
     return user_username
+
+
+def db_check_email_and_username(db: Session, username: str, email: str):
+    user_id_and_email = (
+        db.query(User)
+        .options(joinedload(User.groups))
+        .where(and_(User.username == username, User.email == email))
+        .first()
+    )
+    return user_id_and_email
 
 
 def db_get_user_by_email(

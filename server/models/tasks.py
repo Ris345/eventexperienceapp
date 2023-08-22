@@ -6,7 +6,7 @@ import database
 Base = database.Base
 engine = database.engine
 SessionLocal = database.SessionLocal
-import models.users
+from models.users import User, UserTasks, AuthoredTasks
 
 """
 ! subject to change !
@@ -37,24 +37,17 @@ class Task(Base):
     name = Column(String, nullable=False)
     description = Column(String, nullable=False)
     isCompleted = Column(Boolean, default=False)
-    author_id = Column(Integer, ForeignKey("models.users.id"))
     quantity = Column(Integer)
     # fk to tasklist
     tasklist_id = Column(Integer, ForeignKey("task_list.id"))
-    # fk to a user
-    assignedUser_id = Column(Integer, ForeignKey("models.user_tasks.user_id"))
     # fk to type
     type_id = Column(Integer, ForeignKey("task_type.id"))
     # fk to priority
     priority_id = Column(Integer, ForeignKey("task_priority.id"))
     # Define relationships directly in the class definition
     task_list = relationship("TaskList", back_populates="tasks", lazy="joined")
-    author = relationship(
-        "User", back_populates="authored_tasks", foreign_keys=[author_id]
-    )
-    assignedUser = relationship(
-        "User", back_populates="tasks", foreign_keys=[assignedUser_id]
-    )
+    author = relationship("User", secondary="authored_tasks", back_populates="tasks")
+    assignedUser = relationship("User", secondary="user_tasks", back_populates="tasks")
     task_type = relationship(
         "TaskType", back_populates="tasks", lazy="joined", foreign_keys=[type_id]
     )
