@@ -48,7 +48,12 @@ class User(Base):
     is_active = Column(Boolean, default=True)
     # need to clarify, need a authored_tasks, task_assignments parameters
     # going to change routes, queries, etc
-    tasks = relationship("Task", secondary="authored_tasks", back_populates="author")
+    authored_tasks = relationship(
+        "Task", secondary="user_authored_tasks", back_populates="users"
+    )
+    task_assignments = relationship(
+        "Task", secondary="user_assigned_tasks", back_populates="users"
+    )
 
 
 """
@@ -128,16 +133,16 @@ class GroupUser(Base):
     group_id = Column(Integer, ForeignKey("groups.id"))
 
 
-class UserTasks(Base):
-    __tablename__ = "user_tasks"
+class UserAssignedTasks(Base):
+    __tablename__ = "user_assigned_tasks"
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("users.id"))
     task_id = Column(Integer, ForeignKey("tasks.id"))
     task = relationship("Task", foreign_keys=[task_id])
 
 
-class AuthoredTasks(Base):
-    __tablename__ = "authored_tasks"
+class UserAuthoredTasks(Base):
+    __tablename__ = "user_authored_tasks"
     id = Column(Integer, primary_key=True)
     author_id = Column(Integer, ForeignKey("users.id"))
     task_id = Column(Integer, ForeignKey("tasks.id"))

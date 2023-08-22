@@ -6,7 +6,7 @@ import database
 Base = database.Base
 engine = database.engine
 SessionLocal = database.SessionLocal
-from models.users import User, UserTasks, AuthoredTasks
+from models.users import User, UserAuthoredTasks, UserAssignedTasks
 
 """
 ! subject to change !
