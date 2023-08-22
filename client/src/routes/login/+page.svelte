@@ -4,6 +4,9 @@
 	import HelperText from '@smui/textfield/helper-text';
 	import { createEventDispatcher } from 'svelte';
 	import axios from 'axios';
+	import placeholder from "./assets/placeholder-login.jpeg"
+	// import FacebookIcon from '@mui/icons-material/Facebook';
+
 	let username = '',
 		password = '';
 	$: console.log(username);
@@ -27,25 +30,44 @@
 
 <main>
 	<h2>Login</h2>
-	<form on:submit={handleOnSubmit}>
-		<Textfield bind:value={username} label="Username" />
-
-		<Textfield bind:value={password} type="password" label="Password" />
-
-		<Button variant="raised" type="submit"><Label>Login</Label></Button>
-	</form>
+	<div class="container">
+		<img src={placeholder} alt="person" width="350">
+		<form on:submit={handleOnSubmit}>
+			<Textfield bind:value={username} label="Username" />
+	
+			<Textfield bind:value={password} type="password" label="Password" />
+	
+			<Button variant="raised" type="submit"><Label>Login</Label></Button>
+			<Button variant="outlined" type="submit"><Label>Signup</Label></Button>
+			<p>Or</p>
+			<Button variant="outlined" type="submit"><Label>Signup with Google</Label></Button>
+			<Button variant="outlined" type="submit"><Label>Signup with Apple</Label></Button>
+			<Button variant="outlined" type="submit"><Label>Signup with Facebook</Label></Button>
+		</form>
+	</div>
 </main>
 
 <style>
-	form {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		width: max-content;
-		gap: 1em;
-		background: #000000bb;
-		padding: 1em;
-		box-shadow: 0px 0px 20px 20px #000000bb;
+	.container {
+		display:grid;
+		gap: 2em;
+		grid-template-columns: 1fr 2fr;
+
 	}
+
+	p {
+		color: white;
+		text-align: center;
+	}
+
+	form {
+		display:grid; 
+		width:max-content;
+		gap: 20px;
+		background: #000000bb;
+		padding: 50px;
+	}
+
 	h2 {
 		color: white;
 		margin: 0.25em 0;

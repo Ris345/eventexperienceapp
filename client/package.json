@@ -29,6 +29,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@mui/icons-material": "^5.14.3",
 		"axios": "^1.4.0"
 	}
 }
