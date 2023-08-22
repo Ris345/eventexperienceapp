@@ -46,8 +46,12 @@ class Task(Base):
     priority_id = Column(Integer, ForeignKey("task_priority.id"))
     # Define relationships directly in the class definition
     task_list = relationship("TaskList", back_populates="tasks", lazy="joined")
-    author = relationship("User", secondary="authored_tasks", back_populates="tasks")
-    assignedUser = relationship("User", secondary="user_tasks", back_populates="tasks")
+    author = relationship(
+        "User", secondary="user_authored_tasks", back_populates="tasks"
+    )
+    assignedUser = relationship(
+        "User", secondary="user_assigned_tasks", back_populates="tasks"
+    )
     task_type = relationship(
         "TaskType", back_populates="tasks", lazy="joined", foreign_keys=[type_id]
     )
