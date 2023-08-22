@@ -48,10 +48,12 @@ class User(Base):
     groups = relationship("Group", secondary="group_users", back_populates="users")
     is_active = Column(Boolean, default=True)
     tasks = relationship(
-        "Task", back_populates="assignedUser", foreign_keys=[Task.assignedUser_id]
+        "models.tasks.Task",
+        back_populates="assignedUser",
+        foreign_keys=[Task.assignedUser_id],
     )
     authored_tasks = relationship(
-        "Task", back_populates="author", foreign_keys=[Task.author_id]
+        "models.tasks.Task", back_populates="author", foreign_keys=[Task.author_id]
     )
 
 
@@ -130,6 +132,14 @@ class GroupUser(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("users.id"))
     group_id = Column(Integer, ForeignKey("groups.id"))
+
+
+class UserTasks(Base):
+    __tablename__ = "user_tasks"
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey("users.id"))
+    task_id = Column(Integer, ForeignKey("tasks.id"))
+    task = relationship("Task")
 
 
 """

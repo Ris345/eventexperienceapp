@@ -5,7 +5,7 @@ from queries.tasks import (
     db_get_tasklists,
     db_get_task_by_name,
     db_get_tasklist_by_name,
-    db_create_tasks,
+    db_create_task,
     TaskCreate,
     TaskListCreate,
     TaskSchema,
@@ -61,7 +61,7 @@ def post_task(
         print(user_author.username)
         task = TaskCreate(name=name, description=description, author=user_author)
         print(task)
-        return db_create_tasks(db=db, task=task)
+        return db_create_task(db=db, task=task)
     except HTTPException:
         raise
     except Exception as e:

@@ -6,6 +6,7 @@ import database
 Base = database.Base
 engine = database.engine
 SessionLocal = database.SessionLocal
+import models.users
 
 """
 ! subject to change !
@@ -32,17 +33,16 @@ class Task(Base):
 
 class Task(Base):
     __tablename__ = "tasks"
-    __table_args__ = {"extend_existing": True}
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
     description = Column(String, nullable=False)
     isCompleted = Column(Boolean, default=False)
-    author_id = Column(Integer, ForeignKey("users.id"))
+    author_id = Column(Integer, ForeignKey("models.users.id"))
     quantity = Column(Integer)
     # fk to tasklist
     tasklist_id = Column(Integer, ForeignKey("task_list.id"))
     # fk to a user
-    assignedUser_id = Column(Integer, ForeignKey("users.id"))
+    assignedUser_id = Column(Integer, ForeignKey("models.user_tasks.user_id"))
     # fk to type
     type_id = Column(Integer, ForeignKey("task_type.id"))
     # fk to priority

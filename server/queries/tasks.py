@@ -26,7 +26,7 @@ def db_get_task_by_name(
     return db_task_by_name
 
 
-def db_create_tasks(db: Session, task: TaskCreate):
+def db_create_task(db: Session, task: TaskCreate):
     try:
         newTask = Task(name=task.name, description=task.description, author=task.author)
         db.add(newTask)

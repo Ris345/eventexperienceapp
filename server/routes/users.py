@@ -19,7 +19,7 @@ from fastapi import (
     Path,
 )
 from fastapi.encoders import jsonable_encoder
-
+from ..dependencies import get_token_header
 from sqlalchemy.orm import Session
 from typing import List
 from database import SessionLocal
@@ -33,7 +33,11 @@ def get_db():
         db.close()
 
 
-router = APIRouter()
+router = APIRouter(
+    tags=["users"],
+    dependencies=[Depends(get_token_header)],
+    responses={404: {"description": "Not Found"}},
+)
 
 
 @router.get("/users", response_model=List[UserSchema])
@@ -68,7 +72,7 @@ def get_user_by_username_and_email(
     db: Session = Depends(get_db),
 ):
     try:
-        userFound = db_check_email_and_username(db, username=username, email=email)
+        userFound = db_check_email_and_username(db, username, email)
         if userFound is None:
             raise HTTPException(status_code=400, detail="user not found")
         return userFound
@@ -122,7 +126,6 @@ def create_user(
 
 
 # @router.put
-
 # @router.delete
 """
 # Admin Router
