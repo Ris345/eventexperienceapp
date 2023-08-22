@@ -49,10 +49,10 @@ class User(Base):
     # need to clarify, need a authored_tasks, task_assignments parameters
     # going to change routes, queries, etc
     authored_tasks = relationship(
-        "Task", secondary="user_authored_tasks", back_populates="users"
+        "Task", secondary="user_authored_tasks", back_populates="author"
     )
     task_assignments = relationship(
-        "Task", secondary="user_assigned_tasks", back_populates="users"
+        "Task", secondary="user_assigned_tasks", back_populates="author"
     )
 
 
