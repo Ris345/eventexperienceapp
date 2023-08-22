@@ -119,7 +119,7 @@ class Priority(Base):
 
 
 # Test if models work
-Base.metadata.create_all(engine)
+# Base.metadata.create_all(engine)
 # with SessionLocal() as session:
 #     tasklist1 = TaskList(name="tasklist1")
 #     tasklist2 = TaskList(name="tasklist2")
