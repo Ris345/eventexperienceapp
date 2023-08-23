@@ -25,7 +25,6 @@
 		line-height: 0.8em;
 		font-size: 4em;
 		font-weight: normal;
-		margin-bottom: 0;
 	}
 	h1 svg {
 		height: 1em;

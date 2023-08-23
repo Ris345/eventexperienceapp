@@ -5,9 +5,6 @@
 	import { createEventDispatcher } from 'svelte';
 	import axios from 'axios';
 	import placeholder from "./assets/placeholder-login.jpeg"
-	import Check from "svelte-material-icons/Check.svelte";
-	// import FacebookIcon from '@mui/icons-material/Facebook';
-	// import GoogleIcon from '@mui/icons-material/Google';
 
 
 	let username = '',
@@ -47,7 +44,7 @@
 		
 		<img src={placeholder} alt="person">
 		<form on:submit={handleOnSubmit}>
-			<Textfield bind:value={username} label="Username" />
+			<Textfield bind:value={username} label="Username"/>
 	
 			<Textfield bind:value={password} type="password" label="Password" />
 	
@@ -72,7 +69,7 @@
 	}
 
 	p {
-		color: white;
+		color: rgb(0, 0, 0);
 		text-align: center;
 	}
 
@@ -80,10 +77,11 @@
 		display: grid; 
 		width: max-content;
 		gap: 20px;
-		background: #000000bb;
+		background: #d7d6d6fe;
 		padding: 50px;
 		margin: 2.5%;
 		margin-left: 20%;
+		border-radius: 20px;
 		margin-top: 0;
 	}
 
@@ -92,6 +90,8 @@
 		margin: 2.5%;
 		width: 30%;
 	}
+
+	
 
 	svg {
 		margin-right: 10px;
