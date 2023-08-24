@@ -31,7 +31,7 @@ class TaskBase(BaseModel):
     isCompleted: bool
     priority : TaskPriorityBase
     type : TaskType
-    assignedUser :UserSchema | None = None
+    assignedUser: Optional[UserSchema] = None
     # assignedUser : int
     class Config:
         orm_mode = True
@@ -42,7 +42,7 @@ class TaskBase(BaseModel):
 class TaskCreate(TaskBase):
     pass
 
-class Task(TaskBase):
+class TaskSchema(TaskBase):
     id:int
 
 

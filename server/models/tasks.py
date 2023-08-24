@@ -30,13 +30,13 @@ class Task(Base):
     """
 class Task(Base):
     __tablename__ = "tasks"
-    __table_args__ = {'extend_existing':True}
     id = Column(Integer, primary_key=True, index = True)
     name = Column(String, nullable = False)
     description = Column(String, nullable = False)
     isCompleted = Column(Boolean, default = False)
     # fk to tasklist
     tasklist_id = Column(Integer, ForeignKey("task_list.id"))
+    task_list = relationship("TaskList", back_populates="tasks", lazy='joined')
     # task_list = relationship("TaskList", back_populates="tasks")
     # fk to a user
     assigned_user_id = Column(Integer, ForeignKey("users.id"))
@@ -47,6 +47,8 @@ class Task(Base):
     # fk to priority
     priority_id = Column(Integer, ForeignKey("task_priority.id"))
     priority = relationship("Priority", lazy = "joined")
+
+
 
 """
 
@@ -61,14 +63,13 @@ TaskList Model
 """
 class TaskList(Base):
     __tablename__ = "task_list"
-    __table_args__ = {'extend_existing':True}
     id = Column(Integer, primary_key = True, index = True)
     name = Column(String, nullable = False)
     owner = Column(Integer, ForeignKey("users.id"))
     isCompleted = Column(Boolean, default = False)
     description = Column(String)
     priority = Column(Integer, ForeignKey("task_priority.id"))
-    # tasks = relationship("Task", back_populates="task_list")
+    tasks = relationship("Task", back_populates="task_list")
 """
 TaskType Model
     id - pk, int

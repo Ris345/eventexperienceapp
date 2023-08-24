@@ -11,7 +11,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship, joinedload
 import database
-from .events import Event
+# from .events import Event
 
 
 Base = database.Base

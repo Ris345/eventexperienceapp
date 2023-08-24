@@ -10,6 +10,7 @@ def db_get_tasks(db: Session, skip: int = 0, limit: int = 100):
         .limit(limit)
         .all()
     )
+
     return db_tasks
 
 
@@ -25,16 +26,16 @@ def db_get_task(
     )
     return db_task
 
-# def db_post_tasks(task_name, quantity, db: Session):
-#     newTask = TasksModel.Task(
-#         task=task_name,
-#         quantity = quantity
+# def db_post_tasks(task_name, description, db: Session):
+#     newTask = Task(
+#         name=task_name,
+#         description = description
 #     )
 #     db.add(newTask)
 #     db.commit()
 #     db_tasks = (
-#         db.query(TasksModel.Task)
-#         .where(TasksModel.Task.task == task_name)
+#         db.query(Task)
+#         .where(Task.name == task_name)
 #         .all()
 #     )
 #     return db_tasks

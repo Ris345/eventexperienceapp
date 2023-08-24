@@ -40,7 +40,7 @@ def get_task(task_id: int, db: Session = Depends(get_db)):
 
 # @router.post("/tasks/create", response_model=TaskBase)
 # def post_task(task : TaskBase, db: Session = Depends(get_db)):
-#     tasks = db_post_tasks(task.task, task.quantity, db)
+#     tasks = db_post_tasks(task.name, task.description, db)
 #     if tasks is None:
 #         raise HTTPException(status_code=400, detail="task not found")
 #     return task
