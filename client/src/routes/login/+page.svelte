@@ -26,7 +26,7 @@
 	let className = void 0;
 	export { className as class }
 
-	const handleOnSubmit = async  (e) => {
+	const handleOnSubmit = async (e) => {
 		e.preventDefault()
 		console.log('submitting login information');
 		// submit post request 
