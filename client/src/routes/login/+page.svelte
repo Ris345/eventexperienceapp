@@ -4,7 +4,8 @@
 	import HelperText from '@smui/textfield/helper-text';
 	import { createEventDispatcher } from 'svelte';
 	import axios from 'axios';
-	import placeholder from "./assets/placeholder-login.jpeg"
+	// import placeholder from "./assets/placeholder-login.jpeg"
+	import placeholder2 from "./assets/placeholder-login2.svg"
 
 
 	let username = '',
@@ -42,7 +43,7 @@
 <main>
 	<div class="container">
 		
-		<img src={placeholder} alt="person">
+		<img src={placeholder2} alt="person">
 		<form on:submit={handleOnSubmit}>
 			<Textfield bind:value={username} label="Username"/>
 	
@@ -62,6 +63,11 @@
 </main>
 
 <style>
+
+	main {
+		background-color: #F2F2F2;
+	}
+
 	.container {
 		justify-content: center;
 		display: flex;
@@ -77,7 +83,8 @@
 		display: grid; 
 		width: max-content;
 		gap: 20px;
-		background: #d7d6d6fe;
+		background-color: white;
+		color: black;
 		padding: 50px;
 		margin: 2.5%;
 		margin-left: 20%;
