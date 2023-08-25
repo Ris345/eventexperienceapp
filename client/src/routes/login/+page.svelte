@@ -2,6 +2,7 @@
 	import Button, { Label } from '@smui/button';
 	import Textfield from '@smui/textfield';
 	import HelperText from '@smui/textfield/helper-text';
+	import { Input } from '@smui/textfield';
 	import { createEventDispatcher } from 'svelte';
 	import axios from 'axios';
 	// import placeholder from "./assets/placeholder-login.jpeg"
@@ -45,9 +46,8 @@
 		
 		<img src={placeholder2} alt="person">
 		<form on:submit={handleOnSubmit}>
-			<Textfield bind:value={username} label="Username"/>
-	
-			<Textfield bind:value={password} type="password" label="Password" />
+			<Input class="solo-input" placeholder="Username" bind:value={username} />
+			<Input class="solo-input" bind:value={password} type="password" label="Password" placeholder="Password" />
 	
 			<Button variant="raised" type="submit"><Label>Login</Label></Button>
 			<Button variant="raised" color ='secondary' type="submit"><Label>Signup</Label></Button>
@@ -75,7 +75,7 @@
 	}
 
 	p {
-		color: rgb(0, 0, 0);
+		color: #0000009f;
 		text-align: center;
 	}
 
@@ -98,7 +98,10 @@
 		width: 30%;
 	}
 
-	
+	:global(.solo-input::placeholder) {
+		opacity: 1;
+		color: #0000009f;
+	}	
 
 	svg {
 		margin-right: 10px;
