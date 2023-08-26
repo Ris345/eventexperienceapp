@@ -35,10 +35,11 @@ router = APIRouter(
 )
 
 
-# Validation error here for some reason after trying to display users
 @router.get("/tasks", response_model=List[TaskSchema])
 def get_tasks(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     tasks = db_get_tasks(db, skip=skip, limit=limit)
+    if tasks is None:
+        raise HTTPException(status_code=400, detail="There are no Tasks")
     return tasks
 
 

@@ -6,7 +6,7 @@ import database
 Base = database.Base
 engine = database.engine
 SessionLocal = database.SessionLocal
-from models.users import User, UserAuthoredTasks, UserAssignedTasks
+from models.users import User, UserAuthoredTasks, UserAssignedTasks, Group
 
 """
 ! subject to change !
@@ -45,12 +45,12 @@ class Task(Base):
     # fk to priority
     priority_id = Column(Integer, ForeignKey("task_priority.id"))
     # Define relationships directly in the class definition
-    task_list = relationship("TaskList", back_populates="tasks", lazy="joined")
+    task_list = Column(Integer, ForeignKey("task_list.id"))
     author = relationship(
-        "User", secondary="user_authored_tasks", back_populates="tasks"
+        "User", secondary="user_authored_tasks", back_populates="authored_tasks"
     )
     assignedUser = relationship(
-        "User", secondary="user_assigned_tasks", back_populates="tasks"
+        "User", secondary="user_assigned_tasks", back_populates="task_assignments"
     )
     task_type = relationship(
         "TaskType", back_populates="tasks", lazy="joined", foreign_keys=[type_id]
@@ -83,7 +83,12 @@ class TaskList(Base):
     priority_id = Column(Integer, ForeignKey("task_priority.id"))
     task_priority = relationship("Priority", back_populates="task_list")
     assignedGroup_id = Column(Integer, ForeignKey("groups.id"))
-    assignedGroup = relationship("Group", back_populates="task_list", lazy="joined")
+    assignedGroup = relationship(
+        "Group",
+        back_populates="task_list",
+        lazy="joined",
+        foreign_keys=[assignedGroup_id],
+    )
     tasks = relationship("Task", back_populates="task_list", lazy="joined")
 
 

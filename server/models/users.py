@@ -12,8 +12,6 @@ from sqlalchemy import (
 from sqlalchemy.orm import relationship, joinedload
 import database
 
-# from .events import Event
-
 Base = database.Base
 engine = database.engine
 SessionLocal = database.SessionLocal
@@ -52,7 +50,16 @@ class User(Base):
         "Task", secondary="user_authored_tasks", back_populates="author"
     )
     task_assignments = relationship(
-        "Task", secondary="user_assigned_tasks", back_populates="author"
+        "Task", secondary="user_assigned_tasks", back_populates="assignedUser"
+    )
+    """
+    authored_vo_events - possible parameter for events imported through gc api
+    """
+    authored_events = relationship(
+        "Event", secondary="user_authored_events", back_populates="author"
+    )
+    organized_events = relationship(
+        "Event", secondary="user_organized_events", back_populates="organizers"
     )
 
 
@@ -78,6 +85,21 @@ class RSVP(Base):
 """
 
 
+class Favorite(Base):
+    __tablename__ = "favorites"
+    id = Column(Integer, primary_key=True, index=True)
+    event_id = Column(Integer, ForeignKey("events.id"))
+    user_id = Column(Integer, ForeignKey("users.id"))
+
+
+class RSVP(Base):
+    __tablename__ = "rsvps"
+    id = Column(Integer, primary_key=True, index=True)
+    event_id = Column(Integer, ForeignKey("events.id"))
+    user_id = Column(Integer, ForeignKey("users.id"))
+    is_attending = Column(Boolean, default=True)
+
+
 """
 We need to flesh this idea out more
 
@@ -93,7 +115,7 @@ multiple events to one group
 
 needs to have a formed relationship with events
 
-events = relationship("Event", secondary="event_group", back_populates="groups")
+
 """
 
 
@@ -109,6 +131,7 @@ class Group(Base):
     # user foreignkey relationship prior to indicate to sqlalchemy to load related obj at attribute access time
     owner = relationship("User", back_populates="groups", lazy="joined")
     task_list = relationship("TaskList", back_populates="assignedGroup", lazy="joined")
+    events = relationship("Event", secondary="event_group", back_populates="groups")
 
 
 # GroupUser, EventGroup Table facilitates Many to Many relationship
@@ -138,7 +161,6 @@ class UserAssignedTasks(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("users.id"))
     task_id = Column(Integer, ForeignKey("tasks.id"))
-    task = relationship("Task", foreign_keys=[task_id])
 
 
 class UserAuthoredTasks(Base):
@@ -146,18 +168,33 @@ class UserAuthoredTasks(Base):
     id = Column(Integer, primary_key=True)
     author_id = Column(Integer, ForeignKey("users.id"))
     task_id = Column(Integer, ForeignKey("tasks.id"))
-    task = relationship("Task", foreign_keys=[task_id])
+
+
+class UserAuthoredEvents(Base):
+    __tablename__ = "user_authored_events"
+    id = Column(Integer, primary_key=True)
+    author_id = Column(Integer, ForeignKey("users.id"))
+    event_id = Column(Integer, ForeignKey("events.id"))
+
+
+class EventOrganizers(Base):
+    __tablename__ = "user_organized_events"
+    id = Column(Integer, primary_key=True)
+    organizer_id = Column(Integer, ForeignKey("users.id"))
+    event_id = Column(Integer, ForeignKey("events.id"))
 
 
 """
 Theoretical implementation
 Required for many to many relationship with events
+"""
+
 
 class EventGroup(Base):
     __tablename__ = "event_group"
+    id = Column(Integer, primary_key=True)
     event_id = Column(Integer, ForeignKey("events.id"))
     group_id = Column(Integer, ForeignKey("groups.id"))
-"""
 
 
 # Testing Data Insertion

@@ -3,6 +3,9 @@ import database
 from routes import users, groups, tasks
 from fastapi.middleware.cors import CORSMiddleware
 
+# can import admin from .internal
+from internal import admin
+
 engine = database.engine
 Base = database.Base
 # creates db tables based on defined models, bind=engine will use engine created earlier with presets
@@ -27,3 +30,10 @@ server.add_middleware(
 server.include_router(users.router)
 server.include_router(groups.router)
 server.include_router(tasks.router)
+server.include_router(
+    admin.router,
+    prefix="/admin",
+    tags=["admin"],
+    # dependencies = [Depends(get_token_header)]
+    responses={418: {"description": "admin ops"}},
+)
