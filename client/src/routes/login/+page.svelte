@@ -89,7 +89,7 @@
 		margin: 2.5%;
 		margin-left: 20%;
 		border-radius: 20px;
-		margin-top: 0;
+		margin-top: 3%;
 	}
 
 	img {
