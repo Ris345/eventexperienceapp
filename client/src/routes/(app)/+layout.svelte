@@ -31,7 +31,6 @@
 		width: auto;
 	}
 	:global(body) {
-		background-color: black;
 		background-image: linear-gradient(to bottom, #000000aa, #000000aa),
 			url('/images/backstage-horizontal.jpg');
 		background-repeat: no-repeat;
