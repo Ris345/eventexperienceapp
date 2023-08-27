@@ -80,8 +80,6 @@ class TaskList(Base):
     owner = Column(Integer, ForeignKey("users.id"))
     isCompleted = Column(Boolean, default=False)
     description = Column(Text)
-    priority_id = Column(Integer, ForeignKey("task_priority.id"))
-    task_priority = relationship("Priority", back_populates="task_list")
     assignedGroup_id = Column(Integer, ForeignKey("groups.id"))
     assignedGroup = relationship(
         "Group",

@@ -165,6 +165,8 @@ class Event(Base):
     # count number of attendees from the number of RSVPS to add to Event model
     """
     an example being there are 5 rsvp users to event 2, attendees = 5 on Events model
+
+    number of attendees or attendees objects
     """
 
     @hybrid_property
