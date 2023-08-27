@@ -12,6 +12,7 @@ from sqlalchemy import (
 from sqlalchemy.orm import relationship, joinedload
 import database
 
+
 Base = database.Base
 engine = database.engine
 SessionLocal = database.SessionLocal
@@ -62,6 +63,8 @@ class User(Base):
         "Event", secondary="user_organized_events", back_populates="organizers"
     )
 
+
+from models.events import Event
 
 """
 Favorites Model

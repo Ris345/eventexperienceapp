@@ -13,7 +13,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship, joinedload
 import database
-from models.users import User, EventGroup, UserAuthoredEvents, RSVP, Favorite
+
 from sqlalchemy.ext.hybrid import hybrid_property
 
 Base = database.Base
