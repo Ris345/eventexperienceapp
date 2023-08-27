@@ -9,6 +9,7 @@ from sqlalchemy import (
     Text,
     func,
     select,
+    and_,
 )
 from sqlalchemy.orm import relationship, joinedload
 import database
@@ -160,10 +161,25 @@ class Event(Base):
     duration = Column(Integer)
 
     # edited from suggestion
+    # count number of attendees from the number of RSVPS to add to Event model
+    """
+    an example being there are 5 rsvp users to event 2, attendees = 5 on Events model
+    """
+
     @hybrid_property
     def attendees(self) -> int:
-        attendee_count = select(func.count(RSVP.id).where(RSVP.event_id == self.id))
+        attendee_count = select(
+            func.count(RSVP.id).where(
+                and_(RSVP.event_id == self.id, RSVP.is_attending == True)
+            )
+        )
         return self.session.execute(attendee_count).scalar()
+
+    """
+    users are able to favorite an event to check on it later and not rsvp, an example being an admin that is working on the tasks for a given x event (functions like a bookmark)
+
+    count the number of events that favorite a particular event
+    """
 
     @hybrid_property
     def favorites(self) -> int:
