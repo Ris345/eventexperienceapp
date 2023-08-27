@@ -64,8 +64,6 @@ class User(Base):
     )
 
 
-from models.events import Event
-
 """
 Favorites Model
 many favorites to one event, fk to events
@@ -91,16 +89,13 @@ class RSVP(Base):
 class Favorite(Base):
     __tablename__ = "favorites"
     id = Column(Integer, primary_key=True, index=True)
-    event_id = Column(Integer, ForeignKey("events.id"))
-    user_id = Column(Integer, ForeignKey("users.id"))
+    event = relationship("Event", back_populates="favorites")
 
 
 class RSVP(Base):
     __tablename__ = "rsvps"
     id = Column(Integer, primary_key=True, index=True)
-    event_id = Column(Integer, ForeignKey("events.id"))
-    user_id = Column(Integer, ForeignKey("users.id"))
-    is_attending = Column(Boolean, default=True)
+    event = relationship("Event", back_populates="rsvps")
 
 
 """
@@ -177,14 +172,14 @@ class UserAuthoredEvents(Base):
     __tablename__ = "user_authored_events"
     id = Column(Integer, primary_key=True)
     author_id = Column(Integer, ForeignKey("users.id"))
-    event_id = Column(Integer, ForeignKey("events.id"))
+    event = relationship("Event", back_populates="author")
 
 
 class EventOrganizers(Base):
     __tablename__ = "user_organized_events"
     id = Column(Integer, primary_key=True)
     organizer_id = Column(Integer, ForeignKey("users.id"))
-    event_id = Column(Integer, ForeignKey("events.id"))
+    event = relationship("Event", back_populates="organizer")
 
 
 """
@@ -196,7 +191,7 @@ Required for many to many relationship with events
 class EventGroup(Base):
     __tablename__ = "event_group"
     id = Column(Integer, primary_key=True)
-    event_id = Column(Integer, ForeignKey("events.id"))
+    event = relationship("Event", back_populates="groups")
     group_id = Column(Integer, ForeignKey("groups.id"))
 
 

@@ -13,8 +13,8 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship, joinedload
 import database
-
 from sqlalchemy.ext.hybrid import hybrid_property
+from models.users import RSVP, Favorite
 
 Base = database.Base
 engine = database.engine
@@ -151,7 +151,7 @@ class Event(Base):
     author = relationship(
         "User", secondary="user_authored_events", back_populates="authored_events"
     )
-    organizers = relationship(
+    organizer = relationship(
         "User", secondary="user_organized_events", back_populates="organized_events"
     )
     max_rsvps = Column(Integer)
@@ -159,7 +159,8 @@ class Event(Base):
     location = relationship("Location", secondary="locations", back_populates="events")
     start = Column(DateTime)
     duration = Column(Integer)
-
+    rsvps = relationship("RSVP", back_populates="event")
+    favorites = relationship("Favorite", back_populates="event")
     # edited from suggestion
     # count number of attendees from the number of RSVPS to add to Event model
     """
@@ -180,13 +181,7 @@ class Event(Base):
 
     count the number of events that favorite a particular event
     """
-
-    @hybrid_property
-    def favorites(self) -> int:
-        favorite_count = select(
-            func.count(Favorite.id).where(Favorite.event_id == self.id)
-        )
-        return self.session.execute(favorite_count).scalar()
+    favorites = relationship("Favorites", secondary="favorites")
 
     @property
     def end(self) -> datetime:
