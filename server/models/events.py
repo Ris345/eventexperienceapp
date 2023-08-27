@@ -186,12 +186,14 @@ class Event(Base):
 
 """
 one event has one type
-class EventType(Base):
-    __tablename__ = 'event_type'
-
-    this should have id, name
-    id is primary key, integer
 """
+
+
+class EventType(Base):
+    __tablename__ = "event_type"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String)
+
 
 """
 For locations
@@ -208,7 +210,6 @@ class Attachments(Base):
     id
     name
     file_string
-    type
 """
 
 
@@ -216,3 +217,14 @@ class Location(Base):
     __tablename__ = "locations"
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
+    room_count = Column(Integer)
+    zip_code = Column(Integer)
+    created = Column(DateTime, default=func.now())
+    photo_url = Column(String)
+
+
+class Attachment(Base):
+    __tablename__ = "attachments"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String)
+    file_string = Column(String)
