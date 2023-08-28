@@ -164,26 +164,10 @@ class Event(Base):
     # edited from suggestion
     # count number of attendees from the number of RSVPS to add to Event model
     """
-    an example being there are 5 rsvp users to event 2, attendees = 5 on Events model
-
-    number of attendees or attendees objects
-    """
-
-    @hybrid_property
-    def attendees(self) -> int:
-        attendee_count = select(
-            func.count(RSVP.id).where(
-                and_(RSVP.event_id == self.id, RSVP.is_attending == True)
-            )
-        )
-        return self.session.execute(attendee_count).scalar()
-
-    """
     users are able to favorite an event to check on it later and not rsvp, an example being an admin that is working on the tasks for a given x event (functions like a bookmark)
 
     count the number of events that favorite a particular event
     """
-    favorites = relationship("Favorites", secondary="favorites")
 
     @property
     def end(self) -> datetime:
@@ -195,11 +179,6 @@ class Event(Base):
                 minutes = self.duration - (hours * 60)
                 return self.start + timedelta(hours=hours, minutes=minutes)
         return None
-
-
-"""
-one event has one type
-"""
 
 
 class EventType(Base):
