@@ -62,6 +62,8 @@ class User(Base):
     organized_events = relationship(
         "Event", secondary="user_organized_events", back_populates="organizers"
     )
+    rsvps = relationship("RSVP", back_populates="users")
+    bookmarks = relationship("Bookmark", back_populates="users")
 
 
 """
@@ -86,16 +88,19 @@ class RSVP(Base):
 """
 
 
-class Favorite(Base):
-    __tablename__ = "favorites"
+class Bookmark(Base):
+    __tablename__ = "bookmarks"
     id = Column(Integer, primary_key=True, index=True)
-    event = relationship("Event", back_populates="favorites")
+    user_id = Column(Integer, ForeignKey("users.id"))
+    event = relationship("Event", back_populates="bookmarks")
 
 
 class RSVP(Base):
     __tablename__ = "rsvps"
     id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"))
     event = relationship("Event", back_populates="rsvps")
+    is_attending = Column(Boolean, default=True)
 
 
 """
@@ -158,14 +163,14 @@ class UserAssignedTasks(Base):
     __tablename__ = "user_assigned_tasks"
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("users.id"))
-    task_id = Column(Integer, ForeignKey("tasks.id"))
+    task = relationship("Task", back_populates="assignedUser")
 
 
 class UserAuthoredTasks(Base):
     __tablename__ = "user_authored_tasks"
     id = Column(Integer, primary_key=True)
     author_id = Column(Integer, ForeignKey("users.id"))
-    task_id = Column(Integer, ForeignKey("tasks.id"))
+    task = relationship("Task", back_populates="author")
 
 
 class UserAuthoredEvents(Base):

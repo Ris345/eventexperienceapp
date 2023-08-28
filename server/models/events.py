@@ -156,7 +156,8 @@ class Event(Base):
     )
     max_rsvps = Column(Integer)
     # attachments = Column(String) or relationship to Attachments Table?
-    location = relationship("Location", secondary="locations", back_populates="events")
+    location_id = Column(Integer, ForeignKey("locations.id"))
+    location = relationship("Location", back_populates="events")
     start = Column(DateTime)
     duration = Column(Integer)
     rsvps = relationship("RSVP", back_populates="event")
