@@ -63,7 +63,8 @@ class UserSchema(UserBase):
     is_active: bool
     created_at: datetime = None
     groups: Optional[List[GroupSchema]] = None
-    tasks: List[TaskSchema]
+    authored_tasks: Optional[List[TaskSchema]] = None
+    task_assignments: Optional[List[TaskSchema]] = None
 
     class Config:
         orm_mode = True
