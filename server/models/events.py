@@ -14,7 +14,8 @@ from sqlalchemy import (
 from sqlalchemy.orm import relationship, joinedload
 import database
 from sqlalchemy.ext.hybrid import hybrid_property
-from models.users import RSVP, Favorite
+
+# from models.users import User, RSVP, Bookmark
 
 Base = database.Base
 engine = database.engine
@@ -96,7 +97,7 @@ class Calendar(Base):
     description = Column(Text)
     created = Column(DateTime, default=func.now())
     updated = Column(DateTime, onupdate=func.now())
-    events = relationship("Event", back_populates="calendars", lazy="joined")
+    events = relationship("Event", back_populates="calendar", lazy="joined")
 
 
 """
@@ -145,13 +146,16 @@ class Event(Base):
     created = Column(DateTime, default=func.now())
     updated = Column(DateTime, onupdate=func.now())
     html_link = Column(String)
-    event_calendar = relationship("Calendar", back_populates="events", lazy="joined")
-    groups = relationship("Group", secondary="event_group", back_populates="events")
-    type = relationship("EventType", ForeignKey("event_type.id"))
-    author = relationship(
-        "User", secondary="user_authored_events", back_populates="authored_events"
+    event_calendar_id = Column(Integer, ForeignKey("calendars.id"))
+    calendar = relationship(
+        "Calendar", back_populates="events", foreign_keys=[event_calendar_id]
     )
-    organizer = relationship(
+    groups = relationship("Group", secondary="event_group", back_populates="events")
+    type_id = Column(Integer, ForeignKey("event_type.id"))
+    type = relationship("EventType", foreign_keys=[type_id])
+    author_id = Column(Integer, ForeignKey("users.id"))
+    author = relationship("User", foreign_keys=[author_id])
+    organizers = relationship(
         "User", secondary="user_organized_events", back_populates="organized_events"
     )
     max_rsvps = Column(Integer)
@@ -160,8 +164,12 @@ class Event(Base):
     location = relationship("Location", back_populates="events")
     start = Column(DateTime)
     duration = Column(Integer)
-    rsvps = relationship("RSVP", back_populates="event")
-    favorites = relationship("Favorite", back_populates="event")
+    rsvp_id = Column(Integer, ForeignKey("rsvps.id"))
+    rsvps = relationship("RSVP", back_populates="event", foreign_keys=[rsvp_id])
+    bookmark_id = Column(Integer, ForeignKey("bookmarks.id"))
+    bookmarks = relationship(
+        "Bookmark", back_populates="event", foreign_keys=[bookmark_id]
+    )
     # edited from suggestion
     # count number of attendees from the number of RSVPS to add to Event model
     """
@@ -214,6 +222,7 @@ class Location(Base):
     zip_code = Column(Integer)
     created = Column(DateTime, default=func.now())
     photo_url = Column(String)
+    events = relationship("Event", back_populates="location")
 
 
 class Attachment(Base):
