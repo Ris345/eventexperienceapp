@@ -24,7 +24,7 @@ def db_get_task(
     db: Session,
     task_id: int,
 ):
-    db_task = db.query(Task).where(Task.id == task_id).first()
+    db_task = db.query(task_m.Task).where(task_m.Task.id == task_id).first()
     return db_task
 
 
