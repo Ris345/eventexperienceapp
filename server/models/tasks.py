@@ -57,10 +57,8 @@ class Task(Base):
         "TaskType", back_populates="tasks", lazy="joined", foreign_keys=[task_type_id]
     )
     # fk to priority
-    task_priority_id = Column(Integer, ForeignKey("task_priority.id"))
-    task_priority = relationship(
-        "Priority", lazy="joined", foreign_keys=[task_priority_id]
-    )
+    priority_id = Column(Integer, ForeignKey("priority.id"))
+    priority = relationship("Priority", lazy="joined", foreign_keys=[priority_id])
     author_id = Column(Integer, ForeignKey("users.id"))
     author = relationship(
         "User",
@@ -86,10 +84,11 @@ class TaskList(Base):
     __tablename__ = "task_list"
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
-    owner = Column(Integer, ForeignKey("users.id"))
+    owner_id = Column(Integer, ForeignKey("users.id"))
     isCompleted = Column(Boolean, default=False)
     description = Column(String)
-    priority = Column(Integer, ForeignKey("task_priority.id"))
+    priority_id = Column(Integer, ForeignKey("priority.id"))
+    priority = relationship("Priority", lazy="joined", foreign_keys=[priority_id])
     tasks = relationship("Task", back_populates="tasklist")
 
 
@@ -122,11 +121,11 @@ Status Model
 
 
 class Priority(Base):
-    __tablename__ = "task_priority"
+    __tablename__ = "priority"
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
     level = Column(Integer)
-    tasks = relationship("Task", back_populates="task_priority")
+    tasks = relationship("Task", back_populates="priority")
 
 
 # class TaskType(Base):

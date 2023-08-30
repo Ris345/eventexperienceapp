@@ -1,4 +1,4 @@
-from schemas.tasks import TaskBase
+from schemas.tasks import TaskSchema
 from queries.tasks import db_get_tasks, db_get_task
 from fastapi import (
     Depends,
@@ -30,13 +30,13 @@ router = APIRouter(
 
 
 # Validation error here for some reason after trying to display users
-@router.get("/tasks", response_model=List[TaskBase])
+@router.get("/tasks", response_model=List[TaskSchema])
 def get_tasks(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     tasks = db_get_tasks(db, skip=skip, limit=limit)
     return tasks
 
 
-@router.get("/tasks/{task_id}", response_model=TaskBase)
+@router.get("/tasks/{task_id}", response_model=TaskSchema)
 def get_task(task_id: int, db: Session = Depends(get_db)):
     task = db_get_task(db, task_id)
     if task is None:
