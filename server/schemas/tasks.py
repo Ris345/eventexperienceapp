@@ -53,7 +53,7 @@ class TaskBase(BaseModel):
     name: str
     description: str
     isCompleted: bool
-    priority: TaskPriorityBase
+    priority: TaskPriority
     task_type: TaskType
 
     class Config:
