@@ -1,4 +1,4 @@
-import models.tasks as task_m
+from models.tasks import Task
 from sqlalchemy.orm import Session, joinedload
 from fastapi import Depends
 from schemas.tasks import TaskSchema, TaskCreate
@@ -6,12 +6,12 @@ from schemas.tasks import TaskSchema, TaskCreate
 
 def db_get_tasks(db: Session, skip: int = 0, limit: int = 100):
     tasks = (
-        db.query(task_m.Task)
-        .options(joinedload(task_m.Task.tasklist))
-        .options(joinedload(task_m.Task.assignee))
-        .options(joinedload(task_m.Task.task_type))
-        .options(joinedload(task_m.Task.priority))
-        .options(joinedload(task_m.Task.author))
+        db.query(Task)
+        .options(joinedload(Task.tasklist))
+        .options(joinedload(Task.assignee))
+        .options(joinedload(Task.task_type))
+        .options(joinedload(Task.priority))
+        .options(joinedload(Task.author))
         .offset(skip)
         .limit(limit)
         .all()
@@ -24,7 +24,7 @@ def db_get_task(
     db: Session,
     task_id: int,
 ):
-    db_task = db.query(task_m.Task).where(task_m.Task.id == task_id).first()
+    db_task = db.query(Task).where(Task.id == task_id).first()
     return db_task
 
 
