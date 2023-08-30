@@ -22,7 +22,12 @@ def get_db():
         db.close()
 
 
-router = APIRouter()
+router = APIRouter(
+    tags=["tasks"],
+    # dependencies=[Depends(get_token_header)],
+    responses={404: {"description": "Not Found"}},
+)
+
 
 # Validation error here for some reason after trying to display users
 @router.get("/tasks", response_model=List[TaskBase])
@@ -37,6 +42,7 @@ def get_task(task_id: int, db: Session = Depends(get_db)):
     if task is None:
         raise HTTPException(status_code=400, detail="task not found")
     return task
+
 
 # @router.post("/tasks/create", response_model=TaskBase)
 # def post_task(task : TaskBase, db: Session = Depends(get_db)):

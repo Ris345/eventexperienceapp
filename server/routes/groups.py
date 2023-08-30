@@ -21,7 +21,11 @@ def get_db():
         db.close()
 
 
-router = APIRouter()
+router = APIRouter(
+    tags=["groups"],
+    # dependencies=[Depends(get_token_header)],
+    responses={404: {"description": "Not Found"}},
+)
 
 
 @router.get("/groups", response_model=List[GroupSchema])
