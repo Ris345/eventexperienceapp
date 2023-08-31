@@ -1,7 +1,7 @@
 from datetime import date, datetime, time, timedelta
 from pydantic import BaseModel
 from typing import Optional, List
-from schemas.tasks import TaskPriorityBase, TaskTypeBase
+from schemas.tasks import TaskPriority, TaskType
 
 """
 ModelBase - common attributes when creating or reading data
@@ -30,8 +30,8 @@ class TaskBase(BaseModel):
     name: str
     description: str
     isCompleted: bool
-    priority: TaskPriorityBase
-    task_type: TaskTypeBase
+    priority: TaskPriority
+    task_type: TaskType
 
     # assignedUser : int
     class Config:
@@ -53,6 +53,7 @@ class GroupBase(BaseModel):
 
 
 class GroupSchema(GroupBase):
+    id: int
     users: Optional[List[UserBase]]
     owner: Optional[UserBase]
 
