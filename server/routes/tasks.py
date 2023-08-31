@@ -37,7 +37,7 @@ def get_tasks(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 
 
 @router.get("/task_by_id/{task_id}", response_model=TaskSchema)
-def get_task(task_id: int, db: Session = Depends(get_db)):
+def get_task_by_id(task_id: int, db: Session = Depends(get_db)):
     task_by_id = db_get_task_by_id(db, task_id)
     if task_by_id is None:
         raise HTTPException(status_code=400, detail="task not found with that id")
