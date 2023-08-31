@@ -33,7 +33,7 @@ def db_get_groups(db: Session, skip: int = 0, limit: int = 100) -> List[GroupSch
     return group_schemas
 
 
-def db_get_group(
+def db_get_group_by_id(
     db: Session,
     group_id: int,
 ):
@@ -44,6 +44,20 @@ def db_get_group(
         .first()
     )
     return db_group
+
+
+def db_get_group_by_name(
+    db: Session,
+    groupname: str,
+):
+    filtered_groupname = groupname.strip()
+    group_by_name = (
+        db.query(models.Group)
+        .filter(models.Group.name.ilike(f"%{filtered_groupname}%"))
+        .options(joinedload(models.Group.users))
+        .first()
+    )
+    return group_by_name
 
 
 """

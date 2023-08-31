@@ -20,12 +20,29 @@ def db_get_tasks(db: Session, skip: int = 0, limit: int = 100):
     return task_schemas
 
 
-def db_get_task(
+def db_get_task_by_id(
     db: Session,
     task_id: int,
 ):
-    db_task = db.query(Task).where(Task.id == task_id).first()
-    return db_task
+    task_by_id = db.query(Task).where(Task.id == task_id).first()
+    return task_by_id
+
+
+"""
+using .ilike() function allowing for matching of strings via case insenstivitiy
+and then wildcard allowing for matching of string regardless of characters
+"""
+
+
+def db_get_task_by_name(
+    db: Session,
+    taskname: str,
+):
+    filtered_taskname = taskname.strip()
+    task_by_username = (
+        db.query(Task).filter(Task.name.ilike(f"%{filtered_taskname}%")).first()
+    )
+    return task_by_username
 
 
 # def db_post_tasks(task_name, description, db: Session):
