@@ -1,10 +1,19 @@
 from models.users import User
 from sqlalchemy.orm import Session, joinedload
 from schemas.users import UserSchema, UserCreate
+from typing import Annotated
+from fastapi import Depends
+from schemas.users import scheme, decode_token
 
 
 class DuplicateAccountError(ValueError):
     pass
+
+
+# testing security
+async def get_current(token: Annotated[str, Depends(scheme)]):
+    user = decode_token(token)
+    return user
 
 
 def db_get_users(db: Session, skip: int = 0, limit: int = 100):

@@ -1,7 +1,12 @@
 from datetime import date, datetime, time, timedelta
+from typing import Annotated
+from fastapi import Depends
 from pydantic import BaseModel
 from typing import Optional, List
 from schemas.tasks import TaskPriority, TaskType
+import dependencies
+
+scheme = dependencies.ouath2_scheme
 
 """
 ModelBase - common attributes when creating or reading data
@@ -85,3 +90,19 @@ class GroupCreate(GroupBase):
 
 class DuplicateAccountError(ValueError):
     pass
+
+
+def decode_token(token):
+    return UserSchema(
+        username=token + "hash",
+        email="testing_security@eea.com",
+        first_name="user",
+        last_name="test",
+        about="testing yes",
+        profile_photo="not_sketch@aws.s3.com",
+    )
+
+
+async def get_current(token: Annotated[str, Depends(scheme)]):
+    user = decode_token(token)
+    return user
