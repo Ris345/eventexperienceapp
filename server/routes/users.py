@@ -8,13 +8,12 @@ from queries.users import (
     db_create_user,
 )
 from fastapi import Depends, HTTPException, APIRouter, Form, status, Request
-from fastapi.encoders import jsonable_encoder
-
 from sqlalchemy.orm import Session
-from typing import List
+from typing import List, Annotated
 from database import SessionLocal
-from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse
+import dependencies
+
+scheme = dependencies.ouath2_scheme
 
 
 def get_db():
@@ -32,14 +31,23 @@ router = APIRouter(
 )
 
 
+# Dependency provides str assigned to token parameter of path operation function
+# use the dependency to define 'secuirty scheme'
 @router.get("/users", response_model=List[UserSchema])
-def get_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def get_users(
+    token: Annotated[str, Depends(scheme)],
+    skip: int = 0,
+    limit: int = 100,
+    db: Session = Depends(get_db),
+):
     users = db_get_users(db, skip=skip, limit=limit)
     return users
 
 
 @router.get("/users_by_user_id/{user_id}", response_model=UserSchema)
-def get_user_by_id(user_id: int, db: Session = Depends(get_db)):
+def get_user_by_id(
+    token: Annotated[str, Depends(scheme)], user_id: int, db: Session = Depends(get_db)
+):
     user = db_get_user_by_id(db, user_id)
     if user is None:
         raise HTTPException(status_code=400, detail="user not found")
@@ -47,7 +55,9 @@ def get_user_by_id(user_id: int, db: Session = Depends(get_db)):
 
 
 @router.get("/users_by_username/{username}", response_model=UserSchema)
-def get_user_by_username(username: str, db: Session = Depends(get_db)):
+def get_user_by_username(
+    token: Annotated[str, Depends(scheme)], username: str, db: Session = Depends(get_db)
+):
     user = db_get_user_by_username(db, username)
     if user is None:
         raise HTTPException(status_code=400, detail="user not found")
