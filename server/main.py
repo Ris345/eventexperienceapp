@@ -1,5 +1,6 @@
 import models
 from fastapi import FastAPI
+
 import database
 
 engine = database.engine
