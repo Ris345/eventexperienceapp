@@ -6,6 +6,7 @@ from queries.users import (
     UserSchema,
     UserCreate,
     db_create_user,
+    get_current,
 )
 from fastapi import Depends, HTTPException, APIRouter, Form, status, Request
 from sqlalchemy.orm import Session
@@ -31,8 +32,15 @@ router = APIRouter(
 )
 
 
+@router.get("/current_account")
+async def get_current_account(
+    current_account: Annotated[UserSchema, Depends(get_current)]
+):
+    return current_account
+
+
 # Dependency provides str assigned to token parameter of path operation function
-# use the dependency to define 'secuirty scheme'
+# use the dependency to define 'security scheme'
 @router.get("/users", response_model=List[UserSchema])
 def get_users(
     token: Annotated[str, Depends(scheme)],
