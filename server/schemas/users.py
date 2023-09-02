@@ -101,8 +101,3 @@ def decode_token(token):
         about="testing yes",
         profile_photo="not_sketch@aws.s3.com",
     )
-
-
-async def get_current(token: Annotated[str, Depends(scheme)]):
-    user = decode_token(token)
-    return user
