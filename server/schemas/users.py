@@ -11,11 +11,48 @@ ModelSchema - schemas used when reading data, when returning it from API
 """
 
 
+class UserSimple(BaseModel):
+    username: str
+
+
+class EventSimple(BaseModel):
+    name: str
+    description: Text
+
+
 class TaskSchema(BaseModel):
     id: int
     name: str
     description: str
     isCompleted: bool
+
+
+class Bookmark(BaseModel):
+    event: EventSimple
+    users: list[UserSimple]
+
+
+class BookmarkUser(BaseModel):
+    event: EventSimple
+
+
+class BookmarkSchema(Bookmark):
+    id: int
+
+    class Config:
+        orm_mode = True
+        from_attributes = True
+
+
+class RSVPUser(BaseModel):
+    event: EventSimple
+    is_attending: bool
+
+
+class RSVP(BaseModel):
+    event: EventSimple
+    users: list[UserSimple]
+    is_attending: bool
 
 
 class UserBase(BaseModel):
@@ -58,6 +95,18 @@ class UserCreate(UserBase):
     password: str
 
 
+class UserCalendar(BaseModel):
+    name: str
+    description: Text
+    created: datetime
+    updated: datetime
+    events: Optional[List[EventSimple]] = None
+
+    class Config:
+        orm_mode = True
+        from_attributes = True
+
+
 class UserSchema(UserBase):
     id: int
     is_active: bool
@@ -65,6 +114,11 @@ class UserSchema(UserBase):
     groups: Optional[List[GroupSchema]] = None
     authored_tasks: Optional[List[TaskSchema]] = None
     task_assignments: Optional[List[TaskSchema]] = None
+    authored_events: Optional[List[EventSimple]] = None
+    organized_events: Optional[List[TaskSchema]] = None
+    rsvps: Optional[List[RSVPUser]] = None
+    bookmarks: Optional[List[BookmarkUser]] = None
+    user_calendar: Optional[List[UserCalendar]] = None
 
     class Config:
         orm_mode = True

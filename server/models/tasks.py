@@ -6,7 +6,7 @@ import database
 Base = database.Base
 engine = database.engine
 SessionLocal = database.SessionLocal
-# from models.users import User, Group
+from models.events import Event
 
 """
 ! subject to change !
@@ -39,13 +39,13 @@ class Task(Base):
     isCompleted = Column(Boolean, default=False)
     quantity = Column(Integer)
     # fk to tasklist
-    tasklist_id = Column(Integer, ForeignKey("task_list.id"))
+    tasklist_id = Column(Integer, ForeignKey("tasklist.id"))
     # fk to type
     type_id = Column(Integer, ForeignKey("task_type.id"))
     # fk to priority
     priority_id = Column(Integer, ForeignKey("task_priority.id"))
     # Define relationships directly in the class definition
-    task_list = relationship(
+    tasklist = relationship(
         "TaskList", back_populates="tasks", foreign_keys=[tasklist_id]
     )
     author_id = Column(Integer, ForeignKey("users.id"))
@@ -53,7 +53,7 @@ class Task(Base):
     author = relationship(
         "User", foreign_keys=[author_id], back_populates="authored_tasks"
     )
-    assigned_user = relationship("User", foreign_keys=[assignee_id])
+    assignee = relationship("User", foreign_keys=[assignee_id])
     task_type = relationship(
         "TaskType", back_populates="tasks", lazy="joined", foreign_keys=[type_id]
     )
@@ -71,11 +71,13 @@ TaskList Model
     priority - fk to priority table
     assigned_group - fk to group table
     description - text
+
+1 tasklist to one event, 1 event has 1 tasklist
 """
 
 
 class TaskList(Base):
-    __tablename__ = "task_list"
+    __tablename__ = "tasklist"
     __table_args__ = {"extend_existing": True}
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
@@ -85,11 +87,14 @@ class TaskList(Base):
     assignedGroup_id = Column(Integer, ForeignKey("groups.id"))
     assignedGroup = relationship(
         "Group",
-        back_populates="task_list",
+        back_populates="tasklist",
         lazy="joined",
         foreign_keys=[assignedGroup_id],
     )
-    tasks = relationship("Task", back_populates="task_list", lazy="joined")
+    tasks = relationship("Task", back_populates="tasklist", lazy="joined")
+    events = relationship(
+        "Event", back_populates="tasklist", foreign_keys="[Event.tasklist_id]"
+    )
 
 
 """

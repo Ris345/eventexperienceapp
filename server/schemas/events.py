@@ -1,15 +1,24 @@
-from datetime import date, datetime, time, timedelta
+from datetime import datetime, time, timedelta
 from pydantic import BaseModel
 from typing import Optional, List, Text
 
+class CalendarBase(BaseModel):
 
 class EventBase(BaseModel):
+    name: str
+    description: Text
+    created: datetime
+    updated: datetime
+    html_link: str
+    calendar:
+
+
+class EventSchema(EventBase):
     id: int
-    # other common fields
+    class Config:
+        orm_mode = True
+        from_attributes = True
 
-
-class EventCreate(BaseModel):
-    pass
 
 
 """

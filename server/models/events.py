@@ -93,11 +93,22 @@ class Calendar(Base):
     __tablename__ = "calendars"
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, index=True)
-    summary = Column(Text)
     description = Column(Text)
     created = Column(DateTime, default=func.now())
     updated = Column(DateTime, onupdate=func.now())
     events = relationship("Event", back_populates="calendar", lazy="joined")
+
+
+class UserCalendar(Base):
+    __tablename__ = "user_calendar"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, unique=True, index=True)
+    description = Column(Text)
+    created = Column(DateTime, default=func.now())
+    updated = Column(DateTime, onupdate=func.now())
+    events = relationship("RSVP", back_populates="user_calendar", lazy="joined")
+    user_id = Column(Integer, ForeignKey("users.id"))
+    user = relationship("User", foreign_keys=[user_id], back_populates="user_calendar")
 
 
 """
@@ -159,7 +170,7 @@ class Event(Base):
         "User", secondary="user_organized_events", back_populates="organized_events"
     )
     max_rsvps = Column(Integer)
-    # attachments = Column(String) or relationship to Attachments Table?
+    attachments = relationship("Attachment", back_populates="events")
     location_id = Column(Integer, ForeignKey("locations.id"))
     location = relationship("Location", back_populates="events")
     start = Column(DateTime)
@@ -170,8 +181,10 @@ class Event(Base):
     bookmarks = relationship(
         "Bookmark", back_populates="event", foreign_keys=[bookmark_id]
     )
-    # edited from suggestion
-    # count number of attendees from the number of RSVPS to add to Event model
+    tasklist_id = Column(Integer, ForeignKey("tasklist.id"))
+    tasklist = relationship(
+        "TaskList", back_populates="events", foreign_keys=[tasklist_id]
+    )
     """
     users are able to favorite an event to check on it later and not rsvp, an example being an admin that is working on the tasks for a given x event (functions like a bookmark)
 
@@ -230,3 +243,5 @@ class Attachment(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
     file_string = Column(String)
+    event_id = Column(Integer, ForeignKey("events.id"))
+    events = relationship("Event", foreign_keys=[event_id])

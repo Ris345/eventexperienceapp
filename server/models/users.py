@@ -12,7 +12,7 @@ from sqlalchemy import (
 from sqlalchemy.orm import relationship, joinedload
 import database
 from models.tasks import Task, TaskList, TaskType
-from models.events import Event, Location, EventType, Calendar
+from models.events import Event, Location, EventType, Calendar, UserCalendar
 
 Base = database.Base
 engine = database.engine
@@ -46,9 +46,6 @@ class User(Base):
     # M2M
     groups = relationship("Group", secondary="group_users", back_populates="users")
     is_active = Column(Boolean, default=True)
-    # need to clarify, need a authored_tasks, task_assignments parameters
-    # going to change routes, queries, etc
-    # authored_task_id = Column(Integer, ForeignKey("tasks.id"))
     authored_tasks = relationship(
         "Task", back_populates="author", foreign_keys="[Task.author_id]"
     )
@@ -62,27 +59,15 @@ class User(Base):
     )
     rsvps = relationship("RSVP", back_populates="users")
     bookmarks = relationship("Bookmark", back_populates="users")
+    user_calendar = relationship("UserCalendar", foreign_keys="[UserCalendar.user_id]")
 
 
 """
 Favorites Model
-many favorites to one event, fk to events
-
-class Favorite(Base):
-    __tablename__='favorites'
-    (attributes)
-        event
-        user
+many bookmarks to one event, 1 bookmark ties to one event fk to events
 
 RSVP Model
-many rsvps to one event, fk to events
-
-class RSVP(Base):
-    __tablename__='rsvps'
-    (attributes)
-        event
-        user
-        is_attending = Column(Boolean, default=True)
+many rsvps to one event, fk to events, 1 rsvp ties to one event
 """
 
 
@@ -98,6 +83,10 @@ class RSVP(Base):
     __tablename__ = "rsvps"
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"))
+    user_calendar_id = Column(Integer, ForeignKey("user_calendar.id"))
+    user_calendar = relationship(
+        "UserCalendar", back_populates="events", foreign_keys=[user_calendar_id]
+    )
     event = relationship("Event", back_populates="rsvps")
     is_attending = Column(Boolean, default=True)
     users = relationship("User", foreign_keys=[user_id])
@@ -114,26 +103,6 @@ we want a user to be an author of multiple tasks, we want 1 task to have 1 autho
 (event authors)
 we want a user to be an author of several tasks, we want 1 event to have 1 author
 """
-# class UserAssignedTasks(Base):
-#     __tablename__ = "user_assigned_tasks"
-#     id = Column(Integer, primary_key=True)
-#     user_id = Column(Integer, ForeignKey("users.id"))
-#     task = relationship("Task", back_populates="assignedUser")
-
-
-# class UserAuthoredTasks(Base):
-#     __tablename__ = "user_authored_tasks"
-#     id = Column(Integer, primary_key=True)
-#     author_id = Column(Integer, ForeignKey("users.id"))
-#     task = relationship("Task", back_populates="author")
-
-
-# class UserAuthoredEvents(Base):
-#     __tablename__ = "user_authored_events"
-#     id = Column(Integer, primary_key=True)
-#     author_id = Column(Integer, ForeignKey("users.id"))
-#     event = relationship("Event", back_populates="author")
-
 
 """
 We need to flesh this idea out more
@@ -149,8 +118,6 @@ multiple groups to one event
 multiple events to one group
 
 needs to have a formed relationship with events
-
-
 """
 
 
@@ -165,7 +132,7 @@ class Group(Base):
     # establish bidirectional relation between objects
     # user foreignkey relationship prior to indicate to sqlalchemy to load related obj at attribute access time
     owner = relationship("User", back_populates="groups", lazy="joined")
-    task_list = relationship("TaskList", back_populates="assignedGroup", lazy="joined")
+    tasklist = relationship("TaskList", back_populates="assignedGroup", lazy="joined")
     events = relationship("Event", secondary="event_group", back_populates="groups")
 
 
@@ -195,8 +162,8 @@ class GroupUser(Base):
 Theoretical implementation
 Required for many to many relationship with events
 
-many groups to 1 event and many events to 1 group
 many organizers to 1 event and many events to 1 organizer
+many groups to 1 event and many events to 1 group
 """
 
 
