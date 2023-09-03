@@ -57,9 +57,17 @@ class User(Base):
     organized_events = relationship(
         "Event", secondary="user_organized_events", back_populates="organizers"
     )
-    rsvps = relationship("RSVP", back_populates="users")
-    bookmarks = relationship("Bookmark", back_populates="users")
-    user_calendar = relationship("UserCalendar", foreign_keys="[UserCalendar.user_id]")
+    # if user is deleted, we want rsvps and bookmarks as well as user calendar to be deleted
+    rsvps = relationship("RSVP", back_populates="users", cascade="all, delete-orphan")
+    bookmarks = relationship(
+        "Bookmark", back_populates="users", cascade="all, delete-orphan"
+    )
+    user_calendar = relationship(
+        "UserCalendar",
+        foreign_keys="[UserCalendar.user_id]",
+        cascade="all, delete-orphan",
+    )
+    owned_groups = relationship("Group", back_populates="owner")
 
 
 """
