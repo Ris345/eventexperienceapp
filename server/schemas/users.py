@@ -1,4 +1,4 @@
-from datetime import date, datetime, time, timedelta
+from datetime import datetime, timedelta
 from pydantic import BaseModel
 from typing import Optional, List, Text
 
@@ -18,6 +18,9 @@ class UserSimple(BaseModel):
 class EventSimple(BaseModel):
     name: str
     description: Text
+    start: datetime
+    duration: int
+    end: datetime
 
 
 class TaskSchema(BaseModel):
