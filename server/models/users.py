@@ -65,6 +65,7 @@ class User(Base):
     user_calendar = relationship(
         "UserCalendar",
         foreign_keys="[UserCalendar.user_id]",
+        back_populates="user",
         cascade="all, delete-orphan",
     )
     owned_groups = relationship("Group", back_populates="owner")
@@ -92,12 +93,11 @@ class RSVP(Base):
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"))
     user_calendar_id = Column(Integer, ForeignKey("user_calendar.id"))
-    user_calendar = relationship(
-        "UserCalendar", back_populates="events", foreign_keys=[user_calendar_id]
-    )
-    event = relationship("Event", back_populates="rsvps")
+    user_calendar = relationship("UserCalendar", foreign_keys=[user_calendar_id])
+    event_id = Column(Integer, ForeignKey("events.id"))
+    event = relationship("Event", foreign_keys=[event_id])
     is_attending = Column(Boolean, default=True)
-    users = relationship("User", foreign_keys=[user_id])
+    user = relationship("User", foreign_keys=[user_id])
 
 
 """

@@ -106,9 +106,10 @@ class UserCalendar(Base):
     description = Column(Text)
     created = Column(DateTime, default=func.now())
     updated = Column(DateTime, onupdate=func.now())
-    events = relationship("RSVP", back_populates="user_calendar", lazy="joined")
+    event_id = Column(Integer, ForeignKey("events.id"))
+    events = relationship("Event", foreign_keys=[event_id], lazy="joined")
     user_id = Column(Integer, ForeignKey("users.id"))
-    user = relationship("User", foreign_keys=[user_id], back_populates="user_calendar")
+    users = relationship("User", back_populates="user_calendar")
 
 
 """
@@ -176,7 +177,6 @@ class Event(Base):
     start = Column(DateTime)
     duration = Column(Integer)
     rsvp_id = Column(Integer, ForeignKey("rsvps.id"))
-    rsvps = relationship("RSVP", back_populates="event", foreign_keys=[rsvp_id])
     bookmark_id = Column(Integer, ForeignKey("bookmarks.id"))
     bookmarks = relationship(
         "Bookmark", back_populates="event", foreign_keys=[bookmark_id]
@@ -184,6 +184,12 @@ class Event(Base):
     tasklist_id = Column(Integer, ForeignKey("tasklist.id"))
     tasklist = relationship(
         "TaskList", back_populates="events", foreign_keys=[tasklist_id]
+    )
+    user_calendars = relationship(
+        "UserCalendar",
+        foreign_keys="[UserCalendar.event_id]",
+        secondary="rsvps",
+        back_populates="events",
     )
     """
     users are able to favorite an event to check on it later and not rsvp, an example being an admin that is working on the tasks for a given x event (functions like a bookmark)
