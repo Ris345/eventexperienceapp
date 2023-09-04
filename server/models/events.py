@@ -110,6 +110,15 @@ class UserCalendar(Base):
     events = relationship("Event", foreign_keys=[event_id], lazy="joined")
     user_id = Column(Integer, ForeignKey("users.id"))
     users = relationship("User", back_populates="user_calendar")
+    '''
+        events = relationship(
+        "Event",
+        secondary="rsvps",
+        primaryjoin="and_(UserCalendar.id == RSVP.user_calendar_id, RSVP.is_attending == True)",
+        secondaryjoin="RSVP.event_id == Event.id",
+        back_populates="user_calendars",
+    )
+    '''
 
 
 """
@@ -207,6 +216,15 @@ class Event(Base):
                 minutes = self.duration - (hours * 60)
                 return self.start + timedelta(hours=hours, minutes=minutes)
         return None
+    '''
+    user_calendars = relationship(
+        "UserCalendar",
+        secondary="rsvps",
+        primaryjoin="and_(Event.id == RSVP.event_id, RSVP.is_attending == True)",
+        secondaryjoin="RSVP.user_calendar_id == UserCalendar.id",
+        back_populates="events",
+    )
+    '''
 
 
 class EventType(Base):
