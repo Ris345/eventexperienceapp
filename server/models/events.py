@@ -11,7 +11,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship, joinedload
 import database
-
+from .users import User
 
 Base = database.Base
 engine = database.engine
@@ -93,6 +93,18 @@ class Calendar(Base):
     updated = Column(DateTime, onupdate=func.now())
 
 
+class UserCalendar(Base):
+    __tablename__ = "user_calendar"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, unique=True, index=True)
+    summary = Column(Text)
+    description = Column(Text)
+    created = Column(DateTime, default=func.now())
+    updated = Column(DateTime, onupdate=func.now())
+    user_id = Column(Integer, ForeignKey("users.id"))
+    user = relationship(User)
+
+
 """
 Calendar<->Events
 multiple events to one calendar
@@ -124,7 +136,7 @@ class Event(Base):
     attendees - number of users that are registered for event, type is list []
         - this will have to read from the rsvp table from users
 
-    attachment - str, attachment for the event maybe like a pdf for flier
+    attachments - [], (many attachments to one event) foreign key to attachment class
 
     location - foreign key to locations table
 """
@@ -141,7 +153,8 @@ class Event(Base):
     html_link = Column(String)
     event_calendar = relationship("Calendar", back_populates="events", lazy="joined")
     groups = relationship("Group", secondary="event_group", back_populates="events")
-    type = relationship("EventType", ForeignKey("event_type.id"))
+    type = relationship("EventType", back_populates="events", lazy="joined")
+    user_calendar = relationship("User", back_populates="events", lazy="joined")
     # author =
     # organizer =
     # start =
@@ -149,11 +162,18 @@ class Event(Base):
     # duration =
     # max_rsvps =
     # attendees =
-    # attachment
+    # attachments =
     # location =
 
 
 """
+events can have multiple attachments
+class Attachment(Base):
+    __tablename__ = 'attachments'
+    id =
+    name =
+    attachment_link =
+
 one event has one type
 class EventType(Base):
     __tablename__ = 'event_type'
