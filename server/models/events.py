@@ -109,16 +109,7 @@ class UserCalendar(Base):
     event_id = Column(Integer, ForeignKey("events.id"))
     events = relationship("Event", foreign_keys=[event_id], lazy="joined")
     user_id = Column(Integer, ForeignKey("users.id"))
-    users = relationship("User", back_populates="user_calendar")
-    '''
-        events = relationship(
-        "Event",
-        secondary="rsvps",
-        primaryjoin="and_(UserCalendar.id == RSVP.user_calendar_id, RSVP.is_attending == True)",
-        secondaryjoin="RSVP.event_id == Event.id",
-        back_populates="user_calendars",
-    )
-    '''
+    user = relationship("User", back_populates="user_calendar", foreign_keys=[user_id])
 
 
 """
@@ -162,7 +153,6 @@ class Event(Base):
     __tablename__ = "events"
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, index=True)
-    summary = Column(Text)
     description = Column(Text)
     created = Column(DateTime, default=func.now())
     updated = Column(DateTime, onupdate=func.now())
@@ -185,7 +175,7 @@ class Event(Base):
     location = relationship("Location", back_populates="events")
     start = Column(DateTime)
     duration = Column(Integer)
-    rsvp_id = Column(Integer, ForeignKey("rsvps.id"))
+    rsvps = relationship("RSVP", back_populates="event")
     bookmark_id = Column(Integer, ForeignKey("bookmarks.id"))
     bookmarks = relationship(
         "Bookmark", back_populates="event", foreign_keys=[bookmark_id]
@@ -194,12 +184,12 @@ class Event(Base):
     tasklist = relationship(
         "TaskList", back_populates="events", foreign_keys=[tasklist_id]
     )
-    user_calendars = relationship(
-        "UserCalendar",
-        foreign_keys="[UserCalendar.event_id]",
-        secondary="rsvps",
-        back_populates="events",
-    )
+    # user_calendars = relationship(
+    #     "UserCalendar",
+    #     foreign_keys="[UserCalendar.event_id]",
+    #     secondary="rsvps",
+    #     back_populates="events",
+    # )
     """
     users are able to favorite an event to check on it later and not rsvp, an example being an admin that is working on the tasks for a given x event (functions like a bookmark)
 
@@ -216,7 +206,8 @@ class Event(Base):
                 minutes = self.duration - (hours * 60)
                 return self.start + timedelta(hours=hours, minutes=minutes)
         return None
-    '''
+
+    """
     user_calendars = relationship(
         "UserCalendar",
         secondary="rsvps",
@@ -224,7 +215,7 @@ class Event(Base):
         secondaryjoin="RSVP.user_calendar_id == UserCalendar.id",
         back_populates="events",
     )
-    '''
+    """
 
 
 class EventType(Base):

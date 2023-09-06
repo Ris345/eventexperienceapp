@@ -58,13 +58,12 @@ class User(Base):
         "Event", secondary="user_organized_events", back_populates="organizers"
     )
     # if user is deleted, we want rsvps and bookmarks as well as user calendar to be deleted
-    rsvps = relationship("RSVP", back_populates="users", cascade="all, delete-orphan")
+    rsvps = relationship("RSVP", back_populates="user", cascade="all, delete-orphan")
     bookmarks = relationship(
-        "Bookmark", back_populates="users", cascade="all, delete-orphan"
+        "Bookmark", back_populates="user", cascade="all, delete-orphan"
     )
     user_calendar = relationship(
         "UserCalendar",
-        foreign_keys="[UserCalendar.user_id]",
         back_populates="user",
         cascade="all, delete-orphan",
     )
@@ -85,19 +84,17 @@ class Bookmark(Base):
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey("users.id"))
     event = relationship("Event", back_populates="bookmarks")
-    users = relationship("User", foreign_keys=[user_id])
+    user = relationship("User", foreign_keys=[user_id])
 
 
 class RSVP(Base):
     __tablename__ = "rsvps"
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey("users.id"))
-    user_calendar_id = Column(Integer, ForeignKey("user_calendar.id"))
-    user_calendar = relationship("UserCalendar", foreign_keys=[user_calendar_id])
-    event_id = Column(Integer, ForeignKey("events.id"))
-    event = relationship("Event", foreign_keys=[event_id])
     is_attending = Column(Boolean, default=True)
-    user = relationship("User", foreign_keys=[user_id])
+    user_id = Column(Integer, ForeignKey("users.id"))
+    user = relationship("User", back_populates="rsvps", foreign_keys=[user_id])
+    event_id = Column(Integer, ForeignKey("events.id"))
+    event = relationship("Event", back_populates="rsvps", foreign_keys=[event_id])
 
 
 """
@@ -196,11 +193,13 @@ with SessionLocal() as session:
     Group2 = Group(name="group2", description="group2 description")
     type1 = TaskType(name="critical")
     tasklist1 = TaskList(name="tasklist1", isCompleted=True, description="taskl 1")
-    task1 = Task(
-        name="task1",
-        description="desc1",
+    tasklist2 = TaskList(name="tasklist2", isCompleted=True, description="taskl 2")
+    Task1 = Task(
+        name="get eggs", description="we need eggs", isCompleted=False, quantity="10"
     )
-    task2 = Task(name="task2", description="desc2")
+    Task2 = Task(
+        name="task2", description="desc2", isCompleted=True, quantity="task2 q"
+    )
     User1 = User(
         username="user1",
         first_name="first1",
@@ -231,10 +230,38 @@ with SessionLocal() as session:
         profile_photo="aws3.privatebucket.com/user3_photo",
         is_active=True,
     )
+    InPerson = EventType(name="networking")
+    specific_datetime = datetime(2021, 8, 1, 15, 30)
+    specific_datetime2 = datetime(2020, 8, 1, 15, 30)
+    Event1 = Event(
+        name="event1",
+        description="event1 description",
+        html_link="event1_link",
+        author=User1,
+        organizers=[User1, User2],
+        start=specific_datetime,
+        duration=10,
+        tasklist=tasklist1,
+    )
+    Event2 = Event(
+        name="event2",
+        description="event2 description",
+        html_link="event2_link",
+        author=User2,
+        organizers=[User1, User2],
+        start=specific_datetime2,
+        duration=10,
+        tasklist=tasklist2,
+    )
+    Calendar1 = Calendar(
+        name="calendar 1", description="calendar description", events=[Event1, Event2]
+    )
     Group1.owner_id = 1
     Group2.owner_id = 2
     Group1.users = [User1, User2]
     Group2.users = [User2, User3]
+    User1.rsvps = [Event1, Event2]
+    User2.rsvps = [Event1]
     session.add_all([Group1, Group2, User1, User2, User3])
     session.commit()
 
