@@ -1,7 +1,7 @@
 from datetime import date, datetime, time, timedelta
 from pydantic import BaseModel
 from typing import Optional, List
-from .users import UserSchema
+
 """
 ModelBase - common attributes when creating or reading data
 
@@ -11,39 +11,68 @@ ModelSchema - schemas used when reading data, when returning it from API
 """
 
 
-class TaskPriorityBase(BaseModel):
-    name : str
+class UserBase(BaseModel):
+    username: str
+    first_name: str
+    last_name: str
+    email: str
+    about: str
+    profile_photo: str
+
+    # SQL Alchemy does not return dict, which pydantic expects by default. Config allows loading from standard orm parameters (attributes on object as opposed to a dict lookup)
     class Config:
         orm_mode = True
         from_attributes = True
+
+
+class TaskPriorityBase(BaseModel):
+    name: str
+
+    class Config:
+        orm_mode = True
+        from_attributes = True
+
+
 class TaskPriority(TaskPriorityBase):
-    id : int
+    id: int
+
 
 class TaskTypeBase(BaseModel):
-    name : str
+    name: str
+
+    class Config:
+        orm_mode = True
+        from_attributes = True
+
 
 class TaskType(TaskTypeBase):
     id: int
+
 
 class TaskBase(BaseModel):
     name: str
     description: str
     isCompleted: bool
-    priority : TaskPriorityBase
-    type : TaskType
-    assignedUser: Optional[UserSchema] = None
-    # assignedUser : int
+    priority: TaskPriority
+    task_type: TaskType
+
     class Config:
         orm_mode = True
         from_attributes = True
 
-    # SQL Alchemy does not return dict, which pydantic expects by default. Config allows loading from standard orm parameters (attributes on object as opposed to a dict lookup)
 
 class TaskCreate(TaskBase):
     pass
 
+
 class TaskSchema(TaskBase):
-    id:int
+    id: int
+    assignee: Optional[UserBase]
+    author: Optional[UserBase]
+
+    class Config:
+        orm_mode = True
+        from_attributes = True
 
 
 class TasklistBase(BaseModel):
@@ -76,7 +105,7 @@ class TasklistBase(BaseModel):
 #     password: str
 
 
-# class UserSchema(UserBase):
+# class UserBase(UserBase):
 #     id: int
 #     is_active: bool
 #     created_at: datetime = None

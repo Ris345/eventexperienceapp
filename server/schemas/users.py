@@ -1,6 +1,7 @@
 from datetime import date, datetime, time, timedelta
 from pydantic import BaseModel
 from typing import Optional, List
+from schemas.tasks import TaskPriority, TaskType
 
 """
 ModelBase - common attributes when creating or reading data
@@ -25,6 +26,19 @@ class UserBase(BaseModel):
         from_attributes = True
 
 
+class TaskBase(BaseModel):
+    name: str
+    description: str
+    isCompleted: bool
+    priority: TaskPriority
+    task_type: TaskType
+
+    # assignedUser : int
+    class Config:
+        orm_mode = True
+        from_attributes = True
+
+
 # changed groupbase and group schema in order to incoporate owner data, so removed owner_id from groupbase and added an owner field for owner data in group schema
 # groups already had an owner relation on its model
 class GroupBase(BaseModel):
@@ -39,6 +53,7 @@ class GroupBase(BaseModel):
 
 
 class GroupSchema(GroupBase):
+    id: int
     users: Optional[List[UserBase]]
     owner: Optional[UserBase]
 
@@ -56,6 +71,8 @@ class UserSchema(UserBase):
     is_active: bool
     created_at: datetime = None
     groups: Optional[List[GroupSchema]]
+    task_assignments: Optional[List[TaskBase]]
+    authored_tasks: Optional[List[TaskBase]]
 
     class Config:
         orm_mode = True

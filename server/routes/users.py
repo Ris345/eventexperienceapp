@@ -25,7 +25,11 @@ def get_db():
         db.close()
 
 
-router = APIRouter()
+router = APIRouter(
+    tags=["users"],
+    # dependencies=[Depends(get_token_header)],
+    responses={404: {"description": "Not Found"}},
+)
 
 
 @router.get("/users", response_model=List[UserSchema])

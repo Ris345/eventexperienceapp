@@ -1,30 +1,49 @@
 from models.tasks import Task
 from sqlalchemy.orm import Session, joinedload
 from fastapi import Depends
+from schemas.tasks import TaskSchema, TaskCreate
 
 
 def db_get_tasks(db: Session, skip: int = 0, limit: int = 100):
-    db_tasks = (
+    tasks = (
         db.query(Task)
+        .options(joinedload(Task.tasklist))
+        .options(joinedload(Task.assignee))
+        .options(joinedload(Task.task_type))
+        .options(joinedload(Task.priority))
+        .options(joinedload(Task.author))
         .offset(skip)
         .limit(limit)
         .all()
     )
+    task_schemas = [TaskSchema.from_orm(task) for task in tasks]
+    return task_schemas
 
-    return db_tasks
 
-
-def db_get_task(
+def db_get_task_by_id(
     db: Session,
     task_id: int,
 ):
-    db_task = (
-        db.query(Task)
+    task_by_id = db.query(Task).where(Task.id == task_id).first()
+    return task_by_id
 
-        .where(Task.id == task_id)
-        .first()
+
+"""
+using .ilike() function allowing for matching of strings via case insenstivitiy
+and then wildcard allowing for matching of string regardless of characters
+"""
+
+
+def db_get_task_by_name(
+    db: Session,
+    taskname: str,
+):
+    filtered_taskname = taskname.strip()
+    task_by_username = (
+        db.query(Task).filter(Task.name.ilike(f"%{filtered_taskname}%")).first()
     )
-    return db_task
+    return task_by_username
+
 
 # def db_post_tasks(task_name, description, db: Session):
 #     newTask = Task(
@@ -39,4 +58,3 @@ def db_get_task(
 #         .all()
 #     )
 #     return db_tasks
-
