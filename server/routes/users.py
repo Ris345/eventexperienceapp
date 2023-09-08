@@ -13,7 +13,7 @@ from sqlalchemy.orm import Session
 from typing import List, Annotated
 from database import SessionLocal
 import dependencies
-
+from queries.users import fake_hash_password
 scheme = dependencies.ouath2_scheme
 
 
@@ -101,7 +101,7 @@ def create_user(
             first_name=first_name,
             last_name=last_name,
             email=email,
-            password=hash(password),
+            password=(fake_hash_password(password)),
             about=about,
             profile_photo=profile_photo,
         )
@@ -110,6 +110,7 @@ def create_user(
     except HTTPException:
         raise
     except Exception as e:
+        print(e)
         db.rollback()
         raise HTTPException(
             status_code=400,

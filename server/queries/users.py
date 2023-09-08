@@ -8,8 +8,9 @@ from schemas.users import scheme, decode_token
 
 class DuplicateAccountError(ValueError):
     pass
-
-
+# helper function to hash password
+def fake_hash_password(password: str):
+    return "fakehashed" + password
 # testing security
 async def get_current(token: Annotated[str, Depends(scheme)]):
     user = decode_token(token)
@@ -87,7 +88,7 @@ def db_get_user_by_email(
 # desire: attempt OAuth2 w/ password + hashing, bearer w/ JWT tokens
 def db_create_user(db: Session, user: UserCreate):
     try:
-        fake_hashed_password = hash(user.password)
+        fake_hashed_password = fake_hash_password(user.password)
         db_user = User(
             username=user.username,
             first_name=user.first_name,
