@@ -5,7 +5,7 @@ import database
 
 engine = database.engine
 
-from routes import users, groups, tasks
+from routes import users, groups, tasks, token
 
 # creates db tables based on defined models, bind=engine will use engine created earlier with presets
 # models.Base.metadata.create_all(bind=engine)
@@ -17,3 +17,4 @@ server = FastAPI()
 server.include_router(users.router)
 server.include_router(groups.router)
 server.include_router(tasks.router)
+server.include_router(token.router)
