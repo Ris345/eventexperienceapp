@@ -7,7 +7,7 @@ from queries.users import (
     UserCreate,
     db_create_user,
     get_current,
-    get_current_active_user
+    get_current_active_user,
 )
 from fastapi import Depends, HTTPException, APIRouter, Form, status, Request
 from sqlalchemy.orm import Session
@@ -15,6 +15,7 @@ from typing import List, Annotated
 from database import SessionLocal
 import dependencies
 from queries.users import fake_hash_password
+
 scheme = dependencies.ouath2_scheme
 
 
@@ -32,15 +33,19 @@ router = APIRouter(
     responses={404: {"description": "Not Found"}},
 )
 
+
 @router.get("/users/me")
 async def read_users_me(
     current_user: Annotated[UserSchema, Depends(get_current_active_user)]
 ):
     return current_user
+
+
 @router.get("/current_account")
 async def get_current_account(
     current_account: Annotated[UserSchema, Depends(get_current)]
 ):
+    print(current_account)
     return current_account
 
 

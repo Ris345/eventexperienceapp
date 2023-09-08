@@ -72,8 +72,8 @@ class UserCreate(UserBase):
 
 
 class UserSchema(UserBase):
-    id: int
-    is_active: bool
+    id: Optional[int]
+    is_active: Optional[bool]
     created_at: datetime = None
     groups: Optional[List[GroupSchema]]
     task_assignments: Optional[List[TaskBase]]
