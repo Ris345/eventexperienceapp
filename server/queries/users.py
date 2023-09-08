@@ -2,7 +2,7 @@ from models.users import User
 from sqlalchemy.orm import Session, joinedload
 from schemas.users import UserSchema, UserCreate
 from typing import Annotated
-from fastapi import Depends
+from fastapi import Depends, HTTPException, status
 from schemas.users import scheme, decode_token
 
 
@@ -14,8 +14,19 @@ def fake_hash_password(password: str):
 # testing security
 async def get_current(token: Annotated[str, Depends(scheme)]):
     user = decode_token(token)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid authentication credentials",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
     return user
-
+async def get_current_active_user(
+    current_user: Annotated[UserSchema, Depends(get_current)]
+):
+    if current_user.disabled:
+        raise HTTPException(status_code=400, detail="Inactive user")
+    return current_user
 
 def db_get_users(db: Session, skip: int = 0, limit: int = 100):
     users = (
