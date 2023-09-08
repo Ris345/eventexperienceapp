@@ -8,9 +8,13 @@ from schemas.users import scheme, decode_token
 
 class DuplicateAccountError(ValueError):
     pass
+
+
 # helper function to hash password
 def fake_hash_password(password: str):
     return "fakehashed" + password
+
+
 # testing security
 async def get_current(token: Annotated[str, Depends(scheme)]):
     user = decode_token(token)
@@ -21,12 +25,16 @@ async def get_current(token: Annotated[str, Depends(scheme)]):
             headers={"WWW-Authenticate": "Bearer"},
         )
     return user
+
+
 async def get_current_active_user(
     current_user: Annotated[UserSchema, Depends(get_current)]
 ):
-    if current_user.disabled:
+    print(current_user)
+    if current_user.is_active:
         raise HTTPException(status_code=400, detail="Inactive user")
     return current_user
+
 
 def db_get_users(db: Session, skip: int = 0, limit: int = 100):
     users = (
