@@ -3,11 +3,25 @@ from sqlalchemy.orm import Session, joinedload
 from schemas.users import UserSchema, UserCreate
 from typing import Annotated
 from fastapi import Depends, HTTPException, status
-from schemas.users import scheme, decode_token
+from database import SessionLocal
+from schemas.users import scheme
+
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 
 class DuplicateAccountError(ValueError):
     pass
+
+
+def decode_token(db: Session, token):
+    user_token = db_get_user_by_username(db=db, username=token)
+    return user_token
 
 
 # helper function to hash password
@@ -16,8 +30,10 @@ def fake_hash_password(password: str):
 
 
 # testing security
-async def get_current(token: Annotated[str, Depends(scheme)]):
-    user = decode_token(token)
+async def get_current(
+    token: Annotated[str, Depends(scheme)], db: Session = Depends(get_db)
+):
+    user = decode_token(db=db, token=token)
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

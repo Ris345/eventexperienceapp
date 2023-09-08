@@ -76,8 +76,8 @@ class UserSchema(UserBase):
     is_active: Optional[bool] = None
     created_at: datetime = None
     groups: Optional[List[GroupSchema]] = None
-    task_assignments: Optional[List[TaskBase]]= None
-    authored_tasks: Optional[List[TaskBase]]= None
+    task_assignments: Optional[List[TaskBase]] = None
+    authored_tasks: Optional[List[TaskBase]] = None
 
     class Config:
         orm_mode = True
@@ -90,14 +90,3 @@ class GroupCreate(GroupBase):
 
 class DuplicateAccountError(ValueError):
     pass
-
-
-def decode_token(token):
-    return UserSchema(
-        username=token + "hash",
-        email="testing_security@eea.com",
-        first_name="user",
-        last_name="test",
-        about="testing yes",
-        profile_photo="not_sketch@aws.s3.com",
-    )
