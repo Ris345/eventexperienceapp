@@ -10,3 +10,4 @@ ex: https://localhost:8000.com/token
 """
 ouath2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
+
