@@ -111,7 +111,7 @@ def create_user(
             first_name=first_name,
             last_name=last_name,
             email=email,
-            password=(fake_hash_password(password)),
+            password=password,
             about=about,
             profile_photo=profile_photo,
         )
