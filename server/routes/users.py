@@ -9,6 +9,7 @@ from queries.users import (
     get_current,
     get_current_active_user,
     db_check_email_and_username,
+    db_check_first_and_last,
 )
 from fastapi import Depends, HTTPException, APIRouter, Form, status, Request
 from sqlalchemy.orm import Session
@@ -84,19 +85,42 @@ def get_user_by_username(
 
 # can use this in order to model a potential get user by first and last name
 @router.get(
-    "/search/{username}{email}",
+    "/search/username_email/{username}/{email}",
     response_model=UserSchema,
 )
 def get_user_by_username_and_email(
+    token: Annotated[str, Depends(scheme)],
     username: str,
     email: str,
     db: Session = Depends(get_db),
 ):
     try:
         userFound = db_check_email_and_username(db, username, email)
+        print(userFound)
         if userFound is None:
             raise HTTPException(
                 status_code=400, detail="user not found with that email and username"
+            )
+        return userFound
+    except HTTPException:
+        raise
+
+
+@router.get(
+    "/search/full_name/{first_name}/{last_name}",
+    response_model=UserSchema,
+)
+def get_user_by_first_and_last(
+    token: Annotated[str, Depends(scheme)],
+    first_name: str,
+    last_name: str,
+    db: Session = Depends(get_db),
+):
+    try:
+        userFound = db_check_first_and_last(db, first_name, last_name)
+        if userFound is None:
+            raise HTTPException(
+                status_code=400, detail="user not found with that first and last name"
             )
         return userFound
     except HTTPException:

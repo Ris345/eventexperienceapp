@@ -1,4 +1,5 @@
 from sqlalchemy import and_
+from sqlalchemy.exc import SQLAlchemyError
 from models.users import User
 from sqlalchemy.orm import Session, joinedload
 from schemas.users import UserSchema, UserCreate
@@ -67,13 +68,29 @@ def db_get_users(db: Session, skip: int = 0, limit: int = 100):
 
 
 def db_check_email_and_username(db: Session, username: str, email: str):
-    user_id_and_email = (
-        db.query(User)
-        .options(joinedload(User.groups))
-        .where(and_(User.username == username, User.email == email))
-        .first()
-    )
-    return user_id_and_email
+    try:
+        username_and_email = (
+            db.query(User)
+            .options(joinedload(User.groups))
+            .where(and_(User.username == username, User.email == email))
+            .first()
+        )
+    except SQLAlchemyError as e:
+        print(e)
+    return username_and_email
+
+
+def db_check_first_and_last(db: Session, first_name: str, last_name: str):
+    try:
+        first_and_last = (
+            db.query(User)
+            .options(joinedload(User.groups))
+            .where(and_(User.first_name == first_name, User.last_name == last_name))
+            .first()
+        )
+    except SQLAlchemyError as e:
+        print(e)
+    return first_and_last
 
 
 def db_check_email_or_username(db: Session, username: str, email: str):
