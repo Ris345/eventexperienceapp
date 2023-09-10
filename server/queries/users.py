@@ -1,3 +1,4 @@
+from sqlalchemy import and_
 from models.users import User
 from sqlalchemy.orm import Session, joinedload
 from schemas.users import UserSchema, UserCreate
@@ -67,7 +68,10 @@ def db_get_users(db: Session, skip: int = 0, limit: int = 100):
 
 def db_check_email_and_username(db: Session, username: str, email: str):
     user_id_and_email = (
-        db.query(User).where(User.username == username and User.email == email).all()
+        db.query(User)
+        .options(joinedload(User.groups))
+        .where(and_(User.username == username, User.email == email))
+        .first()
     )
     return user_id_and_email
 
