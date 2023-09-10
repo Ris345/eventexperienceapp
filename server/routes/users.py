@@ -45,7 +45,6 @@ async def read_users_me(
 async def get_current_account(
     current_account: Annotated[UserSchema, Depends(get_current)]
 ):
-    print(current_account)
     return current_account
 
 
@@ -120,7 +119,6 @@ def create_user(
     except HTTPException:
         raise
     except Exception as e:
-        print(e)
         db.rollback()
         raise HTTPException(
             status_code=400,
