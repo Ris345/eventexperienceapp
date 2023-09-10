@@ -1,23 +1,30 @@
 - Completed
-    - [ ] Establish the ability to CRUD users (FA docs)
+    - Establish the ability to CRUD users (FA docs)
         [x] Create Account (soon) -> Login
             - POST /USERS (soon) -> GET /TOKEN
-        [] Update Account
-            - PUT/USER_ID
-        - Search for other accounts
-            - ACCOUNT_USERNAME, NAME, EMAIL
+
     - [ ] TOKEN BE
-        - [ ] GET /TOKEN
-        - [ ] (Sign Up) Ensure that the password is hashed and that said password is deleted on the FrontEnd ( req password security )
-        - [ ] Logged in user can view account details
-        - [ ] Logged in user can update account details
-        - [ ] Logged in
-    - [ ] Establish users are able to log out in mockup
+        - [x] GET /TOKEN
+        - [x] Logged in user can view account details
+        - [x] Logged in
+    - [x] Establish users are able to log out in mockup
         - DELETE TOKEN (or this might be a process of deleting token on fe?)
-    - [ ] Establish users are able to login
-        - GET TOKEN
-    - [ ] Establish errors are present with invalid account creation, login in mockup
-- [ ] Implement Roles with Casbin/FastAPI middleware
-    - [ ] Implementation of ACL Middleware/System for roles
 
 - Rest of Agenda
+    - REST OF CRUD
+        - [ ] Update Account
+            - PUT/USER
+        - [ ] Delete Account
+            - DELETE/USER
+        - [ ] Search for other accounts
+            - ACCOUNT_USERNAME [x]
+            - NAME (first and last name, first or last name) [ ]
+            - EMAIL [ ]
+
+    - [ ] TOKEN BE
+        - [ ] (Sign Up) Ensure that the password is hashed and that said password is not able to be accessed on FE ( req password security )
+        - [ ] Logged in user can update account details
+        - [ ] Establish errors are present with invalid account creation, login in mockup
+
+    - [ ] Implement Roles with Casbin/FastAPI middleware
+    - [ ] Implementation of ACL Middleware/System for roles
