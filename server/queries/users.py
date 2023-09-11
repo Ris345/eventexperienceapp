@@ -7,6 +7,7 @@ from fastapi import Depends, HTTPException, status
 from database import SessionLocal
 from schemas.users import scheme
 from jose import JWTError, jwt
+from sqlalchemy.exc import SQLAlchemyError
 from passlib.context import CryptContext
 
 # temporary import for token model
@@ -58,12 +59,6 @@ def fake_hash_password(password: str):
 # helper function to verify db password with form data password
 # received password  = hash stored
 def verify_password(plain_password, hashed_password):
-    print(
-        "in verify pwd",
-        plain_password,
-        hashed_password,
-        pwd_context.verify(plain_password, hashed_password),
-    )
     return pwd_context.verify(plain_password, hashed_password)
 
 
@@ -91,7 +86,6 @@ def authenticate_user(username: str, password: str, db: Session = Depends(get_db
     if not user:
         return False
     if not verify_password(password, user.hashed_password):
-        print("in autenticate user", user)
         return False
     return user
 
@@ -251,4 +245,3 @@ def db_get_user_notifications(
 ):
 """
 pw = get_password_hash("aaa123")
-print(f"hash:{pw}")
