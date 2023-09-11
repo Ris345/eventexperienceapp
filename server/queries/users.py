@@ -230,11 +230,33 @@ def db_create_user(db: Session, user: UserCreate):
 
 
 """
+def db_update_user(
+    db: Session,
+    user_to_update: UserCreate,
+    update_data: dict
+):
+    filtered_username = username.strip()
+    try:
+        user_to_update = (
+            db.query(User)
+            .filter(User.username.ilike(f"%{filtered_username}%"))
+            .options(joinedload(User.groups))
+            .first()
+        )
+        if user_to_update:
+            for field, value in update_data:
+                setattr(user_to_update, field, value)
+        db.commit()
+        db.refresh()
+    except SQLAlchemyError as e:
+        print(f'found this error: {e}')
+"""
+
+
+"""
 endpoint can only be performed by specific user from profile page
 """
 # def db_update_user('/users/{user_id}')
-
-
 # protected endpoint
 # def db_delete_user('/users/{user_id}')
 
