@@ -10,6 +10,7 @@ from queries.users import (
     get_current_active_user,
     db_check_email_and_username,
     db_check_first_and_last,
+    db_update_user,
 )
 from fastapi import Depends, HTTPException, APIRouter, Form, status, Request
 from sqlalchemy.orm import Session
@@ -17,6 +18,8 @@ from typing import List, Annotated
 from database import SessionLocal
 import dependencies
 from queries.users import fake_hash_password
+from typing import Optional
+
 
 scheme = dependencies.ouath2_scheme
 
@@ -63,7 +66,7 @@ def get_users(
     return users
 
 
-@router.get("/users_by_user_id/{user_id}", response_model=UserSchema)
+@router.get("/users_by_user_id/{user_id}", response_model=Optional[UserSchema])
 def get_user_by_id(
     token: Annotated[str, Depends(scheme)], user_id: int, db: Session = Depends(get_db)
 ):
@@ -75,7 +78,7 @@ def get_user_by_id(
     return user
 
 
-@router.get("/users_by_username/{username}", response_model=UserSchema)
+@router.get("/users_by_username/{username}", response_model=Optional[UserSchema])
 def get_user_by_username(
     token: Annotated[str, Depends(scheme)], username: str, db: Session = Depends(get_db)
 ):
@@ -91,7 +94,7 @@ def get_user_by_username(
 # can use this in order to model a potential get user by first and last name
 @router.get(
     "/search/username_email/{username}/{email}",
-    response_model=UserSchema,
+    response_model=Optional[UserSchema],
 )
 def get_user_by_username_and_email(
     token: Annotated[str, Depends(scheme)],
@@ -112,14 +115,14 @@ def get_user_by_username_and_email(
 
 @router.get(
     "/search/full_name/{first_name}/{last_name}",
-    response_model=UserSchema,
+    response_model=Optional[UserSchema],
 )
 def get_user_by_first_and_last(
     token: Annotated[str, Depends(scheme)],
     first_name: str,
     last_name: str,
     db: Session = Depends(get_db),
-):
+) -> UserSchema:
     try:
         userFound = db_check_first_and_last(db, first_name, last_name)
         if userFound is None:
@@ -131,7 +134,7 @@ def get_user_by_first_and_last(
         raise
 
 
-@router.post("/users", response_model=UserSchema)
+@router.post("/users", response_model=Optional[UserSchema])
 def create_user(
     username: str = Form(...),
     first_name: str = Form(...),
@@ -178,9 +181,44 @@ def create_user(
         ) from e
 
 
-# @router.put
+# didn't add password yet as that may require some more involvement
+# need to fix this route function and query associated
+# need an endpoint that allows for updating user information and tasks as well
+'''
+@router.get("/current_account")
+async def get_current_account(
+    current_account: Annotated[UserSchema, Depends(get_current)],
+    username: str,
+    db: Session = Depends(get_db),
+    update_username: str = Form(...),
+    update_first_name: str = Form(...),
+    update_last_name: str = Form(...),
+    update_email: str = Form(...),
+    update_profile_photo: str = Form(...),
+    update_about: str = Form(...),
+):
+    """
+    make sure that there is not a user with the same username and email
+    """
+    if db_get_user_by_username(update_username):
+        raise HTTPException(
+            status_code=400,
+            detail=f"can't update username to {update_username} as there is a user with that username already",
+        )
+    if db_get_user_by_email(update_email):
+        raise HTTPException(
+            status_code=400,
+            detail=f"can't update email to {update_email} as there is a user with that username already",
+        )
+    update_data = {}
+    update_user = db_update_user(db, current_account, update_data)
+'''
 
-# @router.delete
+"""
+@router.delete(
+):
+"""
+
 """
 # Admin Router
 - As a start we can perform a get request for a singular user and get their rsvps, favorites, and tasks, tasklists

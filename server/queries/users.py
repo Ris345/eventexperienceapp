@@ -233,7 +233,7 @@ def db_create_user(db: Session, user: UserCreate):
 endpoint can only be performed by specific user from profile page
 """
 # def db_update_user('/users/{user_id}')
-# def db_update_user('/users/{username})
+
 
 # protected endpoint
 # def db_delete_user('/users/{user_id}')
