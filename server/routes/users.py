@@ -69,7 +69,9 @@ def get_user_by_id(
 ):
     user = db_get_user_by_id(db, user_id)
     if user is None:
-        raise HTTPException(status_code=400, detail="user not found")
+        raise HTTPException(
+            status_code=400, detail=f"the user with the user_id: {user_id} is not found"
+        )
     return user
 
 
@@ -79,7 +81,10 @@ def get_user_by_username(
 ):
     user = db_get_user_by_username(db, username)
     if user is None:
-        raise HTTPException(status_code=400, detail="user not found")
+        raise HTTPException(
+            status_code=400,
+            detail=f"the user with the username: {username} is not found",
+        )
     return user
 
 
@@ -96,7 +101,6 @@ def get_user_by_username_and_email(
 ):
     try:
         userFound = db_check_email_and_username(db, username, email)
-        print(userFound)
         if userFound is None:
             raise HTTPException(
                 status_code=400, detail="user not found with that email and username"
@@ -142,13 +146,15 @@ def create_user(
         db_get_userby_username = db_get_user_by_username(db, username=username)
         if db_get_userby_username is not None:
             raise HTTPException(
-                status_code=400, detail="Username is already registered to a user"
+                status_code=400,
+                detail=f"the username {username} is already registered to a user",
             )
 
         db_get_userby_email = db_get_user_by_email(db, email=email)
         if db_get_userby_email is not None:
             raise HTTPException(
-                status_code=400, detail="Email is already registered to a user"
+                status_code=400,
+                detail=f"the email {email} is already registered to a user",
             )
 
         user = UserCreate(
@@ -156,7 +162,7 @@ def create_user(
             first_name=first_name,
             last_name=last_name,
             email=email,
-            password=(fake_hash_password(password)),
+            password=password,
             about=about,
             profile_photo=profile_photo,
         )
