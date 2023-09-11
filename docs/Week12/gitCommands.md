@@ -1,7 +1,7 @@
 # git fac
 ## rename branch
 git branch -m <old> <new>
-git push origin HEAD
+git push -u origin <new-branch-name>
 
 ## create new branch
 git checkout -b <branch_name>
