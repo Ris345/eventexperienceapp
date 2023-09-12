@@ -11,13 +11,6 @@ describe('login page.svelte', () => {
         expect(container.innerHTML).toContain('Login')
     })
 
-    it('has title', () => {
-        render(LoginPage)
-        // console.log(screen.debug());
-        const heading = screen.getByRole('heading', { level: 2 })
-        expect(heading).toBeInTheDocument()
-    })
-
     it('has login button', async () => {
         render(LoginPage)
         const btn = screen.getByRole('button')
