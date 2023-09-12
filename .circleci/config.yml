@@ -11,6 +11,12 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Change directory
+          command: cd ./client
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
           name: Run tests
           command: npm test
 
