@@ -9,7 +9,7 @@ orbs:
 # See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
   build-and-test:
-    working_directory: ~/client
+    app-dir: ~/client
     docker:
       - image: cimg/node:20.6.0
     executor: node/default
@@ -17,9 +17,6 @@ jobs:
       - checkout
       - node/install-packages:
           pkg-manager: npm
-      # - run:
-      #     name: Change directory
-      #     command: cd client/
       - run:
           name: Install dependencies
           command: npm install
