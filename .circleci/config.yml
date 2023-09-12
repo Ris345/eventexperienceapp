@@ -15,11 +15,12 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
-          app-dir: ~/eventexperienceapp/client
+          app-dir: ./eventexperienceapp/client
           pkg-manager: npm
       - run:
           name: Run tests
-          command: cd client && npm test
+          working_directory: ./eventexperienceapp/client
+          command: npm test
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
