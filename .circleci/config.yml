@@ -22,8 +22,6 @@ jobs:
       - image: cimg/node:20.6.0
     steps:
       - checkout
-      - node/install-packages:
-          pkg-manager: npm
       - run:
           name: Run tests
           command: npm test
