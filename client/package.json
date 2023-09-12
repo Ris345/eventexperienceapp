@@ -10,7 +10,10 @@
 		"format": "prettier --plugin-search-dir . --write .",
 		"prepare": "npm run smui-theme-light && npm run smui-theme-dark",
 		"smui-theme-light": "smui-theme compile static/smui.css -i src/theme",
-		"smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark"
+		"smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark",
+		"test": "vitest",
+		"test:ui": "vitest --ui",
+		"coverage": "vitest run --coverage"
 	},
 	"devDependencies": {
 		"@material/typography": "^14.0.0",
@@ -22,6 +25,10 @@
 		"@smui/top-app-bar": "^7.0.0-beta.14",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.20.4",
+		"@sveltejs/vite-plugin-svelte": "^2.4.5",
+		"@testing-library/svelte": "^4.0.3",
+		"@vitest/ui": "^0.34.4",
+		"jsdom": "^22.1.0",
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.10.1",
 		"smui-theme": "^7.0.0-beta.14",
