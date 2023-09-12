@@ -2,17 +2,24 @@
 # See: https://circleci.com/docs/configuration-reference
 version: 2.1
 
+orbs:
+  node: circleci/node@5.0.2
+
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
   build-and-test:
     docker:
       - image: cimg/node:20.6.0
+    executor: node/default
     steps:
       - checkout
-      - run:
-          name: Change directory
-          command: cd ./client
+      - node/install-packages:
+          pkg-manager: npm
+          app-dir: ~/eventexperienceapp/client
+      # - run:
+      #     name: Change directory
+      #     command: cd client/
       - run:
           name: Install dependencies
           command: npm install
