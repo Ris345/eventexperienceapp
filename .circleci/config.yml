@@ -19,7 +19,7 @@ jobs:
           command: "echo Hello, World!"
   build-and-test:
     docker:
-      - image: cimg/node:20
+      - image: cimg/node:20.6.0
     steps:
       - checkout
       - node/install-packages:
