@@ -16,7 +16,7 @@ jobs:
       - checkout
       - node/install-packages:
           pkg-manager: npm
-          app-dir: ~/eventexperienceapp/client
+          app-dir: ~/client
       # - run:
       #     name: Change directory
       #     command: cd client/
