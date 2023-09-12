@@ -9,20 +9,17 @@ orbs:
 # See: https://circleci.com/docs/configuration-reference/#jobs
 jobs:
   build-and-test:
-    app-dir: ~/client
     docker:
       - image: cimg/node:20.6.0
     executor: node/default
     steps:
       - checkout
       - node/install-packages:
+          app-dir: ~/eventexperienceapp/client
           pkg-manager: npm
       - run:
-          name: Install dependencies
-          command: npm install
-      - run:
           name: Run tests
-          command: npm test
+          command: cd client && npm test
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
