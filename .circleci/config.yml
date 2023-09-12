@@ -17,6 +17,16 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
+  build-and-test:
+    docker:
+      - image: cimg/node:20
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: npm
+      - run:
+          name: Run tests
+          command: npm test
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
