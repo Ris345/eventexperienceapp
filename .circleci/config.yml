@@ -15,11 +15,11 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
-          app-dir: ./eventexperienceapp/client
+          app-dir: ./client
           pkg-manager: npm
       - run:
           name: Run tests
-          working_directory: ./eventexperienceapp/client
+          working_directory: ./client
           command: npm test
 
 # Orchestrate jobs using workflows
