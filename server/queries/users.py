@@ -1,4 +1,4 @@
-import models.users as models
+from models.users import User
 from sqlalchemy.orm import Session, joinedload
 from schemas.users import UserSchema, UserCreate
 
@@ -9,8 +9,10 @@ class DuplicateAccountError(ValueError):
 
 def db_get_users(db: Session, skip: int = 0, limit: int = 100):
     users = (
-        db.query(models.User)
-        .options(joinedload(models.User.groups))
+        db.query(User)
+        .options(joinedload(User.groups))
+        .options(joinedload(User.authored_tasks))
+        .options(joinedload(User.task_assignments))
         .offset(skip)
         .limit(limit)
         .all()
@@ -21,16 +23,14 @@ def db_get_users(db: Session, skip: int = 0, limit: int = 100):
 
 def db_check_email_and_username(db: Session, username: str, email: str):
     user_id_and_email = (
-        db.query(models.User)
-        .where(models.User.username == username and models.User.email == email)
-        .all()
+        db.query(User).where(User.username == username and User.email == email).all()
     )
     return user_id_and_email
 
 
 def db_check_email_or_username(db: Session, username: str, email: str):
-    user_id_or_email = db.query(models.User).where(
-        models.User.username == username or models.User.email == email
+    user_id_or_email = db.query(User).where(
+        User.username == username or User.email == email
     )
     return user_id_or_email
 
@@ -40,9 +40,9 @@ def db_get_user_by_id(
     user_id: int,
 ):
     user_by_id = (
-        db.query(models.User)
-        .options(joinedload(models.User.groups))
-        .where(models.User.id == user_id)
+        db.query(User)
+        .options(joinedload(User.groups))
+        .where(User.id == user_id)
         .first()
     )
     return user_by_id
@@ -52,10 +52,11 @@ def db_get_user_by_username(
     db: Session,
     username: str,
 ):
+    filtered_username = username.strip()
     user_username = (
-        db.query(models.User)
-        .options(joinedload(models.User.groups))
-        .where(models.User.username == username)
+        db.query(User)
+        .filter(User.username.ilike(f"%{filtered_username}%"))
+        .options(joinedload(User.groups))
         .first()
     )
     return user_username
@@ -66,9 +67,9 @@ def db_get_user_by_email(
     email: str,
 ):
     user = (
-        db.query(models.User)
-        .options(joinedload(models.User.groups))
-        .where(models.User.email == email)
+        db.query(User)
+        .options(joinedload(User.groups))
+        .where(User.email == email)
         .first()
     )
     return user
@@ -78,7 +79,7 @@ def db_get_user_by_email(
 def db_create_user(db: Session, user: UserCreate):
     try:
         fake_hashed_password = hash(user.password)
-        db_user = models.User(
+        db_user = User(
             username=user.username,
             first_name=user.first_name,
             last_name=user.last_name,

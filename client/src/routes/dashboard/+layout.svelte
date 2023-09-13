@@ -1,6 +1,5 @@
 <script>
-	let logo = '../icons/logo.svg';
-	let logout = '../icons/logout.svg'
+	import logo from '$lib/icons/logo.svg';
 	const links = [
 		{ name: 'Dashboard', href: '#dashboard', image: 'dashboard.svg' },
 		{ name: 'Calendar', href: '#calendar', image: 'calendar.svg' },
@@ -27,7 +26,9 @@
 <div id="sidebar">
 	<div id="button-holder">
 		<button type="button">Profile</button>
-		<a href='#logout' id='logout-link'><img alt="logout" src={logout} id="logout-img"/>Logout</a>
+		<a href="#logout" id="logout-link"
+			><img alt="logout" src="/icons/logout.svg" id="logout-img" />Logout</a
+		>
 	</div>
 	<div id="user-pic" />
 	<div id="user-info">
@@ -45,10 +46,10 @@
 	#sidebar {
 		padding: 20px;
 		min-width: 300px;
-		text-align: center; 
-		display: flex; 
+		text-align: center;
+		display: flex;
 		flex-direction: column;
-		align-items: center; 
+		align-items: center;
 	}
 	#menu {
 		padding: 32px 0 0 32px;
@@ -75,7 +76,6 @@
 		margin-top: 40px;
 		margin-bottom: 30px;
 		margin-right: 0px;
-		
 	}
 	#user-info {
 		text-align: center;
@@ -90,8 +90,7 @@
 		flex-flow: column;
 		gap: 32px;
 	}
-	nav a, 
-	#logout-link {
+	nav a {
 		display: flex;
 		align-items: center;
 		text-decoration: none;
@@ -100,8 +99,8 @@
 
 	#menu-link:hover {
 		background-color: rgb(184, 184, 184);
-		border:none;
-		border-radius:10px;
+		border: none;
+		border-radius: 10px;
 		padding-left: 7px;
 	}
 
