@@ -256,3 +256,6 @@ celerybeat.pid
 docs/Images/Auth_Example.png
 docs/Images/DataFlow_Example.jpg
 docs/Images/PreferenceTowardsBackPopulates.png
+
+client/static/smui.css
+client/static/smui-dark.css
