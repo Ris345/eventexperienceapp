@@ -16,7 +16,7 @@
 		<ul>
 			{#each links as { name, href, image }}
 				<li>
-					<a style="--bgImage: url(./icons/{image});" id="menu-link" {href}>{name}</a>
+					<a style="--bgImage: url(./icons/{image});" class="menu-link" {href}>{name}</a>
 				</li>
 			{/each}
 		</ul>
@@ -25,10 +25,8 @@
 <slot />
 <div id="sidebar">
 	<div id="button-holder">
-		<button type="button">Profile</button>
-		<a href="#logout" id="logout-link"
-			><img alt="logout" src="/icons/logout.svg" id="logout-img" />Logout</a
-		>
+		<a id="profile" href="#profile">Profile</a>
+		<button id="logout-btn">Logout</button>
 	</div>
 	<div id="user-pic" />
 	<div id="user-info">
@@ -45,6 +43,7 @@
 	}
 	#sidebar {
 		padding: 20px;
+		padding-top: 90px;
 		min-width: 300px;
 		text-align: center;
 		display: flex;
@@ -73,9 +72,13 @@
 		width: 150px;
 		height: 150px;
 		background-color: orange;
-		margin-top: 40px;
-		margin-bottom: 30px;
+		background-clip: content-box;
+		padding: 0.5em;
 		margin-right: 0px;
+	}
+	#user-name {
+		font-weight: bold;
+		padding: 0.5em;
 	}
 	#user-info {
 		text-align: center;
@@ -89,22 +92,28 @@
 		display: flex;
 		flex-flow: column;
 		gap: 32px;
+		align-items: flex-start;
 	}
-	nav a {
+	nav a,
+	#logout-btn,
+	#profile {
 		display: flex;
 		align-items: center;
 		text-decoration: none;
 		color: inherit;
 	}
-
-	#menu-link:hover {
-		background-color: rgb(184, 184, 184);
+	.menu-link {
+		transition: background-color 0.2s;
+		padding: 0.5em;
+		border-radius: 14px;
+	}
+	.menu-link:hover {
+		background-color: #0000001a;
 		border: none;
-		border-radius: 10px;
-		padding-left: 7px;
 	}
 
-	nav a::before {
+	nav a::before,
+	#logout-btn::before {
 		content: '';
 		margin-right: 1em;
 		width: 20px;
@@ -120,9 +129,15 @@
 		gap: 8vw;
 		align-items: center;
 	}
-
-	#logout-img {
-		margin-right: 3px;
+	#button-holder > * {
+		font-size: inherit;
+		border: none;
+		background: none;
+		cursor: pointer;
+	}
+	#logout-btn::before {
+		--bgImage: url('/icons/logout.svg');
+		margin-right: 0.5em;
 	}
 
 	:global(body) {

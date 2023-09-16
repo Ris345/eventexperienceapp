@@ -1,13 +1,24 @@
 <script>
 	import { Input } from '@smui/textfield';
 	let searchValue = '';
+	const currentDate = new Date();
 </script>
 
 <main>
 	<div id="search">
 		<Input class="solo-input" placeholder="Search" bind:value={searchValue} />
 	</div>
-	<h2>Dashboard</h2>
+	<div id="header-bar">
+		<h2>Dashboard</h2>
+		<div id="date">
+			{currentDate.toLocaleDateString('en-US', {
+				weekday: 'long',
+				month: 'long',
+				year: 'numeric',
+				day: 'numeric'
+			})}
+		</div>
+	</div>
 </main>
 
 <style>
@@ -16,10 +27,22 @@
 	}
 	#search {
 		display: flex;
+		margin-bottom: 31px;
+	}
+	#header-bar {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 1rem;
 	}
 	h2 {
-		font-size: 1.5em;
 		font-weight: 400;
+		font-size: inherit;
+		line-height: 1rem;
+		margin: 0;
+	}
+	#date {
+		color: #00000080;
 	}
 	:global(.solo-input) {
 		width: 100%;
