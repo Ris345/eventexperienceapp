@@ -13,7 +13,7 @@ describe('login page.svelte', () => {
 
     it('has login button', async () => {
         render(LoginPage)
-        const btn = screen.getByRole('button')
+        const btn = screen.getByRole('button', { name: 'Login' })
         expect(btn.textContent.trim()).toBe('Login')
     })
 })
