@@ -1,5 +1,5 @@
 import { cleanup, render, screen } from '@testing-library/svelte'
-import LoginPage from '../src/routes/(app)/login/+page.svelte'
+import LoginPage from '../src/routes/login/+page.svelte'
 
 describe('login page.svelte', () => {
     // TODO: @testing-library/svelte claims to add this automatically but it doesn't work without explicit afterEach
