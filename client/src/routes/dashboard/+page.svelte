@@ -1,5 +1,6 @@
 <script>
 	import { Input } from '@smui/textfield';
+	import todayDate from '$lib/todayDate.js';
 	let searchValue = '';
 	const currentDate = new Date();
 </script>
@@ -11,12 +12,7 @@
 	<div id="header-bar">
 		<h2>Dashboard</h2>
 		<div id="date">
-			{currentDate.toLocaleDateString('en-US', {
-				weekday: 'long',
-				month: 'long',
-				year: 'numeric',
-				day: 'numeric'
-			})}
+			{todayDate}
 		</div>
 	</div>
 </main>
