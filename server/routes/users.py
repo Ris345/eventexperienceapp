@@ -6,15 +6,17 @@ from queries.users import (
     UserSchema,
     UserCreate,
     db_create_user,
+    get_current,
+    get_current_active_user,
 )
 from fastapi import Depends, HTTPException, APIRouter, Form, status, Request
-from fastapi.encoders import jsonable_encoder
-
 from sqlalchemy.orm import Session
-from typing import List
+from typing import List, Annotated
 from database import SessionLocal
-from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse
+import dependencies
+from queries.users import fake_hash_password
+
+scheme = dependencies.ouath2_scheme
 
 
 def get_db():
@@ -32,25 +34,56 @@ router = APIRouter(
 )
 
 
+@router.get("/users/me")
+async def read_users_me(
+    current_user: Annotated[UserSchema, Depends(get_current_active_user)]
+):
+    return current_user
+
+
+@router.get("/current_account")
+async def get_current_account(
+    current_account: Annotated[UserSchema, Depends(get_current)]
+):
+    print(current_account)
+    return current_account
+
+
+# Dependency provides str assigned to token parameter of path operation function
+# use the dependency to define 'security scheme'
 @router.get("/users", response_model=List[UserSchema])
-def get_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def get_users(
+    token: Annotated[str, Depends(scheme)],
+    skip: int = 0,
+    limit: int = 100,
+    db: Session = Depends(get_db),
+):
     users = db_get_users(db, skip=skip, limit=limit)
     return users
 
 
 @router.get("/users_by_user_id/{user_id}", response_model=UserSchema)
-def get_user_by_id(user_id: int, db: Session = Depends(get_db)):
+def get_user_by_id(
+    token: Annotated[str, Depends(scheme)], user_id: int, db: Session = Depends(get_db)
+):
     user = db_get_user_by_id(db, user_id)
     if user is None:
-        raise HTTPException(status_code=400, detail="user not found")
+        raise HTTPException(
+            status_code=400, detail=f"the user with the user_id: {user_id} is not found"
+        )
     return user
 
 
 @router.get("/users_by_username/{username}", response_model=UserSchema)
-def get_user_by_username(username: str, db: Session = Depends(get_db)):
+def get_user_by_username(
+    token: Annotated[str, Depends(scheme)], username: str, db: Session = Depends(get_db)
+):
     user = db_get_user_by_username(db, username)
     if user is None:
-        raise HTTPException(status_code=400, detail="user not found")
+        raise HTTPException(
+            status_code=400,
+            detail=f"the user with the username: {username} is not found",
+        )
     return user
 
 
@@ -69,13 +102,15 @@ def create_user(
         db_get_userby_username = db_get_user_by_username(db, username=username)
         if db_get_userby_username is not None:
             raise HTTPException(
-                status_code=400, detail="Username is already registered to a user"
+                status_code=400,
+                detail=f"the username {username} is already registered to a user",
             )
 
         db_get_userby_email = db_get_user_by_email(db, email=email)
         if db_get_userby_email is not None:
             raise HTTPException(
-                status_code=400, detail="Email is already registered to a user"
+                status_code=400,
+                detail=f"the email {email} is already registered to a user",
             )
 
         user = UserCreate(
@@ -83,7 +118,7 @@ def create_user(
             first_name=first_name,
             last_name=last_name,
             email=email,
-            password=hash(password),
+            password=password,
             about=about,
             profile_photo=profile_photo,
         )
@@ -92,6 +127,7 @@ def create_user(
     except HTTPException:
         raise
     except Exception as e:
+        print(e)
         db.rollback()
         raise HTTPException(
             status_code=400,

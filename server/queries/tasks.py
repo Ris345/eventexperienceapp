@@ -4,6 +4,7 @@ from fastapi import Depends
 from schemas.tasks import TaskSchema, TaskCreate
 
 
+# use joinedload in order to join other tables to Task model
 def db_get_tasks(db: Session, skip: int = 0, limit: int = 100):
     tasks = (
         db.query(Task)

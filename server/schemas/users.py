@@ -1,7 +1,12 @@
 from datetime import date, datetime, time, timedelta
+from typing import Annotated
+from fastapi import Depends
 from pydantic import BaseModel
 from typing import Optional, List
 from schemas.tasks import TaskPriority, TaskType
+import dependencies
+
+scheme = dependencies.ouath2_scheme
 
 """
 ModelBase - common attributes when creating or reading data
@@ -67,12 +72,12 @@ class UserCreate(UserBase):
 
 
 class UserSchema(UserBase):
-    id: int
-    is_active: bool
+    id: Optional[int] = None
+    is_active: Optional[bool] = None
     created_at: datetime = None
-    groups: Optional[List[GroupSchema]]
-    task_assignments: Optional[List[TaskBase]]
-    authored_tasks: Optional[List[TaskBase]]
+    groups: Optional[List[GroupSchema]] = None
+    task_assignments: Optional[List[TaskBase]] = None
+    authored_tasks: Optional[List[TaskBase]] = None
 
     class Config:
         orm_mode = True
