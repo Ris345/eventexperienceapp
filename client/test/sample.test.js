@@ -1,5 +1,5 @@
 import { cleanup, render, screen } from '@testing-library/svelte'
-import LoginPage from '../src/routes/(app)/login/+page.svelte'
+import LoginPage from '../src/routes/login/+page.svelte'
 
 describe('login page.svelte', () => {
     // TODO: @testing-library/svelte claims to add this automatically but it doesn't work without explicit afterEach
@@ -13,7 +13,7 @@ describe('login page.svelte', () => {
 
     it('has login button', async () => {
         render(LoginPage)
-        const btn = screen.getByRole('button')
+        const btn = screen.getByRole('button', { name: 'Login' })
         expect(btn.textContent.trim()).toBe('Login')
     })
 })

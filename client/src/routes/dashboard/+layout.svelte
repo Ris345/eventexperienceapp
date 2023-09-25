@@ -16,7 +16,7 @@
 		<ul>
 			{#each links as { name, href, image }}
 				<li>
-					<a style="--bgImage: url(./icons/{image});" {href}>{name}</a>
+					<a style="--bgImage: url(./icons/{image});" class="menu-link" {href}>{name}</a>
 				</li>
 			{/each}
 		</ul>
@@ -25,12 +25,14 @@
 <slot />
 <div id="sidebar">
 	<div id="button-holder">
-		<button type="button">Profile</button>
-		<button type="button">Logout</button>
+		<a id="profile" href="#profile">Profile</a>
+		<button id="logout-btn">Logout</button>
 	</div>
 	<div id="user-pic" />
-	<div id="user-name">User's Name</div>
-	<div id="user-status">Status</div>
+	<div id="user-info">
+		<div id="user-name">User's Name</div>
+		<div id="user-status">Status</div>
+	</div>
 </div>
 
 <style>
@@ -41,6 +43,12 @@
 	}
 	#sidebar {
 		padding: 20px;
+		padding-top: 90px;
+		min-width: 300px;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 	#menu {
 		padding: 32px 0 0 32px;
@@ -64,6 +72,16 @@
 		width: 150px;
 		height: 150px;
 		background-color: orange;
+		background-clip: content-box;
+		padding: 0.5em;
+		margin-right: 0px;
+	}
+	#user-name {
+		font-weight: bold;
+		padding: 0.5em;
+	}
+	#user-info {
+		text-align: center;
 	}
 	nav {
 		margin-top: 79px;
@@ -74,14 +92,28 @@
 		display: flex;
 		flex-flow: column;
 		gap: 32px;
+		align-items: flex-start;
 	}
-	nav a {
+	nav a,
+	#logout-btn,
+	#profile {
 		display: flex;
 		align-items: center;
 		text-decoration: none;
 		color: inherit;
 	}
-	nav a::before {
+	.menu-link {
+		transition: background-color 0.2s;
+		padding: 0.5em;
+		border-radius: 14px;
+	}
+	.menu-link:hover {
+		background-color: #0000001a;
+		border: none;
+	}
+
+	nav a::before,
+	#logout-btn::before {
 		content: '';
 		margin-right: 1em;
 		width: 20px;
@@ -90,6 +122,22 @@
 		background-image: var(--bgImage);
 		background-size: contain;
 		background-position: 50% 50%;
+	}
+
+	#button-holder {
+		display: flex;
+		gap: 8vw;
+		align-items: center;
+	}
+	#button-holder > * {
+		font-size: inherit;
+		border: none;
+		background: none;
+		cursor: pointer;
+	}
+	#logout-btn::before {
+		--bgImage: url('/icons/logout.svg');
+		margin-right: 0.5em;
 	}
 
 	:global(body) {
