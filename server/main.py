@@ -21,6 +21,7 @@ allow_origins=[os.environ.get("CORS_HOST", "http://localhost:3000")],
 server.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
+    allow_origins=["*"], # need to remove this in production
     allow_methods=["*"],
     allow_headers=["*"],
 )
