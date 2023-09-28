@@ -26,16 +26,31 @@
 	let className = void 0;
 	export { className as class };
 
+	// submit post request to backend login route
 	const handleOnSubmit = async (event) => {
 		event.preventDefault();
 		console.log('submitting login information');
-		// submit post request
-		try {
-			const response = await axios.post('/api/backend', { username, password });
-			dispatch('formSubmitted', response.data);
-		} catch (error) {
-			console.error(error);
-		}
+		//logic for submitting to backend server running FASTAPI on port 8000
+		fetch('http://127.0.0.1:8000/token', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
+			body: new URLSearchParams({ username, password }).toString()
+		})
+		.then(response => {
+			if (!response.ok) {
+				console.error(response.json)
+				throw new Error('Network response was not ok');
+			}
+			return response.json();
+		})
+		.then(result => {
+			console.log(result);
+		})
+		.catch(error => {
+			console.log(`Error with the fetch operation: ${error}`)
+		})
 	};
 </script>
 
