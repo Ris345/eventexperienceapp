@@ -9,8 +9,7 @@ from queries.users import (
     get_current,
     get_current_active_user,
     db_check_email_and_username,
-    db_check_first_and_last,
-    db_update_user,
+    db_check_first_and_last
 )
 from fastapi import Depends, HTTPException, APIRouter, Form, status, Request
 from sqlalchemy.orm import Session
