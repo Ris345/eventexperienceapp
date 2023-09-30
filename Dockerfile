@@ -5,13 +5,13 @@ FROM python:3.9
 WORKDIR /code
 
 #
-COPY ./requirements.txt /server/requirements.txt
+COPY ./requirements.txt /code/requirements.txt
 
 #
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 #
-COPY ./server /code/sever
+COPY ./server /code/server
 
 # cmd to run uvicorn server in container, would be typed in CLI, import server from server.main
 CMD ["uvicorn", "server.main:server", "--host", "0.0.0.0", "--port", "80"]
