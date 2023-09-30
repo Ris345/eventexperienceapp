@@ -8,6 +8,7 @@ from database import SessionLocal
 from schemas.users import scheme
 from jose import JWTError, jwt
 from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy import and_
 from passlib.context import CryptContext
 from typing import Optional
 
@@ -69,7 +70,7 @@ def get_password_hash(password):
 
 
 # creating access token, goes to another file?
-def create_access_token(data: dict, expires_delta: Optional[timedelta]=None):
+def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     to_encode = data.copy()
     if expires_delta:
         expire = datetime.utcnow() + expires_delta

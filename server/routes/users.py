@@ -9,7 +9,7 @@ from queries.users import (
     get_current,
     get_current_active_user,
     db_check_email_and_username,
-    db_check_first_and_last
+    db_check_first_and_last,
 )
 from fastapi import Depends, HTTPException, APIRouter, Form, status, Request
 from sqlalchemy.orm import Session
@@ -184,10 +184,9 @@ def create_user(
 # need to fix this route function and query associated
 # need an endpoint that allows for updating user information and tasks as well
 '''
-@router.get("/current_account")
-async def get_current_account(
+@router.put("/current_account")
+async def update_current_account(
     current_account: Annotated[UserSchema, Depends(get_current)],
-    username: str,
     db: Session = Depends(get_db),
     update_username: str = Form(...),
     update_first_name: str = Form(...),
