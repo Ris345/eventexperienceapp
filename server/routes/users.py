@@ -10,16 +10,12 @@ from queries.users import (
     get_current_active_user,
     db_check_email_and_username,
     db_check_first_and_last,
-    db_update_user,
 )
-from fastapi import Depends, HTTPException, APIRouter, Form, status, Request
+from fastapi import Depends, HTTPException, APIRouter, Form
 from sqlalchemy.orm import Session
-from typing import List, Annotated
+from typing import List, Annotated, Optional
 from database import SessionLocal
 import dependencies
-from queries.users import fake_hash_password
-from typing import Optional
-
 
 scheme = dependencies.ouath2_scheme
 
@@ -57,7 +53,7 @@ async def get_current_account(
 # use the dependency to define 'security scheme'
 @router.get("/users", response_model=List[UserSchema])
 def get_users(
-    token: Annotated[str, Depends(scheme)],
+    # token: Annotated[str, Depends(scheme)],
     skip: int = 0,
     limit: int = 100,
     db: Session = Depends(get_db),
@@ -66,7 +62,7 @@ def get_users(
     return users
 
 
-@router.get("/users_by_user_id/{user_id}", response_model=Optional[UserSchema])
+@router.get("/users_by_user_id/{user_id}", response_model=UserSchema)
 def get_user_by_id(
     token: Annotated[str, Depends(scheme)], user_id: int, db: Session = Depends(get_db)
 ):
@@ -78,7 +74,7 @@ def get_user_by_id(
     return user
 
 
-@router.get("/users_by_username/{username}", response_model=Optional[UserSchema])
+@router.get("/users_by_username/{username}", response_model=UserSchema)
 def get_user_by_username(
     token: Annotated[str, Depends(scheme)], username: str, db: Session = Depends(get_db)
 ):
@@ -174,6 +170,7 @@ def create_user(
     except HTTPException:
         raise
     except Exception as e:
+        print(e)
         db.rollback()
         raise HTTPException(
             status_code=400,

@@ -1,18 +1,12 @@
-from datetime import datetime, timedelta
+from datetime import timedelta
 from fastapi import (
     Depends,
     HTTPException,
-    status,
-    Response,
     APIRouter,
-    Request,
-    FastAPI,
 )
 from sqlalchemy.orm import Session
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from fastapi.security import OAuth2PasswordRequestForm
 from queries.users import (
-    db_get_user_by_username,
-    fake_hash_password,
     authenticate_user,
     create_access_token,
 )
@@ -44,7 +38,6 @@ def login(
     form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
     db: Session = Depends(get_db),
 ):
-    # def get_token(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
     user_obj = authenticate_user(
         db=db, username=form_data.username, password=form_data.password
     )

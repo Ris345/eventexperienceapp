@@ -7,8 +7,10 @@ from fastapi import Depends, HTTPException, status
 from database import SessionLocal
 from schemas.users import scheme
 from jose import JWTError, jwt
-from sqlalchemy.exc import SQLAlchemyError
 from passlib.context import CryptContext
+from typing import Optional
+from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy import and_
 
 # temporary import for token model
 from pydantic import BaseModel
@@ -26,7 +28,7 @@ class Token(BaseModel):
 
 
 class TokenData(BaseModel):
-    username: str | None = None
+    username: Optional[str]
 
 
 # init bcrypt
@@ -68,7 +70,7 @@ def get_password_hash(password):
 
 
 # creating access token, goes to another file?
-def create_access_token(data: dict, expires_delta: timedelta | None = None):
+def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     to_encode = data.copy()
     if expires_delta:
         expire = datetime.utcnow() + expires_delta

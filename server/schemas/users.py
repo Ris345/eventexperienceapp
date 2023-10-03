@@ -49,7 +49,7 @@ class TaskBase(BaseModel):
 class GroupBase(BaseModel):
     id: int
     name: str
-    description: str | None = None
+    description: Optional[str]
     users: List[UserBase]
 
     class Config:

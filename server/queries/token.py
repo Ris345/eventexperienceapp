@@ -6,6 +6,7 @@ from queries.users import db_get_user_by_username, fake_hash_password
 
 
 def get_token(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
+    print(f"in function, $form_data")
     user_obj = db_get_user_by_username(form_data.username)
     if not user_obj:
         raise HTTPException(status_code=400, detail="Incorrect username or password")
