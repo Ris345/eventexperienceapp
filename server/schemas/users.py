@@ -22,8 +22,8 @@ class UserBase(BaseModel):
     first_name: str
     last_name: str
     email: str
-    about: str
-    profile_photo: str
+    about: Optional[str] = None
+    profile_photo: Optional[str] = None
 
     # SQL Alchemy does not return dict, which pydantic expects by default. Config allows loading from standard orm parameters (attributes on object as opposed to a dict lookup)
     class Config:

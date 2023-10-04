@@ -93,8 +93,8 @@ def create_user(
     first_name: str = Form(...),
     last_name: str = Form(...),
     email: str = Form(...),
-    profile_photo: str = Form(...),
-    about: str = Form(...),
+    profile_photo: str = Form(default=None),
+    about: str = Form(default=None),
     password: str = Form(...),
     db: Session = Depends(get_db),
 ):
@@ -131,7 +131,7 @@ def create_user(
         db.rollback()
         raise HTTPException(
             status_code=400,
-            detail="Can not create an account with those credentials",
+            detail="Cannot create an account with those credentials/try again",
         ) from e
 
 
