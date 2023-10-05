@@ -1,43 +1,147 @@
-<h1>
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="16"
-		height="16"
-		fill="currentColor"
-		class="bi bi-door-open"
-		viewBox="0 0 16 16"
-	>
-		<path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />
-		<path
-			d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5zM4 1.934V15h6V1.077l-6 .857z"
-		/>
-	</svg>
-	BACKSTAGE
-	<br />
-	<span style="font-size:.5em; font-weight:300;">Event Experience Team Coordination</span>
-</h1>
+<script>
+	import logo from '$lib/icons/logo.svg';
+	const links = [
+		{ name: 'Dashboard', href: '#dashboard', image: 'dashboard.svg' },
+		{ name: 'Calendar', href: '#calendar', image: 'calendar.svg' },
+		{ name: 'Events', href: '#events', image: 'events.svg' },
+		{ name: 'Tasks', href: '#tasks', image: 'tasks.svg' },
+		{ name: 'Messages', href: '#messages', image: 'messages.svg' },
+		{ name: 'Settings', href: '#settings', image: 'settings.svg' }
+	];
+</script>
+
+<div id="menu">
+	<h1><img alt="logo" src={logo} />EEA</h1>
+	<nav>
+		<ul>
+			{#each links as { name, href, image }}
+				<li>
+					<a style="--bgImage: url(./icons/{image});" class="menu-link" {href}>{name}</a>
+				</li>
+			{/each}
+		</ul>
+	</nav>
+</div>
 <slot />
+<div id="sidebar">
+	<div id="button-holder">
+		<a id="profile" href="#profile">Profile</a>
+		<button id="logout-btn">Logout</button>
+	</div>
+	<div id="user-pic" />
+	<div id="user-info">
+		<div id="user-name">User's Name</div>
+		<div id="user-status">Status</div>
+	</div>
+</div>
 
 <style>
-	h1 {
-		color: white;
-		margin-top: 0.2em;
-		line-height: 0.8em;
-		font-size: 4em;
-		font-weight: normal;
-	}
-	h1 svg {
-		height: 1em;
-		width: auto;
-	}
-	:global(body) {
-		background-image: linear-gradient(to bottom, #000000aa, #000000aa),
-			url('/images/backstage-horizontal.jpg');
-		background-repeat: no-repeat;
-		background-size: cover;
-		height: 100%;
-	}
-	:global(html) {
+	#menu,
+	#sidebar {
+		background-color: #0000000d;
 		min-height: 100vh;
+	}
+	#sidebar {
+		padding: 20px;
+		padding-top: 90px;
+		min-width: 300px;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	#menu {
+		padding: 32px 0 0 32px;
+		min-width: 12em;
+	}
+	h1 {
+		font-size: 16px;
+		font-weight: bold;
+		margin: 0;
+		line-height: 1em;
+		display: flex;
+		align-items: center;
+		gap: 9px;
+	}
+	h1 img {
+		width: 35px;
+		height: auto;
+	}
+	#user-pic {
+		border-radius: 100%;
+		width: 150px;
+		height: 150px;
+		background-color: orange;
+		background-clip: content-box;
+		padding: 0.5em;
+		margin-right: 0px;
+	}
+	#user-name {
+		font-weight: bold;
+		padding: 0.5em;
+	}
+	#user-info {
+		text-align: center;
+	}
+	nav {
+		margin-top: 79px;
+	}
+	nav ul {
+		padding: 0;
+		list-style-type: none;
+		display: flex;
+		flex-flow: column;
+		gap: 32px;
+		align-items: flex-start;
+	}
+	nav a,
+	#logout-btn,
+	#profile {
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+		color: inherit;
+	}
+	.menu-link {
+		transition: background-color 0.2s;
+		padding: 0.5em;
+		border-radius: 14px;
+	}
+	.menu-link:hover {
+		background-color: #0000001a;
+		border: none;
+	}
+
+	nav a::before,
+	#logout-btn::before {
+		content: '';
+		margin-right: 1em;
+		width: 20px;
+		height: 20px;
+		background-repeat: no-repeat;
+		background-image: var(--bgImage);
+		background-size: contain;
+		background-position: 50% 50%;
+	}
+
+	#button-holder {
+		display: flex;
+		gap: 8vw;
+		align-items: center;
+	}
+	#button-holder > * {
+		font-size: inherit;
+		border: none;
+		background: none;
+		cursor: pointer;
+	}
+	#logout-btn::before {
+		--bgImage: url('/icons/logout.svg');
+		margin-right: 0.5em;
+	}
+
+	:global(body) {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
 	}
 </style>
