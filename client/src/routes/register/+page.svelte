@@ -3,8 +3,6 @@
 	import SegmentedButton, { Segment } from '@smui/segmented-button';
 	import Textfield from '@smui/textfield';
 	import HelperText from '@smui/textfield/helper-text';
-	import axios from 'axios';
-	import { createEventDispatcher } from 'svelte';
 
 	let invalid = false,
 		userName = '',
@@ -16,7 +14,6 @@
 		password = '',
 		selectedRole;
 	const choices = ['Admin', 'Organizer', 'Volunteer'];
-	const dispatch = createEventDispatcher();
 	// handleSubmit
 	const handleOnSubmit = async (event) => {
 		event.preventDefault();
@@ -27,27 +24,29 @@
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			},
-			body: new URLSearchParams({ username: userName, 
-					first_name: firstName,
-					last_name: lastName, 
-					email: email, 
-					profile_photo: profile_photo,
-					about: about, 
-					password: password }).toString()
+			body: new URLSearchParams({
+				username: userName,
+				first_name: firstName,
+				last_name: lastName,
+				email: email,
+				profile_photo: profile_photo,
+				about: about,
+				password: password
+			}).toString()
 		})
-		.then(response => {
-			if (!response.ok) {
-				console.error(response.json)
-				throw new Error('Network response was not ok');
-			}
-			return response.json();
-		})
-		.then(result => {
-			console.log(result);
-		})
-		.catch(error => {
-			console.log(`Error with the fetch operation: ${error}`)
-		})
+			.then((response) => {
+				if (!response.ok) {
+					console.error(response.json);
+					throw new Error('Network response was not ok');
+				}
+				return response.json();
+			})
+			.then((result) => {
+				console.log(result);
+			})
+			.catch((error) => {
+				console.log(`Error with the fetch operation: ${error}`);
+			});
 	};
 
 	$: console.log('First_name', firstName);

@@ -4,7 +4,6 @@
 	import HelperText from '@smui/textfield/helper-text';
 	import { Input } from '@smui/textfield';
 	import { createEventDispatcher } from 'svelte';
-	import axios from 'axios';
 	import placeholder2 from './assets/placeholder-login2.svg';
 
 	let username = '',
@@ -38,19 +37,19 @@
 			},
 			body: new URLSearchParams({ username, password }).toString()
 		})
-		.then(response => {
-			if (!response.ok) {
-				console.error(response.json)
-				throw new Error('Network response was not ok');
-			}
-			return response.json();
-		})
-		.then(result => {
-			console.log(result);
-		})
-		.catch(error => {
-			console.log(`Error with the fetch operation: ${error}`)
-		})
+			.then((response) => {
+				if (!response.ok) {
+					console.error(response.json);
+					throw new Error('Network response was not ok');
+				}
+				return response.json();
+			})
+			.then((result) => {
+				console.log(result);
+			})
+			.catch((error) => {
+				console.log(`Error with the fetch operation: ${error}`);
+			});
 	};
 </script>
 
