@@ -40,7 +40,7 @@ To run the client-side application locally, clone this repo and open a terminal 
 
 ## Installing Docker
 
-Depending on your operating system, follow the specificlink at https://docs.docker.com/compose/install/
+Depending on your operating system, follow the specific link at https://docs.docker.com/compose/install/
 
 ## Running Docker/API server
 
