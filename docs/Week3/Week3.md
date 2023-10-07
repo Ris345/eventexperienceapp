@@ -27,7 +27,7 @@
 # GENERAL AGENDA
 - Demo/Sample of BE -> FE functionality
     - User MS
-        - To run user MS currently, (1) `uvicorn main:app --reload` -> (2) navigate to [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+        - To run user MS currently, (1) `uvicorn main:server --reload` -> (2) navigate to [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
         - First Draft
             - Local
                 - [x] Establish DB setup for users first
