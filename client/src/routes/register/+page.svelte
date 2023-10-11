@@ -3,6 +3,8 @@
 	import SegmentedButton, { Segment } from '@smui/segmented-button';
 	import Textfield from '@smui/textfield';
 	import HelperText from '@smui/textfield/helper-text';
+	import { redirect } from '@sveltejs/kit'
+	import { goto } from '$app/navigation';
 
 	let invalid = false,
 		userName = '',
@@ -33,22 +35,67 @@
 				about: about,
 				password: password
 			}).toString()
-		})
-			.then((response) => {
+			})
+			.then(async (response) => {
 				if (!response.ok) {
-					console.error(response.json);
-					throw new Error('Network response was not ok');
+					const errorData = await response.json();
+					throw new Error(`${errorData.detail}`);
 				}
 				return response.json();
 			})
-			.then((result) => {
-				console.log(result);
+			.then((user) => {
+				console.log(user);
+			})
+			.then(async () => {
+				await fetch('http://127.0.0.1:8000/token', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded'
+						},
+					body: new URLSearchParams({
+					username: userName,
+					password: password
+					}).toString()
+				})
+				.then(async (response) => {
+					if (!response.ok) {
+						const errorData = await response.json();
+						throw new Error(`${errorData.detail}`);
+					}
+					return response.json();
+				})
+				.then((token) => {
+					console.log(token);
+					//trying to get this to work
+					// event.cookies.set(token, {
+					// 	httpOnly: true,
+					// 	path: '/',
+					// 	secure: true,
+					// 	sameSite: 'strict',
+					// 	maxAge: 60 * 60 * 24
+					// })
+					goto('/');
+				})
+				.catch((error) => {
+					console.log(`Error: ${error}`);
+				})
 			})
 			.catch((error) => {
 				console.log(`Error with the fetch operation: ${error}`);
-			});
+			})
+			
 	};
 
+
+
+
+
+
+
+
+	//change client view to dashboard/home page
+	
+	
 	$: console.log('First_name', firstName);
 
 	$: console.log('Last_name', lastName);
