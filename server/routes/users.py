@@ -10,6 +10,7 @@ from queries.users import (
     get_current_active_user,
     db_check_email_and_username,
     db_check_first_and_last,
+    Security,
 )
 from fastapi import Depends, HTTPException, APIRouter, Form
 from sqlalchemy.orm import Session
@@ -47,6 +48,17 @@ async def get_current_account(
     current_account: Annotated[UserSchema, Depends(get_current_user)]
 ):
     return current_account
+
+
+# potentially the user_calendar endpoint, rsvps, items associated with current user - current: example from docs
+# will need to edit dependencies.py oauth2_scheme as well when changing
+@router.get("/users/me/items")
+async def get_current_account_items(
+    current_user: Annotated[
+        UserSchema, Security(get_current_active_user, scopes=["items"])
+    ]
+):
+    return [{"item_id": "id for item", "owner": current_user.username}]
 
 
 # Dependency provides str assigned to token parameter of path operation function

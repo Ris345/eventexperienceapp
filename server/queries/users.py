@@ -11,7 +11,7 @@ from passlib.context import CryptContext
 from typing import Optional
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy import and_
-from server.dependencies import (
+from dependencies import (
     OAuth2PasswordBearer,
     OAuth2PasswordRequestForm,
     SecurityScopes,
@@ -136,7 +136,7 @@ async def get_current_user(
 
 
 async def get_current_active_user(
-    current_user: Annotated[User, Security(get_current, scopes=["me"])]
+    current_user: Annotated[User, Security(get_current_user, scopes=["me"])]
 ):
     if not current_user.is_active:
         raise HTTPException(status_code=400, detail="Inactive user")
