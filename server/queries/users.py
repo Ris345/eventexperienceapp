@@ -3,7 +3,7 @@ from models.users import User
 from sqlalchemy.orm import Session, joinedload
 from schemas.users import UserSchema, UserCreate
 from typing import Annotated
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, HTTPException, status, Security, FastAPI
 from database import SessionLocal
 from schemas.users import scheme
 from jose import JWTError, jwt
@@ -11,6 +11,11 @@ from passlib.context import CryptContext
 from typing import Optional
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy import and_
+from server.dependencies import (
+    OAuth2PasswordBearer,
+    OAuth2PasswordRequestForm,
+    SecurityScopes,
+)
 
 # temporary import for token model
 from pydantic import BaseModel
