@@ -12,4 +12,8 @@ tokenurl = 'token' is relative url token that has not been implemented, basicall
 
 ex: https://localhost:8000.com/token
 """
-ouath2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+ouath2_scheme = OAuth2PasswordBearer(
+    tokenUrl="token",
+    scopes={"me": "Read information about the current user.",
+            "items": "Read items."},
+)
