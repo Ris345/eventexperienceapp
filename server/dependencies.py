@@ -1,4 +1,8 @@
-from fastapi.security import OAuth2PasswordBearer , OAuth2PasswordRequestForm
+from fastapi.security import (
+    OAuth2PasswordBearer,
+    OAuth2PasswordRequestForm,
+    SecurityScopes,
+)
 
 # create instance of PasswordBearer()
 """
@@ -9,5 +13,3 @@ tokenurl = 'token' is relative url token that has not been implemented, basicall
 ex: https://localhost:8000.com/token
 """
 ouath2_scheme = OAuth2PasswordBearer(tokenUrl="token")
-
-
