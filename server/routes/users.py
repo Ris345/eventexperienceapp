@@ -6,7 +6,7 @@ from queries.users import (
     UserSchema,
     UserCreate,
     db_create_user,
-    get_current,
+    get_current_user,
     get_current_active_user,
     db_check_email_and_username,
     db_check_first_and_last,
@@ -44,7 +44,7 @@ async def read_users_me(
 
 @router.get("/current_account")
 async def get_current_account(
-    current_account: Annotated[UserSchema, Depends(get_current)]
+    current_account: Annotated[UserSchema, Depends(get_current_user)]
 ):
     return current_account
 
@@ -184,7 +184,7 @@ def create_user(
 '''
 @router.get("/current_account")
 async def get_current_account(
-    current_account: Annotated[UserSchema, Depends(get_current)],
+    current_account: Annotated[UserSchema, Depends(get_current_user)],
     username: str,
     db: Session = Depends(get_db),
     update_username: str = Form(...),

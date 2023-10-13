@@ -99,9 +99,10 @@ def authenticate_user(username: str, password: str, db: Session = Depends(get_db
 
 
 # testing security
-async def get_current(
-    security_scopes: SecurityScopes, token: Annotated[str, Depends(scheme)], db: Session = Depends(get_db)
-
+async def get_current_user(
+    security_scopes: SecurityScopes,
+    token: Annotated[str, Depends(scheme)],
+    db: Session = Depends(get_db),
 ):
     if security_scopes.scopes:
         authenticate_value = f'Bearer scope="{security_scopes.scope_str}"'
@@ -120,8 +121,6 @@ async def get_current(
         token_scopes = payload.get("scopes", [])
         token_data = TokenData(scopes=token_scopes, username=username)
     except (JWTError, ValidationError):
-        raise credentials_exception
-    except JWTError:
         raise credentials_exception
     user = db_get_user_by_username(db, username=token_data.username)
     if user is None:
