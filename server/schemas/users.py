@@ -1,6 +1,12 @@
 from datetime import date, datetime, time, timedelta
+from typing import Annotated
+from fastapi import Depends
 from pydantic import BaseModel
-from typing import Optional, List, Text
+from typing import Optional, List
+from schemas.tasks import TaskPriority, TaskType
+import dependencies
+
+scheme = dependencies.ouath2_scheme
 
 """
 ModelBase - common attributes when creating or reading data
@@ -25,11 +31,24 @@ class UserBase(BaseModel):
         from_attributes = True
 
 
+class TaskBase(BaseModel):
+    name: str
+    description: str
+    isCompleted: bool
+    priority: TaskPriority
+    task_type: TaskType
+
+    # assignedUser : int
+    class Config:
+        orm_mode = True
+        from_attributes = True
+
+
 # changed groupbase and group schema in order to incoporate owner data, so removed owner_id from groupbase and added an owner field for owner data in group schema
 # groups already had an owner relation on its model
 class GroupBase(BaseModel):
     name: str
-    description: Optional[str] = None
+    description: Optional[str]
     users: List[UserBase]
 
     class Config:
@@ -39,8 +58,8 @@ class GroupBase(BaseModel):
 
 class GroupSchema(GroupBase):
     id: int
-    users: Optional[List[UserBase]] = None
-    owner: Optional[UserBase] = None
+    users: Optional[List[UserBase]]
+    owner: Optional[UserBase]
 
     class Config:
         orm_mode = True
@@ -57,10 +76,12 @@ class TaskUser(UserBase):
 
 
 class UserSchema(UserBase):
-    id: int
-    is_active: bool
+    id: Optional[int] = None
+    is_active: Optional[bool] = None
     created_at: datetime = None
     groups: Optional[List[GroupSchema]] = None
+    task_assignments: Optional[List[TaskBase]] = None
+    authored_tasks: Optional[List[TaskBase]] = None
 
     class Config:
         orm_mode = True

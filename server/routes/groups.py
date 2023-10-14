@@ -9,7 +9,12 @@ from fastapi import (
 )
 from typing import List
 from sqlalchemy.orm import Session
-from queries.groups import db_get_group, db_get_groups, GroupSchema
+from queries.groups import (
+    db_get_group_by_id,
+    db_get_groups,
+    db_get_group_by_name,
+    GroupSchema,
+)
 from database import SessionLocal
 
 
@@ -21,7 +26,11 @@ def get_db():
         db.close()
 
 
-router = APIRouter()
+router = APIRouter(
+    tags=["groups"],
+    # dependencies=[Depends(get_token_header)],
+    responses={404: {"description": "Not Found"}},
+)
 
 
 @router.get("/groups", response_model=List[GroupSchema])
@@ -30,10 +39,17 @@ def get_groups(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return groups
 
 
-@router.get("/groups/{group_id}", response_model=GroupSchema)
-def get_group(group_id: int, db: Session = Depends(get_db)):
-    group = db_get_group(db, group_id)
-    print(group)
-    if group is None:
+@router.get("/group_by_id/{group_id}", response_model=GroupSchema)
+def get_group_by_id(group_id: int, db: Session = Depends(get_db)):
+    group_by_id = db_get_group_by_id(db, group_id)
+    if group_by_id is None:
         raise HTTPException(status_code=400, detail="group not found")
-    return group
+    return group_by_id
+
+
+@router.get("/group_by_name/{groupname}", response_model=GroupSchema)
+def get_group_by_name(groupname: str, db: Session = Depends(get_db)):
+    group_by_name = db_get_group_by_name(db, groupname)
+    if group_by_name is None:
+        raise HTTPException(status_code=400, detail="user not found")
+    return group_by_name

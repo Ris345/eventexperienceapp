@@ -3,6 +3,8 @@ from sqlalchemy import Boolean, Column, ForeignKey, String, DateTime, Integer, T
 from sqlalchemy.orm import relationship, joinedload
 import database
 
+# from models.users import User
+
 Base = database.Base
 engine = database.engine
 SessionLocal = database.SessionLocal
@@ -32,34 +34,36 @@ class Task(Base):
 
 class Task(Base):
     __tablename__ = "tasks"
-    __table_args__ = {"extend_existing": True}
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
     description = Column(String, nullable=False)
     isCompleted = Column(Boolean, default=False)
-    author_id = Column(Integer, ForeignKey("users.id"))
-    quantity = Column(Integer)
     # fk to tasklist
     tasklist_id = Column(Integer, ForeignKey("task_list.id"))
+    tasklist = relationship(
+        "TaskList", back_populates="tasks", foreign_keys=[tasklist_id]
+    )
+    # task_list = relationship("TaskList", back_populates="tasks")
     # fk to a user
-    assignedUser_id = Column(Integer, ForeignKey("users.id"))
+    assignee_id = Column(Integer, ForeignKey("users.id"))
+    assignee = relationship(
+        "User",
+        foreign_keys=[assignee_id],
+        back_populates="task_assignments",
+    )
     # fk to type
-    type_id = Column(Integer, ForeignKey("task_type.id"))
-    # fk to priority
-    priority_id = Column(Integer, ForeignKey("task_priority.id"))
-    # Define relationships directly in the class definition
-    task_list = relationship("TaskList", back_populates="tasks", lazy="joined")
-    author = relationship(
-        "User", back_populates="authored_tasks", foreign_keys=[author_id]
-    )
-    assignedUser = relationship(
-        "User", back_populates="tasks", foreign_keys=[assignedUser_id]
-    )
+    task_type_id = Column(Integer, ForeignKey("task_type.id"))
     task_type = relationship(
-        "TaskType", back_populates="tasks", lazy="joined", foreign_keys=[type_id]
+        "TaskType", back_populates="tasks", lazy="joined", foreign_keys=[task_type_id]
     )
-    task_priority = relationship(
-        "Priority", back_populates="tasks", lazy="joined", foreign_keys=[priority_id]
+    # fk to priority
+    priority_id = Column(Integer, ForeignKey("priority.id"))
+    priority = relationship("Priority", lazy="joined", foreign_keys=[priority_id])
+    author_id = Column(Integer, ForeignKey("users.id"))
+    author = relationship(
+        "User",
+        foreign_keys=[author_id],
+        back_populates="authored_tasks",
     )
 
 
@@ -77,17 +81,14 @@ TaskList Model
 
 class TaskList(Base):
     __tablename__ = "task_list"
-    __table_args__ = {"extend_existing": True}
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
-    owner = Column(Integer, ForeignKey("users.id"))
+    owner_id = Column(Integer, ForeignKey("users.id"))
     isCompleted = Column(Boolean, default=False)
-    description = Column(Text)
-    priority_id = Column(Integer, ForeignKey("task_priority.id"))
-    task_priority = relationship("Priority", back_populates="task_list")
-    assignedGroup_id = Column(Integer, ForeignKey("groups.id"))
-    assignedGroup = relationship("Group", back_populates="task_list", lazy="joined")
-    tasks = relationship("Task", back_populates="task_list", lazy="joined")
+    description = Column(String)
+    priority_id = Column(Integer, ForeignKey("priority.id"))
+    priority = relationship("Priority", lazy="joined", foreign_keys=[priority_id])
+    tasks = relationship("Task", back_populates="tasklist")
 
 
 """
@@ -101,7 +102,7 @@ class TaskType(Base):
     __tablename__ = "task_type"
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
-    tasks = relationship("Task", back_populates="task_type", lazy="joined")
+    tasks = relationship("Task", back_populates="task_type")
 
 
 """
@@ -109,20 +110,28 @@ Priority Model
     id - pk, int
     name - str ex: urgent
     level - int ex: out of x
+
+# from docs, track for progress of tasks
+Status Model
+    id - pk, int
+    name - str, ex: started, in progress, review
+
 """
 
 
 class Priority(Base):
-    __tablename__ = "task_priority"
+    __tablename__ = "priority"
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
     level = Column(Integer)
-    task_list = relationship("TaskList", back_populates="task_priority")
-    tasks = relationship("Task", back_populates="task_priority")
+    tasks = relationship("Task", back_populates="priority")
 
+
+# class TaskType(Base):
+#     pass
 
 # Test if models work
-Base.metadata.create_all(engine)
+# Base.metadata.create_all(engine)
 # with SessionLocal() as session:
 #     tasklist1 = TaskList(name="tasklist1")
 #     tasklist2 = TaskList(name="tasklist2")
