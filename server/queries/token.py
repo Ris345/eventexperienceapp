@@ -1,6 +1,6 @@
 from typing import Annotated
 from schemas.users import UserCreate
-from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
 from queries.users import db_get_user_by_username, fake_hash_password
 
