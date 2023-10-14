@@ -1,8 +1,4 @@
-from fastapi.security import (
-    OAuth2PasswordBearer,
-    OAuth2PasswordRequestForm,
-    SecurityScopes,
-)
+from fastapi.security import OAuth2PasswordBearer
 
 # create instance of PasswordBearer()
 """
