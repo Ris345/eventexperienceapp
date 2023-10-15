@@ -11,7 +11,7 @@ WORKDIR /code/server
 
 # cmd to run uvicorn server in container, would be typed in CLI, import server from server.main
 EXPOSE 8000
-CMD ["uvicorn", "main:server", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:server", "--reload", "--host", "0.0.0.0", "--port", "8000"]
 
 # building the docker image
 # run in app path, docker build -t eeaimage .

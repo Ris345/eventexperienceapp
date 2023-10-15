@@ -13,9 +13,6 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship, joinedload
 import database
-from sqlalchemy.ext.hybrid import hybrid_property
-
-# from models.users import User, RSVP, Bookmark
 
 Base = database.Base
 engine = database.engine
@@ -143,7 +140,7 @@ class Event(Base):
     attendees - number of users that are registered for event, type is list []
         - this will have to read from the rsvp table from users
 
-    attachment - str, attachment for the event maybe like a pdf for flier
+    attachments - [], (many attachments to one event) foreign key to attachment class
 
     location - foreign key to locations table
 """

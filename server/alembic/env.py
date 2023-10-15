@@ -1,13 +1,15 @@
 from logging.config import fileConfig
-
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
+from sqlalchemy import engine_from_config, pool
 from alembic import context
-from models.GroupsUsers import Base
+import database
+
+Base = database.Base
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
+
+# going to need to hide this in .env as well as singing_key
 database_url = "sqlite:///./server_sql_app.db"
 
 # Interpret the config file for Python logging.

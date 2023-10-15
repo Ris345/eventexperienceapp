@@ -1,6 +1,6 @@
 from queries.tasks import (
     db_get_tasks,
-    db_get_task,
+    db_get_task_by_id,
     db_create_tasklist,
     db_get_tasklists,
     db_get_task_by_name,
@@ -30,7 +30,6 @@ def get_db():
 
 router = APIRouter(
     tags=["tasks"],
-    # dependencies=[Depends(get_token_header)],
     responses={404: {"description": "Not Found"}},
 )
 
@@ -45,7 +44,7 @@ def get_tasks(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 
 @router.get("/tasks/{task_id}", response_model=TaskSchema)
 def get_task(task_id: int, db: Session = Depends(get_db)):
-    task = db_get_task(db, task_id)
+    task = db_get_task_by_id(db, task_id)
     if task is None:
         raise HTTPException(status_code=400, detail="task not found")
     return task
@@ -105,3 +104,11 @@ def post_tasklist(
         raise HTTPException(
             status_code=400, detail="can not create tasklist with these details"
         ) from e
+
+
+@router.get("/task_by_task_name/{task_name}", response_model=TaskSchema)
+def get_task_by_taskname(taskname: str, db: Session = Depends(get_db)):
+    task_by_username = db_get_task_by_name(db, taskname)
+    if task_by_username is None:
+        raise HTTPException(status_code=400, detail="task not found with that name")
+    return task_by_username

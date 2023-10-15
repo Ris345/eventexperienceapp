@@ -1,13 +1,24 @@
-from typing import Annotated
-from fastapi import Header, HTTPException
+from fastapi.security import (
+    OAuth2PasswordBearer,
+    OAuth2PasswordRequestForm,
+    SecurityScopes,
+)
 
+# create instance of PasswordBearer()
+"""
+'token' is a placeholder for the url that client will send username, password to in order to obtain a token
 
-# invented header for the purpose of dependency implementation
-async def get_token_header(x_token: Annotated[str, Header()]):
-    if x_token != "fake-super-secret-token":
-        raise HTTPException(status_code=400, detail="X-token header invalid")
+tokenurl = 'token' is relative url token that has not been implemented, basically its ./token
 
-
-async def get_query_tolen(token: str):
-    if token != "user":
-        raise HTTPException(status_code=400, detail="No user-token provided")
+ex: https://localhost:8000.com/token
+"""
+# scopes - now declaring scheme w/ 2 available scopes (me, items)
+# scopes param reps dict w/ each scope as key, description as value
+"""
+scopes now show in api docs when logging/authorizing
+select scopes to provide access to: me, items
+"""
+ouath2_scheme = OAuth2PasswordBearer(
+    tokenUrl="token",
+    scopes={"me": "Read information about the current user.", "items": "Read items."},
+)

@@ -1,6 +1,12 @@
-from datetime import datetime, timedelta
+from datetime import date, datetime, time, timedelta
+from typing import Annotated
+from fastapi import Depends
 from pydantic import BaseModel
 from typing import Optional, List, Text
+from schemas.tasks import TaskPriority, TaskTypeBase
+import dependencies
+
+scheme = dependencies.ouath2_scheme
 
 """
 ModelBase - common attributes when creating or reading data
@@ -22,12 +28,20 @@ class EventSimple(BaseModel):
     duration: int
     end: datetime
 
+    class Config:
+        orm_mode = True
+        from_attributes = True
+
 
 class TaskSchema(BaseModel):
     id: int
     name: str
     description: str
     isCompleted: bool
+
+    class Config:
+        orm_mode = True
+        from_attributes = True
 
 
 class Bookmark(BaseModel):
@@ -72,6 +86,19 @@ class UserBase(BaseModel):
         from_attributes = True
 
 
+class TaskBase(BaseModel):
+    name: str
+    description: str
+    isCompleted: bool
+    priority: TaskPriority
+    task_type: TaskTypeBase
+
+    # assignedUser : int
+    class Config:
+        orm_mode = True
+        from_attributes = True
+
+
 # changed groupbase and group schema in order to incoporate owner data, so removed owner_id from groupbase and added an owner field for owner data in group schema
 # groups already had an owner relation on its model
 class GroupBase(BaseModel):
@@ -111,14 +138,14 @@ class UserCalendar(BaseModel):
 
 
 class UserSchema(UserBase):
-    id: int
-    is_active: bool
+    id: Optional[int] = None
+    is_active: Optional[bool] = None
     created_at: datetime = None
     groups: Optional[List[GroupSchema]] = None
     authored_tasks: Optional[List[TaskSchema]] = None
     task_assignments: Optional[List[TaskSchema]] = None
     authored_events: Optional[List[EventSimple]] = None
-    organized_events: Optional[List[TaskSchema]] = None
+    organized_events: Optional[List[EventSimple]] = None
     rsvps: Optional[List[RSVPUser]] = None
     bookmarks: Optional[List[BookmarkUser]] = None
     user_calendar: Optional[List[UserCalendar]] = None

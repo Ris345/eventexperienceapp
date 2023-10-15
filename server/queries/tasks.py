@@ -5,13 +5,24 @@ from schemas.tasks import TaskCreate, TaskListCreate, TaskSchema, TaskListSchema
 from fastapi import HTTPException
 
 
+# use joinedload in order to join other tables to Task model
 def db_get_tasks(db: Session, skip: int = 0, limit: int = 100):
-    tasks = db.query(Task).offset(skip).limit(limit).all()
+    tasks = (
+        db.query(Task)
+        .options(joinedload(Task.tasklist))
+        .options(joinedload(Task.assignee))
+        .options(joinedload(Task.task_type))
+        .options(joinedload(Task.priority))
+        .options(joinedload(Task.author))
+        .offset(skip)
+        .limit(limit)
+        .all()
+    )
     task_schemas = [TaskSchema.from_orm(task) for task in tasks]
     return task_schemas
 
 
-def db_get_task(
+def db_get_task_by_id(
     db: Session,
     task_id: int,
 ):
@@ -19,12 +30,21 @@ def db_get_task(
     return db_task
 
 
+"""
+using .ilike() function allowing for matching of strings via case insenstivitiy
+and then wildcard allowing for matching of string regardless of characters
+"""
+
+
 def db_get_task_by_name(
     db: Session,
-    name: str,
+    taskname: str,
 ):
-    db_task_by_name = db.query(Task).where(Task.name == name).first()
-    return db_task_by_name
+    filtered_taskname = taskname.strip()
+    task_by_username = (
+        db.query(Task).filter(Task.name.ilike(f"%{filtered_taskname}%")).first()
+    )
+    return task_by_username
 
 
 def db_create_task(db: Session, task: TaskCreate):

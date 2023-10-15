@@ -1,6 +1,6 @@
 from datetime import datetime
 from sqlalchemy import Boolean, Column, ForeignKey, String, DateTime, Integer, Text
-from sqlalchemy.orm import relationship, joinedload
+from sqlalchemy.orm import relationship
 import database
 
 Base = database.Base
@@ -37,28 +37,33 @@ class Task(Base):
     name = Column(String, nullable=False)
     description = Column(String, nullable=False)
     isCompleted = Column(Boolean, default=False)
-    quantity = Column(Integer)
+    quantity = Column(Integer, nullable=True)
     # fk to tasklist
     tasklist_id = Column(Integer, ForeignKey("tasklist.id"))
-    # fk to type
-    type_id = Column(Integer, ForeignKey("task_type.id"))
-    # fk to priority
-    priority_id = Column(Integer, ForeignKey("task_priority.id"))
-    # Define relationships directly in the class definition
     tasklist = relationship(
         "TaskList", back_populates="tasks", foreign_keys=[tasklist_id]
     )
-    author_id = Column(Integer, ForeignKey("users.id"))
+    # task_list = relationship("TaskList", back_populates="tasks")
+    # fk to a user
     assignee_id = Column(Integer, ForeignKey("users.id"))
-    author = relationship(
-        "User", foreign_keys=[author_id], back_populates="authored_tasks"
+    assignee = relationship(
+        "User",
+        foreign_keys=[assignee_id],
+        back_populates="task_assignments",
     )
-    assignee = relationship("User", foreign_keys=[assignee_id])
+    # fk to type
+    task_type_id = Column(Integer, ForeignKey("task_type.id"))
     task_type = relationship(
-        "TaskType", back_populates="tasks", lazy="joined", foreign_keys=[type_id]
+        "TaskType", back_populates="tasks", lazy="joined", foreign_keys=[task_type_id]
     )
-    task_priority = relationship(
-        "Priority", back_populates="tasks", lazy="joined", foreign_keys=[priority_id]
+    # fk to priority
+    priority_id = Column(Integer, ForeignKey("priority.id"))
+    priority = relationship("Priority", lazy="joined", foreign_keys=[priority_id])
+    author_id = Column(Integer, ForeignKey("users.id"))
+    author = relationship(
+        "User",
+        foreign_keys=[author_id],
+        back_populates="authored_tasks",
     )
 
 
@@ -95,6 +100,8 @@ class TaskList(Base):
     events = relationship(
         "Event", back_populates="tasklist", foreign_keys="[Event.tasklist_id]"
     )
+    priority_id = Column(Integer, ForeignKey("priority.id"))
+    priority = relationship("Priority", lazy="joined", foreign_keys=[priority_id])
 
 
 """
@@ -116,16 +123,25 @@ Priority Model
     id - pk, int
     name - str ex: urgent
     level - int ex: out of x
+
+# from docs, track for progress of tasks
+Status Model
+    id - pk, int
+    name - str, ex: started, in progress, review
+
 """
 
 
 class Priority(Base):
-    __tablename__ = "task_priority"
+    __tablename__ = "priority"
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
     level = Column(Integer)
-    tasks = relationship("Task", back_populates="task_priority")
+    tasks = relationship("Task", back_populates="priority")
 
+
+# class TaskType(Base):
+#     pass
 
 # Test if models work
 # Base.metadata.create_all(engine)

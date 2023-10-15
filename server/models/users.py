@@ -260,8 +260,13 @@ with SessionLocal() as session:
     Group2.owner_id = 2
     Group1.users = [User1, User2]
     Group2.users = [User2, User3]
-    User1.rsvps = [Event1, Event2]
-    User2.rsvps = [Event1]
+    """
+    Need to fix adding rsvps, bookmarks to users
+    was encountering keyerror:user
+    """
+    # User1.rsvps = [Event1, Event2]
+    # User2.rsvps = [Event2, Event1]
+    # User1.bookmarks = [Event1, Event2]
     session.add_all([Group1, Group2, User1, User2, User3])
     session.commit()
 
