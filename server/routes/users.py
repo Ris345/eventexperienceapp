@@ -18,7 +18,7 @@ from typing import List, Annotated, Optional
 from database import SessionLocal
 import dependencies
 
-scheme = dependencies.ouath2_scheme
+scheme = dependencies.oauth2_scheme
 
 
 def get_db():
@@ -65,7 +65,7 @@ async def get_current_account_items(
 # use the dependency to define 'security scheme'
 @router.get("/users", response_model=List[UserSchema])
 def get_users(
-    # token: Annotated[str, Depends(scheme)],
+    token: Annotated[str, Depends(scheme)],
     skip: int = 0,
     limit: int = 100,
     db: Session = Depends(get_db),

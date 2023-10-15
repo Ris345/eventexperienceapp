@@ -12,13 +12,14 @@ from typing import Optional
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy import and_
 from fastapi.security import SecurityScopes
+from dependencies import SECURITY_KEY, ALGO
 
 # temporary import for token model
 from pydantic import BaseModel, ValidationError
 
 # should move secret and algo to a .env later
-SECRET = "b6b3ae7250c171d2bd8eb60970d2d51a46dda2eecdd30a941cd2cfcd20b0033c"
-ALGORITHM = "HS256"
+SECRET = SECURITY_KEY
+ALGORITHM = ALGO
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 

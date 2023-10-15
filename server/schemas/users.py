@@ -6,7 +6,7 @@ from typing import Optional, List
 from schemas.tasks import TaskPriority, TaskType
 import dependencies
 
-scheme = dependencies.ouath2_scheme
+scheme = dependencies.oauth2_scheme
 
 """
 ModelBase - common attributes when creating or reading data

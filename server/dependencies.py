@@ -1,5 +1,12 @@
 from fastapi.security import OAuth2PasswordBearer
+import os
+from dotenv import load_dotenv
 
+# load .env file
+load_dotenv()
+
+SECURITY_KEY = os.getenv("SECRET_SECURITY_KEY")
+ALGO = os.getenv("ALGO")
 # create instance of PasswordBearer()
 """
 'token' is a placeholder for the url that client will send username, password to in order to obtain a token
@@ -14,7 +21,7 @@ ex: https://localhost:8000.com/token
 scopes now show in api docs when logging/authorizing
 select scopes to provide access to: me, items
 """
-ouath2_scheme = OAuth2PasswordBearer(
+oauth2_scheme = OAuth2PasswordBearer(
     tokenUrl="token",
     scopes={"me": "Read information about the current user.", "items": "Read items."},
 )
