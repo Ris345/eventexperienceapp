@@ -11,11 +11,7 @@ from passlib.context import CryptContext
 from typing import Optional
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy import and_
-from dependencies import (
-    OAuth2PasswordBearer,
-    OAuth2PasswordRequestForm,
-    SecurityScopes,
-)
+from dependencies import SecurityScopes
 
 # temporary import for token model
 from pydantic import BaseModel, ValidationError

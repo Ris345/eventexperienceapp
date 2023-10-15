@@ -58,7 +58,7 @@
             - to include db parameters
         7. Ran `alembic revision --autogenerate -m "Create tasks table"` in users microservice
         8. successfully created user tables
-        - ! Ran into a problem when trying to execute `uvicorn main:app --reload` after this now I get a constraint failed error and fastapi docs doesnt start
+        - ! Ran into a problem when trying to execute `uvicorn main:server --reload` after this now I get a constraint failed error and fastapi docs doesnt start
             - most likely due to fact that sql table is attempted to be created when starting fast docs
         !
         - Resolved error of conflicting commands
