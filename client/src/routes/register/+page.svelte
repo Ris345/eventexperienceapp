@@ -3,98 +3,36 @@
 	import SegmentedButton, { Segment } from '@smui/segmented-button';
 	import Textfield from '@smui/textfield';
 	import HelperText from '@smui/textfield/helper-text';
-	import { redirect } from '@sveltejs/kit'
-	import { goto } from '$app/navigation';
-
-	let invalid = false,
-		userName = '',
-		firstName = '',
-		lastName = '',
-		email = '',
-		profile_photo = '',
-		about = '',
-		password = '',
-		selectedRole;
-	const choices = ['Admin', 'Organizer', 'Volunteer'];
-	// handleSubmit
-	const handleOnSubmit = async (event) => {
-		event.preventDefault();
-		console.log('submitting registration information');
-		// logic to send to backend running on port 8000 to route '/users'
-		fetch('http://127.0.0.1:8000/users', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded'
-			},
-			body: new URLSearchParams({
-				username: userName,
-				first_name: firstName,
-				last_name: lastName,
-				email: email,
-				profile_photo: profile_photo,
-				about: about,
-				password: password
-			}).toString()
-			})
-			.then(async (response) => {
-				if (!response.ok) {
-					const errorData = await response.json();
-					throw new Error(`${errorData.detail}`);
-				}
-				return response.json();
-			})
-			.then((user) => {
-				console.log(user);
-			})
-			.then(async () => {
-				await fetch('http://127.0.0.1:8000/token', {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/x-www-form-urlencoded'
-						},
-					body: new URLSearchParams({
-					username: userName,
-					password: password
-					}).toString()
-				})
-				.then(async (response) => {
-					if (!response.ok) {
-						const errorData = await response.json();
-						throw new Error(`${errorData.detail}`);
-					}
-					return response.json();
-				})
-				.then((token) => {
-					console.log(token);
-					//trying to get this to work
-					// event.cookies.set(token, {
-					// 	httpOnly: true,
-					// 	path: '/',
-					// 	secure: true,
-					// 	sameSite: 'strict',
-					// 	maxAge: 60 * 60 * 24
-					// })
-					goto('/');
-				})
-				.catch((error) => {
-					console.log(`Error: ${error}`);
-				})
-			})
-			.catch((error) => {
-				console.log(`Error with the fetch operation: ${error}`);
-			})
-			
-	};
-
-
-
-
-
-
-
-
-	//change client view to dashboard/home page
+	import { createAndSubmit } from './create/+server.js';
 	
+
+	let invalid = false;
+	let userName=''; 
+	let firstName='';
+	let lastName = ''; 
+	let email =''; 
+	let profile_photo = ''; 
+	let about ='';
+	let password ='';
+	let selectedRole;
+		
+	const choices = ['Admin', 'Organizer', 'Volunteer'];
+
+	// handleSubmit; logic to send to backend 
+	async function handleOnSubmit(event) {
+		event.preventDefault();
+		const form = {
+			userName, 
+			firstName, 
+			lastName, 
+			email, 
+			profile_photo, 
+			about, 
+			password, 
+			selectedRole
+		};
+		await createAndSubmit(form);
+	}
 	
 	$: console.log('First_name', firstName);
 

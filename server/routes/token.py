@@ -33,6 +33,7 @@ router = APIRouter(
 def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()], db: Session = Depends(get_db)):
   # def get_token(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):
     print(f"in function, ${form_data}")
+    print(form_data.username)
     print(form_data.password)
     user_obj = authenticate_user(db= db, username = form_data.username, password=form_data.password)
     if not user_obj:

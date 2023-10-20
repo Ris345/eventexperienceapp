@@ -122,7 +122,8 @@ def create_user(
             about=about,
             profile_photo=profile_photo,
         )
-
+        print("+++++++++",user.password)
+        print("+++++++++",user)
         return db_create_user(db=db, user=user)
     except HTTPException:
         raise

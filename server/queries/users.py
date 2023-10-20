@@ -201,6 +201,7 @@ def db_get_user_by_email(
 def db_create_user(db: Session, user: UserCreate):
     try:
         hashed_password = get_password_hash(user.password)
+        print("++++++++++++",hashed_password)
         db_user = User(
             username=user.username,
             first_name=user.first_name,
@@ -213,6 +214,7 @@ def db_create_user(db: Session, user: UserCreate):
         db.add(db_user)
         db.commit()
         db.refresh(db_user)
+        print("=======", db_user)
         return db_user
     except:
         return {"message": "create did not work"}
