@@ -3,7 +3,7 @@
 	import SegmentedButton, { Segment } from '@smui/segmented-button';
 	import Textfield from '@smui/textfield';
 	import HelperText from '@smui/textfield/helper-text';
-	import { createAndSubmit } from './create/+server.js';
+	import { createAndSubmit } from './create/register.js';
 	
 
 	let invalid = false;

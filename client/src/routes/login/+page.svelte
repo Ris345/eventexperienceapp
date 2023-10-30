@@ -5,6 +5,7 @@
 	import { Input } from '@smui/textfield';
 	import { createEventDispatcher } from 'svelte';
 	import placeholder2 from './assets/placeholder-login2.svg';
+	import { goto } from '$app/navigation';
 
 	let username = '',
 		password = '';
@@ -46,6 +47,8 @@
 			})
 			.then((result) => {
 				console.log(result);
+				localStorage.setItem('eea-user-access-token',result.access_token);
+        		goto('/');
 			})
 			.catch((error) => {
 				console.log(`Error with the fetch operation: ${error}`);

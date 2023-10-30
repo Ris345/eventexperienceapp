@@ -46,8 +46,9 @@ export const createAndSubmit = async (form) => {
         }
         return response.json();
       })
-      .then((token) => {
-        console.log(token);
+      .then((result) => {
+        console.log(result);
+        localStorage.setItem('eea-user-access-token',result.access_token);
         goto('/');
       })
       .catch((error) => {
@@ -57,5 +58,4 @@ export const createAndSubmit = async (form) => {
     .catch((error) => {
       console.log(`Error with the fetch operation: ${error}`);
     })
-    
 };
