@@ -6,7 +6,7 @@ import database
 
 engine = database.engine
 
-from routes import users, groups, tasks, token
+from routes import users, groups, tasks, token, events
 
 # creates db tables based on defined models, bind=engine will use engine created earlier with presets
 # models.Base.metadata.create_all(bind=engine)
@@ -30,5 +30,6 @@ server.include_router(users.router)
 server.include_router(groups.router)
 server.include_router(tasks.router)
 server.include_router(token.router)
+server.include_router(events.router)
 
 
