@@ -14,9 +14,18 @@ WORKDIR /code/server
 EXPOSE 8000
 CMD ["uvicorn", "main:server", "--reload", "--host", "0.0.0.0", "--port", "8000"]
 
-# building the docker image
-# run in app path, docker build -t eeaimage .
-# start docker container
-# docker run -d --name eeacontainer -p 8000:8000 eeaimage
+
+## Installing Docker
+
+# Depending on your operating system, follow the specific link at https://docs.docker.com/compose/install/
+
+## Running Docker/API server
+
+# After installing Docker, cd into eventexperenceapp. Run docker compose up.
+
+# When done with testing, run docker compose down. This will free up some resources on your computer
+
 # navigate to api docs
 # http://localhost:8000/docs
+
+
