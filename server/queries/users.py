@@ -3,19 +3,23 @@ from models.users import User
 from sqlalchemy.orm import Session, joinedload
 from schemas.users import UserSchema, UserCreate
 from typing import Annotated
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, HTTPException, status, Security, FastAPI
 from database import SessionLocal
 from schemas.users import scheme
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from typing import Optional
+from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy import and_
+from fastapi.security import SecurityScopes
+from dependencies import SECURITY_KEY, ALGO
 
 # temporary import for token model
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
 # should move secret and algo to a .env later
-SECRET = "b6b3ae7250c171d2bd8eb60970d2d51a46dda2eecdd30a941cd2cfcd20b0033c"
-ALGORITHM = "HS256"
+SECRET = SECURITY_KEY
+ALGORITHM = ALGO
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 
@@ -27,6 +31,7 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     username: Optional[str]
+    scopes: list[str] = []
 
 
 # init bcrypt
@@ -59,12 +64,6 @@ def fake_hash_password(password: str):
 # helper function to verify db password with form data password
 # received password  = hash stored
 def verify_password(plain_password, hashed_password):
-    print(
-        "in verify pwd",
-        plain_password,
-        hashed_password,
-        pwd_context.verify(plain_password, hashed_password),
-    )
     return pwd_context.verify(plain_password, hashed_password)
 
 
@@ -92,38 +91,50 @@ def authenticate_user(username: str, password: str, db: Session = Depends(get_db
     if not user:
         return False
     if not verify_password(password, user.hashed_password):
-        print("in autenticate user", user)
         return False
     return user
 
 
 # testing security
-async def get_current(
-    token: Annotated[str, Depends(scheme)], db: Session = Depends(get_db)
+async def get_current_user(
+    security_scopes: SecurityScopes,
+    token: Annotated[str, Depends(scheme)],
+    db: Session = Depends(get_db),
 ):
+    if security_scopes.scopes:
+        authenticate_value = f'Bearer scope="{security_scopes.scope_str}"'
+    else:
+        authenticate_value = "Bearer"
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
-        headers={"WWW-Authenticate": "Bearer"},
+        headers={"WWW-Authenticate": authenticate_value},
     )
     try:
         payload = jwt.decode(token, SECRET, algorithms=[ALGORITHM])
         username: str = payload.get("sub")
         if username is None:
             raise credentials_exception
-        token_data = TokenData(username=username)
-    except JWTError:
+        token_scopes = payload.get("scopes", [])
+        token_data = TokenData(scopes=token_scopes, username=username)
+    except (JWTError, ValidationError):
         raise credentials_exception
     user = db_get_user_by_username(db, username=token_data.username)
     if user is None:
         raise credentials_exception
+    for scope in security_scopes.scopes:
+        if scope not in token_data.scopes:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Not enough permissions",
+                headers={"WWW-Authenticate": authenticate_value},
+            )
     return user
 
 
 async def get_current_active_user(
-    current_user: Annotated[UserSchema, Depends(get_current)]
+    current_user: Annotated[User, Security(get_current_user, scopes=["me"])]
 ):
-    print(current_user)
     if not current_user.is_active:
         raise HTTPException(status_code=400, detail="Inactive user")
     return current_user
@@ -144,10 +155,29 @@ def db_get_users(db: Session, skip: int = 0, limit: int = 100):
 
 
 def db_check_email_and_username(db: Session, username: str, email: str):
-    user_id_and_email = (
-        db.query(User).where(User.username == username and User.email == email).all()
-    )
-    return user_id_and_email
+    try:
+        username_and_email = (
+            db.query(User)
+            .options(joinedload(User.groups))
+            .where(and_(User.username == username, User.email == email))
+            .first()
+        )
+    except SQLAlchemyError as e:
+        print(e)
+    return username_and_email
+
+
+def db_check_first_and_last(db: Session, first_name: str, last_name: str):
+    try:
+        first_and_last = (
+            db.query(User)
+            .options(joinedload(User.groups))
+            .where(and_(User.first_name == first_name, User.last_name == last_name))
+            .first()
+        )
+    except SQLAlchemyError as e:
+        print(e)
+    return first_and_last
 
 
 def db_check_email_or_username(db: Session, username: str, email: str):
@@ -219,11 +249,33 @@ def db_create_user(db: Session, user: UserCreate):
 
 
 """
+def db_update_user(
+    db: Session,
+    user_to_update: UserCreate,
+    update_data: dict
+):
+    filtered_username = username.strip()
+    try:
+        user_to_update = (
+            db.query(User)
+            .filter(User.username.ilike(f"%{filtered_username}%"))
+            .options(joinedload(User.groups))
+            .first()
+        )
+        if user_to_update:
+            for field, value in update_data:
+                setattr(user_to_update, field, value)
+        db.commit()
+        db.refresh()
+    except SQLAlchemyError as e:
+        print(f'found this error: {e}')
+"""
+
+
+"""
 endpoint can only be performed by specific user from profile page
 """
 # def db_update_user('/users/{user_id}')
-# def db_update_user('/users/{username})
-
 # protected endpoint
 # def db_delete_user('/users/{user_id}')
 
@@ -234,4 +286,3 @@ def db_get_user_notifications(
 ):
 """
 pw = get_password_hash("aaa123")
-print(f"hash:{pw}")

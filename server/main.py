@@ -1,7 +1,6 @@
 import models
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
 import database
 
 engine = database.engine
@@ -13,6 +12,7 @@ from routes import users, groups, tasks, token
 
 # create fastapi server
 server = FastAPI()
+
 """
 Required at some point for deployment
 
@@ -21,7 +21,7 @@ allow_origins=[os.environ.get("CORS_HOST", "http://localhost:3000")],
 server.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
-    allow_origins=["*"], # need to remove this in production
+    allow_origins=["*"],  # need to remove this in production
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -30,5 +30,3 @@ server.include_router(users.router)
 server.include_router(groups.router)
 server.include_router(tasks.router)
 server.include_router(token.router)
-
-

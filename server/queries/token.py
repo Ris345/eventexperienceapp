@@ -1,9 +1,8 @@
 from typing import Annotated
 from schemas.users import UserCreate
 from fastapi import Depends, FastAPI, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from fastapi.security import OAuth2PasswordRequestForm
 from queries.users import db_get_user_by_username, fake_hash_password
-
 
 
 def get_token(form_data: Annotated[OAuth2PasswordRequestForm, Depends()]):

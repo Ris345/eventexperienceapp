@@ -6,17 +6,19 @@ from queries.users import (
     UserSchema,
     UserCreate,
     db_create_user,
-    get_current,
+    get_current_user,
     get_current_active_user,
+    db_check_email_and_username,
+    db_check_first_and_last,
+    Security,
 )
-from fastapi import Depends, HTTPException, APIRouter, Form, status, Request
+from fastapi import Depends, HTTPException, APIRouter, Form
 from sqlalchemy.orm import Session
-from typing import List, Annotated
+from typing import List, Annotated, Optional
 from database import SessionLocal
 import dependencies
-from queries.users import fake_hash_password
 
-scheme = dependencies.ouath2_scheme
+scheme = dependencies.oauth2_scheme
 
 
 def get_db():
@@ -43,10 +45,20 @@ async def read_users_me(
 
 @router.get("/current_account")
 async def get_current_account(
-    current_account: Annotated[UserSchema, Depends(get_current)]
+    current_account: Annotated[UserSchema, Depends(get_current_user)]
 ):
-    print(current_account)
     return current_account
+
+
+# potentially the user_calendar endpoint, rsvps, items associated with current user - current: example from docs
+# will need to edit dependencies.py oauth2_scheme as well when changing
+@router.get("/users/me/items")
+async def get_current_account_items(
+    current_user: Annotated[
+        UserSchema, Security(get_current_active_user, scopes=["items"])
+    ]
+):
+    return [{"item_id": "id for item", "owner": current_user.username}]
 
 
 # Dependency provides str assigned to token parameter of path operation function
@@ -87,7 +99,50 @@ def get_user_by_username(
     return user
 
 
-@router.post("/users", response_model=UserSchema)
+# can use this in order to model a potential get user by first and last name
+@router.get(
+    "/search/username_email/{username}/{email}",
+    response_model=Optional[UserSchema],
+)
+def get_user_by_username_and_email(
+    token: Annotated[str, Depends(scheme)],
+    username: str,
+    email: str,
+    db: Session = Depends(get_db),
+):
+    try:
+        userFound = db_check_email_and_username(db, username, email)
+        if userFound is None:
+            raise HTTPException(
+                status_code=400, detail="user not found with that email and username"
+            )
+        return userFound
+    except HTTPException:
+        raise
+
+
+@router.get(
+    "/search/full_name/{first_name}/{last_name}",
+    response_model=Optional[UserSchema],
+)
+def get_user_by_first_and_last(
+    token: Annotated[str, Depends(scheme)],
+    first_name: str,
+    last_name: str,
+    db: Session = Depends(get_db),
+) -> UserSchema:
+    try:
+        userFound = db_check_first_and_last(db, first_name, last_name)
+        if userFound is None:
+            raise HTTPException(
+                status_code=400, detail="user not found with that first and last name"
+            )
+        return userFound
+    except HTTPException:
+        raise
+
+
+@router.post("/users", response_model=Optional[UserSchema])
 def create_user(
     username: str = Form(...),
     first_name: str = Form(...),
@@ -135,9 +190,44 @@ def create_user(
         ) from e
 
 
-# @router.put
+# didn't add password yet as that may require some more involvement
+# need to fix this route function and query associated
+# need an endpoint that allows for updating user information and tasks as well
+'''
+@router.get("/current_account")
+async def get_current_account(
+    current_account: Annotated[UserSchema, Depends(get_current_user)],
+    username: str,
+    db: Session = Depends(get_db),
+    update_username: str = Form(...),
+    update_first_name: str = Form(...),
+    update_last_name: str = Form(...),
+    update_email: str = Form(...),
+    update_profile_photo: str = Form(...),
+    update_about: str = Form(...),
+):
+    """
+    make sure that there is not a user with the same username and email
+    """
+    if db_get_user_by_username(update_username):
+        raise HTTPException(
+            status_code=400,
+            detail=f"can't update username to {update_username} as there is a user with that username already",
+        )
+    if db_get_user_by_email(update_email):
+        raise HTTPException(
+            status_code=400,
+            detail=f"can't update email to {update_email} as there is a user with that username already",
+        )
+    update_data = {}
+    update_user = db_update_user(db, current_account, update_data)
+'''
 
-# @router.delete
+"""
+@router.delete(
+):
+"""
+
 """
 # Admin Router
 - As a start we can perform a get request for a singular user and get their rsvps, favorites, and tasks, tasklists
