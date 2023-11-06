@@ -208,8 +208,7 @@ def db_get_user_by_username(
     username = username.lower()
     user_username = (
         db.query(User)
-        # .filter(User.username.ilike(f"%{filtered_username}%"))
-        .filter(func.lower(User.username) ==filtered_username)
+        .filter(func.lower(User.username) == filtered_username)
         .options(joinedload(User.groups))
         .first()
     )
