@@ -10,7 +10,7 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from typing import Optional
 from sqlalchemy.exc import SQLAlchemyError
-from sqlalchemy import and_
+from sqlalchemy import and_, func
 from fastapi.security import SecurityScopes
 from dependencies import SECURITY_KEY, ALGO
 
@@ -204,13 +204,15 @@ def db_get_user_by_username(
     db: Session,
     username: str,
 ):
-    filtered_username = username.strip()
+    filtered_username = username.strip().lower()
+    username = username.lower()
     user_username = (
         db.query(User)
-        .filter(User.username.ilike(f"%{filtered_username}%"))
+        .filter(func.lower(User.username) == filtered_username)
         .options(joinedload(User.groups))
         .first()
     )
+    print(user_username)
     return user_username
 
 
