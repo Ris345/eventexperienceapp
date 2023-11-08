@@ -4,36 +4,35 @@
 	import Textfield from '@smui/textfield';
 	import HelperText from '@smui/textfield/helper-text';
 	import { createAndSubmit } from './create/register.js';
-	
 
 	let invalid = false;
-	let userName=''; 
-	let firstName='';
-	let lastName = ''; 
-	let email =''; 
-	let profile_photo = ''; 
-	let about ='';
-	let password ='';
+	let userName = '';
+	let firstName = '';
+	let lastName = '';
+	let email = '';
+	let profile_photo = '';
+	let about = '';
+	let password = '';
 	let selectedRole;
-		
+
 	const choices = ['Admin', 'Organizer', 'Volunteer'];
 
-	// handleSubmit; logic to send to backend 
+	// handleSubmit; logic to send to backend
 	async function handleOnSubmit(event) {
 		event.preventDefault();
 		const form = {
-			userName, 
-			firstName, 
-			lastName, 
-			email, 
-			profile_photo, 
-			about, 
-			password, 
+			userName,
+			firstName,
+			lastName,
+			email,
+			profile_photo,
+			about,
+			password,
 			selectedRole
 		};
 		await createAndSubmit(form);
 	}
-	
+
 	$: console.log('First_name', firstName);
 
 	$: console.log('Last_name', lastName);
