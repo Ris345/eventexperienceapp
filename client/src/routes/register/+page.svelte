@@ -32,14 +32,6 @@
 		};
 		await createAndSubmit(form);
 	}
-
-	$: console.log('First_name', firstName);
-
-	$: console.log('Last_name', lastName);
-
-	$: console.log('E_mail', email);
-	$: console.log('Pass_word', password);
-	$: console.log('selected_role', selectedRole);
 </script>
 
 <main>
