@@ -11,7 +11,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship, joinedload
 import database
-from models.tasks import Task, TaskList, TaskType, Priority
+from models.tasks import Task, TaskList, TaskType, Priority, TaskProperties
 
 
 Base = database.Base
@@ -48,6 +48,9 @@ class User(Base):
     is_active = Column(Boolean, default=True)
     task_assignments = relationship(
         "Task", back_populates="assignee", foreign_keys="[Task.assignee_id]"
+    )
+    task_assignments2 = relationship(
+        "TaskProperties", back_populates="assignee", foreign_keys="[TaskProperties.assignee_id]"
     )
     authored_tasks = relationship(
         "Task", back_populates="author", foreign_keys="[Task.author_id]"
@@ -142,99 +145,102 @@ class EventGroup(Base):
 
 
 # Testing Data Insertion - models, tasks
-# Base.metadata.create_all(engine)
-# with SessionLocal() as session:
-#     Priority1 = Priority(name="urgent", level=10)
-#     Priority2 = Priority(name="semi-urgent", level=5)
-#     Type1 = TaskType(name="type1")
-#     Type2 = TaskType(name="type2")
-#     Tasklist1 = TaskList(
-#         name="tasklist1",
-#         isCompleted=False,
-#         description="tasklist1 desc",
-#         priority=Priority1,
-#     )
-#     User2 = User(
-#         username="user2",
-#         first_name="first2",
-#         last_name="last2",
-#         email="user2@user.com",
-#         about="about user2",
-#         hashed_password="user2 password",
-#         profile_photo="aws3.privatebucket.com/user2_photo",
-#         is_active=True,
-#     )
-#     User1 = User(
-#         username="user1",
-#         first_name="first1",
-#         last_name="last1",
-#         email="user1@user.com",
-#         about="about user1",
-#         hashed_password="user1 password",
-#         profile_photo="aws3.privatebucket.com/user1_photo",
-#         is_active=True,
-#     )
-#     Task1 = Task(
-#         name="task1",
-#         description="task1 desc",
-#         isCompleted=False,
-#         priority=Priority2,
-#         task_type=Type1,
-#         author=User2,
-#         assignee=User1,
-#     )
+Base.metadata.create_all(engine)
+with SessionLocal() as session:
+    Priority1 = Priority(name="urgent", level=10)
+    Priority2 = Priority(name="semi-urgent", level=5)
+    Type1 = TaskType(name="type1")
+    Type2 = TaskType(name="type2")
+    Tasklist1 = TaskList(
+        name="tasklist1",
+        isCompleted=False,
+        description="tasklist1 desc",
+        priority=Priority1,
+    )
+    User2 = User(
+        username="user2",
+        first_name="first2",
+        last_name="last2",
+        email="user2@user.com",
+        about="about user2",
+        hashed_password="user2 password",
+        profile_photo="aws3.privatebucket.com/user2_photo",
+        is_active=True,
+    )
+    User1 = User(
+        username="user1",
+        first_name="first1",
+        last_name="last1",
+        email="user1@user.com",
+        about="about user1",
+        hashed_password="user1 password",
+        profile_photo="aws3.privatebucket.com/user1_photo",
+        is_active=True,
+    )
+    Task1 = Task(
+        name="task1",
+        description="task1 desc",
+        isCompleted=False,
+        priority=Priority2,
+        task_type=Type1,
+        author=User2,
+        assignee=User1,
+    )
 
-#     Task2 = Task(
-#         name="task2",
-#         description="task2 desc",
-#         isCompleted=False,
-#         task_type=Type2,
-#         priority=Priority1,
-#         author=User1,
-#         assignee=User2,
-#     )
-#     Group1 = Group(name="group1", description="group1 description")
-#     Group2 = Group(name="group2", description="group2 description")
-#     User3 = User(
-#         username="user3",
-#         first_name="first3",
-#         last_name="last3",
-#         email="user3@user.com",
-#         about="about user3",
-#         hashed_password="user3 password",
-#         profile_photo="aws3.privatebucket.com/user3_photo",
-#         is_active=True,
-#     )
-#     # Type1.tasks = [Task1, Task2]
-#     Tasklist1.tasks = [Task1, Task2]
-#     # Tasklist1.priority = Priority1
-#     # Task1.priority = Priority1
-#     TaskList.tasks = [Task1, Task2]
-#     Group1.owner_id = 1
-#     Group2.owner_id = 2
-#     Group1.users = [User1, User2]
-#     Group2.users = [User2, User3]
-#     # User1.task_assignments = [Task1]
-#     # User2.task_assignments = [Task2]
-#     # User1.authored_tasks = [Task2]
-#     # User2.authored_tasks = [Task1]
-#     session.add_all(
-#         [
-#             Group1,
-#             Group2,
-#             User1,
-#             User2,
-#             User3,
-#             Task1,
-#             Task2,
-#             Tasklist1,
-#             Priority1,
-#             Priority2,
-#             Type1,
-#             Type2,
-#         ]
-#     )
-#     session.commit()
+    Task2 = Task(
+        name="task2",
+        description="task2 desc",
+        isCompleted=False,
+        task_type=Type2,
+        priority=Priority1,
+        author=User1,
+        assignee=User2,
+    )
+    Group1 = Group(name="group1", description="group1 description")
+    Group2 = Group(name="group2", description="group2 description")
+    User3 = User(
+        username="user3",
+        first_name="first3",
+        last_name="last3",
+        email="user3@user.com",
+        about="about user3",
+        hashed_password="user3 password",
+        profile_photo="aws3.privatebucket.com/user3_photo",
+        is_active=True,
+    )
+
+    tprops1 = TaskProperties(description = "desc1", quantity = 1)
+    # Type1.tasks = [Task1, Task2]
+    Tasklist1.tasks = [Task1, Task2]
+    # Tasklist1.priority = Priority1
+    # Task1.priority = Priority1
+    TaskList.tasks = [Task1, Task2]
+    Group1.owner_id = 1
+    Group2.owner_id = 2
+    Group1.users = [User1, User2]
+    Group2.users = [User2, User3]
+    # User1.task_assignments = [Task1]
+    # User2.task_assignments = [Task2]
+    # User1.authored_tasks = [Task2]
+    # User2.authored_tasks = [Task1]
+    session.add_all(
+        [
+            Group1,
+            Group2,
+            User1,
+            User2,
+            User3,
+            Task1,
+            Task2,
+            Tasklist1,
+            tprops1,
+            Priority1,
+            Priority2,
+            Type1,
+            Type2,
+        ]
+    )
+    session.commit()
 
 # Get group with id 1 and print name, description
 #     with SessionLocal() as session:
@@ -255,7 +261,7 @@ class EventGroup(Base):
 #     for u in g2.users:
 #         print(u.username)
 
-# # Fix N+1 SELECTS problem
+# Fix N+1 SELECTS problem
 # with SessionLocal() as session:
 #     g1 = (
 #         session.query(Group).options(joinedload(Group.users)).where(Group.id == 1).one()

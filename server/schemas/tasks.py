@@ -48,6 +48,13 @@ class TaskTypeBase(BaseModel):
 class TaskType(TaskTypeBase):
     id: int
 
+class TaskPropertiesBase(BaseModel):
+    description : str
+    quantity : int
+    assignee: Optional[UserBase]
+
+class TaskProperties(TaskPriorityBase):
+    id : int
 
 class TaskBase(BaseModel):
     name: str

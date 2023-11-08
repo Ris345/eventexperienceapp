@@ -37,6 +37,9 @@ class Task(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
     description = Column(String, nullable=False)
+    # fk to properties
+    properties_id = Column(Integer, ForeignKey("task_properties.id"))
+    properties = relationship("TaskProperties", back_populates = "tasks", foreign_keys =[properties_id])
     isCompleted = Column(Boolean, default=False)
     # fk to tasklist
     tasklist_id = Column(Integer, ForeignKey("task_list.id"))
@@ -45,6 +48,7 @@ class Task(Base):
     )
     # task_list = relationship("TaskList", back_populates="tasks")
     # fk to a user
+    # will need to remove this after fixing the db tables
     assignee_id = Column(Integer, ForeignKey("users.id"))
     assignee = relationship(
         "User",
@@ -65,6 +69,7 @@ class Task(Base):
         foreign_keys=[author_id],
         back_populates="authored_tasks",
     )
+
 
 
 """
@@ -131,6 +136,20 @@ class Priority(Base):
 # class TaskType(Base):
 #     pass
 
+
+class TaskProperties(Base):
+    __tablename__ = "task_properties"
+    id = Column(Integer, primary_key = True, index = True)
+    description = Column(String)
+    quantity = Column(Integer)
+    assignee_id = Column(Integer, ForeignKey("users.id"))
+    tasks = relationship("Task", back_populates="properties")
+    assignee = relationship(
+        "User",
+        foreign_keys=[assignee_id],
+        back_populates="task_assignments2",
+    )
+
 # Test if models work
 # Base.metadata.create_all(engine)
 # with SessionLocal() as session:
@@ -139,10 +158,11 @@ class Priority(Base):
 #     task1 = Task(name="task1", description="description1")
 #     task2 = Task(name="task2", description="description2")
 #     task3 = Task(name="task3", description="description3")
+#     task1prop1 = TaskProperties(id = 1, description = "dfescription1", quantity = 1)
 #     task1.tasklist_id = 1
 #     task2.tasklist_id = 1
 #     task3.tasklist_id = 2
-#     task1.assigned_user_id = 1
+#     task1.assignee_id = 1
 #     tasklist1.tasks = [task1, task2]
 #     tasklist2.tasks = [task3]
 #     priority1 = Priority(name="high", level=10)
