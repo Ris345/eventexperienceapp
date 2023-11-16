@@ -77,8 +77,16 @@
 		justify-items: baseline;
 		width: max-content;
 		gap: 1em;
-		background: #000000bb;
+		/* background: #000000bb; */
 		padding: 1em;
-		box-shadow: 0px 0px 20px 20px #000000bb;
+		/* box-shadow: 0px 0px 20px 20px #000000bb; */
+		border: 1px solid rgb(38, 33, 33);
+		margin: auto; 
+		height: 550px; 
+		width: 500px; 
+		border-radius: 10px;
+		box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+
 	}
 </style>
+
