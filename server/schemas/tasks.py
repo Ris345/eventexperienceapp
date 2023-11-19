@@ -51,9 +51,13 @@ class TaskType(TaskTypeBase):
 class TaskPropertiesBase(BaseModel):
     description : str
     quantity : int
-    assignee: Optional[UserBase]
+    # assignee: Optional[UserBase] = None
 
-class TaskProperties(TaskPriorityBase):
+    class Config:
+        orm_mode = True
+        from_attributes = True
+
+class TaskProperties(TaskPropertiesBase):
     id : int
 
 class TaskBase(BaseModel):
@@ -61,6 +65,7 @@ class TaskBase(BaseModel):
     description: str
     isCompleted: bool
     priority: TaskPriority
+    properties : TaskProperties
     task_type: TaskType
 
     class Config:

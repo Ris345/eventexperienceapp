@@ -12,11 +12,14 @@ def db_get_tasks(db: Session, skip: int = 0, limit: int = 100):
         .options(joinedload(Task.assignee))
         .options(joinedload(Task.task_type))
         .options(joinedload(Task.priority))
+        .options(joinedload(Task.properties))
         .options(joinedload(Task.author))
         .offset(skip)
         .limit(limit)
         .all()
     )
+    print("1111111111111111111111111111111111111111111111111111")
+    print(tasks[0])
     task_schemas = [TaskSchema.from_orm(task) for task in tasks]
     return task_schemas
 
