@@ -1,59 +1,43 @@
 <script>
-	import { Input } from '@smui/textfield';
-	import todayDate from '$lib/todayDate.js';
-	let searchValue = '';
-	const currentDate = new Date();
-	let calendar = 'calendar page  '
+	import { DateInput, DatePicker, localeFromDateFnsLocale } from 'date-picker-svelte'
+	import { onMount } from 'svelte';
+
+	let deg = 0;
+	onMount(() => {
+		const interval = setInterval(() => {
+			deg += 2;
+			if (deg >= 360) deg = 0;
+			document.body.style.setProperty('--deg', deg);
+		}, 60);
+		return () => clearInterval(interval);
+	});
 </script>
 
-<main>
-	<div id="search">
-		<Input class="solo-input" placeholder="Search" bind:value={searchValue} />
-	</div>
-	<div id="header-bar">
-		<div id="date">
-			{todayDate}
-		</div>
-	</div>
-	<div>Hello {calendar}</div>
-</main>
+<div>
+	<DateInput
+	format="yyyy/MM/dd HH:mm:ss"
+	placeholder="2000/31/12 23:59:59" />
+	<DatePicker />
+</div>
 
 <style>
-	main {
-		padding: 32px;
+	:global(body) {
+		/* --date-picker-foreground: #f7f7f7;
+		--date-picker-background: #16171c; */
+		--date-picker-highlight-border: hsl(var(--deg), 98%, 49%);
+		/* --date-picker-highlight-shadow: hsla(var(--deg), 98%, 49%, 50%);
+		--date-picker-selected-color: hsl(var(--deg), 100%, 85%); */
+		--date-picker-selected-background: hsla(var(--deg), 98%, 49%, 20%);
+		/* background: #0d0e12; */
+		color: #0a0909;
+		transition: all 80ms ease-in-out;
+		font-size: 14px;
 	}
-	#search {
-		display: flex;
-		margin-bottom: 31px;
-	}
-	#header-bar {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		font-size: 1rem;
-	}
-	h2 {
-		font-weight: 400;
-		font-size: inherit;
-		line-height: 1rem;
-		margin: 0;
-	}
-	#date {
-		color: #00000080;
-	}
-	:global(.solo-input) {
-		width: 100%;
-		border: 1.5px solid #00000040;
-		border-radius: 100px;
-		background-image: url('./icons/search.svg');
-		background-repeat: no-repeat;
-		background-size: 20px;
-		background-position: 0.5em 50%;
-		padding: 1em 0.5em;
-		padding-left: calc(1em + 20px);
-	}
-	:global(.solo-input::placeholder) {
-		opacity: 1;
-		color: #00000040;
-	}
+	div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
 </style>
