@@ -1,4 +1,4 @@
-from models.tasks import Task
+from models.tasks import Task, TaskProperties
 from sqlalchemy.orm import Session, joinedload
 from fastapi import Depends
 from schemas.tasks import TaskSchema, TaskCreate
@@ -48,17 +48,29 @@ def db_get_task_by_name(
     )
     return task_by_username
 
+def db_post_task_properties(task_prop_obj, db : Session):
+    new_task_props = TaskProperties(
+        description = task_prop_obj.description,
+        quantity = task_prop_obj.quantity,
+        # assignee_id = task_prop_obj.assignee_id,
+    )
+    print("55555555555555555555555555")
+    print(new_task_props)
+    db.add(new_task_props)
+    db.commit()
+    db.refresh(new_task_props)
+    print(new_task_props.id)
 
-# def db_post_tasks(task_name, description, db: Session):
-#     newTask = Task(
-#         name=task_name,
-#         description = description
-#     )
-#     db.add(newTask)
-#     db.commit()
-#     db_tasks = (
-#         db.query(Task)
-#         .where(Task.name == task_name)
-#         .all()
-#     )
-#     return db_tasks
+def db_post_tasks(task_name, description, db: Session):
+    newTask = Task(
+        name=task_name,
+        description = description
+    )
+    db.add(newTask)
+    db.commit()
+    db_tasks = (
+        db.query(Task)
+        .where(Task.name == task_name)
+        .all()
+    )
+    return db_tasks

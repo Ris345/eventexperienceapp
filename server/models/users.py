@@ -210,19 +210,22 @@ with SessionLocal() as session:
     )
 
     tprops1 = TaskProperties(description = "desc1", quantity = 1)
-    # Type1.tasks = [Task1, Task2]
+    tprops2 = TaskProperties(description = "desc2", quantity = 2)
+    Type1.tasks = [Task1, Task2]
     Tasklist1.tasks = [Task1, Task2]
-    # Tasklist1.priority = Priority1
-    # Task1.priority = Priority1
+    Tasklist1.priority = Priority1
+    Task1.priority = Priority1
+    Task1.properties_id = 1
+    Task2.properties_id = 2
     TaskList.tasks = [Task1, Task2]
     Group1.owner_id = 1
     Group2.owner_id = 2
     Group1.users = [User1, User2]
     Group2.users = [User2, User3]
-    # User1.task_assignments = [Task1]
-    # User2.task_assignments = [Task2]
-    # User1.authored_tasks = [Task2]
-    # User2.authored_tasks = [Task1]
+    User1.task_assignments = [Task1]
+    User2.task_assignments = [Task2]
+    User1.authored_tasks = [Task2]
+    User2.authored_tasks = [Task1]
     session.add_all(
         [
             Group1,
@@ -234,13 +237,14 @@ with SessionLocal() as session:
             Task2,
             Tasklist1,
             tprops1,
+            tprops2,
             Priority1,
             Priority2,
             Type1,
             Type2,
         ]
     )
-    session.commit()
+    # session.commit()
 
 # Get group with id 1 and print name, description
 #     with SessionLocal() as session:

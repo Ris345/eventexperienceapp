@@ -51,7 +51,7 @@ class TaskType(TaskTypeBase):
 class TaskPropertiesBase(BaseModel):
     description : str
     quantity : int
-    # assignee: Optional[UserBase] = None
+
 
     class Config:
         orm_mode = True
@@ -59,6 +59,7 @@ class TaskPropertiesBase(BaseModel):
 
 class TaskProperties(TaskPropertiesBase):
     id : int
+    assignee: Optional[UserBase] = None
 
 class TaskBase(BaseModel):
     name: str

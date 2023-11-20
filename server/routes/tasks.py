@@ -1,5 +1,5 @@
-from schemas.tasks import TaskSchema
-from queries.tasks import db_get_tasks, db_get_task_by_id, db_get_task_by_name
+from schemas.tasks import TaskSchema, TaskBase,TaskPropertiesBase
+from queries.tasks import db_get_tasks, db_get_task_by_id, db_get_task_by_name, db_post_tasks, db_post_task_properties
 from fastapi import (
     Depends,
     HTTPException,
@@ -8,6 +8,7 @@ from fastapi import (
     APIRouter,
     Request,
     FastAPI,
+    Form
 )
 from sqlalchemy.orm import Session
 from typing import List
@@ -51,10 +52,22 @@ def get_task_by_taskname(taskname: str, db: Session = Depends(get_db)):
         raise HTTPException(status_code=400, detail="task not found with that name")
     return task_by_username
 
+@router.post("/tasks/create_prop", response_model = TaskPropertiesBase)
+def create_task_properties(description: str = Form(...), quantity : int = Form(...), db :Session = Depends(get_db)):
+    print("3333333333333333333333333333333")
+    new_task_prop = TaskPropertiesBase(description = description, quantity = quantity)
+    # task_prop.assignee_id = 1
+    print(new_task_prop)
+    db_post_task_properties(new_task_prop, db)
+    return new_task_prop
 
-# @router.post("/tasks/create", response_model=TaskBase)
-# def post_task(task : TaskBase, db: Session = Depends(get_db)):
-#     tasks = db_post_tasks(task.name, task.description, db)
-#     if tasks is None:
-#         raise HTTPException(status_code=400, detail="task not found")
-#     return task
+@router.post("/tasks/create", response_model=TaskBase)
+def post_task(task : TaskBase, db: Session = Depends(get_db)):
+    print("222222222222222222222222222222222222222222222222222222222222")
+    # it task has a json of all the stuff nested, so will probably just need to create the stuff and manually set it?
+    print(task)
+    print(task.properties)
+    tasks = db_post_tasks(task.name, task.description, db)
+    if tasks is None:
+        raise HTTPException(status_code=400, detail="task not found")
+    return task
