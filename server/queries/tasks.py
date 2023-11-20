@@ -1,5 +1,6 @@
 from models.tasks import Task, TaskProperties
 from sqlalchemy.orm import Session, joinedload
+from sqlalchemy import func
 from fastapi import Depends
 from schemas.tasks import TaskSchema, TaskCreate
 
@@ -90,6 +91,7 @@ def db_assign_user(task_id, user_id, db :Session):
     # task_prop.update({
     #     "assignee_id" : user_id
     # })
+    task.last_modified_time= func.now()
     task_prop.assignee_id = user_id
     print(task_prop.assignee_id)
     db.commit()
