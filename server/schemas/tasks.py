@@ -80,6 +80,8 @@ class TaskCreate(TaskBase):
 
 class TaskSchema(TaskBase):
     id: int
+    date_created : datetime
+    last_modified_time : datetime
     # assignee: Optional[UserBase]
     # author: Optional[UserBase]
 
