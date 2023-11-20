@@ -66,13 +66,18 @@ def post_task(
     # name : str = Form(...),
     description : str = Form(...),
     quantity : int = Form(...),
+    assignee_username : str = Form(None),
     db: Session = Depends(get_db)
     ):
+    new_task_prop = TaskPropertiesBase(description = description, quantity = quantity)
+    new_task_prop_id = db_post_task_properties(new_task_prop, db)
     print("222222222222222222222222222222222222222222222222222222222222")
     # it task has a json of all the stuff nested, so will probably just need to create the stuff and manually set it?
-    print(task)
-    print(task.properties)
-    tasks = db_post_tasks(task.name, task.description, db)
+    # new_task = TaskBase(
+    # isCompleted=False,
+    # properties_id = new_task_prop_id
+    # )
+    tasks = db_post_tasks(new_task_prop_id, db)
     if tasks is None:
         raise HTTPException(status_code=400, detail="task not found")
-    return task
+    return tasks

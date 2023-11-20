@@ -56,20 +56,23 @@ def db_post_task_properties(task_prop_obj, db : Session):
     )
     db.add(new_task_props)
     db.commit()
-    # unlike some other ORM, adding a new item to the db doesn't return anything to get the ide, we need to refresh the item and grab the id.
+    # unlike some other ORM, adding a new item to the db doesn't return anything to get the ide, we need to refresh the item and grab the id. Which is actually just short hand for querying the new item
     db.refresh(new_task_props)
     return new_task_props.id
 
-def db_post_tasks(task_name, description, db: Session):
-    newTask = Task(
-        name=task_name,
-        description = description
+def db_post_tasks(properties_id, db: Session):
+    task = Task(
+        properties_id = properties_id
     )
-    db.add(newTask)
+    db.add(task)
     db.commit()
+    db.refresh(task)
+    print("777777777777777777777777777777")
+    print(task.id)
     db_tasks = (
         db.query(Task)
-        .where(Task.name == task_name)
-        .all()
+        .where(Task.id == task.id)
+        .first()
     )
+    print(db_tasks)
     return db_tasks
