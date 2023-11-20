@@ -54,15 +54,20 @@ def get_task_by_taskname(taskname: str, db: Session = Depends(get_db)):
 
 @router.post("/tasks/create_prop", response_model = TaskPropertiesBase)
 def create_task_properties(description: str = Form(...), quantity : int = Form(...), db :Session = Depends(get_db)):
-    print("3333333333333333333333333333333")
     new_task_prop = TaskPropertiesBase(description = description, quantity = quantity)
-    # task_prop.assignee_id = 1
     print(new_task_prop)
     db_post_task_properties(new_task_prop, db)
     return new_task_prop
 
 @router.post("/tasks/create", response_model=TaskBase)
-def post_task(task : TaskBase, db: Session = Depends(get_db)):
+def post_task(
+
+    # should take a user name, which will call get_user_by_username to get id and use that as assignee
+    # name : str = Form(...),
+    description : str = Form(...),
+    quantity : int = Form(...),
+    db: Session = Depends(get_db)
+    ):
     print("222222222222222222222222222222222222222222222222222222222222")
     # it task has a json of all the stuff nested, so will probably just need to create the stuff and manually set it?
     print(task)

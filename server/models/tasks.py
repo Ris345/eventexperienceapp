@@ -1,5 +1,6 @@
 from datetime import datetime
-from sqlalchemy import Boolean, Column, ForeignKey, String, DateTime, Integer, Text
+from sqlalchemy import Boolean, Column, ForeignKey, String, DateTime, Integer, Text, func
+
 from sqlalchemy.orm import relationship, joinedload
 import database
 
@@ -31,46 +32,54 @@ class Task(Base):
         - thats what im assuming tasklist would alleviate (?)
     """
 
+# Original design without input from owner
+# class Task(Base):
+#     __tablename__ = "tasks"
+#     id = Column(Integer, primary_key=True, index=True)
+#     name = Column(String, nullable=False)
+#     description = Column(String, nullable=False)
+#     # fk to properties
+#     properties_id = Column(Integer, ForeignKey("task_properties.id"))
+#     properties = relationship("TaskProperties", back_populates = "tasks", foreign_keys =[properties_id])
+#     isCompleted = Column(Boolean, default=False)
+#     # fk to tasklist
+#     tasklist_id = Column(Integer, ForeignKey("task_list.id"))
+#     tasklist = relationship(
+#         "TaskList", back_populates="tasks", foreign_keys=[tasklist_id]
+#     )
+#     # task_list = relationship("TaskList", back_populates="tasks")
+#     # fk to a user
+#     # will need to remove this after fixing the db tables
+#     assignee_id = Column(Integer, ForeignKey("users.id"))
+#     assignee = relationship(
+#         "User",
+#         foreign_keys=[assignee_id],
+#         back_populates="task_assignments",
+#     )
+#     # fk to type
+#     task_type_id = Column(Integer, ForeignKey("task_type.id"))
+#     task_type = relationship(
+#         "TaskType", back_populates="tasks", lazy="joined", foreign_keys=[task_type_id]
+#     )
+#     # fk to priority
+#     priority_id = Column(Integer, ForeignKey("priority.id"))
+#     priority = relationship("Priority", lazy="joined", foreign_keys=[priority_id])
+#     author_id = Column(Integer, ForeignKey("users.id"))
+#     author = relationship(
+#         "User",
+#         foreign_keys=[author_id],
+#         back_populates="authored_tasks",
+#     )
 
 class Task(Base):
     __tablename__ = "tasks"
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, nullable=False)
-    description = Column(String, nullable=False)
     # fk to properties
     properties_id = Column(Integer, ForeignKey("task_properties.id"))
     properties = relationship("TaskProperties", back_populates = "tasks", foreign_keys =[properties_id])
     isCompleted = Column(Boolean, default=False)
-    # fk to tasklist
-    tasklist_id = Column(Integer, ForeignKey("task_list.id"))
-    tasklist = relationship(
-        "TaskList", back_populates="tasks", foreign_keys=[tasklist_id]
-    )
-    # task_list = relationship("TaskList", back_populates="tasks")
-    # fk to a user
-    # will need to remove this after fixing the db tables
-    assignee_id = Column(Integer, ForeignKey("users.id"))
-    assignee = relationship(
-        "User",
-        foreign_keys=[assignee_id],
-        back_populates="task_assignments",
-    )
-    # fk to type
-    task_type_id = Column(Integer, ForeignKey("task_type.id"))
-    task_type = relationship(
-        "TaskType", back_populates="tasks", lazy="joined", foreign_keys=[task_type_id]
-    )
-    # fk to priority
-    priority_id = Column(Integer, ForeignKey("priority.id"))
-    priority = relationship("Priority", lazy="joined", foreign_keys=[priority_id])
-    author_id = Column(Integer, ForeignKey("users.id"))
-    author = relationship(
-        "User",
-        foreign_keys=[author_id],
-        back_populates="authored_tasks",
-    )
-
-
+    date_created = Column(DateTime, default=func.now())
+    last_modified_time = Column(DateTime, default=func.now())
 
 """
 
@@ -84,17 +93,17 @@ TaskList Model
     description - text
 """
 
-
-class TaskList(Base):
-    __tablename__ = "task_list"
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, nullable=False)
-    owner_id = Column(Integer, ForeignKey("users.id"))
-    isCompleted = Column(Boolean, default=False)
-    description = Column(String)
-    priority_id = Column(Integer, ForeignKey("priority.id"))
-    priority = relationship("Priority", lazy="joined", foreign_keys=[priority_id])
-    tasks = relationship("Task", back_populates="tasklist")
+# old model
+# class TaskList(Base):
+#     __tablename__ = "task_list"
+#     id = Column(Integer, primary_key=True, index=True)
+#     name = Column(String, nullable=False)
+#     owner_id = Column(Integer, ForeignKey("users.id"))
+#     isCompleted = Column(Boolean, default=False)
+#     description = Column(String)
+#     priority_id = Column(Integer, ForeignKey("priority.id"))
+#     priority = relationship("Priority", lazy="joined", foreign_keys=[priority_id])
+#     tasks = relationship("Task", back_populates="tasklist")
 
 
 """
@@ -103,12 +112,12 @@ TaskType Model
     name - name of type
 """
 
-
-class TaskType(Base):
-    __tablename__ = "task_type"
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String)
-    tasks = relationship("Task", back_populates="task_type")
+# old model
+# class TaskType(Base):
+#     __tablename__ = "task_type"
+#     id = Column(Integer, primary_key=True, index=True)
+#     name = Column(String)
+#     tasks = relationship("Task", back_populates="task_type")
 
 
 """
@@ -124,13 +133,13 @@ Status Model
 
 """
 
-
-class Priority(Base):
-    __tablename__ = "priority"
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String)
-    level = Column(Integer)
-    tasks = relationship("Task", back_populates="priority")
+# old model
+# class Priority(Base):
+#     __tablename__ = "priority"
+#     id = Column(Integer, primary_key=True, index=True)
+#     name = Column(String)
+#     level = Column(Integer)
+#     tasks = relationship("Task", back_populates="priority")
 
 
 # class TaskType(Base):

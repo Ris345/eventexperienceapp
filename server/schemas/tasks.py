@@ -62,12 +62,12 @@ class TaskProperties(TaskPropertiesBase):
     assignee: Optional[UserBase] = None
 
 class TaskBase(BaseModel):
-    name: str
-    description: str
+    # name: str
+    # description: str
     isCompleted: bool
-    priority: TaskPriority
+    # priority: TaskPriority
     properties : TaskProperties
-    task_type: TaskType
+    # task_type: TaskType
 
     class Config:
         orm_mode = True
@@ -80,8 +80,8 @@ class TaskCreate(TaskBase):
 
 class TaskSchema(TaskBase):
     id: int
-    assignee: Optional[UserBase]
-    author: Optional[UserBase]
+    # assignee: Optional[UserBase]
+    # author: Optional[UserBase]
 
     class Config:
         orm_mode = True

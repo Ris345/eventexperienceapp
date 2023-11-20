@@ -8,12 +8,12 @@ from schemas.tasks import TaskSchema, TaskCreate
 def db_get_tasks(db: Session, skip: int = 0, limit: int = 100):
     tasks = (
         db.query(Task)
-        .options(joinedload(Task.tasklist))
-        .options(joinedload(Task.assignee))
-        .options(joinedload(Task.task_type))
-        .options(joinedload(Task.priority))
+        # .options(joinedload(Task.tasklist))
+        # .options(joinedload(Task.assignee))
+        # .options(joinedload(Task.task_type))
+        # .options(joinedload(Task.priority))
         .options(joinedload(Task.properties))
-        .options(joinedload(Task.author))
+        # .options(joinedload(Task.author))
         .offset(skip)
         .limit(limit)
         .all()
@@ -54,12 +54,11 @@ def db_post_task_properties(task_prop_obj, db : Session):
         quantity = task_prop_obj.quantity,
         # assignee_id = task_prop_obj.assignee_id,
     )
-    print("55555555555555555555555555")
-    print(new_task_props)
     db.add(new_task_props)
     db.commit()
+    # unlike some other ORM, adding a new item to the db doesn't return anything to get the ide, we need to refresh the item and grab the id.
     db.refresh(new_task_props)
-    print(new_task_props.id)
+    return new_task_props.id
 
 def db_post_tasks(task_name, description, db: Session):
     newTask = Task(

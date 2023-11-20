@@ -11,7 +11,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship, joinedload
 import database
-from models.tasks import Task, TaskList, TaskType, Priority, TaskProperties
+from models.tasks import Task, TaskProperties
 
 
 Base = database.Base
@@ -46,15 +46,16 @@ class User(Base):
     # M2M
     groups = relationship("Group", secondary="group_users", back_populates="users")
     is_active = Column(Boolean, default=True)
-    task_assignments = relationship(
-        "Task", back_populates="assignee", foreign_keys="[Task.assignee_id]"
-    )
+    # older relationship
+    # task_assignments = relationship(
+    #     "Task", back_populates="assignee", foreign_keys="[Task.assignee_id]"
+    # )
     task_assignments2 = relationship(
         "TaskProperties", back_populates="assignee", foreign_keys="[TaskProperties.assignee_id]"
     )
-    authored_tasks = relationship(
-        "Task", back_populates="author", foreign_keys="[Task.author_id]"
-    )
+    # authored_tasks = relationship(
+    #     "Task", back_populates="author", foreign_keys="[Task.author_id]"
+    # )
 
 
 """
@@ -147,16 +148,16 @@ class EventGroup(Base):
 # Testing Data Insertion - models, tasks
 Base.metadata.create_all(engine)
 with SessionLocal() as session:
-    Priority1 = Priority(name="urgent", level=10)
-    Priority2 = Priority(name="semi-urgent", level=5)
-    Type1 = TaskType(name="type1")
-    Type2 = TaskType(name="type2")
-    Tasklist1 = TaskList(
-        name="tasklist1",
-        isCompleted=False,
-        description="tasklist1 desc",
-        priority=Priority1,
-    )
+    # Priority1 = Priority(name="urgent", level=10)
+    # Priority2 = Priority(name="semi-urgent", level=5)
+    # Type1 = TaskType(name="type1")
+    # Type2 = TaskType(name="type2")
+    # Tasklist1 = TaskList(
+    #     name="tasklist1",
+    #     isCompleted=False,
+    #     description="tasklist1 desc",
+    #     priority=Priority1,
+    # )
     User2 = User(
         username="user2",
         first_name="first2",
@@ -178,23 +179,12 @@ with SessionLocal() as session:
         is_active=True,
     )
     Task1 = Task(
-        name="task1",
-        description="task1 desc",
         isCompleted=False,
-        priority=Priority2,
-        task_type=Type1,
-        author=User2,
-        assignee=User1,
     )
 
     Task2 = Task(
-        name="task2",
-        description="task2 desc",
         isCompleted=False,
-        task_type=Type2,
-        priority=Priority1,
-        author=User1,
-        assignee=User2,
+
     )
     Group1 = Group(name="group1", description="group1 description")
     Group2 = Group(name="group2", description="group2 description")
@@ -211,13 +201,13 @@ with SessionLocal() as session:
 
     tprops1 = TaskProperties(description = "desc1", quantity = 1)
     tprops2 = TaskProperties(description = "desc2", quantity = 2)
-    Type1.tasks = [Task1, Task2]
-    Tasklist1.tasks = [Task1, Task2]
-    Tasklist1.priority = Priority1
-    Task1.priority = Priority1
+    # Type1.tasks = [Task1, Task2]
+    # Tasklist1.tasks = [Task1, Task2]
+    # Tasklist1.priority = Priority1
+    # Task1.priority = Priority1
     Task1.properties_id = 1
     Task2.properties_id = 2
-    TaskList.tasks = [Task1, Task2]
+    # TaskList.tasks = [Task1, Task2]
     Group1.owner_id = 1
     Group2.owner_id = 2
     Group1.users = [User1, User2]
@@ -235,13 +225,13 @@ with SessionLocal() as session:
             User3,
             Task1,
             Task2,
-            Tasklist1,
+            # Tasklist1,
             tprops1,
             tprops2,
-            Priority1,
-            Priority2,
-            Type1,
-            Type2,
+            # Priority1,
+            # Priority2,
+            # Type1,
+            # Type2,
         ]
     )
     # session.commit()
