@@ -18,7 +18,6 @@ def db_get_tasks(db: Session, skip: int = 0, limit: int = 100):
         .limit(limit)
         .all()
     )
-    print("1111111111111111111111111111111111111111111111111111")
     print(tasks[0])
     task_schemas = [TaskSchema.from_orm(task) for task in tasks]
     return task_schemas
@@ -67,8 +66,7 @@ def db_post_tasks(properties_id, db: Session):
     db.add(task)
     db.commit()
     db.refresh(task)
-    print("777777777777777777777777777777")
-    print(task.id)
+    # print(task.id)
     db_tasks = (
         db.query(Task)
         .where(Task.id == task.id)
@@ -76,3 +74,38 @@ def db_post_tasks(properties_id, db: Session):
     )
     print(db_tasks)
     return db_tasks
+
+def db_get_properties(properties_id, db:Session):
+    task_prop = (
+        db.query(TaskProperties)
+        .where(TaskProperties.id == properties_id)
+        .first())
+    print(task_prop)
+    return task_prop
+
+def db_assign_user(task_id, user_id, db :Session):
+    print("aaaaaaaaaaaaaaaaaa", user_id)
+    task_prop = db_get_properties(task_id, db)
+    # task_prop.update({
+    #     "assignee_id" : user_id
+    # })
+    task_prop.assignee_id = user_id
+    print(task_prop.assignee_id)
+    db.commit()
+    db.flush()
+
+
+def db_delete_task(task_id, db : Session):
+    # get task
+    task = db_get_task_by_id(db,task_id)
+    print("234564234655423564545623454562344556234",task.properties.id)
+    # from the task, get prop id
+    task_prop = db_get_properties(task.properties.id,db)
+    # get task_prop from prop_id
+    # delete task from task_id
+    db.delete(task)
+    db.delete(task_prop)
+    db.commit()
+    db.flush()
+    # delete task_prop from prop_id
+

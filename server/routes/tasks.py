@@ -1,5 +1,6 @@
 from schemas.tasks import TaskSchema, TaskBase,TaskPropertiesBase
-from queries.tasks import db_get_tasks, db_get_task_by_id, db_get_task_by_name, db_post_tasks, db_post_task_properties
+from queries.tasks import db_get_tasks, db_get_task_by_id, db_get_task_by_name, db_post_tasks, db_post_task_properties, db_assign_user, db_delete_task
+from queries.users import db_get_user_by_username
 from fastapi import (
     Depends,
     HTTPException,
@@ -59,7 +60,7 @@ def create_task_properties(description: str = Form(...), quantity : int = Form(.
     db_post_task_properties(new_task_prop, db)
     return new_task_prop
 
-@router.post("/tasks/create", response_model=TaskBase)
+@router.post("/tasks/create", response_model=TaskSchema)
 def post_task(
 
     # should take a user name, which will call get_user_by_username to get id and use that as assignee
@@ -71,7 +72,6 @@ def post_task(
     ):
     new_task_prop = TaskPropertiesBase(description = description, quantity = quantity)
     new_task_prop_id = db_post_task_properties(new_task_prop, db)
-    print("222222222222222222222222222222222222222222222222222222222222")
     # it task has a json of all the stuff nested, so will probably just need to create the stuff and manually set it?
     # new_task = TaskBase(
     # isCompleted=False,
@@ -81,3 +81,32 @@ def post_task(
     if tasks is None:
         raise HTTPException(status_code=400, detail="task not found")
     return tasks
+
+# response_model = TaskSchema will need to put this in after
+@router.put("/tasks/assign")
+def assign_user(
+    task_id : int = Form(...),
+    username : str = Form(...),
+    db: Session = Depends(get_db)
+):
+    # todo check task_id, if does not exist, return not found
+    user = db_get_user_by_username(db, username)
+    # todo if user does not exist, return user does not exist
+    user_id = user.id
+    print(task_id, username, user_id)
+    db_assign_user(task_id, user_id, db)
+    return {
+        task_id,
+        username,
+        user_id
+    }
+
+@router.delete("/tasks/delete")
+def delete_task(
+    task_id : int = Form(...),
+    db: Session = Depends(get_db)):
+    db_delete_task(task_id, db)
+
+    return {
+        "testing"
+    }
