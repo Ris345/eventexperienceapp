@@ -85,7 +85,8 @@ def db_get_properties(properties_id, db:Session):
 
 def db_assign_user(task_id, user_id, db :Session):
     print("aaaaaaaaaaaaaaaaaa", user_id)
-    task_prop = db_get_properties(task_id, db)
+    task = db_get_task_by_id(db, task_id)
+    task_prop = db_get_properties(task.properties.id, db)
     # task_prop.update({
     #     "assignee_id" : user_id
     # })
