@@ -195,10 +195,18 @@ with SessionLocal() as session:
     tasklist1 = TaskList(name="tasklist1", isCompleted=True, description="taskl 1")
     tasklist2 = TaskList(name="tasklist2", isCompleted=True, description="taskl 2")
     Task1 = Task(
-        name="get eggs", description="we need eggs", isCompleted=False, quantity="10"
+        name="get eggs",
+        description="we need eggs",
+        isCompleted=False,
+        quantity=10,
+        task_type=type1,
     )
     Task2 = Task(
-        name="task2", description="desc2", isCompleted=True, quantity="task2 q"
+        name="task2",
+        description="desc2",
+        isCompleted=True,
+        quantity=2,
+        task_type=type1,
     )
     User1 = User(
         username="user1",
@@ -209,6 +217,7 @@ with SessionLocal() as session:
         hashed_password="user1 password",
         profile_photo="aws3.privatebucket.com/user1_photo",
         is_active=True,
+        task_assignments=[Task1],
     )
     User2 = User(
         username="user2",
@@ -267,7 +276,7 @@ with SessionLocal() as session:
     # User1.rsvps = [Event1, Event2]
     # User2.rsvps = [Event2, Event1]
     # User1.bookmarks = [Event1, Event2]
-    session.add_all([Group1, Group2, User1, User2, User3])
+    session.add_all([Group1, Group2, User1, User2, User3, Task1, Task2])
     session.commit()
 
     # Get group with id 1 and print name, description

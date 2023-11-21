@@ -77,6 +77,10 @@ class TaskPrioritySchema(TaskPriorityBase):
 class TaskTypeBase(BaseModel):
     name: str
 
+    class Config:
+        orm_mode = True
+        from_attributes = True
+
 
 class TaskTypeCreate(TaskTypeBase):
     pass
@@ -84,6 +88,10 @@ class TaskTypeCreate(TaskTypeBase):
 
 class TaskTypeSchema(TaskTypeBase):
     id: int
+
+    class Config:
+        orm_mode = True
+        from_attributes = True
 
 
 # we want author to get auto assigned to current user
