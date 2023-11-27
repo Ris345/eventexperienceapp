@@ -26,7 +26,7 @@
   <slot />
   <div id="sidebar">
     <div id="button-holder">
-      <a id="profile" href="#profile">Profile</a>
+      <a id="profile" href="/profile">Profile</a>
       <button id="logout-btn">Logout</button>
     </div>
     <div id="user-pic" />

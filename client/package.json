@@ -16,6 +16,8 @@
 		"coverage": "vitest run --coverage"
 	},
 	"devDependencies": {
+		"@event-calendar/core": "^2.4.1",
+		"@event-calendar/time-grid": "^2.4.1",
 		"@material/typography": "^14.0.0",
 		"@smui/button": "^7.0.0-beta.14",
 		"@smui/dialog": "^7.0.0-beta.14",
