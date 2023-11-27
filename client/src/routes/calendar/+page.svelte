@@ -12,13 +12,10 @@
         ]
     };
 
-	function updateOptions() {
-        options.slotDuration = '01:00';
-    }
 	
 </script>
 
-<button on:click={updateOptions}>Change slot duration</button>
+
 <Calendar {plugins} {options} />
 
 
