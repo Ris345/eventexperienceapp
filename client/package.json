@@ -16,6 +16,8 @@
 		"coverage": "vitest run --coverage"
 	},
 	"devDependencies": {
+		"@event-calendar/core": "^2.4.1",
+		"@event-calendar/time-grid": "^2.4.1",
 		"@material/typography": "^14.0.0",
 		"@smui/button": "^7.0.0-beta.14",
 		"@smui/dialog": "^7.0.0-beta.14",
@@ -40,6 +42,8 @@
 	"dependencies": {
 		"@mui/icons-material": "^5.14.3",
 		"axios": "^1.4.0",
+		"date-picker-svelte": "^2.10.0",
+		"esbuild": "^0.19.5",
 		"svelte-material-icons": "^3.0.5"
 	}
 }

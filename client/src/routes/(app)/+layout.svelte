@@ -1,5 +1,5 @@
 <h1>
-	<svg
+	<!-- <svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="16"
 		height="16"
@@ -14,7 +14,7 @@
 	</svg>
 	BACKSTAGE
 	<br />
-	<span style="font-size:.5em; font-weight:300;">Event Experience Team Coordination</span>
+	<span style="font-size:.5em; font-weight:300;">Event Experience Team Coordination</span> -->
 </h1>
 <slot />
 
@@ -31,11 +31,10 @@
 		width: auto;
 	}
 	:global(body) {
-		background-image: linear-gradient(to bottom, #000000aa, #000000aa),
-			url('/images/backstage-horizontal.jpg');
 		background-repeat: no-repeat;
 		background-size: cover;
 		height: 100%;
+		background-color: #f2f2f2;
 	}
 	:global(html) {
 		min-height: 100vh;
