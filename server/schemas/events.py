@@ -25,8 +25,8 @@ class EventBase(BaseModel):
     orm_mode = True
     from_attributes = True
 
-class EventPropertiesCreate(EventPropertiesBase):
+class EventPropertiesSchema(EventPropertiesBase):
   id : int
 
-class EventCreate(EventBase):
+class EventSchema(EventBase):
   id : int
