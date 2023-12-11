@@ -11,7 +11,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship, joinedload
 import database
-from models.tasks import Task, TaskProperties
+# from models.tasks import Task, TaskProperties
 
 
 Base = database.Base
