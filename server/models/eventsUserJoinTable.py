@@ -11,7 +11,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship, joinedload
 import database
-from models.users import User
+
 from models.events import Event
 Base = database.Base
 engine = database.engine
@@ -35,10 +35,10 @@ class EventProperties(Base):
 EventsUserTable = Table(
   "eventsuser",
   Base.metadata,
-  Column("events_id", ForeignKey("events_participants.id")),
-  Column("users.id", ForeignKey("users.id"))
+  Column("events_id", ForeignKey("events_participants.id"), primary_key = True),
+  Column("users.id", ForeignKey("users.id"), primary_key = True)
 )
-
+from models.users import User
 class EventParticipants(Base):
   __tablename__ = "events_participants"
   id = Column(Integer, primary_key = True)
