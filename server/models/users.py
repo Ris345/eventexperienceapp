@@ -12,7 +12,7 @@ from sqlalchemy import (
 from sqlalchemy.orm import relationship, joinedload
 import database
 from models.tasks import Task, TaskProperties
-from models.eventsUserJoinTable import EventsUserTable
+from models.eventsUserJoinTable import EventsUserTable, EventsOrganizerTable
 # from models.events import Event, EventProperties, EventParticipants, EventsUserTable
 
 
@@ -53,9 +53,10 @@ class User(Base):
     #     "Task", back_populates="assignee", foreign_keys="[Task.assignee_id]"
     # )
     task_assignments2 = relationship(
-        "TaskProperties", back_populates="assignee", foreign_keys="[TaskProperties.assignee_id]"
+        "TaskProperties", back_populates="assignee", foreign_keys=[TaskProperties.assignee_id]
     )
-    events_participants = relationship("EventParticipants", secondary = EventsUserTable, back_populates = "events_participants")
+    events_participants = relationship("EventParticipants", secondary = EventsUserTable, back_populates = "participants")
+    event_organizee = relationship("EventProperties", secondary = EventsOrganizerTable, back_populates = "organizer")
 
     # authored_tasks = relationship(
     #     "Task", back_populates="author", foreign_keys="[Task.author_id]"

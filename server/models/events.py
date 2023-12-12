@@ -18,8 +18,8 @@ SessionLocal = database.SessionLocal
 class Event(Base):
   __tablename__= "events"
   id = Column(Integer, primary_key = True, index = True)
-  properties_id = Column(Integer, ForeignKey("event_properties.id"))
-  properties = relationship("EventProperties", back_populates = "events", foreign_keys = [properties_id])
+  # properties_id = Column(Integer, ForeignKey("event_properties.id"))
+  properties = relationship("EventProperties", back_populates = "event")
   rsvp = Column(Boolean, default = False)
   date_created = Column(DateTime, default = func.now())
   last_modified_time = Column(DateTime, default = func.now())
