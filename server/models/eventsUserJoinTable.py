@@ -27,7 +27,7 @@ class EventProperties(Base):
   event_location = Column(String)
   participants_id = Column(Integer, ForeignKey("event_particpants.id"))
   participants = relationship("EventParticipants",  back_populates = "event_properties")
-  organizer_id = Column(Integer, ForeignKey = "user.id")
+  organizer_id = Column(Integer, ForeignKey("user.id"))
   organizer = relationship("User", back_populates = "event_properties")
 
 # joining table for users with event?
