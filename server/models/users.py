@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from sqlalchemy import (
     Boolean,
     Column,
@@ -11,7 +11,8 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship, joinedload
 import database
-# from models.tasks import Task, TaskProperties
+from models.tasks import Task, TaskProperties
+from models.events import Event, EventProperties, EventParticipants, EventsUserTable
 
 
 Base = database.Base
@@ -53,6 +54,8 @@ class User(Base):
     task_assignments2 = relationship(
         "TaskProperties", back_populates="assignee", foreign_keys="[TaskProperties.assignee_id]"
     )
+    events_participants = relationship("EventParticipants", secondary = EventsUserTable, back_populates = "events_participants")
+
     # authored_tasks = relationship(
     #     "Task", back_populates="author", foreign_keys="[Task.author_id]"
     # )
@@ -198,10 +201,12 @@ class EventGroup(Base):
 #         profile_photo="aws3.privatebucket.com/user3_photo",
 #         is_active=True,
 #     )
-
+eprops1 = EventProperties(event_name = "ename1", event_date = datetime.now(), start_time = datetime.now() + timedelta(hours = 1), end_time = datetime.now() + timedelta(hours = 3), event_location = "location1")
+eprops2 = EventProperties(event_name = "ename1", event_date = datetime.now(), start_time = datetime.now() + timedelta(hours = 12), end_time = datetime.now() + timedelta(hours = 15), event_location = "location1")
+epart1 = EventParticipants()
 #     tprops1 = TaskProperties(description = "desc1", quantity = 1)
 #     tprops2 = TaskProperties(description = "desc2", quantity = 2)
-#     # Type1.tasks = [Task1, Task2]
+#     Type1.tasks = [Task1, Task2]
 #     # Tasklist1.tasks = [Task1, Task2]
 #     # Tasklist1.priority = Priority1
 #     # Task1.priority = Priority1

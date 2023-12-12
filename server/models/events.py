@@ -7,6 +7,7 @@ from sqlalchemy import (
     Integer,
     Text,
     func,
+    Table
 )
 from sqlalchemy.orm import relationship, joinedload
 import database
@@ -38,15 +39,24 @@ class EventProperties(Base):
   organizer = relationship("User", back_populates = "event_properties")
 
 # joining table for users with event?
-
+# yes, will need a join table
 class EventParticipants(Base):
   __tablename__ = "events_participants"
   id = Column(Integer, primary_key = True)
   event_properties_id = Column(Integer, ForeignKey("event_properties.id"))
   event_prop = relationship("EventProperties", back_populates = "event_participants")
+  participants = relationship("User")
+
 #
 # event_id say #3
 # user_id say #2
+EventsUserTable = Table(
+  "eventsuser",
+  Base.metadata,
+  Column("events_id", ForeignKey("events_participants.id")),
+  Column("users.id", ForeignKey("users.id"))
 
+
+)
 # need another table to join event participant id to a user?
 # many to one?
