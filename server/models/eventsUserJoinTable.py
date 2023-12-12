@@ -38,7 +38,7 @@ EventsUserTable = Table(
   Column("events_id", ForeignKey("events_participants.id"), primary_key = True),
   Column("users.id", ForeignKey("users.id"), primary_key = True)
 )
-from models.users import User
+# from models.users import User
 class EventParticipants(Base):
   __tablename__ = "events_participants"
   id = Column(Integer, primary_key = True)
