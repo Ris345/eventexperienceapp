@@ -36,7 +36,7 @@ class EventProperties(Base):
   # event_id = Column(Integer, ForeignKey("events.id"))
   event = relationship("Event",  back_populates = "properties")
   # event_participants_id = Column(Integer, ForeignKey("events_participants.id"))
-  event_participants = relationship("EventParticipants",back_populates = "event_properties")
+  event_participants = relationship("EventParticipants",back_populates = "event_properties", uselist = False)
   # organizer_id = Column(Integer, ForeignKey("user.id"))
   organizer = relationship("User", secondary = EventsOrganizerTable,  back_populates = "event_organizee")
 
@@ -54,7 +54,7 @@ class EventParticipants(Base):
   __tablename__ = "events_participants"
   id = Column(Integer, primary_key = True)
   event_properties_id = Column(Integer, ForeignKey("event_properties.id"))
-  event_properties = relationship("EventProperties", back_populates = "event_participants", foreign_keys = [event_properties_id])
+  event_properties = relationship("EventProperties", back_populates = "event_participants")
   participants = relationship("User", secondary = EventsUserTable, back_populates = "events_participants")
 
 # evt1 = Event()
