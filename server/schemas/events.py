@@ -16,30 +16,42 @@ from schemas.users import UserSchema
 #         orm_mode = True
 #         from_attributes = True
 
+class EventParticipantsBase(BaseModel):
+  participants : List[UserSchema] | None = None
+  # id : int
+  class Config:
+    orm_mode = True
+    from_attributes = True
+
+
+class EventParticipantsSchema(EventParticipantsBase):
+  id: int
+  # pass
 
 class EventPropertiesBase(BaseModel):
-  eventName : str
-  eventDate : datetime
-  startTime : datetime
-  endTime : datetime
-  eventLocation : str
-  participants : Optional[List[UserSchema]]
-  organizer : Optional[UserSchema] = None
+  event_name : str
+  event_date : datetime
+  start_time : datetime
+  end_time : datetime
+  event_location : str
+  # event_participants : object
+  event_participants : Optional[EventParticipantsSchema] = None
+  # organizer : Optional[UserSchema] = None
   class Config:
       orm_mode = True
       from_attributes = True
+
+class EventPropertiesSchema(EventPropertiesBase):
+  id : int
 
 class EventBase(BaseModel):
   date_created : datetime
   last_modified_time : datetime
   rsvp : bool
-  properties : EventPropertiesBase
+  properties : EventPropertiesSchema
   class Config:
     orm_mode = True
     from_attributes = True
-
-class EventPropertiesSchema(EventPropertiesBase):
-  id : int
 
 class EventSchema(EventBase):
   id : int

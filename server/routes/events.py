@@ -1,5 +1,5 @@
 from schemas.events import EventPropertiesSchema, EventSchema
-from queries.events import db_get_events
+from queries.events import db_get_events, db_get_events2
 from fastapi import (
     Depends,
     HTTPException,
@@ -29,7 +29,14 @@ router = APIRouter(
     responses={404: {"description": "Not Found"}},
 )
 
+# @router.get("/events", response_model = List[EventSchema])
 @router.get("/events")
 def get_events(skip : int = 0, limit : int = 100, db: Session = Depends(get_db)):
     events = db_get_events(db, skip, limit)
-    return {"message": events}
+    print(type(events[0].properties.event_participants.participants))
+    return events
+
+@router.get("/events2", response_model = List[EventSchema])
+def get_events(skip : int = 0, limit : int = 100, db: Session = Depends(get_db)):
+    events = db_get_events2(db, skip, limit)
+    return events

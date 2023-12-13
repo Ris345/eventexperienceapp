@@ -19,7 +19,7 @@ def db_get_tasks(db: Session, skip: int = 0, limit: int = 100):
         .limit(limit)
         .all()
     )
-    print(tasks[0])
+    # print(tasks[0])
     task_schemas = [TaskSchema.from_orm(task) for task in tasks]
     return task_schemas
 
