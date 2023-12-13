@@ -16,6 +16,7 @@ from models.eventsUserJoinTable import EventsUserTable, EventsOrganizerTable, Ev
 from models.events import Event
 # from models.events import Event, EventProperties, EventParticipants, EventsUserTable
 
+# keep a timezone property?
 
 Base = database.Base
 engine = database.engine

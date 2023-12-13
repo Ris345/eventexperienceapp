@@ -48,7 +48,7 @@ class EventBase(BaseModel):
   date_created : datetime
   last_modified_time : datetime
   rsvp : bool
-  properties : EventPropertiesSchema
+  properties : Optional[EventPropertiesSchema] = None
   class Config:
     orm_mode = True
     from_attributes = True

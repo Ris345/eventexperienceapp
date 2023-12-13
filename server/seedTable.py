@@ -76,7 +76,7 @@ with SessionLocal() as session:
         is_active=True,
     )
     eprops1 = EventProperties(event_name = "ename1", event_date = datetime.now(), start_time = datetime.now() + timedelta(hours = 1), end_time = datetime.now() + timedelta(hours = 3), event_location = "location1")
-    eprops2 = EventProperties(event_name = "ename1", event_date = datetime.now(), start_time = datetime.now() + timedelta(hours = 12), end_time = datetime.now() + timedelta(hours = 15), event_location = "location1")
+    eprops2 = EventProperties(event_name = "ename2", event_date = datetime.now(), start_time = datetime.now() + timedelta(hours = 12), end_time = datetime.now() + timedelta(hours = 15), event_location = "location1")
     epart1 = EventParticipants()
     epart2 = EventParticipants()
     epart1.event_properties_id = 1
