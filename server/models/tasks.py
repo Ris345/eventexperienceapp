@@ -125,12 +125,10 @@ Priority Model
     id - pk, int
     name - str ex: urgent
     level - int ex: out of x
-
-# from docs, track for progress of tasks
-Status Model
-    id - pk, int
-    name - str, ex: started, in progress, review
-
+properties": {
+      "description": "desc1",
+      "quantity": 1,
+      "id": 1,
 """
 
 # old model

@@ -12,7 +12,8 @@ from sqlalchemy import (
 from sqlalchemy.orm import relationship, joinedload
 import database
 from models.tasks import Task, TaskProperties
-from models.eventsUserJoinTable import EventsUserTable, EventsOrganizerTable
+from models.eventsUserJoinTable import EventsUserTable, EventsOrganizerTable, EventParticipants, EventProperties
+from models.events import Event
 # from models.events import Event, EventProperties, EventParticipants, EventsUserTable
 
 
@@ -203,12 +204,22 @@ class EventGroup(Base):
 #         profile_photo="aws3.privatebucket.com/user3_photo",
 #         is_active=True,
 #     )
-# eprops1 = EventProperties(event_name = "ename1", event_date = datetime.now(), start_time = datetime.now() + timedelta(hours = 1), end_time = datetime.now() + timedelta(hours = 3), event_location = "location1")
-# eprops2 = EventProperties(event_name = "ename1", event_date = datetime.now(), start_time = datetime.now() + timedelta(hours = 12), end_time = datetime.now() + timedelta(hours = 15), event_location = "location1")
-# epart1 = EventParticipants()
+#     eprops1 = EventProperties(event_name = "ename1", event_date = datetime.now(), start_time = datetime.now() + timedelta(hours = 1), end_time = datetime.now() + timedelta(hours = 3), event_location = "location1")
+#     eprops2 = EventProperties(event_name = "ename1", event_date = datetime.now(), start_time = datetime.now() + timedelta(hours = 12), end_time = datetime.now() + timedelta(hours = 15), event_location = "location1")
+#     epart1 = EventParticipants()
+#     epart2 = EventParticipants()
+#     epart1.event_properties_id = 1
+#     epart2.event_properties_id = 2
+#     event1 = Event()
+#     event2 = Event()
+#     event1.properties_id = 1
+#     event2.properties_id = 2
+#     eprops1.event_id = 1
+#     eprops2.event_id = 2
+
 #     tprops1 = TaskProperties(description = "desc1", quantity = 1)
 #     tprops2 = TaskProperties(description = "desc2", quantity = 2)
-#     Type1.tasks = [Task1, Task2]
+#     # Type1.tasks = [Task1, Task2]
 #     # Tasklist1.tasks = [Task1, Task2]
 #     # Tasklist1.priority = Priority1
 #     # Task1.priority = Priority1
@@ -239,6 +250,13 @@ class EventGroup(Base):
 #             # Priority2,
 #             # Type1,
 #             # Type2,
+#             eprops1,
+#             eprops2,
+#             epart1,
+#             epart2,
+#             event1,
+#             event2
+
 #         ]
 #     )
 #     session.commit()
@@ -268,3 +286,20 @@ class EventGroup(Base):
 #         session.query(Group).options(joinedload(Group.users)).where(Group.id == 1).one()
 #     )
 # print(g1.name)
+
+# example of adding one to many and many to many relationships
+
+# with SessionLocal() as session:
+#     e1 = session.query(Event).where(Event.id == 1).one()
+#     eProp = session.query(EventProperties).where(EventProperties.id == 1).one()
+#     ePart = session.query(EventParticipants).where(EventParticipants.id == 1).one()
+#     print(e1,eProp, ePart)
+#     user = session.query(User).where(User.id == 1).one()
+#     user2 = session.query(User).where(User.id == 2).one()
+#     user3 = session.query(User).where(User.id == 3).one()
+#     # eProp.event.append(e1)
+#     eProp.organizer.append(user)
+#     ePart.participants.append(user)
+#     ePart.participants.append(user2)
+
+#     session.commit()

@@ -1,5 +1,5 @@
 from schemas.events import EventPropertiesSchema, EventSchema
-
+from queries.events import db_get_events
 from fastapi import (
     Depends,
     HTTPException,
@@ -30,5 +30,6 @@ router = APIRouter(
 )
 
 @router.get("/events")
-def get_events():
-    return {"message":"events get"}
+def get_events(skip : int = 0, limit : int = 100, db: Session = Depends(get_db)):
+    events = db_get_events(db, skip, limit)
+    return {"message": events}
