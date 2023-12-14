@@ -1,5 +1,5 @@
 from schemas.events import EventPropertiesSchema, EventSchema
-from queries.events import db_get_events, db_create_event, db_get_event_by_id
+from queries.events import db_get_events, db_create_event, db_get_event_by_id, db_add_participants
 from fastapi import (
     Depends,
     HTTPException,
@@ -56,5 +56,8 @@ def post_event(
 @router.put("/events/add_participants")
 def add_participants(
     db : Session = Depends(get_db),
+    user_id : int = Form(...),
+    event_id : int = Form(...)
 ):
+    db_add_participants(db=db, user_id=user_id, event_id=event_id)
     return {"message" : "added participants"}
