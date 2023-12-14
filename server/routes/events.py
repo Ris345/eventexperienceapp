@@ -48,3 +48,9 @@ def post_event(
     ):
 #
     return db_create_event(db,event_name= event_name, event_date=event_date, start_time=start_time, end_time=end_time, event_location=event_location)
+
+@router.put("/events/add_participants")
+def add_participants(
+    db : Session = Depends(get_db),
+):
+    return {"message" : "added participants"}

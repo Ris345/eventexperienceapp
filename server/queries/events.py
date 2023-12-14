@@ -19,21 +19,25 @@ def db_create_event(db : Session, event_name, event_date, start_time, end_time, 
 
 
   new_event = Event(rsvp = False)
+
+  new_participants = EventParticipants()
+
+
   new_event_property = EventProperties(
 event_name= event_name, event_date=event_date, start_time=start_time, end_time=end_time, event_location=event_location
   )
+
   # new_event.properties = new_event_property
-  print(new_event_property)
   db.add(new_event)
   db.add(new_event_property)
+  db.add(new_participants)
   db.commit()
   db.refresh(new_event)
   new_event.properties_id = new_event_property.id
+  new_participants.event_properties_id = new_event_property.id
   db.commit()
   db.refresh(new_event_property)
-
-
-
+  db.refresh(new_participants)
   return new_event
   # return {
   #   "message" : "created"
