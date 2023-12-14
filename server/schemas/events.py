@@ -17,7 +17,7 @@ from schemas.users import UserSchema
 #         from_attributes = True
 
 class EventParticipantsBase(BaseModel):
-  participants : List[UserSchema] | None = None
+  participants : Optional[List[UserSchema]] = None
   # id : int
   class Config:
     orm_mode = True
