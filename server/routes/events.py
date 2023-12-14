@@ -1,5 +1,5 @@
 from schemas.events import EventPropertiesSchema, EventSchema
-from queries.events import db_get_events, db_create_event
+from queries.events import db_get_events, db_create_event, db_get_event_by_id
 from fastapi import (
     Depends,
     HTTPException,
@@ -36,6 +36,10 @@ def get_events(skip : int = 0, limit : int = 100, db: Session = Depends(get_db))
     events = db_get_events(db, skip, limit)
     print(type(events[0].properties.event_participants.participants))
     return events
+@router.get("/event/{id}")
+def get_event(id : int ,db: Session = Depends(get_db)):
+    event = db_get_event_by_id(db=db, event_id=id)
+    return event
 
 @router.post("/events/create")
 def post_event(
