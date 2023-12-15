@@ -1,22 +1,51 @@
 <script>
 	import { Input } from '@smui/textfield';
 	import todayDate from '$lib/todayDate.js';
+	import { createEventDispatcher } from 'svelte';
+	import axios from 'axios';
 	let searchValue = '';
-	let eventName = ''
-	let eventDate = ''
-	let startTime = ''
-	let endTime =  ''
-	let location = ''
-	let organizer = ''
-	let eventDescription = ''
-	let rsvp = null; 
+	let eventName = '';
+	let eventDate = '';
+	let startTime = '';
+	let endTime = '';
+	let location = '';
+	let organizer = '';
+	let eventDescription = '';
+	let rsvp = null;
 
 	const currentDate = new Date();
-	let events = 'Events Page'
-
-	$: console.log('eventName:', eventName);
+	let events = 'Events Page';
+	const dispatch = createEventDispatcher();
+	// handleSubmit
+	const handleOnSubmit = async (e) => {
+		e.preventDefault();
+		console.log('submitting  the data to the back end ');
+		$: console.log('eventName:', eventName);
+		$: console.log('eventDate:', eventDate);
+		$: console.log('startTime:', startTime);
+		$: console.log('endTime:', endTime);
+		$: console.log('location:', location);
+		$: console.log('organizer:', organizer);
+		$: console.log('eventDescription:', eventDescription);
+		$: console.log('rspv:', rsvp);
+		// make a post request
+		try {
+			const response = await axios.post('/api/backend', {
+				eventName,
+				eventDate,
+				startTime,
+				endTime,
+				location,
+				organizer,
+				eventDescription,
+				rsvp
+			});
+			dispatch('formSubmitted', response.data);
+		} catch (error) {
+			console.error(error);
+		}
+	};
 </script>
-
 
 <main>
 	<div id="search">
@@ -27,49 +56,56 @@
 			{todayDate}
 		</div>
 	</div>
-	<div>
-		<form method="POST">
-			<label>
-				EventName:
-				<input name="eventName" type="text" bind:value={eventName} >
-			</label>
-			<label>
-				EventDate:
-				<input name="date" type="date" bind:value={eventDate} >
-			</label>
-			<label>
-				Start Time:
-				<input name="time" type="time" bind:value={startTime} >
-			</label>
-			<label>
-				End Time:
-				<input name="time" type="time" bind:value={endTime} >
-			</label>
-			<label>
-				Location: 
-				<input name="location" type="text" bind:value={location} >
-			</label>
-			<label>
-				Organizer:
-				<input name="text" type="text" bind:value={organizer} >
-			</label>
-			<label>
-				Event Description: 
-				<input name="text" type="text" bind:value={eventDescription} >
-			</label>
-			<label>
-			    RSVP:
-				<input name="password" type="password" bind:value={rsvp} >
-				<select name="studentAns" id="studentAns">
+	<div class="formComponent">
+		<form on:submit={handleOnSubmit} class="formInner">
+			<div class="formRow">
+				<label for="eventName">Event Name:</label>
+				<input id="eventName" name="eventName" type="text" bind:value={eventName} />
+			</div>
+			<div class="formRow">
+				<label for="date">Event Date:</label>
+				<input id="date" name="date" type="date" bind:value={eventDate} />
+			</div>
+			<div class="formRow">
+				<label for="startTime">Start Time:</label>
+				<input id="startTime" name="startTime" type="time" bind:value={startTime} />
+			</div>
+			<div class="formRow">
+				<label for="endTime"> End Time:</label>
+				<input id="endTime" name="endTime" type="time" bind:value={endTime} />
+			</div>
+			<div class="formRow">
+				<label for="location"> Location:</label>
+				<input id="location" name="location" type="text" bind:value={location} />
+			</div>
+			<div class="formRow">
+				<label for="organizer">Organizer:</label>
+				<input id="organizer" name="organizer" type="text" bind:value={organizer} />
+			</div>
+			<div class="formRow">
+				<label for="rsvp"> RSVP:</label>
+				<select id="rsvp" name="studentAns" bind:value={rsvp}>
 					<option value="-">Not Sure</option>
 					<option value="Yes">Yes</option>
 					<option value="No">No</option>
-				  </select>
-			</label>
-			<button>Enter Event Details</button>
+				</select>
+			</div>
+			<div class="formRow">
+				<label for="eventDescription"> Event Description:</label>
+				<input
+					id="eventDescription"
+					name="eventDescription"
+					type="text"
+					bind:value={eventDescription}
+				/>
+			</div>
+			<div class="button">
+				<button>Enter Event Details</button>
+			</div>
 		</form>
 	</div>
 </main>
+
 <style>
 	main {
 		padding: 32px;
@@ -93,6 +129,37 @@
 	#date {
 		color: #00000080;
 	}
+
+	.formComponent {
+		display: flex;
+		justify-content: center; /* Center the form horizontally */
+		align-items: center; /* Center the form vertically */
+		height: 100vh; /* Adjust the height as needed */
+	}
+
+	.formInner {
+		width: 400px; /* Set the width of the form */
+		padding: 20px;
+		border: 1px solid #797979;
+	}
+
+	.formRow {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 10px;
+	}
+
+	label {
+		margin-bottom: 5px;
+	}
+
+	.button {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 10px;
+		border-radius: 45%;
+	}
+
 	:global(.solo-input) {
 		width: 100%;
 		border: 1.5px solid #00000040;
