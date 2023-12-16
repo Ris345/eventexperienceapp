@@ -29,7 +29,6 @@ POST api/calendar
     "title": "Dance Party",
     "date": "2023-08-15",
     "time": "15:00",
-    "rsvp": true,
     "created_date": "2023-08-04T10:30:00Z"
   }
 }
@@ -51,7 +50,6 @@ POST api/calendar
     "title": "Dance Party",
     "date": "2023-08-15",
     "time": "15:00",
-    "rsvp": true,
     "created_date": "2023-08-04T10:30:00Z"
   }
 }
@@ -79,7 +77,6 @@ GET api/calendar/{{id}}
     "title": "Dance Party",
     "date": "2023-08-15",
     "time": "15:00",
-    "rsvp": true,
     "created_date": "2023-08-04T10:30:00Z"
    }
 }
@@ -99,7 +96,6 @@ PUT /breakfasts/{{id}}
     "title": "Rave",
     "date": "2023-08-20",
     "time": "18:30",
-    "rsvp": false,
     "modified_date": "2023-08-04T15:45:00Z"
   }
 }
@@ -131,3 +127,5 @@ DELETE api/calendar/{{id}}
 ```js
 204 No Content
 ```
+
+

@@ -48,13 +48,26 @@ class TaskTypeBase(BaseModel):
 class TaskType(TaskTypeBase):
     id: int
 
+class TaskPropertiesBase(BaseModel):
+    description : str
+    quantity : int
+
+
+    class Config:
+        orm_mode = True
+        from_attributes = True
+
+class TaskProperties(TaskPropertiesBase):
+    id : int
+    assignee: Optional[UserBase] = None
 
 class TaskBase(BaseModel):
-    name: str
-    description: str
+    # name: str
+    # description: str
     isCompleted: bool
-    priority: TaskPriority
-    task_type: TaskType
+    # priority: TaskPriority
+    properties : TaskProperties
+    # task_type: TaskType
 
     class Config:
         orm_mode = True
@@ -67,8 +80,10 @@ class TaskCreate(TaskBase):
 
 class TaskSchema(TaskBase):
     id: int
-    assignee: Optional[UserBase]
-    author: Optional[UserBase]
+    date_created : datetime
+    last_modified_time : datetime
+    # assignee: Optional[UserBase]
+    # author: Optional[UserBase]
 
     class Config:
         orm_mode = True
