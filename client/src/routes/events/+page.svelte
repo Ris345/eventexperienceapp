@@ -17,31 +17,28 @@
 
 	let events = 'Events Page';
 	const dispatch = createEventDispatcher();
-
-    // const convert_date = (event) => {
-    //  eventDate = new Date(event.target.value).toISOString();
-	// }
-
-
 	// handleSubmit
 	const handleOnSubmit = async (e) => {
 		e.preventDefault();
 		console.log('submitting  the data to the back end ');
 		$: console.log(currentDate);
 		$: console.log('eventName:', eventName);
-		$: console.log('eventDate:', eventDate);
 		$: console.log('startTime:', startTime);
 		$: console.log('endTime:', endTime);
 		$: console.log('location:', location);
 		$: console.log('organizer:', organizer);
 		$: console.log('eventDescription:', eventDescription);
 		$: console.log('rspv:', rsvp);
+		
 		// make a post request
-		eventName ? eventName.toISOString() : null; 
+		
+        let parseDate = eventDate ? new Date(eventDate).toISOString() : null; 
+		$: console.log('parseDate:', parseDate);
+
 		try {
 			const response = await axios.post('http://localhost:8000/events/create', {
 				eventName,
-				eventDate,
+				parseDate,
 				startTime,
 				endTime,
 				location,
