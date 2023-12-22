@@ -5,7 +5,7 @@
 	import axios from 'axios';
 	let searchValue = '';
 	let eventName = '';
-	let eventDate = '';
+	let eventDate = ''
 	let startTime = '';
 	let endTime = '';
 	let location = '';
@@ -13,13 +13,21 @@
 	let eventDescription = '';
 	let rsvp = null;
 
-	const currentDate = new Date();
+	const currentDate = new Date() 
+
 	let events = 'Events Page';
 	const dispatch = createEventDispatcher();
+
+    // const convert_date = (event) => {
+    //  eventDate = new Date(event.target.value).toISOString();
+	// }
+
+
 	// handleSubmit
 	const handleOnSubmit = async (e) => {
 		e.preventDefault();
 		console.log('submitting  the data to the back end ');
+		$: console.log(currentDate);
 		$: console.log('eventName:', eventName);
 		$: console.log('eventDate:', eventDate);
 		$: console.log('startTime:', startTime);
@@ -29,8 +37,9 @@
 		$: console.log('eventDescription:', eventDescription);
 		$: console.log('rspv:', rsvp);
 		// make a post request
+		eventName ? eventName.toISOString() : null; 
 		try {
-			const response = await axios.post('/api/backend', {
+			const response = await axios.post('http://localhost:8000/events/create', {
 				eventName,
 				eventDate,
 				startTime,
@@ -60,11 +69,11 @@
 		<form on:submit={handleOnSubmit} class="formInner">
 			<div class="formRow">
 				<label for="eventName">Event Name:</label>
-				<input id="eventName" name="eventName" type="text" bind:value={eventName} />
+				<input id="eventName" name="eventName" type="text"  bind:value={eventName}  />
 			</div>
 			<div class="formRow">
 				<label for="date">Event Date:</label>
-				<input id="date" name="date" type="date" bind:value={eventDate} />
+				<input id="date" name="date" type="date" bind:value={eventDate}  />
 			</div>
 			<div class="formRow">
 				<label for="startTime">Start Time:</label>

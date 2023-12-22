@@ -57,6 +57,11 @@ class EventParticipants(Base):
   event_properties = relationship("EventProperties", back_populates = "event_participants")
   participants = relationship("User", secondary = EventsUserTable, back_populates = "events_participants")
 
+#  need to add event_description as well 
+
+
+
+
 # evt1 = Event()
 # evtProp = EventProperties(
 #   event_name = "event1",
